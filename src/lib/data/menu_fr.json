@@ -1,0 +1,53 @@
+[
+  {
+    "title": "Présentation",
+    "children": [
+      {
+        "title": "Mission",
+        "path": "/fr/mission"
+      },
+      {
+        "title": "Plateforme",
+        "path": "/fr/plateforme"
+      },
+      {
+        "title": "Chercheurs membres de l'institut",
+        "path": "/fr/membres"
+      },
+      {
+        "title": "Equipe d'ingénieurs en sciences de données",
+        "path": "/fr/equipe"
+      },
+      {
+        "title": "Partenariats",
+        "path": "/fr/partenariats"
+      }
+    ]
+  },
+  {
+    "title": "Activités",
+    "children": [
+      {
+        "title": "Séminaires et groupes de travail",
+        "path": "/fr/seminaires"
+      },
+      {
+        "title": "Formation",
+        "path": "/fr/formation"
+      }
+    ]
+  },
+  {
+    "title": "Recrutements",
+    "path": "/fr/candidate"
+  },
+  {
+    "title": "Bases de données",
+    "children": [
+      {
+        "title": "Measuring credit procyclicality",
+        "path": "/fr/donnees/credit_series"
+      }
+    ]
+  }
+]

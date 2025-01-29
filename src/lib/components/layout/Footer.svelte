@@ -1,3 +1,7 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages.js'
+</script>
+
 <section class="py-10">
 	<div class="container px-4 mx-auto">
 		<h3>partners</h3>
@@ -25,11 +29,7 @@
 		<div class="flex flex-col lg:flex-row items-center lg:justify-between">
 			<p class="text-sm text-blueGray-400">
 
-				© 2022 all rights reserved.<br />
-				Home page graphics from various research conducted by members of the institute.
-
-				© 2022 tous droits réservés.<br />
-				Graphiques en page d'accueil issus de diverses recherches menées par des membres de l'institut.
+				{m.copyright()}
 
 			</p>
 			<p>
