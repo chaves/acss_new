@@ -1,78 +1,154 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
- 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
- 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
- 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
- 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
- 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
- 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
- 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
- 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
- 
-    --destructive: 0 72.2% 50.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --ring: 222.2 84% 4.9%;
- 
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
- 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
- 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
- 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
- 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
- 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
- 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
- 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
- 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
- 
-    --ring: 212.7 26.8% 83.9%;
-  }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+@layer components {
+	.drop-down-menu {
+		@apply absolute left-0 bg-white rounded-lg shadow-sm w-max mt-14 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-4 transition-all duration-500 py-4 border border-blueGray-200;
+	}
 }
- 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
+
+/*CUSTOM CSS*/
+:root {
+	--tw-text-opacity: 1;
+	--tw-divide-opacity: 1;
+	--tw-border-opacity: 1;
+}
+/*Common*/
+button:focus {
+	border: 0;
+	outline: none !important;
+}
+
+.max-h-0 {
+	max-height: 0;
+}
+
+img {
+	z-index: 2;
+}
+
+/*Dropdown Menu*/
+nav li.has-child {
+	position: relative;
+	padding-right: 10px;
+}
+
+nav li.has-child::after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 4px;
+	height: 4px;
+	border-radius: 10px;
+	background-color: rgba(148, 163, 184, var(--tw-text-opacity));
+}
+
+.menu-item {
+	--tw-border-opacity: 1;
+	border-color: rgba(0, 0, 0, var(--tw-border-opacity));
+	border-bottom-width: 4px;
+	display: inline-block;
+	padding: 1.25rem;
+}
+
+.menu-item:hover {
+	--tw-border-opacity: 1;
+	border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.mega-sub-item {
+	cursor: pointer;
+	display: block;
+	padding: 0.5rem;
+}
+
+.mega-sub-item:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+	--tw-text-opacity: 1;
+	color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+
+.mega-sub-item-title {
+	display: block;
+	font-weight: 600;
+	font-size: 1.25rem;
+	line-height: 1.75rem;
+	margin-bottom: 1.25rem;
+}
+
+.menu-sub-item {
+	display: block;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	padding-left: 1.75rem;
+	padding-right: 1.75rem;
+}
+
+.menu-sub-item:hover {
+	--tw-bg-opacity: 1;
+	background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+	--tw-text-opacity: 1;
+	color: rgba(0, 0, 0, var(--tw-text-opacity));
+}
+
+.group:hover .group-hover\:border-white {
+	--tw-border-opacity: 1;
+	border-color: rgba(255, 255, 255, var(--tw-border-opacity));
+}
+
+.group:hover .group-hover\:mt-4 {
+	margin-top: 1rem;
+}
+
+.group:hover .group-hover\:visible {
+	visibility: visible;
+}
+
+.group:hover .group-hover\:opacity-100 {
+	opacity: 1;
+}
+
+.sub-dropdown:hover > .sub-dropdown-content {
+	opacity: 1;
+	visibility: visible;
+	top: 0;
+	left: 100%;
+	min-width: 200px;
+	margin-left: 5px;
+}
+
+.sub-dropdown:hover > a {
+	background-color: #fff;
+}
+
+.error {
+	@apply my-3 bg-red-500 shadow-md shadow-red-500/50 p-3 rounded-xl hover:shadow-none hover:bg-red-600 text-white;
+}
+
+.help {
+	@apply text-sm italic text-slate-500;
+}
+
+.submit {
+@apply bg-blue-500 shadow-md shadow-blue-500/50 px-4 py-2 rounded-xl hover:shadow-none hover:bg-blue-600 text-white;
+}
+
+.main a {
+	@apply font-semibold text-blue-dark hover:underline hover:decoration-pink-500 hover:decoration-2;
+}
+
+.site_blue {
+	color: #4a6caa;
+}
+
+.site_red {
+	color: #b6467c;
+}
+
+.blogPost li {
+	@apply font-semibold;
 }
