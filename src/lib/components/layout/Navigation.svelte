@@ -1,32 +1,55 @@
 <script>
-  import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Dropdown, DropdownItem, DropdownDivider } from 'flowbite-svelte';
-  import { ChevronDownOutline } from 'flowbite-svelte-icons';
-  import { page } from '$app/stores';
-  $: activeUrl = $page.url.pathname;
+	import {
+		Navbar,
+		NavBrand,
+		NavLi,
+		NavUl,
+		NavHamburger,
+		Dropdown,
+		DropdownItem,
+		DropdownDivider
+	} from 'flowbite-svelte';
+	import { ChevronDownOutline } from 'flowbite-svelte-icons';
+	import MenuFR from '$lib/data/menu_fr.json';
+	import MenuEN from '$lib/data/menu_en.json';
+
+	import { page } from '$app/state';
+	import { i18n } from '$lib/i18n';
+	let activeUrl = $derived(i18n.route(page.url.pathname));
+	const { lang } = $props();
+	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
+    import LanguageSwitch from './LanguageSwitch.svelte';
+
 </script>
 
-<header class="bg-white sticky top-0 z-50 pt-4 pb-2">
-<Navbar>
-  <NavBrand href="/">
-    <img src="/images/logos/acss_logo.svg" class="me-3 h-6 sm:h-9" alt="Flowbite Logo" />
-    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">Flowbite</span>
-  </NavBrand>
-  <NavHamburger />
-  <NavUl {activeUrl}>
-    <NavLi href="/">Home</NavLi>
-    <NavLi class="cursor-pointer">
-      Dropdown<ChevronDownOutline class="w-6 h-6 ms-2 text-primary-800 dark:text-white inline" />
-    </NavLi>
-    <Dropdown class="w-44 z-20">
-      <DropdownItem href="/">Dashboard</DropdownItem>
-      <DropdownItem href="/docs/components/navbar">Settings</DropdownItem>
-      <DropdownItem href="/">Earnings</DropdownItem>
-      <DropdownDivider />
-      <DropdownItem href="/">Sign out</DropdownItem>
-    </Dropdown>
-    <NavLi href="/settings">Setting</NavLi>
-    <NavLi href="/pricing">Pricing</NavLi>
-    <NavLi href="/contact">Contact</NavLi>
-  </NavUl>
-</Navbar>
+<header class="sticky top-0 z-50 bg-white pb-2 pt-4">
+	<Navbar>
+		<NavBrand href="/">
+			<img src="/images/logos/acss_logo.svg" class="me-3 h-9 sm:h-12" alt="ACSS Logo" />
+		</NavBrand>
+		<NavHamburger />
+		<NavUl {activeUrl}>
+			{#each menu as item}
+				{#if item.children}
+					<NavLi class="cursor-pointer">
+						{item.title}<ChevronDownOutline
+							class="ms-2 inline h-6 w-6 text-primary-800 dark:text-white"
+						/>
+					</NavLi>
+					<Dropdown {activeUrl} class="z-20 w-44">
+						{#each item.children as child}
+							<DropdownItem href={child.path}>{child.title}</DropdownItem>
+                            <DropdownDivider />
+						{/each}
+					</Dropdown>
+				{:else}
+					<NavLi href={item.path}>{item.title}</NavLi>
+				{/if}
+			{/each}
+            <li>|</li>
+            <li>
+                <LanguageSwitch />
+            </li>
+		</NavUl>
+	</Navbar>
 </header>

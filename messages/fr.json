@@ -1,5 +1,19 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
 	"Home": "Acceuil",
-	"copyright": "© 2022 tous droits réservés."
+	"copyright": "© 2022 tous droits réservés.",
+    "plafform": "Plateforme",
+    "partners": "Partenaires",
+    "partnerships": "Partenariats",
+    "members": "Membres",
+    "team": "Equipe",
+    "members_institute": "Chercheurs membres de l'institut",
+    "team_institute": "Equipe de Data Scientists",
+    "seminars": "Séminaires et groupes de travail",
+    "in_news": "A la une",
+    "subscribe_letter": "Inscription à notre lettre d'information",
+    "name": "Nom",
+    "submit": "Valider",
+    "training": "Formation",
+    "recruitments": "Recrutements"
 }

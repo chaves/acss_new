@@ -1,10 +1,24 @@
 import type { LayoutServerLoad } from './$types';
-import { languageTag } from "$lib/paraglide/runtime"
+import * as runtime from "$lib/paraglide/runtime.js"
 
-console.log(`The language on the server is ${languageTag()}`);
+export const load: LayoutServerLoad = async () => {
+	const selectedLanguage = runtime.languageTag() ?? 'fr';
+	let isoString = 'fr-FR';
+	if (selectedLanguage == 'en') {
+		isoString = 'en-US';
+	}
+    const lang = runtime.languageTag();
 
-export const load = (async () => {
-    return {
-        serverLang: `The language on the server is ${languageTag()}`,
-    };
-}) satisfies LayoutServerLoad;
+	return {
+		currentDateOnServer: new Intl.DateTimeFormat(isoString, {
+			timeZone: 'Europe/Paris',
+			weekday: 'long',
+			year: 'numeric',
+			month: 'long',
+			day: 'numeric',
+			hour: 'numeric',
+			minute: 'numeric'
+		}).format(new Date()),
+        lang: lang
+	};
+};

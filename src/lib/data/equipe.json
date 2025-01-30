@@ -1,0 +1,136 @@
+[
+    {
+        "slug": "william-aboucaya",
+        "last_name": "Aboucaya",
+        "first_name": "William",
+        "photo": "william.jpg",
+        "email": "william.aboucaya@inria.fr",
+        "title": "Senior Data Scientist",
+        "selected_publications": [
+"Leveraging Knowledge Graphs for Goal Model Generation. Shahin Abdoul Soukour, <strong>William Aboucaya</strong>, Nikolaos Georgantas. NLP4RE 2023:&nbsp;<em>7th Workshop on Natural Language Processing for Requirements Engineering (NLP4RE) in conjuction with the 30th International Woking Conference on Requirements Engineering: Foundation for Software Quality (REFSQ 2024)</em>, April 2024, Winterthur, Switzerland.",
+"Building Online Public Consultation Knowledge Graphs. <strong>William Aboucaya</strong>, Sonia Guehis, Rafael Angarita. Text2KG 2023: International Workshop on Knowledge Graph Generation from Text, Co-located with the ESWC 2023, May 2023, Hersonissos (Crete), Greece.",
+"Detecting Obstacles to Collaboration in an Online Participatory Democracy Platform: A Use-case Driven Analysis. <strong>William Aboucaya</strong>, Rafael Angarita, Valerie Issarny. FairWare &rsquo;22 - International Workshop on Equitable Data and Technology in conjunction with the 44th International Conference on Software Engineering (ICSE 2022), May 2022, Pittsburgh, PA, United States."
+        ],
+        "experiences": [
+            "Research engineer position, 2023-2024, Institut National de Recherche en Informatique et en Automatique (INRIA)",
+            "Ph. D. in Computer Science, 2019-2023, Institut National de Recherche en Informatique et en Automatique (INRIA)",
+            "Engineering degree - Major in Software Engineering, 2014-2019, Institut Supérieur d'Électronique de Paris (ISEP)"
+        ],
+        "methodologies": [
+            "Natural Language Processing: Textual Entailment Recognition, Named Entity Recognition / Linking, Graph-To-Text...",
+            "Machine Learning: Recommender Systems, Clustering, Neural Networks.",
+            "Semantic web: Knowledge Extraction / Inference",
+            "Data and graph analysis",
+            "Front-end and back-end development"
+        ],
+        "databases": [
+            "Python for data science (pandas, scikit-learn, PyTorch, NetworkX, HuggingFace environment) + web application development (FastAPI + JinJa)",
+            "Database: SQL (MySQL, SQLite), NoSQL (SPARQL, RDF / RDF*)",
+            "Java: API / back-end development",
+            "JavaScript: front-end / mobile development, React + Native"
+        ]
+    },
+
+    {
+        "slug": "gabriel-benevides",
+        "last_name": "Benevides",
+        "first_name": "Gabriel",
+        "photo": "gabriel.jpg",
+        "email": "gabriel.benevides@dauphine.psl.eu",
+        "title": "Data Scientist",
+        "experiences": [
+            "Development Engineer at Dassault Systèmes. (2020-2024)",
+            "Development Engineering Intern at Dassault Systèmes. (2020)",
+            "Masters in Software Engineering and Advanced Information Systems at ENSIMAG (Grenoble INP) / Université Grenoble-Alpes. (2020)",
+            "Research Intern at the University of Brasília. (2016-2017)"
+        ],
+
+        "methodologies": [
+            "Unit testing and simulations",
+            "Model-Based Systems Engineering (MBSE)",
+            "Client-side scripting and DOM structure",
+            "Data scraping and Machine Learning",
+            "Software Engineering Patterns "
+        ],
+        "databases": [
+            "Java, C, Python, TypeScript, MongoDB, SQL ",
+            "Git, Jenkins, CI/CD tools"
+        ]
+
+    },
+    {
+        "slug": "bruno-chaves-ferreira",
+        "last_name": "Chaves Ferreira",
+        "first_name": "Bruno",
+        "photo": "bruno.jpg",
+        "email": "bruno.chavesferreira@dauphine.psl.eu",
+        "title": "ACSS coordinator"
+    },
+
+    {
+        "slug": "claire-dupre-la-tour",
+        "last_name": "Dupré la Tour",
+        "first_name": "Claire",
+        "photo": "claire.jpg",
+        "email": "claire.dupre-la-tour@dauphine.psl.eu",
+        "title": "ACSS Institute Data Curator Engineer"
+    },
+
+    {
+        "slug": "andreas-hasudungan-priambodo",
+        "last_name": "Hasudungan Priambodo",
+        "first_name": "Andreas",
+        "photo": "andreas-priambodo.jpg",
+        "email": "andreas.priambodo@dauphine.psl.eu",
+        "title": "Data Scientist",
+        "experiences": [
+            "Research intern at Institut national d'études démographiques, Paris, France",
+            "Research intern at SamuSocial de Paris, Paris, France",
+            "Masters in Quantitative Sociology and Demography at Université Paris-Saclay 2022-2023",
+            "Bachelors in Social Sciences and Demography at Paris 1 Panthéon-Sorbonne 2018-2021 "
+        ],
+
+        "methodologies": [
+            "Topic Modelling",
+            "Social Network Analysis",
+            "Natural Language Processing",
+            "Spatial Analysis"
+        ],
+        "databases": [
+            "Programming languages:  R, Python (Pandas, TensorFlow, Keras, PyTorch, Scikit-learn).",
+            "Databases: SQL"
+        ]
+
+    },
+
+    {
+        "slug": "thibault-rolland",
+        "last_name": "Rolland",
+        "first_name": "Thibault",
+        "photo": "thibault-rolland.jpg",
+        "email": "thibault.rolland@dauphine.psl.eu",
+        "title": "Senior Data Scientist",
+        "experiences": [
+            "Ecole des Ponts Paristech (2012-2016) - Master of science, applied mathematics",
+            "UPMC (2009-2012) - Degree in mechanical engineering",
+            "Madkudu (2022-2023) - Software and data engineer",
+            "Paris Brain institute (2021-2022) - Research engineer, specialization in data management and data vizualisation",
+            "Shift technology (2018-2019) - Data scientist"
+        ],
+        "methodologies": [
+            "Machine learning & deep learning",
+            "Database and data engineering",
+            "Data science, data analysis and vizualisation",
+            "Project management",
+            "Back-end & front-end development"
+        ],
+        "databases": [
+            "Python (pandas, sklearn, pytorch, airflow, ...)",
+            "Databases : SQL (PostGres, Redshift) + NoSQL",
+            "JS & TS, React, Next, d3.js, THREE.js, svelte"
+        ],
+        "selected_publications": [
+            "Rolland, Thibault & Fallani, Fabrizio. (2022). Vizaj -- An interactive javascript tool for visualizing spatial networks"
+        ]
+        }
+]

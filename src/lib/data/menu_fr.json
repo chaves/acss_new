@@ -1,26 +1,30 @@
 [
   {
+    "title": "Accueil",
+    "path": "/"
+  },
+  {
     "title": "Présentation",
     "children": [
       {
         "title": "Mission",
-        "path": "/fr/mission"
+        "path": "/mission"
       },
       {
         "title": "Plateforme",
-        "path": "/fr/plateforme"
+        "path": "/plateforme"
       },
       {
         "title": "Chercheurs membres de l'institut",
-        "path": "/fr/membres"
+        "path": "/membres"
       },
       {
         "title": "Equipe d'ingénieurs en sciences de données",
-        "path": "/fr/equipe"
+        "path": "/equipe"
       },
       {
         "title": "Partenariats",
-        "path": "/fr/partenariats"
+        "path": "/partenariats"
       }
     ]
   },
@@ -29,24 +33,20 @@
     "children": [
       {
         "title": "Séminaires et groupes de travail",
-        "path": "/fr/seminaires"
+        "path": "/seminaires"
       },
       {
         "title": "Formation",
-        "path": "/fr/formation"
+        "path": "/formation"
       }
     ]
-  },
-  {
-    "title": "Recrutements",
-    "path": "/fr/candidate"
   },
   {
     "title": "Bases de données",
     "children": [
       {
         "title": "Measuring credit procyclicality",
-        "path": "/fr/donnees/credit_series"
+        "path": "/donnees/credit_series"
       }
     ]
   }

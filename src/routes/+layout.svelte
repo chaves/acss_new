@@ -1,25 +1,22 @@
 <script lang="ts">
-	import { page } from '$app/state';
+	import type { LayoutProps } from './$types';
+
 	import { i18n } from '$lib/i18n';
 	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
-	import menuData from '$lib/data/menu.json';
+	import { languageTag } from '$lib/paraglide/runtime.js'
 	import '../app.css';
 
 	import Navigation from '$lib/components/layout/Navigation.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 
-	let { children } = $props();
-
-
-	// Retrieve the menu for the current language
-	const menu = menuData['fr'] || menuData['en'];
+	let { data, children }: LayoutProps = $props();
 
 </script>
 
 <ParaglideJS {i18n}>
 	<!--Header-->
 
-	<Navigation />
+	<Navigation lang={languageTag()} />
 
 	<section class="py-9 bg-blueGray-50">
 		<div class="container main">

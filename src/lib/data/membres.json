@@ -1,0 +1,990 @@
+[
+    {
+        "slug": "herve-alexandre",
+        "last_name": "Alexandre",
+        "first_name": "Hervé",
+        "photo": "alexandre.jpg",
+        "disciplines": [
+            "FINANCE"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "herve.alexandre@dauphine.psl.eu",
+        "web_page": "https://hervealexandre.cygale.net",
+        "twitter": "halexandre_psl",
+        "main_areas": [
+            "Banque, Finance digitale"
+        ],
+        "initiatives": [
+            "Directeur de la Chaire Fintech à l'Université Paris Dauphine - PSL"
+        ],
+        "selected_publications": [
+            "“Banks’ earnings: empirical evidence of the influence of economic and financial market factors ”, avec Stéphane Albert (IAE Paris), <em>Review of Financial Economics</em>, 2018, vol. 36, N°2",
+            "“Plateformes et évolution du système bancaire ”, *Opinions et Débats*, n°16, juillet 2017, 72 pages",
+            "“Adoption of IAS/IFRS, liquidity constraints, and credit rationing: the case of the European banking industry ”, avec Julien Clavier (CERAG), <em>Quarterly Review of Economics and Finance</em>, 2017, vol. 63, 249-258",
+            "“Disclosure, banks CDS spreads and the European sovereign crisis ”, avec François Guillemin et Catherine Refait-Alexandre (Université de Franche-Comté), <em>Revue économique</em>, 2016, vol. 67, n°5, 1007-1036",
+            "“Banking Relationships and Syndicated Loans during the 2008 Financial Crisis ”, avec Catherine Refait-Alexandre (U. Franche-Comté) et Karima Bouaiss (U. Poitiers), <em>Journal of Financial Services Research</em>, 2014, vol. 46, n° 1, pp 99-113"
+        ]
+    },
+    {
+        "slug": "nicolas-baumard",
+        "last_name": "Baumard",
+        "first_name": "Nicolas",
+        "photo": "baumard.jpg",
+        "disciplines": [
+            "COGNITIVE SCIENCES"
+        ],
+        "affiliations": [
+            "CNRS & Ecole Normale Supérieure-PSL",
+            "Institut Jean Nicod, Dpt of Cognitive sciences"
+        ],
+        "email": "nbaumard@gmail.com",
+        "web_page": "https://nicolasbaumards.org",
+        "main_areas": [
+            "Culture, Histoire, Préférences individuelles"
+        ],
+        "initiatives": [
+            "Membre du panel 28 de l'ANR"
+        ],
+        "selected_publications": [
+            "Baumard, N., André, J.B. et Sperber, D. (2013) “A mutualistic theory of morality”, <em>Behavioral and Brain Sciences</em>, Target article, 36 (1). (IF: 17)",
+            "Baumard, N., Hyafil, A. Morris, I., and Boyer, P., (2015) “Explaining the Axial Age: How Energy Capture Favored Ascetic Wisdoms and Moralizing Religions”, <em>Current Biology</em> (IF: 9,2)",
+            "Baumard, N. (2019) “Psychological Origins of the Industrial Revolution”, <em>Behavioral and Brain Sciences</em>, Target article, 1-47. (IF: 17)",
+            "Safra, L., Chevallier, C., Grèzes, J., Baumard, N. (2020) “Tracking the rise of trust in history using machine learning and paintings”, (IF: 12)",
+            "Martins, M. & Baumard, N. (under review at PNAS) “The rise of prosociality in fiction preceded democratic revolutions in Early Modern Europe Plays” (IF: 10)"
+        ]
+    },
+    {
+        "slug": "christophe-benavent",
+        "last_name": "Benavent",
+        "first_name": "Christophe",
+        "photo": "benavent.jpg",
+        "disciplines": [
+            "MANAGEMENT, DATA SCIENCE",
+            "MANAGEMENT, INFORMATION SYSTEMS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "christophe.benavent@dauphine.psl.eu",
+        "web_page": "https://benavent.fr",
+        "twitter": "Benavent",
+        "main_areas": [
+            "Natural Language Processing (NLP)",
+            "Social network behaviors",
+            "Reviews and rating",
+            "Platforms",
+            "Marketing research"
+        ],
+        "initiatives": [
+        ],
+        "selected_publications": [
+            "Sophie Balech, C. Benavent, M. Calciu, Julien Monnot (2021) : “The covid-19 crisis: an NLP exploration of the french Twitter feed, February-May 2020”, accepted for proceedings of HCI – International (Washinghton 2021) pre-print : https://hal.archives-ouvertes.fr/hal-03134647",
+            "Sophie Balech, Pauline de Pechpeyrou, Christophe Benavent (2020): “From Ratings to Sentiment Analysis: Toward a Better Understanding of Online Reviews? The Airbnb Cas», <em>Journal of Marketing Trends</em>",
+            "Sébastien Chabrier, Pierre Ghewy, Christophe Benavent (2020) « Comment obtenir une très bonne note sur trip advisor », Part 1 & 2, <em>Management & data Science</em>",
+            "Joanna Stroz, Christophe Benavent, Pauline De Pechpeyrou (2019) « L’intérêt des techniques mobile-in-store : le rôle spécifique de l’orientation d’achat», <em>Décisions marketing</em> 04/2019; 93. DOI:10.7193/DM.093.33.51",
+            "Christophe Benavent (2018) « La métamorphose digitale du marketing », <em>Economie et Société</em>, 168, Juin 2018",
+            "Christophe Benavent, Pauline Vautrot, Pauline de Pechpeyrou (2017) « Satisfaction à l’égard des moteurs de recommandation : la transparence optimale», <em>Management et Data Science</em>",
+            "Christophe Benavent: (2018) « Disruption à l’âge des plateformes », <em>Economie et Société</em>, 165, 11-17"
+        ]
+    },
+    {
+        "slug": "benoit-sylvain",
+        "last_name": "Benoit",
+        "first_name": "Sylvain",
+        "photo": "benoit.jpg",
+        "disciplines": [
+            "ECONOMICS",
+            "ECONOMETRICS",
+            "FINANCE"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "sylvain.benoit@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/site/sylvainbenoit87",
+        "main_areas": [
+            "Systemic Risk, Financial Regulation",
+            "Monetary Policy and Financial Stability",
+            "Financial Econometrics"
+        ],
+        "initiatives": [
+            "Membre de la Chaire ACPR « Régulation et risque systémique »",
+            "Membre fondateur de l'Initiative de Recherche « Prise de Risque de l’Epargnant Français » (PREF)."
+        ],
+        "selected_publications": [
+            "“Pitfalls in Systemic-Risk Scoring” (2019), <em>Journal of Financial Intermediation</em>.",
+            "“Where the Risks Lie: A Survey on Systemic Risk”(2017), <em>Review of Finance</em>.",
+            "“Implied Risk Exposures” (2015), <em>Review of Finance</em>."
+        ]
+    },
+    {
+        "slug": "eric-brousseau",
+        "last_name": "Brousseau",
+        "first_name": "Eric",
+        "photo": "brousseau.jpg",
+        "disciplines": [
+            "INSTITUTIONAL AND ORGANIZATIONAL ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "eric.brousseau@dauphine.psl.eu",
+        "web_page": "https://chairgovreg.fondation-dauphine.fr/fr/node/23",
+        "main_areas": [
+            "Economy",
+            "Institutional economics",
+            "Regulation",
+            "Economic policy analysis",
+            "Digital economy",
+            "Network industries"
+        ],
+        "initiatives": [
+            "Scientific Director of the “Governance & Regulation” Chair and of the “Club des Régulateurs”",
+            "Past-Director of the PSL Research Program “Governance Analytics”",
+            "Director of the Institutional and Organizational Economic Academy",
+            "Past-President of the Society for Institutional and Organizational Economics",
+            "Co-Director and Founder of the Master « Industries de Réseaux et Economie Numérique » (IREN), co-entitled between Dauphine, Polytechnique, Supélec, TélécomParisTech and Université Paris-Sud"
+        ],
+        "selected_publications": [
+            "“The Dynamics of Institution Building: State Aids, the European Commission, and the Court of Justice of the European Union”, (with Amanda M. Alves and Timothy Yu-Cheong Yeung) <em>Journal of Comparative Economics</em>, 2021",
+            "“Competing for policy: Lobbying in the EU wholesale roaming regulation”, (wih Amanda M. Alves, Nada Mimouni, & Timothy Yu-Cheong Yeung), <em>Telecommunications Policy</em>, 45:3, April, 2021, https://doi.org/10.1016/j.telpol.2020.102087",
+            "Edition (with Jean-Michel Glachant & Jérôme Sgard) of <em>The Oxford Handbook of Institutions of International Economic Governance and Market Regulation</em>”, Oxford University Press, 2021 (forthcoming)",
+            "“Why Are Modern Bureaucracies Special ? State Support to Private Firms in Early Eighteenth Century France” (with Jean Beuve and Jérôme Sgard), <em>Journal of Economic History</em>, Vol. 77, No. 4, December 2017, pp. 1144-1176",
+            "“Mercantilism and Bureaucratic Modernization in Early Eighteenth Century France”, (with Jean Beuve, and Jérôme Sgard), <em>Economic History Review</em>, 70:2, 2017, pp. 529–558)"
+        ]
+    },
+    {
+        "slug": "eve-caroli",
+        "last_name": "Caroli",
+        "first_name": "Eve",
+        "photo": "caroli.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "eve.caroli@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/site/evecarlacaroli/home",
+        "main_areas": [
+            "Gouvernance d'entreprise",
+            "Gouvernance sociale",
+            "Régulation du marché du travail"
+        ],
+        "initiatives": [
+            "2020-2023 ANR, Job Quality and Work Sustainability. Project leader. 4 partenaires : Université Paris-Dauphine (porteur), GATE (Lyon), CNAM et IRDES. Budget : 412.000€.",
+            "2018-2019 Contrat DREES-Université Paris-Dauphine : Une évaluation de la réforme des retraites de 2010.",
+            "2017-2018 Contrat DREES-PSE : Les effets de la réforme des retraites de 2010 sur la santé des actifs.",
+            "2009-2011 ANR Jeunes Chercheurs (responsable) sur le thème La dynamique des marchés internes et externes du travail dans une économie fondée sur le savoir."
+        ],
+        "selected_publications": [
+            "“Not in my Community: Social Pressure and the Geography of Dismissals” (joint avec Andrea Bassanini et Giorgio Brunello), <em>Journal of Labor Economics</em>, 35(2), pp. 429-483, 2017.",
+            "“Self-Reported Health and Gender: the Role of Social Norms” (joint avec Lexane Weber-Baghdiguian), <em>Social Science & Medicine</em>, vol. 153, pp. 220-229, 2016.",
+            "“Does job insecurity deteriorate health?” (joint avec Mathilde Godard), <em>Health Economics</em>, 25(2), pp. 131-147, 2016.",
+            "“Working in Family Firms: Paid Less but More Secure? Evidence from Matched Employer-Employee Data” (joint avec Andrea Bassanini, Thomas Breda et Antoine Rebérioux), <em>Industrial and Labor Relations Review</em>, 66 (2), pp. 433-466, 2013.",
+            "Edition de Low-Wage Work in France, en collaboration avec Jérôme Gautié, Russell Sage, 2008."
+        ]
+    },
+    {
+        "slug": "coralie-chevallier",
+        "last_name": "Chevallier",
+        "first_name": "Coralie",
+        "photo": "chevallier.jpg",
+        "disciplines": [
+            "COGNITIVE SCIENCES"
+        ],
+        "affiliations": [
+            "École Normale Supérieure",
+            "Laboratoire de Neurosciences Cognitives et Computationnelles (INSERM U960)"
+        ],
+        "email": "coralie.chevallier@gmail.com",
+        "web_page": "https://sites.google.com/site/coraliechevallier/home",
+        "twitter": "CoralieChevall1",
+        "main_areas": [
+            "Cognition sociale",
+            "psychologie des politiques publiques",
+            "éducation",
+            "environnement",
+            "pauvreté"
+        ],
+        "initiatives": [
+            "Membre de la commission « Impact de recommandations » de la Haute autorité de santé",
+            "Membre de la “Evolution and human behaviour european association”"
+        ],
+        "selected_publications": [
+            "Huillery, E., Bouguen, A., Charpentier, A., Algan, Y., and Chevallier, C. “The Role of Mindset in Education : A Large-Scale Field Experiment in Disadvantaged Schools”, <em>SocArXiv</em>",
+            "Altay, S., Hacquin, A., Chevallier, C., & Mercier, H.* (2021). “Information Delivered by a Chatbot Has a Positive Impact on COVID-19 Vaccines Attitudes and Intentions”, <em>PsyArXiv</em>",
+            "Mell, H., Safra, L., Demange, P., Algan, Y., Baumard, N., & Chevallier, C. (2021) “Early life adversity is associated with diminished social trust in adults”, <em>Political Psychology</em>",
+            "Safra, L., Sijilmassi, A., & Chevallier, C. (2021). “Impact of COVID-19 exposure on punishment responsiveness”, <em>Personality and Individual Differences</em>",
+            "Mell, H., Safra, L., Algan, Y., Baumard, N., & Chevallier, C. (2018), “Childhood environmental harshness predicts coordinated health and reproductive strategies: A cross-sectional study of a nationally representative sample from France”, <em>Evolution and Human Behavior</em>, 39(1), 1-8"
+        ]
+    },
+    {
+        "slug": "dario-colazzo",
+        "last_name": "Colazzo",
+        "first_name": "Dario",
+        "photo": "colazzo.jpg",
+        "disciplines": [
+            "COMPUTER SCIENCES",
+            "DATABASE AND BIG DATA"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LAMSADE (Laboratoire d’Analyse et Modélisation pour l’Aide à la DEcision)"
+        ],
+        "email": "dario.colazzo@dauphine.psl.eu",
+        "web_page": "https://www.lamsade.dauphine.fr/~colazzo",
+        "main_areas": [
+            "Optimisation et vérification d'algorithmes pour le traitement des big data"
+        ],
+        "initiatives": [
+            "Projet de recherche en cours avec le Crédit Agricole (CACIB)",
+            "Collaborations avec l’IRISSO (Dauphine) dans le cadre du projet ANR MEADOW"
+        ],
+        "selected_publications": [
+            "Mohamed Amine Baazizi, Dario Colazzo, Giorgio Ghelli, Carlo Sartiani, “Parametric schema inference for massive JSON datasets”. VLDB J. 28(4): 497-521 (2019)",
+            "Dario Colazzo and Carlo Sartiani, “Typing query languages for data graphs”, International Workshop on Graph Data Management (GDM), colocated with ICDE, 2014",
+            "Dario Colazzo, François Goasdoué, Ioana Manolescu, and Alexandra Roatis, « Analyse de données RDF. Lentilles pour graphes sémantiques », <em>Ingénierie des Systèmes d'Information</em>, 2014"
+        ]
+    },
+    {
+        "slug": "anna-creti",
+        "last_name": "Creti",
+        "first_name": "Anna",
+        "photo": "creti.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)",
+            "CGEMP (Centre de Géopolitique de l'Energie et des Matières Premières)"
+        ],
+        "email": "creti.anna@gmail.com",
+        "web_page": "https://cgemp.dauphine.fr/fr/lequipe/enseignants-chercheurs/anna-creti.html",
+        "twitter": "creti_anna",
+        "main_areas": [
+            "Economie de l'Environnement et de l'Energie",
+            "Economie Industrielle",
+            "Economie du Climat"
+        ],
+        "initiatives": [
+            "Directrice de la Chaire Economie du Climat",
+            "ANR Eco REees (Crest, Dauphine, Orsay); Institut pour le Climat (Ecole Polytechnique)"
+        ],
+        "selected_publications": [
+            "*Economics of Electricity Markets - Competition and Rules*, Anna Creti, Fulvio Fontini, Cambridge University Press, 2019",
+            "Baba A., Creti A. & Massol O. (à paraître) “What can be learned from the free destination option in the LNG imbroglio”, <em>Energy Economics</em> (HCERES A, CNRS 2)",
+            "Barry M., & Creti, A. (à paraître) “Pay-as-you-go contracts for electricity access: bridging the \"last mile\" gap?”, <em>Energy Economics</em> (HCERES A, CNRS 2)",
+            "Creti, A., & Nguyen, D. K. (2020), “Energy, Climate and Environment: Policies and International Coordination”, <em>Energy Policy</em>, 111226, (HCERES A, CNRS 2)",
+            "A. Tantet, M.Stéfanon, P.Drobinski, J. Badosa, S. Concettini, A Cretì (2019), “The Energy for a Climate Integrated Model: Description and Application to Italy”, <em>Energies</em> 12 (22), 1-37 (revue interdisciplinaire sciences de l'ingénieur)"
+        ]
+    },
+    {
+        "slug": "serge-darolles",
+        "last_name": "Darolles",
+        "first_name": "Serge",
+        "photo": "darolles.jpg",
+        "disciplines": [
+            "FINANCE"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "serge.darolles@dauphine.psl.eu",
+        "web_page": "https://drm.dauphine.fr/fr/drm/membres/detail-cv/profile/serge-darolles.html",
+        "main_areas": [
+            "Asset Pricing",
+            "Hedge Funds",
+            "Liquidité"
+        ],
+        "initiatives": [
+            "Founding Member, Research Initiative “Quantitative Management Initiative (QMI),” Institut Louis Bachelier, 2011-",
+            "Scientific Director, Research Initiative “Private Equity and Venture Capital”, Institut Louis Bachelier, 2015-2020",
+            "Research Grant from the Consulate General of France in Hong Kong (CGF) and the Research Grants Council (RGC), in sponsorship of the “Advances in Risk Premia and Quantitative Investing Workshop”, 124 000 HK$ (with JayCao), 2020",
+            "Research Grant from ANR for “Econometric Methods for the Modeling of Multiple Risks (ANR-16-CE26-0015),” 281 800 Euros (with C. Francq, C. Hurlin, G. Le Fol and J.M. Zakoïan), 2016-2020"
+        ],
+        "selected_publications": [
+            "Darolles, S., Francq, C. and S. Laurent (2018). “Asymptotics of Cholesky GARCH models and time-varying conditional betas”, <em>Journal of Econometrics</em> 204, 2018, 223-247",
+            "Darolles, S., Le Fol, G. and G. Mero (2017). “Mixture of distribution hypothesis: Analyzing daily liquidity frictions and information flows”, <em>Journal of Econometrics</em> 201, 2017, 367-383",
+            "Darolles, S., G. Le Fol and G. Mero, (2015). “Measuring the liquidity part of volume,” <em>Journal of Banking and Finance</em>, n° 50, 2015, 92-105",
+            "Darolles, S. and M. Vaissié, (2012). “The alpha and omega of fund of hedge fund added value,” <em>Journal of Banking and Finance</em>, n°36, 1067-1078",
+            "Darolles, S., Fan, Y., Florens, J.P. and E. Renault (2011). “Nonparametric instrumental regression”, <em>Econometrica</em>, n°79, 1541-1565"
+        ]
+    },
+    {
+        "slug": "anne-laure-delatte",
+        "last_name": "Delatte",
+        "first_name": "Anne-Laure",
+        "photo": "delatte.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Economics research center) &amp; CNRS"
+        ],
+        "email": "anne-laure.delatte@dauphine.psl.eu",
+        "web_page": "https://leda.dauphine.fr/fr/membre/detail-cv/profile/anne-laure-delatte.html",
+        "twitter": "aldelatte",
+        "main_areas": [
+            "International macroeconomics",
+            "Political finance"
+        ],
+        "initiatives": [
+            "<p>New database on credit procyclicality. Compared with databases used in existing studies, this one includes a much larger set of economies and a longer time horizon. In fact, today, the data available to estimate the credit cycle involve a trade-off between country coverage and frequency. In addition, there are pending methodological issues to estimate credit trend and cyclical components.</p><p>To address these limits, we build a new database on credit metrics that relaxes the trade-off and includes credit procyclicality measures along three alternative methods- HP filter, the modified HP filter and the SSA approach.</p><p>The credit gaps in our database are statistically consistent with bank credit gaps estimated with BIS data but they have the advantage of being available for 163 countries instead of 43 countries.</p>"
+        ],
+        "selected_publications": [
+            "Delatte, A. L., Guillin, A., &amp; Vicard, V. (2022). Grey zones in global finance: The distorted geography of cross-border investments. <em>Journal of International Money and Finance</em>, <em>120</em>, 102540.",
+            "Delatte, A. L., Fouquau, J., &amp; Portes, R. (2017). Regime-dependent sovereign risk pricing during the euro crisis. <em>Review of Finance</em>, <em>21</em>(1), 363-385.",
+            "Bouvatier, V., &amp; Delatte, A. L. (2015). Waves of international banking integration: A tale of regional differences. <em>European Economic Review</em>, <em>80</em>, 354-373.",
+            "Delatte, A. L., Gex, M., &amp; L&oacute;pez-Villavicencio, A. (2012). Has the CDS market influenced the borrowing cost of European countries during the sovereign crisis?. <em>Journal of international Money and Finance</em>, <em>31</em>(3), 481-497."
+        ]
+    },
+    {
+        "slug": "francois-xavier-dudouet",
+        "last_name": "Dudouet",
+        "first_name": "François-Xavier",
+        "photo": "dudouet.jpg",
+        "disciplines": [
+            "SOCIOLOGY"
+        ],
+        "affiliations": [
+            "CNRS and Paris Dauphine-PSL University",
+            "IRISSO (Institut de Recherche Interdisciplinaire en Sciences Sociales)"
+        ],
+        "email": "fx.dudouet@dauphine.psl.eu",
+        "web_page": "https://www.fxdudouet.net",
+        "main_areas": [
+            "Gouvernance des firmes",
+            "Pouvoir sur et dans les firmes",
+            "Réseaux d'administrateurs",
+            "Analyse de trajectoires"
+        ],
+        "initiatives": [
+            "Corporate Honorum : collecte et analyse des curriculum vitae des dirigeants de grandes entreprises à travers le monde, lauréat de l’appel à projet 2018 de l’IRIS « Sciences des données, Données de la science », en collaboration avec le Lamsade (Dauphine), l’EHESS, l’Université de la Méditerranée et l’Université de Warwick (Royaume-Uni), porteur du projet",
+            "Les femmes dans les instances dirigeantes des entreprises en France, projet coordonné par Valérie Boussard (IDHES)",
+            "Réseau thématique 42 : « Sociologie des élites » de l'Association française de sociologie, membre du bureau (depuis 2009)"
+        ],
+        "selected_publications": [
+            "Dudouet F.-X. (2019), « L’argent dirige-t-il les entreprises ? », <em>Regards croisés sur l’économie</em>, N°24. pp. 163-171",
+            "Dudouet F.-X. ; Grémont E. ; Vion A. (2015), « La centralité des banques dans les réseaux d’administrateurs. L’enjeu de l’émission monétaire », <em>Revue française de socio-économie</em>, 2-hors-série. pp. 37-50",
+            "Mentzer K.; Dudouet F.-X.; Haughton D.; Latouche P.; Rossi F. (2015); “Is the corporate elite disintegrating ? Interlocks board and the Mizruchi hypothesis”, Jian P.; Fabrizio S.; Tang J., IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining (ASONAM 2015), Aug 2015, Paris, France. <em>Proceedings of the 2015 IEEE/ACM International Conference on Advances in Social Networks Analysis and Mining</em>. pp. 781-786",
+            "Vion A., Dudouet F.-X. ; Grémont E. (2015) “The Eurozone corporate elite at the cliff edge (2005-2008) : a new approach of transnational interlocking”, Morgan G., Hirsch P., Quack S. (eds.), <em>Elites on trial, research in the sociology of organizations</em>, Volume 43. pp. 165-187",
+            "Dudouet F.-X. ; Grémont E. (2010), <em>Les grands patrons en France : du capitalisme d’État à la financiarisation</em>, Paris, Editions Lignes de Repères"
+        ]
+    },
+    {
+        "slug": "anne-epaulard",
+        "last_name": "Epaulard",
+        "first_name": "Anne",
+        "photo": "epaulard.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "anne.epaulard@dauphine.psl.eu",
+        "web_page": "https://leda.dauphine.fr/fr/membre/detail-cv/profile/anne-epaulard.html",
+        "twitter": "AnneEpaulard",
+        "main_areas": [
+            "Politiques économiques"
+        ],
+        "initiatives": [
+            "CAE - membre depuis 2021",
+            "ACPR - membre du collège de supervision depuis 2016 - présidente du comité scientifique de l'ACPR",
+            "AFSE - Secrétaire générale - depuis 2018",
+            "CNP (Conseil national de la productivité) - membre depuis 2019"
+        ],
+        "selected_publications": [
+            "Anne Epaulard, avec Mathieu Cros et Philippe Martin, « Les défaillances d’entreprises dans la crise Covid-19 : zombification ou mise en hibernation ? », <em>Focus CAE</em> n°51 - 2020",
+            "Anne Epaulard, “Can Macroprudential Tools Ensure Financial stability?”, in <em>How Do Monetary, Micro- and Macroprudential Policies Interact</em>? - Workshop n° 22 - 2020 - Oesterreichische National Bank",
+            "Anne Epaulard, « Entreprises en difficulté : quelle efficacité des procédures collectives ? Note d'analyse (et document de travail) », <em>France Stratégie</em> - 2019",
+            "Anne Epaulard, “What Should Monetary Policy do in the Face of Soaring Asset Prices and Rampant Credit Growth?”, <em>Revue de l'OFCE</em> n° 157 - 2018"
+        ]
+    },
+    {
+        "slug": "david-ettinger",
+        "last_name": "Ettinger",
+        "first_name": "David",
+        "photo": "ettinger.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "david.ettinger@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/site/homepagedavidettinger",
+        "main_areas": [
+            "Théorie des jeux",
+            "Mécanismes",
+            "Rationalité Limitée"
+        ],
+        "initiatives": [
+            "Directeur de l'ADRES",
+            "Chercheur associé à une ERC"
+        ],
+        "selected_publications": [
+            "“Vertical Integration and Downstream Collusion”, joint avec Sara Biancini, <em>International Journal of Industrial Organization</em>, 2017, Vol. 53, pages 99-113",
+            "“Hiding Information Through Jump Bids”, joint avec Fabio Michelucci, <em>Economic Journal</em>, 2016, vol 126, pages 1484-1502",
+            "“A Theory of Deception”, joint avec Philippe Jehiel, <em>American Economic Journal: Microeconomics</em>, 2010, vol. 2(1), pages 1-20",
+            "“Takeover, Toeholds and Deterrence”, <em>Scandinavian Journal of Economics</em>, 2009, vol. 111(1), pages 103-124",
+            "« Privatisation des sociétés d'autoroute et marché aval », <em>Annales d'Economie et de Statistique</em>, 2008, issue 89, pages 64-90"
+        ]
+    },
+    {
+        "slug": "gabrielle-fack",
+        "last_name": "Fack",
+        "first_name": "Gabrielle",
+        "photo": "fack.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "gabrielle.fack@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/site/gabriellefack",
+        "main_areas": [
+            "Economie Publique",
+            "Economie Urbaine",
+            "Economie de l’Education",
+            "Microéconométrie"
+        ],
+        "initiatives": [
+            "Participation à l'ANR APB en tant que membre de l'équipe(https://anr.fr/Projet-ANR-17-CE28-0001)"
+        ],
+        "selected_publications": [
+            "“Beyond Truth-Telling : Preference Estimation with Centralized School Choice”, avec Julien Grenet et Yinghua He, <em>American Economic Review</em>, vol. 109, n°4, 2019",
+            "“The Effect of Tax Enforcement on Tax Elasticities: Evidence from Charitable Contributions in France”, avec Camille Landais, <em>Journal of Public Economics</em>, Vol. 133, 2016",
+            "“Improving College Access and Success for Low-Income Students: Evidence from a Large French Need-based Grant Program”, avec Julien Grenet, <em>American Economic Journal: Applied Economics</em>, vol.7(2), 2015",
+            "“Are Fiscal Incentives Towards Charitable Giving Efficient? Evidence from France”, avec Camille Landais, <em>American Economic Journal: Economic Policy</em>, Vol. 2, 2010",
+            "“When Do Better Schools Raise Housing Prices? Evidence from Paris Public and Private Middle Schools”, avec Julien Grenet, <em>Journal of Public Economics</em>, Vol. 94, n° 1-2, 2010"
+        ]
+    },
+    {
+        "slug": "pierre-fleckinger",
+        "last_name": "Fleckinger",
+        "first_name": "Pierre",
+        "photo": "fleckinger.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Mines ParisTech - PSL",
+            "CERNA (Centre d’Economie Industrielle)"
+        ],
+        "email": "pierre.fleckinger@mines-paristech.fr",
+        "web_page": "https://sites.google.com/site/pierrefleckinger",
+        "main_areas": [
+            "Information economics",
+            "Regulation and industrial organization",
+            "Incentives in organizations",
+            "Environment and energy economics"
+        ],
+        "initiatives": [
+            "2019– Co-head of the SDOSE Doctoral School (Dauphine University/MINES ParisTech), PSL Research University.",
+            "2015–2019 ANR Green Non-Governmental Organizations, Paris School of Economics. Co ordinator: Mireille Chiroleu-Assouline.",
+            "2016– Head of the PhD Program in Economics, MINES ParisTechy.",
+            "2012-2014 Co-responsible for the scientific program \"Foundations of Social and Economic Behavior\" at Paris School of Economics, DT4 LabEx OSE.",
+            "2010-2013 Elected Member of the Laboratory Council, Centre d’Economie de la Sorbonne, UMR CNRS 8174.",
+            "2015–2019 ANR Green Non-Governmental Organizations, Paris School of Economics. Co ordinator: Mireille Chiroleu-Assouline."
+        ],
+        "selected_publications": [
+            "“Information, Competition and Regulation”, <em>Regards croisés sur l'économie</em>, 25(2): 220-230, 2019",
+            "“Energy Performance Certificates and Investments in Building Energy Efficiency: a Theoretical Analysis”, with Matthieu Glachant and Paul-Hervé Tamokoue Kamga, <em>Energy Economics</em>, 84(S1): art. 104604, 2019 [https://doi.org/10.1016/j.eneco.2019.104604]",
+            "“Contract Theory in the Spotlights: Oliver Hart and Bengt Holmström, 2016 Nobel Prize Winners”, with David Martimort. Revue d'Economie Politique, 2018",
+            "“Incentives for Quality in Friendly and Hostile Informational Environments”, with Matthieu Glachant and Gabrielle Moineville, <em>American Economic Journal: Microeconomics</em> 9(1): 242-274, 2017. [doi:10.1257/mic.20150119]",
+            "« Rémunération des dirigeants et risque de fraude d'entreprise », with Thierry Lafay and Constance Monnier. <em>Revue Economique</em> 64(3), 457-467, 2013",
+            "“Correlation and Relative Performance Evaluation”, <em>Journal of Economic Theory</em>, 147 (1), 93-117, 2012 [doi:10.1016/j.jet.2011.11.016]"
+        ]
+    },
+    {
+        "slug": "patrice-geoffron",
+        "last_name": "Geoffron",
+        "first_name": "Patrice",
+        "photo": "geoffron.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)"
+        ],
+        "email": "patrice.geoffron@dauphine.psl.eu",
+        "web_page": "https://www.cgemp.dauphine.fr/fr/lequipe/enseignants-chercheurs/patrice-geoffron.html",
+        "main_areas": [
+            "Economie de l'énergie, du climat, des réseaux"
+        ],
+        "initiatives": [
+            "Membre du Cercle des Economistes",
+            "Research fellow au CERRE (Centre on Regulation in Europe, Brussels)",
+            "Membre du Conseil d’Administration du Conseil Français de l’Energie",
+            "Membre du Conseil Scientifique du CEA (Commissariat à l'énergie atomique et aux énergies alternatives)",
+            "Membre du Conseil Scientifique du CSTB (Centre Scientifique et Technique du Bâtiment)",
+            "Co-président du groupe de travail prospectif de la CRE (Commission de Régulation de l’Energie) sur l’Hydrogène",
+            "Membre du Conseil Scientifique du projet Hygreen (Cap Energie, CEA)",
+            "Membre du groupe d’appui à la Convention Citoyenne pour le Climat",
+            "Co-éditeur de la revue Economics and Policy of Energy and the Environment",
+            "Membre du comité éditorial de l’International Journal of Management and Net work Economics",
+            "OSMOSE H2020. Consortium de 30 partenaires, financement de 300 K€ https://www.osmose-h2020.eu",
+            "MAGICAL (ANR – BMBF, Appel à projets franco-allemand « Energie Durable » Edition 2019), 200 K€. En partenariat avec le RWTH https://www.rwth-aachen.de/go/id/a/?lidx=1"
+        ],
+        "selected_publications": [
+            "“Meeting the Paris Mandate: A Cross-national Comparison of Energy Policymaking”, with Lorna Greening and Raphael Heffron (eds.), Springer, to be published (2021)",
+            "« Les effacements de consommation électrique et le surplus des acteurs énergétiques », <em>Revue d’économie industrielle</em> 2020/3, avec Cédric Clastres",
+            "« Solar PV Market and Policies », in <em>Photovoltaic Solar Energy Conversion, Technologies, Applications and Environmental Impacts</em>, Coll, Elsevier, 2020",
+            "“A critical overview of the European National Energy and Climate Plans”, <em>Economics and Policy of Energy and the Environment</em>, 2019. Avec Luigi de Paoli",
+            "“Low carbon economy and smart grids”, <em>Routledge Handbook of Energy Economics</em>, 2019. Avec Cédric Clastres"
+        ]
+    },
+    {
+        "slug": "daniel-herrera",
+        "last_name": "Herrera Araujo",
+        "first_name": "Daniel",
+        "photo": "herrera.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)",
+            "CGEMP (Centre de Géopolitique de l'Energie et des Matières Premières)"
+        ],
+        "email": "daniel.herrera@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/view/daniel-herrera-araujo/home",
+        "main_areas": [
+            "Empirical industrial Organization",
+            "Health Economics and Environmental Economics"
+        ],
+        "initiatives": [
+            "ANR JCJC HEALTH - Principal Investigator. 2020: awarded the ANR JCJC grant to work on the value of mortality and morbidity in France from 2021 until 2024",
+            "ADEME grant - Responsible to a WP2. Objective: build a structural model of demand assessing the valuation for energy performance in the housing market in France"
+        ],
+        "selected_publications": [
+            "“Multiproduct retailing and consumer shopping behavior: The role of shopping costs” with Jorge Florez-Acosta, <em>International Journal of Industrial Organization</em>, 2020",
+            "“Does the Value per Statistical Life Vary with Age or Baseline Health? Evidence from a compensating wage study in France”, with Lise Rochaix, <em>Journal of Environmental Economics and Management</em>, 2020",
+            "“Theoretical bounds on the value of a QALY”, with James K. Hammitt and Christoph Rheinberger, <em>Journal of Health Economics</em>, 2020",
+            "“Peeling back the onion: Using latent class analysis to uncover heterogeneous responses to stated preference surveys”, with James K. Hammitt and Christoph Rheinberger, <em>Journal of Environmental Economics and Management</em>, 2018",
+            "“Folic acid advisory: a public health challenge?”, <em>Health Economics</em>, 2016"
+        ]
+    },
+    {
+        "slug": "elise-huillery",
+        "last_name": "Huillery",
+        "first_name": "Elise",
+        "photo": "huillery.jpg",
+        "disciplines": [
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LEDA (Laboratoire d’Economie de Dauphine)",
+            "J‐PAL unit (Abdul Latif Jameel Poverty Action Lab"
+        ],
+        "email": "elise.huillery@dauphine.psl.eu@",
+        "web_page": "https://sites.google.com/site/elisehuillery",
+        "main_areas": [
+            "Education",
+            "Insertion professionnelle",
+            "Inégalités sociales",
+            "Pauvreté"
+        ],
+        "initiatives": [
+            "Nov. 2016 – pres. Member of the Conseil d’Analyse Economique (French Gvt)",
+            "Oct. 2014 – pres. Full Member, EUDN (European Development Network)",
+            "Sep. 2011 – pres. Lab Affiliate, LIEPP (Lab. interdisciplinaire d’évaluation des politiques publiques)-Sciences Po",
+            "2020 - : Conseil Scientifique et d’Orientation de l’Institut National de la Jeunesse et de l’Education Populaire",
+            "2019 - : Comité d’évaluation de la Stratégie Nationale de Lutte Contre la Pauvreté",
+            "2019 - : Comité scientifique de la DEPP, Ministère de l’Education Nationale",
+            "2018- : Conseil scientifique de l’Observatoire Parisien de la Mixité Sociale et de la Réussite",
+            "2018-2022: ANR Young Researcher program (JCJC)"
+        ],
+        "selected_publications": [
+            "“The Role of Mindset in Education: Evidence from a Large-Scale Field Experiment in Disadvantaged School”», with Yann Algan, Adrien Bouguen, Coralie Chevallier and Axelle Charpentier, Working Paper SocArXiv Pre-prints, December 2020",
+            "“Biased Aspirations and Social Inequality at School: Evidence from French Teenagers”, with Nina Guyon, forthcoming (2021) in the <em>Economic Journal</em>",
+            "« Choix d'orientation et origine sociale : mesurer et comprendre l'autocensure scolaire », with Nina Guyon, December 2014, <em>LIEPP policy report</em> [in French]",
+            "« Les effets du dispositif Groupements de Créateurs : résultats d'une expérience contrôlée », with Yann Algan, Bruno Crépon, and William Parienté, September 2016, <em>Rapport d'évaluation pour le Fonds d'Expérimentation pour la Jeunesse</em> [in French]",
+            "« Comment lutter contre la violence et le harcèlement à l’école et au Collège ? Effets du dispositif de médiation sociale France Médiation et d’un dispositif de prise de conscience du niveau de violence », with Yann Algan and Nina Guyon, April 2015, <em>Rapport d'évaluation pour le Fonds d'Expérimentation pour la Jeunesse</em> [in French]"
+        ]
+    },
+    {
+        "slug": "henri-isaac",
+        "last_name": "Isaac",
+        "first_name": "Henri",
+        "photo": "isaac.jpg",
+        "disciplines": [
+            "MANAGEMENT (and digital platforms)"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "henri.isaac@dauphine.psl.eu",
+        "web_page": "http://henriisaac.fr",
+        "twitter": "hisaac25",
+        "main_areas": [
+            "Stratégies à l'ère numérique",
+            "Economie de la donnée",
+            "Modèle d'affaires",
+            "Plateformes"
+        ],
+        "initiatives": [
+            "Président, Renaissance Numérique (think tank)",
+            "Membre du Conseil National du Numérique (2018-2020)",
+            "Vice-Président, PSL-Université Paris Dauphine, Juin 2015-Décembre 2016"
+        ],
+        "selected_publications": [
+            "Business models de plateformes, 272 p., Vuibert, Paris",
+            "« La donnée numérique, bien public ou instrument de profit », [2018], <em>Pouvoirs</em>, n°164, n° spécial « La Datacratie », pp. 75-86, Janvier",
+            "« La transformation numérique du marché publicitaire français : quand les clients deviennent des concurrents. », Dauphine Recherches en Management éd., <em>L'état du management 2020</em>, pp. 60-72, Paris, La Découverte",
+            "“The new office: how coworking changes the work concep” with Leclercq-Vandelannoitte A., <em>Journal of Business Strategy</em>, [2016], Vol. 37, n°6"
+        ]
+    },
+    {
+        "slug": "francois-lafarge",
+        "last_name": "Lafarge",
+        "first_name": "François",
+        "photo": "lafarge.jpg",
+        "disciplines": [
+            "TBA"
+        ],
+        "affiliations": [
+            "Institut National du Service Public"
+        ],
+        "email": "",
+        "web_page": "https://www.ena.fr/Recherche/Presentation/Equipe-de-recherche/L-equipe-de-recherche-permanente/Francois-Lafarge",
+        "twitter": "",
+        "main_areas": [
+            "TBA",
+            ""
+        ],
+        "initiatives": [
+            "TBA"
+        ],
+        "selected_publications": [
+            "TBA"
+        ]
+    },
+    {
+        "slug": "rida-laraki",
+        "last_name": "Laraki",
+        "first_name": "Rida",
+        "photo": "laraki.jpg",
+        "disciplines": [
+            "MATHEMATICS",
+            "COMPUTER SCIENCES",
+            "ECONOMICS"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LAMSADE (Laboratoire d’Analyse et Modélisation pour l’Aide à la DEcision)"
+        ],
+        "email": "rida.laraki@dauphine.fr",
+        "web_page": "https://sites.google.com/site/ridalaraki/",
+        "twitter": "LarakiRida",
+        "main_areas": [
+            "Théorie des jeux",
+            "Choix social",
+            "Vote",
+            "Apprentissage"
+        ],
+        "initiatives": [
+            "CIFRE contract Huawei 2019-2021",
+            "DAMPER PGMO 2018-2010",
+            "MIXED-GAN PEPS, CNRS 2018-2019",
+            "LEARN.NET ECOS-SUD, Chile-France collaboration 2015-2018",
+            "ANR-Jeudy Agence Nationale de la Recherche Scientifique 2011-2015",
+            "CIFRE contract France Telecom 2006-2009"
+        ],
+        "selected_publications": [
+            "Balinski M. and R. Laraki (2011) «Majority Judgment: Measuring Ranking and Electing». MIT Press",
+            "Laraki R., J. Renault and S. Sorin (2019) Mathematical Foundations of Game Theory. Springer.",
+            "Laraki R., E. Solan, N. Vieille (2005) “Continuous-time games of timing”. <em>Journal of Economic Theory</em>, vol 120, 206-238. 4)",
+            "Laraki R., P. Mertikopoulos (2013). “Higher Order Games Dynamics”. <em>Journal of Economic Theory</em>, vol 148, 2666-2695. 5)",
+            "Bich P., R. Laraki (2017). “On the Existence of Approximate Equilibria and Sharing Rule Solutions in Discontinuous Games”. <em>Theoretical Economics</em>, vol 12, pp. 79–108."
+        ]
+    },
+    {
+        "slug": "gaelle-le-fol",
+        "last_name": "Le Fol",
+        "first_name": "Gaëlle",
+        "photo": "lefol.jpg",
+        "disciplines": [
+            "FINANCE"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "gaelle.le_fol@dauphine.psl.eu",
+        "web_page": "https://drm.dauphine.fr/fr/drm/membres/detail-cv/profile/gaelle-le-fol.html",
+        "main_areas": [
+            "Econométrie de la Finance",
+            "Marchés financiers",
+            "Microstructure empirique",
+            "Asset pricing empirique"
+        ],
+        "initiatives": [
+            "ANR Multirisk (responsable Dauphine)",
+            "IdR QMI (Directrice Scientifique) : Economic Efficiency at EU & Global levels"
+        ],
+        "selected_publications": [
+            "“Mixture of Distribution Hypothesis: Analyzing daily liquidity frictions and information flow”, with S. Darolles and G. Mero, <em>Journal of Econometrics</em>, 201, p.367-383, 2017",
+            "“Intrinsic Liquidity in Conditional Volatility Models”, with S. Darolles, C. Francq and J.M. Zakoïan, <em>Annals of Economics and Statistics</em>, 123/124, p. 225-245, 2016",
+            "“Gauging Liquidity Risk in Emerging Market Bond Index Funds”, with S. Darolles and J. Dudek, <em>Annals of Economics and Statistics</em>, 123/124, p. 247-269, 2016",
+            "“Measuring the liquidity part of volume”, with S. Darolles and G. Mero, <em>Journal of Banking and Finance</em>, 50, p. 92-105, 2015",
+            "“Improving VWAP strategies: A dynamical volume approach”, with J. Bialkowski and S. Darolles, <em>Journal of Banking and Finance</em>, Vol. 32, p. 1709-1722, 2008"
+        ]
+    },
+    {
+        "slug": "olivier-morin",
+        "last_name": "Morin",
+        "first_name": "Olivier",
+        "photo": "morin.jpg",
+        "disciplines": [
+            "COGNITIVE SCIENCES"
+        ],
+        "affiliations": [
+            "CNRS & Ecole Normale Supérieure-PSL",
+            "Institut Jean Nicod, Dpt of Cognitive sciences"
+        ],
+        "email": "morin@shh.mpg.de",
+        "web_page": "https://sites.google.com/site/sitedoliviermorin/",
+        "twitter": "OliverWithAnI",
+        "main_areas": [
+            "Sciences cognitives appliquées à la culture",
+            "Analyse quantitative du changement culturel",
+            "Evolution des systèmes d'écriture",
+            "Transmission culturelle",
+            "communication graphique et digitale"
+        ],
+        "initiatives": [
+            "Max Planck Independent Research Group \"Minds & Traditions\" (MPI SHH Jena) : Group Leader https://www.shh.mpg.de/94549/themintgroup",
+            "CNRS RTP (réseau thématique pluridisciplinaire) \"Evolutionary Human Sciences\": member"
+        ],
+        "selected_publications": [
+            "Morin, Olivier 2016, “How Traditions Live and Die”, Cambridge MA: Oxford University Press.",
+            "Morin, Olivier 2018 “Spontaneous Emergence of Legibility in Writing Systems: The Case of Orientation Anisotropy”. <em>Cognitive Science</em> 42(3): 664–677",
+            "Morin, Olivier, Piers Kelly, and James Winters, “Writing, Graphic Codes, and Asynchronous Communication”. <em>Topics in Cognitive Science</em>, 2019",
+            "Pavlek, Barbara, James Winters, and Olivier Morin 2020, “Reverse Engineering Cash: Coin Designs Mark out High Value Differentials and Coin Sizes Track Values Logarithmically”. <em>Cognition</em> 198: 104182",
+            "Winters, James, and Olivier Morin 2019, “From Context to Code: Information Transfer Constrains the Emergence of Graphic Codes”. <em>Cognitive Science</em>: e12722",
+            "Morin, Olivier, James Winters, Thomas Franz Müller, and Tifany Morisseau, “An Overview of the ‘Color Game’ APProject”. SocArXiv,2020 https://osf.io/preprints/socarxiv/cjaxw/"
+        ]
+    },
+    {
+        "slug": "clotilde-napp",
+        "last_name": "Napp",
+        "first_name": "Clotilde",
+        "photo": "napp.jpg",
+        "disciplines": [
+            "Management"
+        ],
+        "affiliations": [
+            "CNRS and Paris Dauphine-PSL University",
+            "DRM - Dauphine Recherches en Management"
+        ],
+        "email": "clotilde.napp@dauphine.psl.eu",
+        "web_page": "https://sites.google.com/site/clotildenapp/home",
+        "twitter": "clotilde_napp",
+        "main_areas": [
+            "Gender stereotypes, Gender inequalities",
+            "Comportements individuels et collectifs face au risque"
+        ],
+        "initiatives": [
+            "Membre du comité scientifique de la Chaire Dauphine-PSL-Institut des Politiques Publiques <em>Femmes et Science</em>, chaire de la Fondation Dauphine, avec le soutien de La Fondation L'Oréal, La Poste, Talan, Générali et Safran"
+        ],
+        "selected_publications": [
+        "Gender stereotypes can explain the gender-equality paradox*, Breda, T., Jouini, E., Thebault, G. and C. Napp <em>PNAS (Proceedings of the National Academy of Science of the United States of America)</em>, December 8, 2020 117 (49) 31063-31069",
+        "Girls' comparative advantage in reading can largely explain the gender gap in math-intensive fields*, with T. Breda, <em>PNAS (Proceedings of the National Academy of Science of the United States of America)</em>, July 30, 2019, 116 (31) 15435-15440",
+        "Societal inequalities amplify gender gaps in math*, with T. Breda, and E. Jouini, <em>Science</em>, 16 Mar 2018: Vol. 359, Issue 6381, pp. 1219-1220",
+        "Stereotypes, Underconfidence and Decision-Making with an Application to Gender and Math, with P. Karehnke and E. Jouini, <em>Journal of Economic Behavior and Organization</em>. Volume 148, April 2018, Pages 34-45",
+        "The impact of Health-related emotions on beliefs formation and behavior. <em>Theory and Decision</em>, 1-23 (doi 10.1007/s11238-017-9610-3), May 2018, Volume 84",
+        "On Portfolio Choice with Savoring and Disappointment, with Paul Karehnke and Elyès Jouini. <em>Management Science</em>, 2014, 60 (3), 796-804",
+        "Discounting and Divergence of Opinion, with E. Jouini and J.-M. Marin, <em>Journal of Economic Theory</em>, 145, 2010, 830-859",
+        "Consensus consumer and intertemporal asset pricing under heterogeneous beliefs, avec E. Jouini, <em>Review of Economic Studies</em>, Oct. 2007, 74, 1149-1174"
+        ]
+    },
+    {
+        "slug": "fabrice-riva",
+        "last_name": "Riva",
+        "first_name": "Fabrice",
+        "photo": "riva.jpg",
+        "disciplines": [
+            "Management"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "DRM (Dauphine Recherches en Management)"
+        ],
+        "email": "fabrice.riva@dauphine.psl.eu",
+        "web_page": "http://www.finance.dauphine.fr/membres/fabrice-riva",
+        "twitter": "",
+        "main_areas": [
+            "Empirical finance",
+            "Market microstructure",
+            "Exchange-Traded Funds"
+        ],
+        "initiatives": [
+            "ETF liquidity and pricing",
+            "Impact of ETFs on their underlying assets",
+            "Order book dynamics"
+        ],
+        "selected_publications": [
+            "Liquidity provision in ETF markets: The basket and beyond, joint with A. Calamia et L. Deville, <em>Finance</em>, vol. 40, n°1, June 2019, 53-85",
+            "ETF Liquidity: What really matters?, joint with A. Calamia et L. Deville, <em>Bankers, Markets and Investors</em>, n°124, May-June 2013, 60-73",
+            "Seasoned Equity Offerings: Stock Market Liquidity and the Rights Offer Paradox, joint with E. Ginglinger et L. Matsoukis, <em>Journal of Business Finance and Accounting</em>, vol. 40, n°1-2, January/February 2013, 215-238",
+            "Liquidity and Arbitrage in Options Markets: A Survival Analysis Approach. Joint with L. Deville, <em>Review of Finance</em>, 11, 3, September 2007, 497-525"
+    ]
+    },
+    {
+        "slug": "sylvie-rolland",
+        "last_name": "Rolland",
+        "first_name": "Sylvie",
+        "photo": "rolland.jpg",
+        "disciplines": [
+            "MANAGEMENT"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "LAMSADE (Laboratoire d’Analyse et Modélisation pour l’Aide à la DEcision)"
+        ],
+        "email": "sylvie.rolland@dauphine.psl.eu",
+        "web_page": "https://drm.dauphine.fr/fr/drm/membres/detail-cv/profile/sylvie-rolland.html",
+        "twitter": "sylvierolland",
+        "main_areas": [
+            "Value Creation",
+            "Big Data and AI in Marketing",
+            "Big Data in Market (Social) Research"
+        ],
+        "initiatives": [
+            "Director of Marketing &amp; Strategy Department at Paris- Dauphine University",
+            "Past Scientific Director of the “Organizational Performance” Chair",
+            "Past Director and Founder of the Dauphine London Campus",
+            "Past Co-Director of the Master 204 « Market Research and Product Manager"
+        ],
+        "selected_publications": [
+            "Rolland S. (2022), La recherche en sciences des organisations à l’ère des données massives ou Big Data dans L'état du Management (forthcoming)",
+            "Pekovic S. et Rolland S. (2020), Recipes for achieving customer loyalty: A qualitative comparative analysis of the dimensions of customer experience, Journal of Retailing and Consumer Services, vol. 56.",
+            "S.Rolland, S.Pekovic et H.Gatignon (2017) « Customer Centricity and Organizational Innovation: The Case of Environmental Management Practices », Journal of Business and Industrial Marketing, Vol. 31 issue 7 - Awards for Excellence - Outstanding Papers- 2017",
+            "Rolland S. and Pekovic S.  (2016), Customer Orientation and Firm Business Performance: The Mediating Role of Environmental Customer Innovation, European journal of Marketing.",
+            "Dean A. and Rolland S. (2014), “Customer experience management: enhancing experience and value through service management”, Editor Jay Kandampully, Publisher: Kendall Hunt Publishing.",
+            "Rolland S. et Parmentier G. (2013), The benefit of social media: bulletin board focus groups as a tool for co-creation, International journal of Market Research, Vol. 55, N°6.",
+            "Rolland S. et Pekovik S. (2012), An Empirical Investigation of the Effect of Customer Orientation on the Business Performance of French Firms: A firm-level analysis of direct and moderation effects, Recherche et Applications en Marketing, Vol. 27, n°4, pp. 11-38.",
+            "Rolland S. and Freeman I. (2010), E-Qual: A French scale measuring e-tailing service quality, International Journal of Retail and Distribution Management, Vol. 38, N°7.",
+            "Parmentier G. et Rolland S. (2009), Consumers in Virtual Worlds: Identity Building and Consuming Experience in Second Life, Recherche et Applications en Marketing, Vol. 24, N°3."
+        ]
+    },
+    {
+        "slug": "fabrice-rossi",
+        "last_name": "Rossi",
+        "first_name": "Fabrice",
+        "photo": "rossi.jpg",
+        "disciplines": [
+            "MATHEMATICS",
+            "COMPUTER SCIENCES"
+        ],
+        "affiliations": [
+            "Paris Dauphine-PSL University",
+            "CEREMADE (CEntre de REcherches en MAthématiques de la DEcision)"
+        ],
+        "email": "fabrice.rossi@dauphine.psl.eu",
+        "web_page": "http://apiacoa.org",
+        "twitter": "fabrice_rossi",
+        "main_areas": [
+            "Données graphiques",
+            "Données temporelles",
+            "Détection de rupture et d'anomalie",
+            "Analyse exploratoire"
+        ],
+        "initiatives": [
+            "Depuis 2014 : Membre du conseil de l’UFR Mathématiques et informatique de l’Université Paris I- Ecole Normale Supérieure",
+            "Depuis 2012 : Membre du bureau du SAMM (équipe Statistiques, Analyse et Modélisation Multidisciplinaire)",
+            "Projet ANR 2009 – 2011 : Participation au projet ANR VIROSCOPY (programme SYSCOMM 2008)",
+            "Projet européen jan. 01 – déc. 03 : Responsable pour Paris-IX Dauphine du projet européen ASSO (IST2000-25161) - réalisation d’un nouvel outil logiciel d’analyse de données destiné aux instituts officiels de statistiques (ASSO : Analysis System of Symbolic Official data)",
+            "Autres financements : 2018–2021 Responsable pour Paris 1 du projet DeepSec en sécurité informatique, collaboration avec Quarkslab financée par la Direction Générale de l’Armement",
+            "Très nombreux contrats de recherche avec des entreprises",
+            "Vulgarisation : 2003 – 2006 - Collaborateur du GNU/Linux Magazine France: rédaction de 11 articles sur l’intelligence artificielle et sur les logiciels libres. 2003 : Collaborateur de Multi-System & Internet Security Cookbook, rédaction de 2 articles sur la sécurité informatique"
+        ],
+        "selected_publications": [
+            "Marco Corneli, Pierre Latouche et Fabrice Rossi. “Multiple change points detection and clustering in dynamic networks”. In : <em>Statistics and Computing</em> 28.5 (sept. 2018), p. 989-1007",
+            "Romain Guigourès, Marc Boullé et Fabrice Rossi. “Discovering patterns in timevarying graphs : a triclustering approach”. In : <em>Advances in Data Analysis and Classification</em> 12.3 (sept. 2018), p. 509-536",
+            "Alex Endert, William Ribarsky, C. Turkay, B.L. William Wong, Ian Nabney, Igniacio Díaz Blanco et Fabrice Rossi. “The State of the Art in Integrating Machine Learning into Visual Analytics”. In : <em>Computer Graphics Forum</em> 36.8 (déc. 2017), p. 458-486",
+            "Aurélia Feugnet, Fabrice Rossi et Clara Filet. “Co-presence Analysis and Economic Patterns : Mediterranean Imports in the Celtic World”. In : <em>Frontiers in Digital Humanities</em> 4 (2017)",
+            "Arnaud De Myttenaere, Boris Golden, Bénédicte Le Grand et Fabrice Rossi. “Mean Absolute Percentage Error for regression models”. In : <em>Neurocomputing</em> 192 (juin 2016), p.38-48"
+        ]
+    },
+    {
+        "slug": "perrine-simon-nahum",
+        "last_name": "Simon-Nahum",
+        "first_name": "Perrine",
+        "photo": "simon.jpg",
+        "disciplines": [
+            "POLITICAL PHILOSOPHY",
+            "HISTORY"
+        ],
+        "affiliations": [
+            "Ecole Normale Supérieure - PSL",
+            "Philosophy Department"
+        ],
+        "email": "nahum.perrine@gmail.com",
+        "web_page": "https://philosophie.ens.fr/CV-de-Perrine-Simon-Nahum.html",
+        "main_areas": [
+            "Philosophie politique",
+            "Philosophie de l’Histoire",
+            "Histoire de la démocratie"
+        ],
+        "initiatives": [
+            "Depuis 2018, Membre de l'ANR « Passage des disciplines », Collège de France-ENS. Depuis 2018 titulaire de la chaire Ecole Nationale d’Administration-Ecole Normale Supérieure : « Savoir Prévoir Pouvoir »",
+            "Membre du conseil pédagogique de l’Ecole doctorale, ED 540, Ecole Normale Supérieure.",
+            "Depuis 2019 Membre du conseil scientifique de l’EUR Translitterae"
+        ],
+        "selected_publications": [
+            "« Aron et la philosophie de l’histoire », Editions Odile Jacob (à paraître en 2020)",
+            "« Petites pensées inquiètes pour les temps qui viennent ». Essai de philosophie, Editions de l’Observatoire (à paraître en 2020)"
+        ]
+    },
+    {
+        "slug": "alexis-tsoukias",
+        "last_name": "Tsoukias",
+        "first_name": "Alexis",
+        "photo": "tsoukias.jpg",
+        "disciplines": [
+            "COMPUTER SCIENCE"
+        ],
+        "affiliations": [
+            "CNRS and Paris Dauphine-PSL University",
+            "LAMSADE (Laboratoire d’Analyse et Modélisation pour l’Aide à la DEcision)"
+        ],
+        "email": "tsoukias@lamsade.dauphine.fr",
+        "web_page": "http://www.lamsade.dauphine.fr/~tsoukias",
+        "main_areas": [
+            "Aide à la Décision",
+            "Policy Analytics",
+            "Algorithmique de la Décision"
+        ],
+        "initiatives": [
+            "GDR Policy Analytics, porteur du projet"
+        ],
+        "selected_publications": [
+            "O. Raboun, E. Chojnacki, C. Duffa, D. Rios-Insua, A. Tsoukiàs, “Spatial risk assessment in case of multiple nuclear release scenarios”, in press, <em>Socio-Economic Planning Sciences</em>, vol. 70, 2020",
+            "Pluchinotta I., Kazakci A.O., Giordano R., Tsoukiàs A., “Design Theory for generating alternatives in Public Decision Making Processes”, <em>Group Decision and Negotiation</em>, vol. 28, 341 - 374, 2019",
+            "Ferretti V., Pluchinotta I., Tsoukiàs A., “Studying the generation of alternatives in public policy making processes”, European <em>Journal of Operational Research</em>, vol. 273, 353 - 363, 2019",
+            "Pigozzi G., Tsoukiàs A., Viappiani P., “Preferences in Artificial Intelligence”, <em>Annals of Mathematics and Artificial Intelligence</em>, vol. 77, 361 - 401, 2016",
+            "De Marchi G., Lucertini G., Tsoukiàs A., “From Evidence Based Policy Making to Policy Analytics”, <em>Annals of Operations Research</em>, vol. 236, 15 - 38, 2016"
+        ]
+    }   
+]

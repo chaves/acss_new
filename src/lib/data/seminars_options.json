@@ -1,0 +1,12 @@
+[
+    {
+        "value": "pub",
+        "name": "Public governance working group",
+        "url": "public-governance"
+    },
+    {
+        "value": "nlp",
+        "name": "NLP (Natural Language Processing) working group",
+        "url": "nlp"
+    }
+]
