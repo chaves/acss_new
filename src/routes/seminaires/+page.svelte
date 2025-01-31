@@ -11,7 +11,7 @@
 </svelte:head>
 
 <div class="seminars">
-	<h2><a href="/seminaires/acss">ACSS-PSL Institute Research Seminar</a></h2>
+	<h2>ACSS-PSL Institute Research Seminar</h2>
 	<div class="seminar">
 		<p class="mt-3">
 			This seminar will provide an opportunity to discuss about the activities of the institute and
