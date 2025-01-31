@@ -62,7 +62,7 @@
 		{/if}
 
 		{#each data.seminars as seminar, index}
-			<SeminarItem {seminar} {index} />
+			<SeminarItem {seminar} {index} abstract={false} />
 		{/each}
 	{/if}
 </div>

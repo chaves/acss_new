@@ -4,6 +4,7 @@
 	export let seminar;
 	export let index;
 	export let type = 'all';
+	export let abstract = true;
 
 	const title = seminar_options.filter((s) => s.value === seminar.type)[0].name;
 	const url = seminar_options.filter((s) => s.value === seminar.type)[0].url;
@@ -32,7 +33,7 @@
 
 	<p class="italic">{seminar.title}</p>
 
-	{#if seminar.abstract}
+	{#if abstract && seminar.abstract}
 		<p class="text-sm mt-2 ml-3 pl-3 border-l-4 border-gray-200">Abstract: {seminar.abstract}</p>
 	{/if}
 </div>
