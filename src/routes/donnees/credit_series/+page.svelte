@@ -7,7 +7,7 @@
 	<meta name="description" content="" />
 </svelte:head>
 
-<Breadcrumb title="Measuring credit procyclicality database" />
+<Breadcrumb title="Measuring credit procyclicality database" title_link="Credit procyclicality database" />
 
 <div class="float-right ml-6 px-3 border-l-4 border-slate-300">
 	<a href="https://acss-dig.psl.eu/data/database_web_03_2022.csv"
