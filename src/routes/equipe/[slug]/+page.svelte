@@ -7,6 +7,8 @@
     let { data }: { data: PageData } = $props();
 </script>
 
+<BeradcrumbTeam name={data.membre.last_name} title={data.membre.title} email={data.membre.email} />
+
 <div class="flex flex-wrap text-sm">
 	{#if typeof data.membre === 'undefined'}
 		<h1>Cette page n'existe pas.</h1>
