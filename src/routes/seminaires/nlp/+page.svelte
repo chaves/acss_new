@@ -1,11 +1,14 @@
 <script lang="ts">
     import type { PageProps } from './$types';
-
+    import * as m from '$lib/paraglide/messages.js';
     import SeminarItem from '$lib/components/seminars/SeminarItem.svelte';
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 
     let { data }: PageProps = $props();
 
 </script>
+
+<Breadcrumb title={m.seminaire_nlp()} title_path="NLP" link="seminaires" link_text={m.seminars()} />
 
 <svelte:head>
 	<title>Institut PSL-ACSS : NLP working group</title>

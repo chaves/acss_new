@@ -3,11 +3,12 @@
     import Bruno from '$lib/components/equipe/Bruno.svelte';
     import Claire from '$lib/components/equipe/Claire.svelte';
     import Standard from '$lib/components/equipe/Standard.svelte';
-    import BeradcrumbTeam from '$lib/components/layout/BeradcrumbTeam.svelte';
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     let { data }: { data: PageData } = $props();
+	const name = data.membre.first_name + ' '+data.membre.last_name;
 </script>
 
-<BeradcrumbTeam name={data.membre.last_name} title={data.membre.title} email={data.membre.email} />
+<Breadcrumb title={name} title_path={name} fonction={data.membre.title} email={data.membre.email} />
 
 <div class="flex flex-wrap text-sm">
 	{#if typeof data.membre === 'undefined'}

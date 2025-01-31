@@ -1,6 +1,10 @@
 <script lang="ts">
 	import { languageTag } from '$lib/paraglide/runtime.js'
+	import * as m from '$lib/paraglide/messages.js';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
+
+<Breadcrumb title="" title_path={m.mission()}	 />
 
 {#if languageTag() == 'fr'}
 	<p class="mt-0">

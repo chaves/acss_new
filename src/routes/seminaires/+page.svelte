@@ -1,10 +1,13 @@
 <script lang="ts">
     import * as m from '$lib/paraglide/messages.js'
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <svelte:head>
 	<title>Institut PSL-ACSS : {m.seminars()}</title>
 </svelte:head>
+
+<Breadcrumb title={m.seminars()} title_path={m.seminars()} />
 
 <div class="seminars">
 	<h2>ACSS-PSL Institute Research Seminar</h2>

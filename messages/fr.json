@@ -1,6 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"Home": "Acceuil",
+	"home": "Acceuil",
 	"copyright": "© 2022 tous droits réservés.",
     "plafform": "Plateforme",
     "partners": "Partenaires",
@@ -15,5 +15,8 @@
     "name": "Nom",
     "submit": "Valider",
     "training": "Formation",
-    "recruitments": "Recrutements"
+    "recruitments": "Recrutements",
+    "mission": "Mission",
+    "seminaire_nlp": "Groupe de travail NLP",
+    "public_governance": "Groupe de travail Gouvernance Publique"
 }

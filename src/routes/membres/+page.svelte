@@ -1,9 +1,11 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import * as m from '$lib/paraglide/messages.js';
-
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     let { data }: { data: PageData } = $props();
 </script>
+
+<Breadcrumb title={m.members()} title_path={m.members()} />
 
 <div class="flex flex-wrap">
 	{#each data.membres as membre}
