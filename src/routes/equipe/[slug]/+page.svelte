@@ -3,7 +3,7 @@
     import Bruno from '$lib/components/equipe/Bruno.svelte';
     import Claire from '$lib/components/equipe/Claire.svelte';
     import Standard from '$lib/components/equipe/Standard.svelte';
-
+    import BeradcrumbTeam from '$lib/components/layout/BeradcrumbTeam.svelte';
     let { data }: { data: PageData } = $props();
 </script>
 
