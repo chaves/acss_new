@@ -1,5 +1,4 @@
 <script lang="ts">
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     import * as m from '$lib/paraglide/messages.js'
 </script>
 

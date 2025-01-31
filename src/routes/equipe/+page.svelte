@@ -6,8 +6,6 @@
     let { data }: { data: PageData } = $props();
 </script>
 
-<Breadcrumb title={m.team_institute()} title_link={m.team()} />
-
 <div class="flex flex-wrap">
 	{#each data.equipe as membre}
 		<div class="w-full lg:w-1/2 py-3 lg:px-2">
