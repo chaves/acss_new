@@ -10,12 +10,12 @@
 <Breadcrumb title="Measuring credit procyclicality database" />
 
 <div class="float-right ml-6 px-3 border-l-4 border-slate-300">
-	<a href="/data/database_web_03_2022.csv"
+	<a href="https://acss-dig.psl.eu/data/database_web_03_2022.csv"
 		><img src="/images/icons/format-de-fichier-csv.png" class="h-8 my-2 inline" alt="csv" />
 		CSV (semi colon separator)
 	</a>
 	<br />
-	<a href="/data/database_web_03_2022.dta"
+	<a href="https://acss-dig.psl.eu/data/database_web_03_2022.dta"
 		><img src="/images/icons/file_type_stata_icon_130148.svg" alt="csv" class="h-8 my-2 inline" />
 		Stata Data File Format
 	</a>
