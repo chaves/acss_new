@@ -15,7 +15,7 @@ const config = {
 		adapter: adapter(),
 		prerender: {
 			//Needed for correctly prerendering <link rel="alternate" hreflang="x" href="y">
-			origin: "https://github.io",
+			// origin: "https://github.io",
 		}
 	},
 
