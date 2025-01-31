@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { languageTag } from '$lib/paraglide/runtime.js'
-    import Breadcrumb from '$lib/components/layout/breadcrumb.svelte';
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     import * as m from '$lib/paraglide/messages.js';
 </script>
 

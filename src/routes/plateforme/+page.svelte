@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { languageTag } from '$lib/paraglide/runtime.js'
     import * as m from '$lib/paraglide/messages.js';
-    import Breadcrumb from '$lib/components/layout/breadcrumb.svelte';
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     function getTitle() {
 		if (languageTag() == 'en') {
 			return 'The PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> Institute :<br />a synergistic platform for its researchers';

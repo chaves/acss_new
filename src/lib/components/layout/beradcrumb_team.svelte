@@ -1,8 +1,5 @@
-<script>
-	import { t, locale } from 'svelte-intl-precompile';
-	export let name;
-	export let title;
-	export let email;
+<script lang="ts">
+	let { name, title, email } = $props();
 </script>
 
 <section class="py-3 mb-6 bg-blueGray-100 rounded-xl">
@@ -21,7 +18,7 @@
 			class="mx-auto text-gray-500 text-sm mt-5 lg:text-sm wow animate__animated animate__fadeInUp animated"
 		>
 			<li class="inline-flex items-center">
-				<a href="/{$locale}" class="hover:text-blue-500 text-gray-800">{$t('home')}</a>
+				<a href="/" class="hover:text-blue-500 text-gray-800">Home</a>
 				<svg fill="currentColor" viewBox="0 0 20 20" class="h-5 w-auto text-gray-300">
 					<path
 						fill-rule="evenodd"
@@ -31,7 +28,7 @@
 				</svg>
 			</li>
 			<li class="inline-flex items-center">
-				<a href="/{$locale}/equipe" class="hover:text-blue-500 text-gray-800">{$t('team')}</a>
+				<a href="/equipe" class="hover:text-blue-500 text-gray-800">Team</a>
 				<svg fill="currentColor" viewBox="0 0 20 20" class="h-5 w-auto text-gray-300">
 					<path
 						fill-rule="evenodd"

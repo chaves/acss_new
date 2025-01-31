@@ -1,6 +1,5 @@
 <script>
-	import { t, locale } from 'svelte-intl-precompile';
-	export let title;
+	let { title, title_link } = $props();
 </script>
 
 <section class="py-3 mb-6 bg-blueGray-100 rounded-xl">

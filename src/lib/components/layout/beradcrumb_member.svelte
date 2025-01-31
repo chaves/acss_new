@@ -1,9 +1,5 @@
-<script>
-	import { t, locale } from 'svelte-intl-precompile';
-	export let name;
-	export let disciplines;
-	export let homepage;
-	export let twitter;
+<script lang="ts">
+	let { name, disciplines, homepage } = $props();
 </script>
 
 <section class="py-3 mb-6 bg-blueGray-100 rounded-xl">
@@ -13,11 +9,6 @@
 		</h1>
 		<p class="text-blue-500 text-sm">
 			<a href={homepage} target="_blank">homepage</a>
-			{#if twitter !== undefined}
-				- <a href="https://twitter.com/{twitter}" target="_blank"
-					><img class="inline-block" src="/images/icons/twitter-blue.svg" alt="twitter" /></a
-				>
-			{/if}
 		</p>
 		<ul class="mt-2">
 			{#each disciplines as discipline}
@@ -29,7 +20,7 @@
 			class="mx-auto text-gray-500 text-sm mt-5 lg:text-sm wow animate__animated animate__fadeInUp animated"
 		>
 			<li class="inline-flex items-center">
-				<a href="/{$locale}" class="hover:text-blue-500 text-gray-800">{$t('home')}</a>
+				<a href="/" class="hover:text-blue-500 text-gray-800">{$t('home')}</a>
 				<svg fill="currentColor" viewBox="0 0 20 20" class="h-5 w-auto text-gray-300">
 					<path
 						fill-rule="evenodd"
@@ -39,7 +30,7 @@
 				</svg>
 			</li>
 			<li class="inline-flex items-center">
-				<a href="/{$locale}/membres" class="hover:text-blue-500 text-gray-800">{$t('members')}</a>
+				<a href="/membres" class="hover:text-blue-500 text-gray-800">{$t('members')}</a>
 				<svg fill="currentColor" viewBox="0 0 20 20" class="h-5 w-auto text-gray-300">
 					<path
 						fill-rule="evenodd"
