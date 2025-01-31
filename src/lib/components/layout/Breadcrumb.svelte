@@ -38,6 +38,7 @@
 					/>
 				</svg>
 			</li>
+			{/if}
 
 			<li class="inline-flex items-center text-gray-400">
 				<span>{title_path}</span>
