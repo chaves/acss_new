@@ -11,15 +11,15 @@
 </script>
 
 <div class="mx-3 flex flex-wrap items-center">
-	<div class="w-full px-3 lg:w-1/2">
+	<div class="w-full px-3 lg:w-2/3">
 		<div class="py-6">
-			<div class="mx-auto mb-8 max-w-lg lg:mx-0 lg:max-w-md">
-				<h1 class="mb-4 font-heading text-xl font-bold lg:text-2xl">
+			<div class="mx-auto mb-8 max-w-lg lg:mx-0 lg:max-w-2xl">
+				<h1 class="mb-4 font-heading text-md font-bold lg:text-xl">
 					Applied Computational Social Sciences<br />Data-Intensive Governance - PSL Institute
 				</h1>
 
 				{#if languageTag() == 'en'}
-					<h2 class="mb-4 font-heading text-xl font-bold lg:text-2xl">
+					<h2 class="mb-4 font-heading text-md font-bold lg:text-xl">
 						Expertise in <span class="site_blue">social sciences</span> research coupled with
 						<span class="site_red">data science</span> capabilities in order to:
 					</h2>
@@ -29,12 +29,12 @@
 						<li>Foster better collective governance</li>
 					</ul>
 				{:else}
-					<h2 class="mb-4 font-heading text-xl font-bold lg:text-2xl">
+					<h2 class="mb-4 font-heading text-md font-bold lg:text-xl">
 						Une expertise de recherche en <span class="site_blue">sciences sociales</span>
 						articulée avec des capacités en
 						<span class="site_red">sciences des données</span> pour :
 					</h2>
-					<ul class="ml-6 list-disc text-xl">
+					<ul class="ml-6 list-disc text-md">
 						<li>
 							Renforcer la pertinence de la recherche académique sur les grandes problématiques
 							sociétales
@@ -47,7 +47,7 @@
 			<div class="text-center lg:text-left"></div>
 		</div>
 	</div>
-	<div class="lg:bg-blueGray-10 mb-12 mt-6 w-full px-3 pb-10 lg:mb-0 lg:w-1/2">
+	<div class="lg:bg-blueGray-10 mb-12 mt-6 w-full px-3 pb-10 lg:mb-0 lg:w-1/3">
 		<div class="max-w-4xl">
 			<Carousel {images} duration={3000} imgClass="object-contain h-full w-fit rounded-sm" />
 		</div>
