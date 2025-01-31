@@ -1,4 +1,5 @@
-<script>
+<script lang="ts">
+	// External library imports
 	import {
 		Navbar,
 		NavBrand,
@@ -10,15 +11,21 @@
 		DropdownDivider
 	} from 'flowbite-svelte';
 	import { ChevronDownOutline } from 'flowbite-svelte-icons';
-	import MenuFR from '$lib/data/menu_fr.json';
-	import MenuEN from '$lib/data/menu_en.json';
 
 	import { page } from '$app/state';
 	import { i18n } from '$lib/i18n';
-	let activeUrl = $derived(i18n.route(page.url.pathname));
+
+	// Internal components/modules
+	import LanguageSwitch from './LanguageSwitch.svelte';
+
+	// Data imports
+	import MenuFR from '$lib/data/menu_fr.json';
+	import MenuEN from '$lib/data/menu_en.json';
+
+	// Variables
 	const { lang } = $props();
 	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
-    import LanguageSwitch from './LanguageSwitch.svelte';
+	let activeUrl = $derived(i18n.route(page.url.pathname));
 
 </script>
 

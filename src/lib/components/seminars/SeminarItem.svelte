@@ -4,7 +4,6 @@
 	export let seminar;
 	export let index;
 	export let type = 'all';
-	seminar = seminar.attributes;
 
 	const title = seminar_options.filter((s) => s.value === seminar.type)[0].name;
 	const url = seminar_options.filter((s) => s.value === seminar.type)[0].url;
