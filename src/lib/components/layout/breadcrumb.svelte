@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	let { title, title_link } = $props();
 	import * as m from '$lib/paraglide/messages.js';
 </script>
