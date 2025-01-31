@@ -4,7 +4,7 @@
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<Breadcrumb title="" title_path={m.mission()}	 />
+<Breadcrumb title={m.mission()} title_path={m.mission()}	 />
 
 {#if languageTag() == 'fr'}
 	<p class="mt-0">
