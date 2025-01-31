@@ -3,9 +3,6 @@
     import * as m from '$lib/paraglide/messages.js'
 </script>
 
-<Breadcrumb />
-
-
 <svelte:head>
 	<title>Institut PSL-ACSS : {m.seminars()}</title>
 </svelte:head>
