@@ -1,8 +1,14 @@
 <script lang="ts">
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import * as m from '$lib/paraglide/messages.js';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<Breadcrumb title="ACSS-PSL Institute Research Seminar" title_path="ACSS-PSL Institute Research Seminar" />
+<Breadcrumb
+	title="ACSS-PSL Institute Research Seminar"
+	title_path="ACSS-PSL Institute Research Seminar"
+	link="seminaires"
+	link_text={m.seminars()}
+/>
 
 <svelte:head>
 	<title>Institut PSL-ACSS : ACSS-PSL Institute Research Seminar</title>
@@ -41,7 +47,6 @@
 		>
 	</p>
 </div>
-
 
 <h2 class="past">Past Sessions:</h2>
 
@@ -93,9 +98,7 @@
 </div>
 
 <h4>
-	<a href="https://www.linkedin.com/in/ly-alpha-131bb6155"
-		>Alpha Ly</a
-	>, LEDa
+	<a href="https://www.linkedin.com/in/ly-alpha-131bb6155">Alpha Ly</a>, LEDa
 </h4>
 
 <div class="presentation">
@@ -120,7 +123,7 @@
 		evidence, contrasting with prior findings on developing countries, carries significant
 		implications for environmental policy and sustainable development efforts.
 	</p>
-</div> 
+</div>
 
 <p class="annonce">
 	The sixth research seminar of the ACSS-PSL Institute<br />to be held on Friday, October 6<sup
@@ -456,15 +459,15 @@
 
 <style>
 	.annonce {
-		@apply text-center text-blueGray-600 font-semibold text-xl mb-6;
+		@apply mb-6 text-center text-xl font-semibold text-blueGray-600;
 	}
 
 	.description {
-		@apply bg-white py-3 px-6 rounded-xl text-sm mb-6 border-2 border-blue-100;
+		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
 	}
 
 	.abstract {
-		@apply pl-3 border-l-4 text-sm;
+		@apply border-l-4 pl-3 text-sm;
 	}
 
 	.presentation {
@@ -479,9 +482,9 @@
 	}
 
 	ul {
-		@apply list-decimal ml-5;
+		@apply ml-5 list-decimal;
 	}
 	h2.past {
-		@apply font-semibold border-y-4 py-4 mt-12;
+		@apply mt-12 border-y-4 py-4 font-semibold;
 	}
 </style>

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import SideTwo from '$lib/components/layout/SideTwo.svelte';
 	import { Carousel } from 'flowbite-svelte';
@@ -9,6 +10,8 @@
 <Breadcrumb
 	title="Hackathon du master SIREN en collaboration avec Services Publics +"
 	title_path="Hackathon"
+	link="formation"
+	link_text={m.training()}
 />
 
 <SideTwo>

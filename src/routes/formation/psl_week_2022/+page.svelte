@@ -1,4 +1,5 @@
 <script lang="ts">
+	import * as m from '$lib/paraglide/messages.js';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
@@ -14,7 +15,12 @@
 	/>
 </svelte:head>
 
-<Breadcrumb title="PSL Week : NLP for Social Sciences" title_path="PSL Week : NLP for Social Sciences" />
+<Breadcrumb
+	title="PSL Week : NLP for Social Sciences"
+	title_path="PSL Week 2022"
+	link="formation"
+	link_text={m.training()}
+/>
 
 <img src="/images/psl_week/image_nlp.jpg" alt="PSL Week : NLP for Social Sciences" />
 
