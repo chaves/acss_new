@@ -12,7 +12,7 @@
 			{fonction}
 		{/if}
 		{#if email !== undefined}
-			<p class="text-sm text-blue-500">
+			<p class="text-sm text-blue-500 mb-3">
 				<a href="maito:{email}">{email}</a>
 			</p>
 		{/if}
