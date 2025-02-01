@@ -10,9 +10,9 @@
 <Breadcrumb title={m.seminars()} title_path={m.seminars()} />
 
 <div class="seminars">
-	<h2>ACSS-PSL Institute Research Seminar</h2>
 	<div class="seminar">
-		<p class="mt-3">
+		<h3><a href="/seminaires/acss">ACSS-PSL Institute Research Seminar</a></h3>
+		<p>
 			This seminar will provide an opportunity to discuss about the activities of the institute and
 			will be organized in 5 sessions throughout the 2022-2023 academic year. It's purpose is
 			twofold:

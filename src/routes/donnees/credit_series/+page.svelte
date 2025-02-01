@@ -1,3 +1,8 @@
+<script lang="ts">
+    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+</script>
+
+<Breadcrumb title="Credit procyclicality database" title_path="Credit procyclicality database" />
 
 <svelte:head>
 	<title>Credit procyclicality database</title>
