@@ -66,10 +66,10 @@
 		font-size: 0.9rem;
 		text-decoration: none;
 		cursor: pointer;
+		color: #1D4796;
 	}
 
 	a.selected {
-		font-weight: bold;
-		text-decoration: underline;
+		color: #B84C7C;
 	}
 </style>

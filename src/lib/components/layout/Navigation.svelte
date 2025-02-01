@@ -35,15 +35,15 @@
 			<img src="/images/logos/acss_logo.svg" class="me-3 h-9 sm:h-12" alt="ACSS Logo" />
 		</NavBrand>
 		<NavHamburger />
-		<NavUl {activeUrl}>
+		<NavUl {activeUrl} activeClass="text-acss_red" nonActiveClass="text-acss_blue">
 			{#each menu as item}
 				{#if item.children}
-					<NavLi class="cursor-pointer">
+					<NavLi class="cursor-pointer text-acss_blue">
 						{item.title}<ChevronDownOutline
-							class="ms-2 inline h-6 w-6 text-primary-800 dark:text-white"
+							class="ms-2 inline h-6 w-6 text-acss_red dark:text-white"
 						/>
 					</NavLi>
-					<Dropdown {activeUrl} class="z-20 w-44">
+					<Dropdown {activeUrl} class="z-20 w-fit text-acss_blue" activeClass="text-acss_red">
 						{#each item.children as child}
 							<DropdownItem href={child.path}>{child.title}</DropdownItem>
                             <DropdownDivider />

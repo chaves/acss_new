@@ -1,13 +1,16 @@
-import type { Config } from "tailwindcss";
+import type { Config } from 'tailwindcss';
 import containerQueries from '@tailwindcss/container-queries';
 import forms from '@tailwindcss/forms';
 import typography from '@tailwindcss/typography';
-import flowbitePlugin from 'flowbite/plugin'
+import flowbitePlugin from 'flowbite/plugin';
 
 const config: Config = {
-	darkMode: ["class"],
-	content: ['./src/**/*.{html,js,svelte,ts}', './node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'],
-	safelist: ["dark"],
+	darkMode: ['class'],
+	content: [
+		'./src/**/*.{html,js,svelte,ts}',
+		'./node_modules/flowbite-svelte/**/*.{html,js,svelte,ts}'
+	],
+	safelist: ['dark'],
 
 	theme: {
 		screens: {
@@ -52,18 +55,18 @@ const config: Config = {
 		},
 		extend: {
 			colors: {
-				        // flowbite-svelte
-			primary: {
-				50: '#FFF5F2',
-				100: '#FFF1EE',
-				200: '#FFE4DE',
-				300: '#FFD5CC',
-				400: '#FFBCAD',
-				500: '#FE795D',
-				600: '#EF562F',
-				700: '#EB4F27',
-				800: '#CC4522',
-				900: '#A5371B'
+				// flowbite-svelte
+				primary: {
+					50: '#FFF5F2',
+					100: '#FFF1EE',
+					200: '#FFE4DE',
+					300: '#FFD5CC',
+					400: '#FFBCAD',
+					500: '#FE795D',
+					600: '#EF562F',
+					700: '#EB4F27',
+					800: '#CC4522',
+					900: '#A5371B'
 				},
 				white: '#ffffff',
 				body: '#1e293b',
@@ -80,20 +83,22 @@ const config: Config = {
 				blue: {
 					light: '#85d7ff',
 					DEFAULT: '#009eeb',
-					dark: '#1573a1',
+					dark: '#1573a1'
 				},
 				pink: {
 					light: '#ff7ce5',
 					DEFAULT: '#ff49db',
-					dark: '#ff16d1',
+					dark: '#ff16d1'
 				},
 				gray: {
 					darkest: '#1f2d3d',
 					dark: '#3c4858',
 					DEFAULT: '#c0ccda',
 					light: '#e0e6ed',
-					lightest: '#f9fafc',
-				}
+					lightest: '#f9fafc'
+				},
+				acss_red: '#B84C7C',
+				acss_blue: '#1D4796'
 			},
 			height: {
 				128: '32rem'
@@ -101,7 +106,7 @@ const config: Config = {
 			important: true
 		}
 	},
-  plugins: [flowbitePlugin, typography, forms, containerQueries]
+	plugins: [flowbitePlugin, typography, forms, containerQueries]
 };
 
 export default config;
