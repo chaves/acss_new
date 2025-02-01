@@ -1,0 +1,32 @@
+[
+  {
+    "alt": "personne 1",
+    "src": "/images/hackhaton_2022/personnes/image_1.jpeg",
+    "title": "personne 1"
+  },
+  {
+    "alt": "personne 2",
+    "src": "/images/hackhaton_2022/personnes/image_2.jpeg",
+    "title": "personne 2"
+  },
+  {
+    "alt": "personne 3",
+    "src": "/images/hackhaton_2022/personnes/image_3.jpeg",
+    "title": "personne 3"
+  },
+  {
+    "alt": "personne 4",
+    "src": "/images/hackhaton_2022/personnes/image_4.jpeg",
+    "title": "personne 4"
+  },
+  {
+    "alt": "personne 5",
+    "src": "/images/hackhaton_2022/personnes/image_5.jpeg",
+    "title": "personne 5"
+  },
+  {
+    "alt": "personne 6",
+    "src": "/images/hackhaton_2022/personnes/image_6.jpeg",
+    "title": "personne 6"
+  }
+]

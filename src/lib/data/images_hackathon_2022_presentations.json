@@ -1,0 +1,22 @@
+[
+  {
+    "alt": "presentation 1",
+    "src": "/images/hackhaton_2022/presentations/image_1.png",
+    "title": "presentation 1"
+  },
+  {
+    "alt": "presentation 2",
+    "src": "/images/hackhaton_2022/presentations/image_2.png",
+    "title": "presentation 2"
+  },
+  {
+    "alt": "presentation 3",
+    "src": "/images/hackhaton_2022/presentations/image_3.png",
+    "title": "presentation 3"
+  },
+  {
+    "alt": "presentation 4",
+    "src": "/images/hackhaton_2022/presentations/image_4.png",
+    "title": "presentation 4"
+  }
+]

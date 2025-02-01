@@ -1,0 +1,22 @@
+[
+  {
+    "alt": "Twitter",
+    "src": "/images/home_graphs/tweets.png",
+    "title": "Twitter"
+  },
+  {
+    "alt": "bonnassieux",
+    "src": "/images/home_graphs/bonnassieux_client.png",
+    "title": "bonnassieux"
+  },
+  {
+    "alt": "topics correlations",
+    "src": "/images/home_graphs/topics_correlations.png",
+    "title": "topics correlations"
+  },
+  {
+    "alt": "topics summary",
+    "src": "/images/home_graphs/topic_summary_24.png",
+    "title": "topics summary"
+  }
+]

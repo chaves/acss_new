@@ -7,7 +7,8 @@
 	let { data }: { data: PageData } = $props();
 
 	import { Carousel } from 'flowbite-svelte';
-	import images from '$lib/data/images.json';
+	import images from '$lib/data/images_home.json';
+
 </script>
 
 <div class="mx-3 flex flex-wrap items-center">
