@@ -10,23 +10,23 @@
 <div class="flex flex-wrap">
 	{#each data.equipe as membre}
 		<div class="w-full lg:w-1/2 py-3 lg:px-2">
-			<a href="/equipe/{membre.slug}">
+			<a href="/equipe/{membre.Slug}">
 				<div class="membre">
 					<div class="flex items-center">
 						<img
 							class="object-cover w-30 h-30 mr-2 rounded-full"
-							src="/images/photos_equipe/{membre.photo}"
-							alt="{membre.first_name} {membre.last_name}"
+							src="/images/photos_equipe/{membre.ImageFileName}"
+							alt="{membre.FirstName} {membre.LastName}"
 							width="150"
 							height="150"
 						/>
 						<div class="pl-4">
 							<strong class="mt-6 mb-2 text-xl">
-								{membre.first_name}
-								{membre.last_name}
+								{membre.FirstName}
+								{membre.LastName}
 							</strong>
 							<p class="text-gray-500 mt-3">
-								{membre.title}
+								{membre.fonction}
 							</p>
 						</div>
 					</div>

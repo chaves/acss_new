@@ -152,3 +152,15 @@ nav li.has-child::after {
 .blogPost li {
 	@apply font-semibold;
 }
+
+.equipe-bio h3 {
+	@apply font-semibold uppercase mb-3;
+}
+
+.equipe-bio h3:not(:first-child) {
+	@apply mt-6;
+}
+
+.equipe-bio ul li {
+	@apply ml-6 my-3 list-disc;
+}
