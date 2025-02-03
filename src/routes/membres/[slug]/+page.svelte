@@ -1,8 +1,20 @@
 <script lang="ts">
     import type { PageData } from './$types';
+	import * as m from '$lib/paraglide/messages.js';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 
     let { data }: { data: PageData } = $props();
+	const name = data.membre.first_name + ' ' + data.membre.last_name;
 </script>
+
+<Breadcrumb
+	title={name}
+	title_path={name}
+	fonction={data.membre.title}
+	email={data.membre.email}
+	link="membres"
+	link_text={m.members()}
+/>
 
 {#if typeof data.membre === 'undefined'}
 	<h1>Cette page n'existe pas.</h1>
