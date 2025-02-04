@@ -4,8 +4,10 @@
 
 <section class="py-10">
 	<div class="container px-4 mx-auto">
-		<h3>partners</h3>
-		<div class="mb-12 -mx-3 text-center lg:text-left">
+
+		<div class="flex flex-col lg:flex-row items-center lg:justify-between mb-12">
+			<h3>{m.partners()}</h3>
+
 			<a href="https://www.cnrs.fr/">
 				<img class="inline ml-12 h-24" src="/images/logos_autres/cnrs.png" alt="CNRS" />
 			</a>
@@ -29,7 +31,7 @@
 		<div class="flex flex-col lg:flex-row items-center lg:justify-between">
 			<p class="text-sm text-blueGray-400">
 
-				{m.copyright()}
+				{m.copyright({year: new Date().getFullYear()})}
 
 			</p>
 			<p>

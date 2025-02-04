@@ -2,7 +2,7 @@ import type { PageServerLoad } from './$types';
 
 export const load = (async () => {
   const source = 'https://cms.acss-psl.eu/api/';
-  const url_posts = `${source}posts?pagination[pageSize]=10&populate=Image&sort=publishedAt:desc`;
+  const url_posts = `${source}posts?pagination[pageSize]=10&populate=*&sort=publishedAt:desc`;
 
   try {
     const res = await fetch(url_posts);

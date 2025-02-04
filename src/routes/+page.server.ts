@@ -6,7 +6,7 @@ export const load = (async () => {
 
 	// Build endpoints
 	const url_seminars = `${source}seminars?filters[date][$gte]=${date}&sort=date:asc`;
-	const url_posts = `${source}posts?pagination[pageSize]=10&populate=Image&sort=publishedAt:desc`;
+	const url_posts = `${source}posts?pagination[pageSize]=10&populate=*&sort=publishedAt:desc`;
 
 	try {
 		// Run both fetch requests concurrently
