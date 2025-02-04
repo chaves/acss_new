@@ -1,6 +1,6 @@
 {
 	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"home": "Acceuil",
+	"home": "Accueil",
 	"copyright": "© {year} tous droits réservés.",
     "plafform": "Plateforme",
     "partners": "Partenaires",
