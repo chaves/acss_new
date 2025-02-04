@@ -42,6 +42,10 @@
     ]
   },
   {
+    "title": "Blog",
+    "path": "/blog"
+  },
+  {
     "title": "Databases",
     "children": [
       {

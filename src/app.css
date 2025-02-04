@@ -149,11 +149,8 @@ nav li.has-child::after {
 	color: #b6467c;
 }
 
-.blogPost li {
-	@apply font-semibold;
-}
 
-.equipe-bio h3 {
+.equipe-bio h3, .blogPost h3 {
 	@apply font-semibold uppercase mb-3;
 }
 
@@ -161,6 +158,10 @@ nav li.has-child::after {
 	@apply mt-6;
 }
 
-.equipe-bio ul li {
+.blogPost ul li, .equipe-bio ul li {
 	@apply ml-6 my-3 list-disc;
+}
+
+.blogPost p {
+	@apply mb-4;
 }

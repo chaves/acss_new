@@ -1,5 +1,5 @@
 <script lang="ts">
-	let { title, title_path, link = undefined, link_text = undefined, email = undefined, fonction = undefined } = $props();
+	let { title, title_path, link = undefined, link_text = undefined, email = undefined, fonction = undefined, publishedAt = undefined } = $props();
 	import * as m from '$lib/paraglide/messages.js';
 </script>
 
@@ -10,6 +10,9 @@
 		</h1>
 		{#if fonction !== undefined}
 			{fonction}
+		{/if}
+		{#if publishedAt !== undefined}
+			<p class="text-sm text-blue-500 -mt-3 mb-3">{m.published_at()} : {publishedAt}</p>
 		{/if}
 		{#if email !== undefined}
 			<p class="text-sm text-blue-500 mb-3">
