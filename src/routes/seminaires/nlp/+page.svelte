@@ -28,10 +28,10 @@
 
 	<p>Periodicity: Every other Thursday from 12h15 to 13h30, by videoconference.</p>
 
-	<em
-		>To attend, please contact:
-		<a href="mailto:christophe.benavent@gmail.com">christophe.benavent@gmail.com</a></em
-	>
+	<strong>
+		To attend, please fill the form:
+		<a href="https://forms.gle/f9yfq5nxUYcbQdkT6">https://forms.gle/f9yfq5nxUYcbQdkT6</a>
+	</strong>
 </div>
 
 {#if data.seminars_upcoming.length > 0}
