@@ -25,8 +25,9 @@
 	</p>
 	<p>Periodicity: Every Monday from 17h30 to 19h.</p>
 	<p>
-		<em>To attend, please contact Vladimir Avetian:</em>
+		To attend, please contact <strong>Vladimir Avetian:</strong>
 		<strong><em><a href="mailto:vladimir.avetian@dauphine.psl.eu">vladimir.avetian@dauphine.psl.eu</a></em></strong>
+		and <strong>Edgar Jimenez Bedolla</strong> <strong><em><a href="mailto:edgar.jimenez-bedolla@dauphine.psl.eu">edgar.jimenez-bedolla@dauphine.psl.eu</a></em></strong>
 	</p>
 </div>
 
