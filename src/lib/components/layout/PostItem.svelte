@@ -24,7 +24,7 @@
 
 <div class="{get_class(index)} main">
 	<img
-		class="post-img mr-6 w-24 rounded-full object-center"
+		class="post-img mr-6 w-24 rounded-lg object-center"
 		src="https://cms.acss-psl.eu{post.Image.formats.thumbnail.url}"
 		alt={post.Title}
 	/>
