@@ -1,7 +1,7 @@
 <script lang="ts">
 	import seminar_options from '$lib/data/seminars_options.json';
 
-	let {seminar, index, type = 'all', abstract = true} = $props();
+	let { seminar, index, type = 'all', abstract = true } = $props();
 
 	const title = seminar_options.filter((s) => s.value === seminar.type)[0].name;
 	const url = seminar_options.filter((s) => s.value === seminar.type)[0].url;
@@ -31,13 +31,15 @@
 	<p class="italic">{seminar.title}</p>
 
 	{#if abstract && seminar.abstract}
-		<p class="text-sm mt-2 ml-3 pl-3 border-l-4 border-gray-200 text-justify"><strong>Abstract</strong>: {seminar.abstract}</p>
+		<p class="ml-3 mt-2 border-l-4 border-gray-200 pl-3 text-justify text-sm">
+			<strong>Abstract</strong>: {seminar.abstract}
+		</p>
 	{/if}
 </div>
 
 <style>
 	.main {
-		@apply my-3 p-3 rounded-lg w-full;
+		@apply my-3 w-full rounded-lg p-3;
 	}
 
 	.even {
