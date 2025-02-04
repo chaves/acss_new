@@ -32,7 +32,7 @@
 			</li>
 			{#if link !== undefined}
 				<li class="inline-flex items-center">
-					<a href="/formation" class="hover:text-blue-500 text-gray-800">{link_text}</a>
+					<a href="/{link}" class="hover:text-blue-500 text-gray-800">{link_text}</a>
 					<svg fill="currentColor" viewBox="0 0 20 20" class="h-5 w-auto text-gray-300">
 					<path
 						fill-rule="evenodd"
