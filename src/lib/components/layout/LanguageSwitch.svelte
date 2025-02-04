@@ -22,8 +22,8 @@
 	}
 
 	const labels = {
-		en: 'English',
-		fr: 'Français'
+		en: 'EN',
+		fr: 'FR'
 	};
 
 	const reducedLabels = {
