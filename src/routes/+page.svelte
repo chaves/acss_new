@@ -77,7 +77,7 @@
 
 	</div>
 	<div class="col-span-12 lg:col-span-4 bg-white rounded-xl p-6">
-		<Carousel {images} duration={3000} imgClass="object-contain h-full w-fit rounded-sm" />
+		<Carousel {images} duration={3000} imgClass="object-contain h-full w-fit rounded-lg" />
 	</div>
 </div>
 

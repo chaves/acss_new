@@ -39,7 +39,7 @@
 
 <style>
 	.main {
-		@apply my-3 flex items-center rounded-xl p-3 text-sm;
+		@apply my-3 flex items-center rounded-xl p-3;
 	}
 
 	.even {

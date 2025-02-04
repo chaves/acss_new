@@ -37,7 +37,7 @@
 
 <style>
 	.main {
-		@apply my-3 p-3 rounded-xl text-sm w-full;
+		@apply my-3 p-3 rounded-lg w-full;
 	}
 
 	.even {
