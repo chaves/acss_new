@@ -1,11 +1,10 @@
 <script lang="ts">
-    import type { PageProps } from './$types';
-    import * as m from '$lib/paraglide/messages.js';
-    import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import type { PageProps } from './$types';
+	import * as m from '$lib/paraglide/messages.js';
+	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 
-    let { data }: PageProps = $props();
-
+	let { data }: PageProps = $props();
 </script>
 
 <Breadcrumb title={m.seminaire_nlp()} title_path="NLP" link="seminaires" link_text={m.seminars()} />
@@ -21,7 +20,7 @@
 
 <div class="description">
 	<p>
-		The aim of this seminar is to promote technical and practical exchanges between researchers who
+		The aim of this workshop is to promote technical and practical exchanges between researchers who
 		use NLP methods. There is no hesitation in detailing the code (r/python), sharing tips, and
 		discovering new methods and models.
 	</p>
@@ -50,10 +49,9 @@
 	{/each}
 {/if}
 
-
 <style>
 	.description {
-		@apply bg-white py-3 px-6 rounded-xl text-sm mb-6 border-2 border-blue-100;
+		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
 	}
 
 	p {

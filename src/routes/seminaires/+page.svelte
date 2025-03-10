@@ -1,6 +1,6 @@
 <script lang="ts">
-    import * as m from '$lib/paraglide/messages.js'
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import * as m from '$lib/paraglide/messages.js';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <svelte:head>
@@ -30,7 +30,7 @@
 
 	<div class="seminar">
 		<h3>
-			<a href="/seminaires/public-governance">Public Governance</a>
+			<a href="/seminaires/public-governance">Public Governance workshop</a>
 			<span>- every other Monday from 17h30 to 19h</span>
 		</h3>
 
@@ -46,7 +46,7 @@
 
 	<div class="seminar">
 		<h3>
-			<a href="/seminaires/nlp">NLP (Natural Language Processing)</a>
+			<a href="/seminaires/nlp">NLP (Natural Language Processing) workshop</a>
 			<span>- every other Monday from 17h30 to 19h</span>
 		</h3>
 		<p>
@@ -59,18 +59,18 @@
 
 <style>
 	span {
-		@apply text-sm italic font-normal;
+		@apply text-sm font-normal italic;
 	}
 
 	h2 {
-		@apply text-lg font-semibold mt-6;
+		@apply mt-6 text-lg font-semibold;
 	}
 	h3 {
-		@apply font-semibold text-base mt-3;
+		@apply mt-3 text-base font-semibold;
 	}
 
 	ul {
-		@apply list-decimal ml-5;
+		@apply ml-5 list-decimal;
 	}
 
 	p,
@@ -79,6 +79,6 @@
 	}
 
 	.seminar {
-		@apply text-sm pl-3 border-l-4;
+		@apply border-l-4 pl-3 text-sm;
 	}
 </style>
