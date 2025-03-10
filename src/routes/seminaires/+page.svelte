@@ -10,7 +10,7 @@
 <Breadcrumb title={m.seminars()} title_path={m.seminars()} />
 
 <div class="seminars">
-	<h2>Working groups</h2>
+	<h2>Workshops</h2>
 
 	<div class="seminar">
 		<h3>
@@ -19,11 +19,11 @@
 		</h3>
 
 		<p>
-			The Public Governance working group focuses on the role of governance in designing and
-			developing better policies. Key features are the political environment, the role of the media,
-			the engagement of stakeholders such as civil society and firms, the market structure and level
-			of competition, and the independence of public regulators, among others. Particular emphasis
-			is placed on research with NLP methods due to the proven usefulness of transforming text into
+			The Public Governance workshop focuses on the role of governance in designing and developing
+			better policies. Key features are the political environment, the role of the media, the
+			engagement of stakeholders such as civil society and firms, the market structure and level of
+			competition, and the independence of public regulators, among others. Particular emphasis is
+			placed on research with NLP methods due to the proven usefulness of transforming text into
 			data for further econometric analysis.
 		</p>
 	</div>
@@ -34,7 +34,7 @@
 			<span>- every other Monday from 17h30 to 19h</span>
 		</h3>
 		<p>
-			The aim of this seminar is to promote technical and practical exchanges between researchers
+			The aim of this workshop is to promote technical and practical exchanges between researchers
 			who use NLP methods. There is no hesitation in detailing the code (r/python), sharing tips,
 			and discovering new methods and models.
 		</p>
