@@ -1,7 +1,7 @@
 {
-	"$schema": "https://inlang.com/schema/inlang-message-format",
-	"home": "Accueil",
-	"copyright": "© {year} tous droits réservés.",
+    "$schema": "https://inlang.com/schema/inlang-message-format",
+    "home": "Accueil",
+    "copyright": "© {year} tous droits réservés.",
     "plafform": "Plateforme",
     "partners": "Partenaires",
     "partnerships": "Partenariats",
@@ -17,8 +17,8 @@
     "training": "Formation",
     "recruitments": "Recrutements",
     "mission": "Mission",
-    "seminaire_nlp": "Groupe de travail NLP",
-    "public_governance": "Groupe de travail Gouvernance Publique",
+    "seminaire_nlp": "Acss NLP workshop",
+    "public_governance": "Acss Public Governance workshop",
     "published_at": "Publié le",
     "by": "par"
 }
