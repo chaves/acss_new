@@ -39,21 +39,23 @@
 			and discovering new methods and models.
 		</p>
 	</div>
-</div>
 
-<div class="seminar">
-	<h3><a href="/seminaires/acss">ACSS-PSL Institute Research Seminar</a></h3>
-	<p>
-		This seminar will provide an opportunity to discuss about the activities of the institute and
-		will be organized in 5 sessions throughout the 2022-2023 academic year. It's purpose is twofold:
-	</p>
-	<ul>
-		<li>To exchange on the Institute's ongoing or upcoming projects and research.</li>
-		<li>
-			To invite external speakers to present original research in terms of data and/or methods that
-			could enrich the Institute's research and/or initiate new research projects.
-		</li>
-	</ul>
+	<h2>Seminar</h2>
+	<div class="seminar">
+		<h3><a href="/seminaires/acss">ACSS-PSL Institute Research Seminar</a></h3>
+		<p>
+			This seminar will provide an opportunity to discuss about the activities of the institute and
+			will be organized in 5 sessions throughout the 2022-2023 academic year. It's purpose is
+			twofold:
+		</p>
+		<ul>
+			<li>To exchange on the Institute's ongoing or upcoming projects and research.</li>
+			<li>
+				To invite external speakers to present original research in terms of data and/or methods
+				that could enrich the Institute's research and/or initiate new research projects.
+			</li>
+		</ul>
+	</div>
 </div>
 
 <style>
