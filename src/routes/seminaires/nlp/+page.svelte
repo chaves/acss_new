@@ -28,8 +28,7 @@
 	<p>Periodicity: Every other Thursday from 12h15 to 13h30, by videoconference.</p>
 
 	<strong>
-		To attend, please fill the form:
-		<a href="https://forms.gle/f9yfq5nxUYcbQdkT6">https://forms.gle/f9yfq5nxUYcbQdkT6</a>
+		To attend, <a href="https://forms.gle/f9yfq5nxUYcbQdkT6">please fill the form</a>.
 	</strong>
 </div>
 
