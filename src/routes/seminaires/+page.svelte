@@ -30,7 +30,7 @@
 
 	<div class="seminar">
 		<h3>
-			<a href="/seminaires/nlp">NLP (Natural Language Processing) workshop</a>
+			<a href="/seminaires/nlp">AI & NLP (Natural Language Processing) workshop</a>
 			<span>- every other Monday from 17h30 to 19h</span>
 		</h3>
 		<p>

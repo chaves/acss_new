@@ -10,7 +10,7 @@
 <Breadcrumb title={m.seminaire_nlp()} title_path="NLP" link="seminaires" link_text={m.seminars()} />
 
 <svelte:head>
-	<title>Institut PSL-ACSS : NLP working group</title>
+	<title>Institut PSL-ACSS : AI & NLP (Natural Language Processing) workshop</title>
 	<meta
 		name="description"
 		content="L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental
