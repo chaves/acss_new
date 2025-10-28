@@ -1,5 +1,7 @@
 import type { LayoutServerLoad } from './$types';
-import * as runtime from "$lib/paraglide/runtime.js"
+import * as runtime from '$lib/paraglide/runtime.js';
+
+export const prerender = true;
 
 export const load: LayoutServerLoad = async () => {
 	const selectedLanguage = runtime.languageTag() ?? 'fr';
@@ -7,7 +9,7 @@ export const load: LayoutServerLoad = async () => {
 	if (selectedLanguage == 'en') {
 		isoString = 'en-US';
 	}
-    const lang = runtime.languageTag();
+	const lang = runtime.languageTag();
 
 	return {
 		currentDateOnServer: new Intl.DateTimeFormat(isoString, {
@@ -19,6 +21,6 @@ export const load: LayoutServerLoad = async () => {
 			hour: 'numeric',
 			minute: 'numeric'
 		}).format(new Date()),
-        lang: lang
+		lang: lang
 	};
 };
