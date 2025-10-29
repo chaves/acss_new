@@ -52,7 +52,6 @@
 
 {#if data.seminars_upcoming.length > 0}
 	<h2>Upcoming sessions</h2>
-
 	{#each data.seminars_upcoming as seminar, index}
 		<SeminarItem {seminar} {index} type="pub" />
 	{/each}
