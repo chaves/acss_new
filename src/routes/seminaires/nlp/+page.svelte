@@ -8,19 +8,10 @@
 </script>
 
 <svelte:head>
-	<title>Institut ACSS-PSL : AI & NLP (Natural Language Processing) workshop</title>
+	<title>Institut ACSS-PSL : {m.seminaire_nlp()}</title>
 </svelte:head>
 
 <Breadcrumb title={m.seminaire_nlp()} title_path="NLP" link="seminaires" link_text={m.seminars()} />
-
-<svelte:head>
-	<title>Institut PSL-ACSS : AI & NLP (Natural Language Processing) workshop</title>
-	<meta
-		name="description"
-		content="L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental
-				est de permettre une mutualisation ciblée de ressources."
-	/>
-</svelte:head>
 
 <div class="description">
 	<p>
