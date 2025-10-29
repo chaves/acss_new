@@ -16,7 +16,7 @@
 	<title>Institut ACSS-PSL : Applied Computational Social Sciences</title>
 </svelte:head>
 
-<div class="mb-6 rounded-xl bg-blueGray-100 p-6 text-center text-xl">
+<div class="mb-6 rounded-xl bg-blueGray-100 p-6 text-center text-lg md:text-xl">
 	<a href="/seminaires/acss">ACSS Research seminar on LLMs in Finance</a><br />to be held on
 	Wednesday, November 26<sup>th</sup>
 	2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005 Paris
