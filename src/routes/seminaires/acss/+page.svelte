@@ -11,7 +11,7 @@
 />
 
 <svelte:head>
-	<title>Institut PSL-ACSS : ACSS-PSL Institute Research Seminar</title>
+	<title>ACSS Research seminar on LLMs in Finance</title>
 	<meta
 		name="description"
 		content="L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental
@@ -22,22 +22,27 @@
 <div class="description">
 	<p>
 		This seminar will provide an opportunity to discuss about the activities of the institute and
-		will be organized in 5 sessions throughout the 2022-2023 academic year. It's purpose is twofold:
+		will be organized in 3 sessions throughout the 2025-2026 academic year. Its purpose is twofold:
 	</p>
 	<ul>
-		<li>To exchange on the Institute's ongoing or upcoming projects and research.</li>
 		<li>
 			To invite external speakers to present original research in terms of data and/or methods that
-			could enrich the Institute's research and/or initiate new research projects.
+			could enrich the Institute's research and/or initiate new research projects
 		</li>
+		<li>To exchange on the Institute's ongoing or upcoming projects and research.</li>
 	</ul>
 	<p>
-		The seminar is organized by <a href="/membres/serge-darolles">Serge Darolles</a> and
-		<a href="/membres/gaelle-le-fol">Gaëlle Le Fol</a>.<br />
-		To propose a presentation, please contact:
-		<a href="mailto:serge.darolles@dauphine.psl.eu">gaelle.le_fol@dauphine.psl.eu</a>
-		and
-		<a href="mailto:gaelle.le_fol@dauphine.psl.eu">gaelle.le_fol@dauphine.psl.eu</a>
+		The seminar is organized by <a
+			href="https://dauphine.psl.eu/recherche/cvtheque/profil/darolles-serge">Serge Darolles</a
+		>, <a href="https://dauphine.psl.eu/recherche/cvtheque/profil/le-fol-gaelle">Gaëlle Le Fol</a> &
+		<a href="https://dauphine.psl.eu/recherche/cvtheque/profil/porcher-simon">Simon Porcher</a>.
+	</p>
+	<p>
+		<em
+			>To propose a presentation, please contact: <a href="mailto:simon.porcher@dauphine.psl.eu"
+				>simon.porcher@dauphine.psl.eu</a
+			>.</em
+		>
 	</p>
 	<p>
 		<em
@@ -46,6 +51,57 @@
 			></em
 		>
 	</p>
+</div>
+
+<p class="annonce">
+	ACSS Research seminar on LLMs in Finance<br />to be held on Wednesday, November 26<sup>th</sup>
+	2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005 Paris
+	<br />
+	<em class="text-base">
+		To attend, please contact: <a href="mailto:bruno.chavesferreira@dauphine.psl.eu"
+			>bruno.chavesferreira@dauphine.psl.eu</a
+		></em
+	>
+</p>
+
+<div class="presentation">
+	<p>8h30 : Welcome reception</p>
+
+	<p><strong>9h00-10h15 - Keynote talk</strong></p>
+	<ul>
+		<li class="md:ml-24">
+			<a href="https://www.herve.name/">Nicolas Hervé</a> (INA) : Audiovisual archives and computational
+			social sciences
+		</li>
+	</ul>
+	<p>10h15-10h30 : Pause</p>
+
+	<p>10h30-11h30 : <strong>Session 1 - Academic concerns</strong></p>
+	<ul>
+		<li class="md:ml-24">
+			<a href="https://allauzen.github.io/">Alexandre Allauzen</a> (ESPCI) :
+			<em>Frugality and Large Language Models</em>
+		</li>
+		<li class="md:ml-24">
+			<a href="https://www.elisegourier.com/">Elise Gourier</a> (ESSEC) :
+			<em>Detecting Greenwashing with LLMs</em>
+		</li>
+	</ul>
+	<p>11h30-12h30 : <strong>Session 2 - Professional concerns</strong></p>
+	<ul>
+		<li class="md:ml-24">
+			<a href="https://www.linkedin.com/in/romuald-elie-b9bb817b/">Romuald Elie</a> (Google
+			Deepmind) : <em>Denoising diffusion models and weather forecasting</em>
+		</li>
+		<li class="md:ml-24">
+			<a href="https://www.ram-ai.com/fr/unsere-mitarbeiter/emmanuel-hauptmann"
+				>Emmanuel Hauptmann</a
+			>
+			(RAM AI) : <em>Can LLMs bring value-added in the investment process?</em>
+		</li>
+	</ul>
+	<p>12h30 : Buffet</p>
+	<p>13h30 : End</p>
 </div>
 
 <h2 class="past">Past Sessions:</h2>
@@ -482,7 +538,7 @@
 	}
 
 	ul {
-		@apply ml-5 list-decimal;
+		@apply ml-5 list-disc;
 	}
 	h2.past {
 		@apply mt-12 border-y-4 py-4 font-semibold;

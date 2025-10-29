@@ -1,10 +1,14 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js'
+	import { languageTag } from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<Breadcrumb title={m.mission()} title_path={m.mission()}	 />
+<svelte:head>
+	<title>Institut ACSS-PSL : {m.mission()}</title>
+</svelte:head>
+
+<Breadcrumb title={m.mission()} title_path={m.mission()} />
 
 {#if languageTag() == 'fr'}
 	<p class="mt-0">
@@ -23,7 +27,7 @@
 		pour mieux comprendre les transformations en cours et les maîtriser.
 	</p>
 
-	<h2 class="text-xl mt-6 py-3 border-t-4 border-b-4 border-blue-200">
+	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
 		L’Institut réunit directement plus de 25 porteurs de projets scientifiques qui eux-mêmes
 		mobilisent une communauté d’environ 60 chercheurs seniors et 30 chercheurs juniors, cet effectif
 		ayant vocation à monter en puissance. Ils sont porteurs notamment de cinq chaires d’enseignement
@@ -48,7 +52,7 @@
 		<strong>thématiques</strong> suivantes :
 	</p>
 
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">
 			les menaces pesant sur la <strong>cohésion sociale et politique</strong> et les moyens d’y remédier
 			;
@@ -88,7 +92,7 @@
 		and steer the transformations under way.
 	</p>
 
-	<h2 class="text-xl mt-6 py-3 border-t-4 border-b-4 border-blue-200">
+	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
 		The Institute directly brings together around 30 scientific project leaders, who in turn
 		mobilise a community of approximately 60 senior and 30 junior scientific researchers—a workforce
 		that is slated to grow. They notably hold five teaching and research chairs and are in charge of
@@ -110,7 +114,7 @@
 		<strong>useful for decision-making or public debate</strong>, in particular on the
 		<strong>following subjects</strong>:
 	</p>
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">
 			<strong>threats to social and political cohesion</strong> and the tools to resolve them
 		</li>

@@ -10,6 +10,10 @@
 	const biographyHtml = marked(membre.biography);
 </script>
 
+<svelte:head>
+	<title>{name}</title>
+</svelte:head>
+
 <Breadcrumb
 	title={name}
 	title_path={name}
@@ -37,6 +41,4 @@
 </div>
 
 <style>
-
-
 </style>

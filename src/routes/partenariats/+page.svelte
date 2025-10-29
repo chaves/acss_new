@@ -1,11 +1,14 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js'
-    import * as m from '$lib/paraglide/messages.js';
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import { languageTag } from '$lib/paraglide/runtime.js';
+	import * as m from '$lib/paraglide/messages.js';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<Breadcrumb title={m.partners()} title_path={m.partners()} />
+<svelte:head>
+	<title>Institut ACSS-PSL : {m.partners()}</title>
+</svelte:head>
 
+<Breadcrumb title={m.partners()} title_path={m.partners()} />
 
 {#if languageTag() == 'fr'}
 	<p>
@@ -17,7 +20,7 @@
 		SOUTENIR L’INSTITUT PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> C’EST :
 	</p>
 
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">
 			<strong>Participer directement à la production de connaissances</strong> propres à nourrir la réflexion
 			sur les enjeux sociétaux et les stratégies collectives à déployer.
@@ -53,7 +56,7 @@
 	<p class="mt-6 font-bold">
 		SUPPORTING THE PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> INSTITUTE MEANS:
 	</p>
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">
 			<strong>Directly participating in the production of knowledge</strong> to inform a conversation
 			on social issues and the collective strategies to be deployed.

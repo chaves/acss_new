@@ -1,11 +1,15 @@
 <script lang="ts">
-    import type { PageData } from './$types';
+	import type { PageData } from './$types';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 
-    let { data }: { data: PageData } = $props();
+	let { data }: { data: PageData } = $props();
 	const name = data.membre.first_name + ' ' + data.membre.last_name;
 </script>
+
+<svelte:head>
+	<title>{name}</title>
+</svelte:head>
 
 <Breadcrumb
 	title={name}
@@ -19,20 +23,20 @@
 {#if typeof data.membre === 'undefined'}
 	<h1>Cette page n'existe pas.</h1>
 {:else}
-	<div class="flex flex-wrap mt-3">
+	<div class="mt-3 flex flex-wrap">
 		<div
-			class="w-full md:w-1/3 pr-12 px-3 order-0 md:order-0 mb-12 md:mb-0 wow animate__ animate__fadeIn animated"
+			class="order-0 md:order-0 wow animate__ animate__fadeIn animated mb-12 w-full px-3 pr-12 md:mb-0 md:w-1/3"
 			data-wow-delay="1s"
 			style="visibility: visible; animation-delay: 0.5s; animation-name: fadeIn;"
 		>
 			<img
-				class="object-cover rounded-xl w-80 shadow-md"
+				class="w-80 rounded-xl object-cover shadow-md"
 				src="/images/photos_members/{data.membre.photo}"
 				alt={data.membre.last_name}
 			/>
 		</div>
 
-		<div class="w-full md:w-2/3 px-3 text-sm">
+		<div class="w-full px-3 text-sm md:w-2/3">
 			<ul>
 				{#each data.membre.affiliations as affiliation}
 					<li>{affiliation}</li>
@@ -60,7 +64,7 @@
 	<p class="mt-6 font-bold">SELECTED PUBLICATIONS:</p>
 	<ul>
 		{#each data.membre.selected_publications as publication}
-			<li class="mt-3 mb-3">{@html publication}</li>
+			<li class="mb-3 mt-3">{@html publication}</li>
 		{/each}
 	</ul>
 {/if}

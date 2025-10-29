@@ -7,6 +7,10 @@
 	let { data }: PageProps = $props();
 </script>
 
+<svelte:head>
+	<title>Institut ACSS-PSL : AI & NLP (Natural Language Processing) workshop</title>
+</svelte:head>
+
 <Breadcrumb title={m.seminaire_nlp()} title_path="NLP" link="seminaires" link_text={m.seminars()} />
 
 <svelte:head>

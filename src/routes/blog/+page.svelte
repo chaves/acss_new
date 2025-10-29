@@ -6,6 +6,10 @@
 	let { data }: { data: PageData } = $props();
 </script>
 
+<svelte:head>
+	<title>Institut ACSS-PSL : Blog</title>
+</svelte:head>
+
 <Breadcrumb title="Blog" title_path="blog" />
 
 {#if data.posts.length > 0}

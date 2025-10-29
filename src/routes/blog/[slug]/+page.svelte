@@ -22,6 +22,10 @@
 	);
 </script>
 
+<svelte:head>
+	<title>{post.Title}</title>
+</svelte:head>
+
 <Breadcrumb
 	title={post.Title}
 	title_path={post.Title}
@@ -33,10 +37,11 @@
 <div class="flex flex-col md:flex-row">
 	<div class="blogPost flex-1">
 		<div class="prose max-w-none text-justify">{@html contentHtml}</div>
-        <p class="italic text-gray-500 text-right">
-            {m.published_at()} {localizedPublishedAt} <PostAuthors authors={post.authors} />
-        </p>
-
+		<p class="text-right italic text-gray-500">
+			{m.published_at()}
+			{localizedPublishedAt}
+			<PostAuthors authors={post.authors} />
+		</p>
 	</div>
 	<div class="flex items-start justify-center md:w-1/3 md:pl-4">
 		<img

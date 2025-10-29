@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js'
-    import * as m from '$lib/paraglide/messages.js';
+	import { languageTag } from '$lib/paraglide/runtime.js';
+	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-    function getTitle() {
+	function getTitle() {
 		if (languageTag() == 'en') {
 			return 'The PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> Institute :<br />a synergistic platform for its researchers';
 		} else {
@@ -10,17 +10,21 @@
 		}
 	}
 
-    const title = getTitle();
+	const title = getTitle();
 </script>
 
-<Breadcrumb title={title} title_path={m.plafform()} />
+<svelte:head>
+	<title>Institut ACSS-PSL : {m.plafform()}</title>
+</svelte:head>
+
+<Breadcrumb {title} title_path={m.plafform()} />
 
 {#if languageTag() == 'fr'}
 	<p>
 		L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental est
 		de permettre une <strong>mutualisation ciblée de ressources</strong> afin de :
 	</p>
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">
 			Mener des <strong>projets ambitieux</strong> s’inscrivant dans le long-terme
 		</li>
@@ -37,7 +41,7 @@
 		</li>
 	</ul>
 
-	<h2 class="text-xl mt-6 py-3 border-t-4 border-b-4 border-blue-200">
+	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
 		L’Institut <strong>PSL–<span class="site_blue">AC</span><span class="site_red">SS</span></strong
 		> fédère sur toutes ses thématiques, un large spectre de contributeurs associés à d’importants programmes
 		de recherche financés.
@@ -46,7 +50,7 @@
 	<div class="grid grid-cols-2 gap-10">
 		<div>
 			<p class="mt-6 font-bold">CENTRES DE RECHERCHES CONCERNÉS AU SEIN DE PSL:</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">
 					<a class="underline" href="https://www.ceremade.dauphine.fr/"
 						>Centre de Recherche en Mathématiques de la Décision</a
@@ -97,7 +101,7 @@
 			</ul>
 
 			<p class="mt-6 font-bold">DISCIPLINES CORRESPONDANTES:</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">Droit et finances publiques</li>
 				<li class="mt-3">Économie</li>
 				<li class="mt-3">Finance</li>
@@ -112,7 +116,7 @@
 			<p class="mt-6 font-bold">
 				CHAIRES & PROGRAMMES FINANCÉS, PORTÉS PAR LES CHERCHEURS DE L’INSTITUT:
 			</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">
 					ANR (Agence Nationale de la Recherche) Job quality and Work Sustainability
 				</li>
@@ -148,7 +152,7 @@
 			>targeted pooling of resources</strong
 		> in order to:
 	</p>
-	<ul class="list-disc ml-6">
+	<ul class="ml-6 list-disc">
 		<li class="mt-3">Conduct <strong>ambitious projects</strong> with a long time horizon</li>
 		<li class="mt-3">
 			Function as a <strong>training resource</strong> (basic and continuing training)
@@ -163,7 +167,7 @@
 		</li>
 	</ul>
 
-	<h2 class="text-xl mt-6 py-3 border-t-4 border-b-4 border-blue-200">
+	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
 		For all of its subjects, the <strong
 			>PSL-<span class="site_blue">AC</span><span class="site_red">SS</span></strong
 		> Institute unites a wide range of individuals who contribute to major funded research programmes
@@ -172,7 +176,7 @@
 	<div class="grid grid-cols-2 gap-10">
 		<div>
 			<p class="mt-6 font-bold">RESEARCH CENTERS CONCERNED AT PSL UNIVERSITY:</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">
 					<a class="underline" href="https://www.ceremade.dauphine.fr/"
 						>Centre de Recherche en Mathématiques de la Décision</a
@@ -223,7 +227,7 @@
 			</ul>
 
 			<p class="mt-6 font-bold">CORRESPONDING DISCIPLINES:</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">Administrative sciences</li>
 				<li class="mt-3">Cognitive sciences</li>
 				<li class="mt-3">Computer and data science</li>
@@ -238,7 +242,7 @@
 			<p class="mt-6 font-bold">
 				CHAIRS & PROGRAMMES FUNDED AND RUN BY THE INSTITUTE’S RESEARCH STAFF:
 			</p>
-			<ul class="list-disc ml-6">
+			<ul class="ml-6 list-disc">
 				<li class="mt-3">
 					ANR (Agence Nationale de la Recherche) Job quality and Work Sustainability
 				</li>

@@ -7,6 +7,10 @@
 	let { data }: PageProps = $props();
 </script>
 
+<svelte:head>
+	<title>Institut ACSS-PSL : Public Governance workshop</title>
+</svelte:head>
+
 <Breadcrumb
 	title={m.public_governance()}
 	title_path="Public Governance"
