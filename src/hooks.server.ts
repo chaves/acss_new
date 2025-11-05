@@ -52,12 +52,18 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	}
 
 	// Cache control headers for static assets
-	if (event.url.pathname.startsWith('/images/') ||
-	    event.url.pathname.startsWith('/files/') ||
-	    event.url.pathname.match(/\.(jpg|jpeg|png|webp|svg|woff|woff2|ttf|eot)$/)) {
+	const pathname = event.url.pathname;
+	const isStaticAsset = 
+		pathname.startsWith('/images/') ||
+		pathname.startsWith('/files/') ||
+		pathname.match(/^\/(en|fr)\/images\//) ||
+		pathname.match(/^\/(en|fr)\/files\//) ||
+		pathname.match(/\.(jpg|jpeg|png|webp|svg|woff|woff2|ttf|eot)$/);
+	
+	if (isStaticAsset) {
 		// Cache images and fonts for 1 year
 		response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
-	} else if (event.url.pathname.startsWith('/_app/')) {
+	} else if (pathname.startsWith('/_app/') || pathname.includes('/_app/')) {
 		// Cache built assets with hash for 1 year
 		response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
 	} else {
