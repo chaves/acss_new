@@ -5,12 +5,21 @@ export const reroute: Reroute = ({ url }) => {
 	const pathname = url.pathname;
 
 	// Don't reroute static assets, built files, or API routes
+	// Check both with and without potential language prefix
 	if (
 		pathname.startsWith('/_app/') ||
 		pathname.startsWith('/images/') ||
 		pathname.startsWith('/files/') ||
-		pathname.startsWith('/api/')
+		pathname.startsWith('/api/') ||
+		pathname.includes('/_app/') ||
+		pathname.match(/^\/(en|fr)\/images\//) ||
+		pathname.match(/^\/(en|fr)\/files\//)
 	) {
+		// For language-prefixed static assets, remove the language prefix
+		const match = pathname.match(/^\/(en|fr)\/(images|files)\//);
+		if (match) {
+			return pathname.replace(/^\/(en|fr)\//, '/');
+		}
 		return pathname;
 	}
 
