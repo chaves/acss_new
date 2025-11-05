@@ -1,8 +1,8 @@
 <script lang="ts">
 	import { locales, getLocale } from '$lib/paraglide/runtime';
-	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';
+	import { browser } from '$app/environment';
 
 	interface Props {
 		reduced?: boolean;
@@ -15,8 +15,11 @@
 
 	/**
 	 * Switch to a new language by replacing the language prefix in the URL
+	 * Uses full page reload to ensure CSS and all assets are properly loaded
 	 */
 	function switchToLanguage(newLanguage: string) {
+		if (!browser) return;
+		
 		const currentPath = get(page).url.pathname;
 		const [, currentLang, ...pathParts] = currentPath.split('/');
 
@@ -28,7 +31,8 @@
 			? `/${newLanguage}/${pathParts.join('/')}`
 			: `/${newLanguage}${currentPath}`;
 
-		goto(newPath);
+		// Use full page reload to ensure CSS is properly loaded
+		window.location.href = newPath;
 	}
 
 	const labels = {
