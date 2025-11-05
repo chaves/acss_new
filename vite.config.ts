@@ -8,7 +8,20 @@ export default defineConfig({
 		paraglideVitePlugin({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide'
-		})
+		}),
+		// Custom plugin to handle language-prefixed static assets in dev mode
+		{
+			name: 'handle-static-assets',
+			configureServer(server) {
+				server.middlewares.use((req, res, next) => {
+					// Strip language prefix from static asset requests
+					if (req.url && /^\/(en|fr)\/(images|files)\//.test(req.url)) {
+						req.url = req.url.replace(/^\/(en|fr)\//, '/');
+					}
+					next();
+				});
+			}
+		}
 	],
 	server: {
 		fs: {
