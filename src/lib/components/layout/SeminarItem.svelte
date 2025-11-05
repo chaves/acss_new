@@ -1,22 +1,25 @@
 <script lang="ts">
 	import seminar_options from '$lib/data/seminars_options.json';
 	import Link from '$lib/components/Link.svelte';
+	import { getAlternatingClass } from '$lib/helpers/ui';
+	import type { Seminar } from '$lib/types';
 
-	let { seminar, index, type = 'all', abstract = true } = $props();
-
-	const title = seminar_options.filter((s) => s.value === seminar.type)[0].name;
-	const url = seminar_options.filter((s) => s.value === seminar.type)[0].url;
-
-	function get_class(number: number) {
-		if (number % 2 == 0) {
-			return 'even';
-		} else {
-			return 'odd';
-		}
+	interface Props {
+		seminar: Seminar;
+		index: number;
+		type?: 'all' | 'specific';
+		abstract?: boolean;
 	}
+
+	let { seminar, index, type = 'all', abstract = true }: Props = $props();
+
+	let seminarOption = $derived(seminar_options.find((s) => s.value === seminar.type));
+	let title = $derived(seminarOption?.name ?? '');
+	let url = $derived(seminarOption?.url ?? '');
+	let itemClass = $derived(getAlternatingClass(index));
 </script>
 
-<div class="{get_class(index)} main">
+<div class="{itemClass} main">
 	<p>
 		<strong>{seminar.date} at {seminar.time.slice(0, 5)}h</strong>
 		{#if type == 'all'}

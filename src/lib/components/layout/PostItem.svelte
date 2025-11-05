@@ -1,31 +1,23 @@
 <script lang="ts">
-	import * as runtime from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
 	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
+	import { getAlternatingClass } from '$lib/helpers/ui';
+	import { formatDate } from '$lib/helpers/locale';
+	import type { BlogPost } from '$lib/types';
 
-	let { post, index } = $props();
-
-	function get_class(number: number) {
-		if (number % 2 == 0) {
-			return 'even';
-		} else {
-			return 'odd';
-		}
+	interface Props {
+		post: BlogPost;
+		index: number;
 	}
 
-	// Format the publishedAt date into a localized string
-	function formatDate(publishedAt: string) {
-		return new Date(publishedAt).toLocaleDateString(runtime.getLocale(), {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	}
+	let { post, index }: Props = $props();
+	let itemClass = $derived(getAlternatingClass(index));
+	let formattedDate = $derived(formatDate(post.publishedAt));
 </script>
 
-<div class="{get_class(index)} main">
+<div class="{itemClass} main">
 	{#if post.Image}
 		<OptimizedImage
 			image={post.Image}
@@ -36,9 +28,9 @@
 	{/if}
 	<p>
 		<Link href="/blog/{post.Slug}">{post.Title}</Link> -
-		<span class="font-light italic text-gray-500"
-			>({m.published_at()} {formatDate(post.publishedAt)})</span
-		>
+		<span class="font-light italic text-gray-500">
+			({m.published_at()} {formattedDate})
+		</span>
 		- <PostAuthors authors={post.authors} />
 	</p>
 </div>

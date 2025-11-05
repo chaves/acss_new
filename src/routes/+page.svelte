@@ -1,19 +1,20 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import { getLocale } from '$lib/paraglide/runtime.js';
 	import Link from '$lib/components/Link.svelte';
-
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import PostItem from '$lib/components/layout/PostItem.svelte';
 	import SEO from '$lib/seo/SEO.svelte';
 	import StructuredData from '$lib/seo/StructuredData.svelte';
 	import { generateOrganizationSchema, generateWebSiteSchema } from '$lib/seo/schema-utils';
-
-	import type { PageData } from './$types';
-	let { data }: { data: PageData } = $props();
-
+	import { getOGLocale, isEnglish } from '$lib/helpers/locale';
 	import { Carousel } from 'flowbite-svelte';
 	import images from '$lib/data/images_home.json';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
+
+	let currentLocale = $derived(getOGLocale());
+	let isEn = $derived(isEnglish());
 
 	const organizationSchema = generateOrganizationSchema();
 	const websiteSchema = generateWebSiteSchema();
@@ -24,7 +25,7 @@
 	description="Expertise in social sciences research coupled with data science capabilities to increase research relevance, inform decision-making, and foster better collective governance."
 	type="website"
 	url="/"
-	locale={getLocale() === 'en' ? 'en_US' : 'fr_FR'}
+	locale={currentLocale}
 	keywords="computational social sciences, data science, governance, PSL, research institute"
 />
 
@@ -52,7 +53,7 @@
 			Applied Computational Social Sciences<br />Data-Intensive Governance - PSL Institute
 		</h1>
 
-		{#if getLocale() == 'en'}
+		{#if isEn}
 			<h2 class="text-md mb-4 font-heading font-bold lg:text-xl">
 				Expertise in <span class="site_blue">social sciences</span> research coupled with
 				<span class="site_red">data science</span> capabilities in order to:
@@ -93,7 +94,7 @@
 <div class="mx-3 grid grid-cols-12 gap-6 pb-6">
 	<div class="col-span-12 rounded-xl bg-blueGray-100 p-6 text-center lg:col-span-8">
 		{#if data.seminars.length > 0}
-			{#if getLocale() == 'en'}
+			{#if isEn}
 				<h2>Upcoming working group sessions</h2>
 			{:else}
 				<h2>Prochaines sessions des groupes de travail</h2>

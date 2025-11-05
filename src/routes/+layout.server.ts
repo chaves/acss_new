@@ -1,26 +1,18 @@
 import type { LayoutServerLoad } from './$types';
-import * as runtime from '$lib/paraglide/runtime.js';
+import { getLocale } from '$lib/paraglide/runtime';
+import { getISOLocale } from '$lib/helpers/locale';
+import { DATETIME_FORMAT_OPTIONS } from '$lib/constants';
 
 export const prerender = true;
 
 export const load: LayoutServerLoad = async () => {
-	const selectedLanguage = runtime.getLocale() ?? 'fr';
-	let isoString = 'fr-FR';
-	if (selectedLanguage == 'en') {
-		isoString = 'en-US';
-	}
-	const lang = runtime.getLocale();
+	const lang = getLocale();
+	const isoLocale = getISOLocale();
 
 	return {
-		currentDateOnServer: new Intl.DateTimeFormat(isoString, {
-			timeZone: 'Europe/Paris',
-			weekday: 'long',
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric',
-			hour: 'numeric',
-			minute: 'numeric'
-		}).format(new Date()),
-		lang: lang
+		currentDateOnServer: new Intl.DateTimeFormat(isoLocale, DATETIME_FORMAT_OPTIONS).format(
+			new Date()
+		),
+		lang
 	};
 };

@@ -10,28 +10,21 @@
 	 * - SEO-friendly alt text
 	 */
 
+	import { getImageUrl, buildSrcSet, buildWebPSrcSet, getImageDimensions } from '$lib/services/strapi';
+	import type { StrapiImage } from '$lib/types';
+	import type { ImageSize, ImageLoading } from '$lib/constants';
+
 	interface Props {
 		/** Strapi image object with formats */
-		image?: {
-			url: string;
-			alternativeText?: string;
-			width?: number;
-			height?: number;
-			formats?: {
-				thumbnail?: { url: string; width: number; height: number };
-				small?: { url: string; width: number; height: number };
-				medium?: { url: string; width: number; height: number };
-				large?: { url: string; width: number; height: number };
-			};
-		};
+		image?: StrapiImage;
 		/** Alt text override (uses image.alternativeText if not provided) */
 		alt?: string;
 		/** CSS classes to apply */
 		class?: string;
-		/** Lazy load (default: true) */
-		loading?: 'lazy' | 'eager';
+		/** Lazy load (default: lazy) */
+		loading?: ImageLoading;
 		/** Image size priority: determines which format to use as primary */
-		size?: 'thumbnail' | 'small' | 'medium' | 'large';
+		size?: ImageSize;
 		/** Enable WebP format (default: true) */
 		webp?: boolean;
 	}
@@ -45,65 +38,17 @@
 		webp = true
 	}: Props = $props();
 
-	const CMS_URL = 'https://cms.acss-psl.eu';
+	// Derived values using the Strapi service
+	let fullUrl = $derived(image ? (getImageUrl(image, size) ?? '') : '');
+	let dimensions = $derived(image ? getImageDimensions(image, size) : undefined);
+	let srcset = $derived(image ? buildSrcSet(image) : undefined);
+	let webpSrcset = $derived(webp && srcset ? buildWebPSrcSet(srcset) : undefined);
+	let altText = $derived(alt || image?.alternativeText || 'Image');
 
-	// Early return if no image
+	// Warn in development if no image provided
 	if (!image || !image.url) {
 		console.warn('OptimizedImage: No image provided or image has no URL');
 	}
-
-	// Get the primary image URL
-	const primaryUrl = image?.formats?.[size]?.url || image?.url || '';
-	const fullUrl = primaryUrl ? `${CMS_URL}${primaryUrl}` : '';
-
-	// Get dimensions for preventing layout shift
-	const width = image?.formats?.[size]?.width || image?.width;
-	const height = image?.formats?.[size]?.height || image?.height;
-
-	// Build srcset for responsive images
-	const buildSrcSet = () => {
-		if (!image) return undefined;
-		const formats = image.formats;
-		if (!formats) return undefined;
-
-		const srcsetEntries: string[] = [];
-
-		// Add available formats to srcset
-		if (formats.thumbnail) {
-			srcsetEntries.push(`${CMS_URL}${formats.thumbnail.url} ${formats.thumbnail.width}w`);
-		}
-		if (formats.small) {
-			srcsetEntries.push(`${CMS_URL}${formats.small.url} ${formats.small.width}w`);
-		}
-		if (formats.medium) {
-			srcsetEntries.push(`${CMS_URL}${formats.medium.url} ${formats.medium.width}w`);
-		}
-		if (formats.large) {
-			srcsetEntries.push(`${CMS_URL}${formats.large.url} ${formats.large.width}w`);
-		}
-
-		return srcsetEntries.length > 0 ? srcsetEntries.join(', ') : undefined;
-	};
-
-	const srcset = buildSrcSet();
-	const altText = alt || image?.alternativeText || 'Image';
-
-	// Build WebP srcset if enabled (using Strapi URL parameter)
-	const buildWebPSrcSet = () => {
-		if (!webp || !srcset) return undefined;
-
-		// Strapi supports format conversion via URL parameters: ?format=webp
-		// Only works if Sharp plugin is configured in Strapi
-		return srcset
-			.split(', ')
-			.map((entry) => {
-				const [url, size] = entry.split(' ');
-				return `${url}?format=webp ${size}`;
-			})
-			.join(', ');
-	};
-
-	const webpSrcset = buildWebPSrcSet();
 </script>
 
 {#if fullUrl}
@@ -114,14 +59,17 @@
 		sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
 		alt={altText}
 		class={className}
-		width={width}
-		height={height}
-		loading={loading}
+		width={dimensions?.width}
+		height={dimensions?.height}
+		{loading}
 		decoding="async"
 	/>
 {:else}
 	<!-- Fallback for missing image -->
-	<div class={className} style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; min-height: 200px;">
+	<div
+		class={className}
+		style="background: #f0f0f0; display: flex; align-items: center; justify-content: center; min-height: 200px;"
+	>
 		<span style="color: #999;">Image not available</span>
 	</div>
 {/if}
