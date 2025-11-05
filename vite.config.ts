@@ -9,5 +9,15 @@ export default defineConfig({
 			project: './project.inlang',
 			outdir: './src/lib/paraglide'
 		})
-	]
+	],
+	build: {
+		cssMinify: 'lightningcss',
+		cssCodeSplit: true,
+		minify: 'esbuild',
+		rollupOptions: {
+			output: {
+				manualChunks: undefined
+			}
+		}
+	}
 });
