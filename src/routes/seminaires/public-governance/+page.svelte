@@ -31,7 +31,7 @@
 		placed on research with NLP methods due to the proven usefulness of transforming text into data
 		for further econometric analysis.
 	</p>
-	<p>Periodicity: Every Monday from 17h30 to 19h.</p>
+	<p>Periodicity: on Mondays from 17h30 to 19h.</p>
 	<p>
 		To attend, please contact <strong>Vladimir Avetian:</strong>
 		<strong

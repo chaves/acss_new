@@ -32,7 +32,7 @@
 	<div class="seminar">
 		<h3>
 			<a href="/seminaires/public-governance">Public Governance workshop</a>
-			<span>- every other Monday from 17h30 to 19h</span>
+			<span>- on Mondays from 17h30 to 19h</span>
 		</h3>
 
 		<p>
@@ -48,7 +48,7 @@
 	<div class="seminar">
 		<h3>
 			<a href="/seminaires/nlp">AI & NLP (Natural Language Processing) workshop</a>
-			<span>- every other Monday from 17h30 to 19h</span>
+			<span>- on Thursdays from 12h15 to 13h30</span>
 		</h3>
 		<p>
 			The aim of this workshop is to promote technical and practical exchanges between researchers
