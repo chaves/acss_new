@@ -4,17 +4,31 @@
 
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import PostItem from '$lib/components/layout/PostItem.svelte';
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import { generateOrganizationSchema, generateWebSiteSchema } from '$lib/seo/schema-utils';
 
 	import type { PageData } from './$types';
 	let { data }: { data: PageData } = $props();
 
 	import { Carousel } from 'flowbite-svelte';
 	import images from '$lib/data/images_home.json';
+
+	const organizationSchema = generateOrganizationSchema();
+	const websiteSchema = generateWebSiteSchema();
 </script>
 
-<svelte:head>
-	<title>Institut ACSS-PSL : Applied Computational Social Sciences</title>
-</svelte:head>
+<SEO
+	title="Institut ACSS-PSL : Applied Computational Social Sciences"
+	description="Expertise in social sciences research coupled with data science capabilities to increase research relevance, inform decision-making, and foster better collective governance."
+	type="website"
+	url="/"
+	locale={languageTag() === 'en' ? 'en_US' : 'fr_FR'}
+	keywords="computational social sciences, data science, governance, PSL, research institute"
+/>
+
+<StructuredData data={organizationSchema} />
+<StructuredData data={websiteSchema} />
 
 <div class="mb-6 rounded-xl bg-blueGray-100 p-6">
 	<div class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-8 md:text-left">

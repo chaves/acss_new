@@ -8,13 +8,41 @@ const config = {
 	preprocess: [vitePreprocess()],
 
 	kit: {
-		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
-		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
-		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
-		adapter: adapter(),
+		adapter: adapter({
+			// Enable edge functions for faster response times
+			runtime: 'nodejs20.x',
+			// Configure regions for optimal performance
+			regions: ['cdg1'], // Paris region for EU traffic
+			// ISR configuration - useful for semi-static pages
+			isr: {
+				// Cache invalidation time in seconds (1 hour)
+				expiration: 3600
+			}
+		}),
 		prerender: {
 			//Needed for correctly prerendering <link rel="alternate" hreflang="x" href="y">
-			// origin: "https://github.io",
+			origin: 'https://acss-dig.psl.eu',
+			// Crawl all links to discover pages
+			crawl: true,
+			// Prerender these pages for better initial performance
+			entries: [
+				'*',
+				'/en',
+				'/fr',
+				'/en/mission',
+				'/fr/mission',
+				'/en/plateforme',
+				'/fr/plateforme',
+				'/en/partenariats',
+				'/fr/partenariats'
+			]
+		},
+		csp: {
+			mode: 'auto',
+			directives: {
+				'script-src': ['self', 'unsafe-inline'],
+				'img-src': ['self', 'data:', 'https://cms.acss-psl.eu']
+			}
 		}
 	},
 

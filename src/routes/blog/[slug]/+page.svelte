@@ -3,6 +3,9 @@
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import * as runtime from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import { generateArticleSchema, generateBreadcrumbSchema } from '$lib/seo/schema-utils';
 
 	import { marked } from 'marked';
 	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
@@ -20,11 +23,43 @@
 			day: 'numeric'
 		}
 	);
+
+	// Generate description from content
+	const description = post.Content.substring(0, 160).replace(/[#*\[\]]/g, '').trim() + '...';
+
+	// Create article schema
+	const articleSchema = generateArticleSchema({
+		title: post.Title,
+		description,
+		publishedAt: post.publishedAt,
+		modifiedAt: post.updatedAt,
+		image: post.Image ? `https://cms.acss-psl.eu${post.Image.formats.medium.url}` : undefined,
+		authors: post.authors,
+		url: `/blog/${post.Slug}`
+	});
+
+	// Create breadcrumb schema
+	const breadcrumbSchema = generateBreadcrumbSchema([
+		{ name: 'Home', url: '/' },
+		{ name: 'Blog', url: '/blog' },
+		{ name: post.Title, url: `/blog/${post.Slug}` }
+	]);
 </script>
 
-<svelte:head>
-	<title>{post.Title}</title>
-</svelte:head>
+<SEO
+	title={`${post.Title} - Institut ACSS-PSL`}
+	description={description}
+	type="article"
+	url={`/blog/${post.Slug}`}
+	image={post.Image ? `https://cms.acss-psl.eu${post.Image.formats.medium.url}` : undefined}
+	author={post.authors?.[0]?.name || 'Institut ACSS-PSL'}
+	publishedTime={post.publishedAt}
+	modifiedTime={post.updatedAt}
+	locale={runtime.languageTag() === 'en' ? 'en_US' : 'fr_FR'}
+/>
+
+<StructuredData data={articleSchema} />
+<StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
 	title={post.Title}
