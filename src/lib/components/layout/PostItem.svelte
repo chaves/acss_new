@@ -16,7 +16,7 @@
 
 	// Format the publishedAt date into a localized string
 	function formatDate(publishedAt: string) {
-		return new Date(publishedAt).toLocaleDateString(runtime.languageTag(), {
+		return new Date(publishedAt).toLocaleDateString(runtime.getLocale(), {
 			year: 'numeric',
 			month: 'long',
 			day: 'numeric'

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
@@ -10,7 +10,7 @@
 
 <Breadcrumb title={m.partners()} title_path={m.partners()} />
 
-{#if languageTag() == 'fr'}
+{#if getLocale() == 'fr'}
 	<p>
 		Des partenaires sont nécessaires au développement de l’Institut, tant pour financer son
 		fonctionnement général que ses projets de recherche dont ils seront les premiers bénéficiaires.

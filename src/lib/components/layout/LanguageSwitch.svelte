@@ -1,24 +1,34 @@
-
 <script lang="ts">
-	// Thx to https://github.com/LorisSigrist/paraglide-sveltekit-example
-	import { availableLanguageTags, languageTag } from '$lib/paraglide/runtime';
-	import { i18n } from '$lib/i18n';
+	import { locales, getLocale } from '$lib/paraglide/runtime';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';
+
 	interface Props {
 		reduced?: boolean;
 	}
 
 	let { reduced = false }: Props = $props();
 
+	// Make current language reactive
+	let currentLang = $derived(getLocale());
+
 	/**
-	 * @param { import("$lib/paraglide/runtime").AvailableLanguageTag } newLanguage
+	 * Switch to a new language by replacing the language prefix in the URL
 	 */
-	function switchToLanguage(newLanguage: import("$lib/paraglide/runtime").AvailableLanguageTag) {
-		const canonicalPath = i18n.route(get(page).url.pathname);
-		const localisedPath = i18n.resolveRoute(canonicalPath, newLanguage);
-		goto(localisedPath);
+	function switchToLanguage(newLanguage: string) {
+		const currentPath = get(page).url.pathname;
+		const [, currentLang, ...pathParts] = currentPath.split('/');
+
+		// Check if the first segment is a language tag
+		const hasLangPrefix = locales.includes(currentLang as any);
+
+		// Build the new path with the new language prefix
+		const newPath = hasLangPrefix
+			? `/${newLanguage}/${pathParts.join('/')}`
+			: `/${newLanguage}${currentPath}`;
+
+		goto(newPath);
 	}
 
 	const labels = {
@@ -34,24 +44,26 @@
 
 <div class="languageSwitcher">
 	{#if reduced}
-		{#each availableLanguageTags as langTag}
-			<a
-				href="javascript:void(0)"
+		{#each locales as langTag}
+			<button
+				type="button"
 				onclick={() => switchToLanguage(langTag)}
-				class:selected={languageTag() === langTag}
+				class:selected={currentLang === langTag}
+				aria-label="Switch to {labels[langTag]}"
 			>
 				{reducedLabels[langTag]}
-			</a>
+			</button>
 		{/each}
 	{:else}
-		{#each availableLanguageTags as langTag}
-			<a
-				href="javascript:void(0)"
+		{#each locales as langTag}
+			<button
+				type="button"
 				onclick={() => switchToLanguage(langTag)}
-				class:selected={languageTag() === langTag}
+				class:selected={currentLang === langTag}
+				aria-label="Switch to {labels[langTag]}"
 			>
 				{labels[langTag]}
-			</a>
+			</button>
 		{/each}
 	{/if}
 </div>
@@ -62,14 +74,23 @@
 		gap: 0.5rem;
 	}
 
-	a {
+	button {
 		font-size: 0.9rem;
 		text-decoration: none;
 		cursor: pointer;
-		color: #1D4796;
+		color: #1d4796;
+		background: none;
+		border: none;
+		padding: 0;
+		font-family: inherit;
 	}
 
-	a.selected {
-		color: #B84C7C;
+	button:hover {
+		opacity: 0.8;
+	}
+
+	button.selected {
+		color: #b84c7c;
+		font-weight: 600;
 	}
 </style>

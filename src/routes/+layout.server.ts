@@ -4,12 +4,12 @@ import * as runtime from '$lib/paraglide/runtime.js';
 export const prerender = true;
 
 export const load: LayoutServerLoad = async () => {
-	const selectedLanguage = runtime.languageTag() ?? 'fr';
+	const selectedLanguage = runtime.getLocale() ?? 'fr';
 	let isoString = 'fr-FR';
 	if (selectedLanguage == 'en') {
 		isoString = 'en-US';
 	}
-	const lang = runtime.languageTag();
+	const lang = runtime.getLocale();
 
 	return {
 		currentDateOnServer: new Intl.DateTimeFormat(isoString, {

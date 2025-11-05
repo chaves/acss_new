@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import PostItem from '$lib/components/layout/PostItem.svelte';
@@ -23,7 +23,7 @@
 	description="Expertise in social sciences research coupled with data science capabilities to increase research relevance, inform decision-making, and foster better collective governance."
 	type="website"
 	url="/"
-	locale={languageTag() === 'en' ? 'en_US' : 'fr_FR'}
+	locale={getLocale() === 'en' ? 'en_US' : 'fr_FR'}
 	keywords="computational social sciences, data science, governance, PSL, research institute"
 />
 
@@ -51,7 +51,7 @@
 			Applied Computational Social Sciences<br />Data-Intensive Governance - PSL Institute
 		</h1>
 
-		{#if languageTag() == 'en'}
+		{#if getLocale() == 'en'}
 			<h2 class="text-md mb-4 font-heading font-bold lg:text-xl">
 				Expertise in <span class="site_blue">social sciences</span> research coupled with
 				<span class="site_red">data science</span> capabilities in order to:
@@ -92,7 +92,7 @@
 <div class="mx-3 grid grid-cols-12 gap-6 pb-6">
 	<div class="col-span-12 rounded-xl bg-blueGray-100 p-6 text-center lg:col-span-8">
 		{#if data.seminars.length > 0}
-			{#if languageTag() == 'en'}
+			{#if getLocale() == 'en'}
 				<h2>Upcoming working group sessions</h2>
 			{:else}
 				<h2>Prochaines sessions des groupes de travail</h2>

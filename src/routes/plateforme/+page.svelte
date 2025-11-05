@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	function getTitle() {
-		if (languageTag() == 'en') {
+		if (getLocale() == 'en') {
 			return 'The PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> Institute :<br />a synergistic platform for its researchers';
 		} else {
 			return 'L’Institut PSL-<span class="site_blue">AC</span><span class="site_red">SS</span> :<br />une plateforme de synergies pour ses chercheurs';
@@ -19,7 +19,7 @@
 
 <Breadcrumb {title} title_path={m.plafform()} />
 
-{#if languageTag() == 'fr'}
+{#if getLocale() == 'fr'}
 	<p>
 		L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental est
 		de permettre une <strong>mutualisation ciblée de ressources</strong> afin de :

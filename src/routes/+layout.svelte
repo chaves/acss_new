@@ -1,9 +1,8 @@
 <script lang="ts">
 	import type { LayoutProps } from './$types';
-
-	import { i18n } from '$lib/i18n';
-	import { ParaglideJS } from '@inlang/paraglide-sveltekit';
-	import { languageTag } from '$lib/paraglide/runtime.js'
+	import { page } from '$app/stores';
+	import { browser } from '$app/environment';
+	import { getLocale, setLocale, locales, baseLocale } from '$lib/paraglide/runtime.js';
 	import '../app.css';
 
 	import Navigation from '$lib/components/layout/Navigation.svelte';
@@ -11,21 +10,34 @@
 
 	let { data, children }: LayoutProps = $props();
 
+	// Update locale when URL changes (client-side navigation)
+	$effect(() => {
+		if (browser) {
+			const pathname = $page.url.pathname;
+			const [, lang] = pathname.split('/');
+			const newLocale = locales.includes(lang as any) ? lang : baseLocale;
+
+			// Only set if different to avoid unnecessary updates
+			if (getLocale() !== newLocale) {
+				setLocale(newLocale as any);
+			}
+		}
+	});
+
+	// Make locale reactive
+	let currentLocale = $derived(getLocale());
 </script>
 
-<ParaglideJS {i18n}>
-	<!--Header-->
+<!--Header-->
 
-	<Navigation lang={languageTag()} />
+<Navigation lang={currentLocale} />
 
-	<section class="py-9 bg-blueGray-50">
-		<div class="container main">
-			<div class="mx-auto mb-6">
-				{@render children()}
-			</div>
+<section class="py-9 bg-blueGray-50">
+	<div class="container main">
+		<div class="mx-auto mb-6">
+			{@render children()}
 		</div>
-	</section>
+	</div>
+</section>
 
-	<Footer />
-
-</ParaglideJS>
+<Footer />

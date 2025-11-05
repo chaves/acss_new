@@ -17,7 +17,7 @@
 
 	// Format the publishedAt date into a localized string
 	const localizedPublishedAt = new Date(post.publishedAt).toLocaleDateString(
-		runtime.languageTag(),
+		runtime.getLocale(),
 		{
 			year: 'numeric',
 			month: 'long',
@@ -56,7 +56,7 @@
 	author={post.authors?.[0]?.name || 'Institut ACSS-PSL'}
 	publishedTime={post.publishedAt}
 	modifiedTime={post.updatedAt}
-	locale={runtime.languageTag() === 'en' ? 'en_US' : 'fr_FR'}
+	locale={runtime.getLocale() === 'en' ? 'en_US' : 'fr_FR'}
 />
 
 <StructuredData data={articleSchema} />

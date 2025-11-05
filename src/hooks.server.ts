@@ -1,8 +1,36 @@
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
-import { i18n } from '$lib/i18n';
+import { locales, baseLocale, setLocale, overwriteGetLocale } from '$lib/paraglide/runtime';
 
-const handleParaglide: Handle = i18n.handle();
+// Override getLocale to get locale from event locals
+overwriteGetLocale(() => {
+	// This will be set by the middleware
+	return (globalThis as any).__PARAGLIDE_LOCALE__ || baseLocale;
+});
+
+const handleParaglide: Handle = async ({ event, resolve }) => {
+	// Get the language from the URL path
+	const [, lang] = event.url.pathname.split('/');
+	const languageTag = locales.includes(lang as any)
+		? lang
+		: baseLocale;
+
+	// Set the locale globally for this request
+	(globalThis as any).__PARAGLIDE_LOCALE__ = languageTag;
+
+	// Also set it using setLocale
+	setLocale(languageTag as any);
+
+	return resolve(event, {
+		transformPageChunk: ({ html }) => {
+			// Replace placeholders in app.html
+			// For now, using 'ltr' as default text direction (can be configured if needed)
+			return html
+				.replace('%lang%', languageTag)
+				.replace('%textDirection%', 'ltr');
+		}
+	});
+};
 
 // Security and SEO headers
 const handleHeaders: Handle = async ({ event, resolve }) => {

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { languageTag } from '$lib/paraglide/runtime.js';
+	import { getLocale } from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
@@ -10,7 +10,7 @@
 
 <Breadcrumb title={m.mission()} title_path={m.mission()} />
 
-{#if languageTag() == 'fr'}
+{#if getLocale() == 'fr'}
 	<p class="mt-0">
 		La <span class="site_blue font-bold">transformation numérique</span> rend possible la collecte
 		et le traitement à <span class="site_blue font-bold">large échelle</span>

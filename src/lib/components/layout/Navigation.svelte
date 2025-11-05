@@ -13,7 +13,7 @@
 	import { ChevronDownOutline } from 'flowbite-svelte-icons';
 
 	import { page } from '$app/state';
-	import { i18n } from '$lib/i18n';
+	import { locales } from '$lib/paraglide/runtime';
 
 	// Internal components/modules
 	import LanguageSwitch from './LanguageSwitch.svelte';
@@ -25,7 +25,17 @@
 	// Variables
 	const { lang } = $props();
 	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
-	let activeUrl = $derived(i18n.route(page.url.pathname));
+
+	// Get canonical path without language prefix for activeUrl matching
+	let activeUrl = $derived.by(() => {
+		const pathname = page.url.pathname;
+		const [, firstSegment, ...rest] = pathname.split('/');
+		// If first segment is a language tag, remove it
+		if (locales.includes(firstSegment as any)) {
+			return '/' + rest.join('/');
+		}
+		return pathname;
+	});
 
 </script>
 
