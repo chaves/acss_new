@@ -10,8 +10,8 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		paths: {
-			// Ensure assets are always loaded from root, not relative to language-prefixed paths
-			assets: '',
+			// Ensure assets are always loaded from absolute root URL
+			assets: 'https://acss-dig.psl.eu',
 			base: ''
 		},
 		prerender: {
