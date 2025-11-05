@@ -10,8 +10,8 @@ const config = {
 	kit: {
 		adapter: adapter(),
 		paths: {
-			// Ensure assets are always loaded from absolute root URL
-			assets: 'https://acss-dig.psl.eu',
+			// Only set absolute assets path in production (Vercel will set VERCEL env var)
+			assets: process.env.VERCEL ? 'https://acss-dig.psl.eu' : '',
 			base: ''
 		},
 		prerender: {
