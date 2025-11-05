@@ -1,12 +1,23 @@
-
 import type { PageServerLoad } from './$types';
+import { authors } from '$lib/api';
+import { error } from '@sveltejs/kit';
 
-export const load = (async ({ params }: { params: { slug: string } }) => {
-    const source = 'https://cms.acss-psl.eu/api/authors'
-    const url_membre = `${source}?filters[Slug]=${params.slug}`;
-    const membre = await (await fetch(url_membre)).json();
-    // console.log(membre.data);
-    return {
-        membre: membre.data
-    };
+export const load = (async ({ params }) => {
+	try {
+		const membre = await authors.getBySlug(params.slug);
+		
+		if (!membre) {
+			throw error(404, `Team member not found: ${params.slug}`);
+		}
+
+		return {
+			membre: [membre]
+		};
+	} catch (err) {
+		console.error('Error loading team member:', err);
+		if ((err as any).status === 404) {
+			throw err;
+		}
+		return { membre: [] };
+	}
 }) satisfies PageServerLoad;

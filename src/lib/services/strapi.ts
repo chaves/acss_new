@@ -25,7 +25,7 @@ export function getImageUrl(
 	size: 'thumbnail' | 'small' | 'medium' | 'large' = 'medium'
 ): string | undefined {
 	if (!image) return undefined;
-	
+
 	const url = image.formats?.[size]?.url || image.url;
 	return url ? buildImageUrl(url) : undefined;
 }

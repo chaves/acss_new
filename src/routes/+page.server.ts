@@ -1,41 +1,21 @@
 import type { PageServerLoad } from './$types';
+import { posts, seminars } from '$lib/api';
 
 export const load = (async () => {
-	const date = new Date().toISOString();
-	const source = 'https://cms.acss-psl.eu/api/';
-
-	// Build endpoints
-	const url_seminars = `${source}seminars?filters[date][$gte]=${date}&sort=date:asc`;
-	const url_posts = `${source}posts?pagination[pageSize]=10&populate=*&sort=publishedAt:desc`;
-
 	try {
-		// Run both fetch requests concurrently
-		const [seminarRes, postsRes] = await Promise.all([
-			fetch(url_seminars),
-			fetch(url_posts)
-		]);
-
-		// Check for errors in responses
-		if (!seminarRes.ok) {
-			throw new Error(`Failed to fetch seminars: ${seminarRes.status}`);
-		}
-		if (!postsRes.ok) {
-			throw new Error(`Failed to fetch posts: ${postsRes.status}`);
-		}
-
-		// Parse both JSON responses concurrently
-		const [seminarsJson, postsJson] = await Promise.all([
-			seminarRes.json(),
-			postsRes.json()
+		// Run both API requests concurrently
+		const [upcomingSeminars, recentPosts] = await Promise.all([
+			seminars.getUpcoming(),
+			posts.getRecent(10)
 		]);
 
 		return {
-			seminars: seminarsJson.data,
-			posts: postsJson.data
+			seminars: upcomingSeminars,
+			posts: recentPosts
 		};
 	} catch (error) {
-		// Log the error for debugging purposes.
-		console.error('Error in load function:', error);
+		// Log the error for debugging
+		console.error('Error loading homepage data:', error);
 		// Return empty arrays in case of error
 		return {
 			seminars: [],

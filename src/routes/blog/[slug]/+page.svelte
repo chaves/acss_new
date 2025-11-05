@@ -18,7 +18,7 @@
 	// Compute static values
 	const description = generateDescription(post.Content);
 	const imageUrl = post.Image ? getImageUrl(post.Image, 'medium') : undefined;
-	
+
 	// Create schemas
 	const articleSchema = generateArticleSchema({
 		title: post.Title,

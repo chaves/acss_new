@@ -1,18 +1,21 @@
 import type { PageServerLoad } from './$types';
+import { posts } from '$lib/api';
+import { error } from '@sveltejs/kit';
 
-export const load = (async ({ params }: { params: { slug: string } }) => {
-  const source = 'https://cms.acss-psl.eu/api/';
-  const url_posts = `${source}posts?filters[Slug]=${params.slug}&populate=*`;
+export const load = (async ({ params }) => {
+	try {
+		const post = await posts.getBySlug(params.slug);
+		
+		if (!post) {
+			throw error(404, `Post not found: ${params.slug}`);
+		}
 
-  try {
-    const res = await fetch(url_posts);
-    if (!res.ok) {
-      throw new Error(`Failed to fetch post: ${res.status} ${res.statusText}`);
-    }
-    const data = await res.json();
-    return { post: data.data };
-  } catch (error) {
-    console.error("Error loading post:", error);
-    return { post: [] };
-  }
-}) satisfies PageServerLoad
+		return { post: [post] };
+	} catch (err) {
+		console.error('Error loading post:', err);
+		if ((err as any).status === 404) {
+			throw err;
+		}
+		return { post: [] };
+	}
+}) satisfies PageServerLoad;

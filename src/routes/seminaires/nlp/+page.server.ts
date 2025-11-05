@@ -1,14 +1,37 @@
 import type { PageServerLoad } from './$types';
+import { seminars } from '$lib/api';
 
 export const load = (async () => {
-    const date: string = new Date().toISOString();
-    const source = 'https://cms.acss-psl.eu/api/seminars'
-    const url_upcoming = `${source}?filters[type]=nlp&filters[date][$gte]=${date}&sort=date:asc`;
-    const url_past = `${source}?filters[type]=nlp&filters[date][$lt]=${date}&sort=date:desc`;
-    const seminars_upcoming = await (await fetch(url_upcoming)).json();
-    const seminars_past = await (await fetch(url_past)).json();
-    return {
-        seminars_upcoming: seminars_upcoming.data,
-        seminars_past: seminars_past.data
-    };
+	try {
+		const today = new Date().toISOString();
+		
+		// Run both requests concurrently
+		const [seminars_upcoming, seminars_past] = await Promise.all([
+			seminars.getAll({
+				filters: {
+					type: 'nlp',
+					date: { $gte: today }
+				},
+				sort: 'date:asc'
+			}),
+			seminars.getAll({
+				filters: {
+					type: 'nlp',
+					date: { $lt: today }
+				},
+				sort: 'date:desc'
+			})
+		]);
+
+		return {
+			seminars_upcoming,
+			seminars_past
+		};
+	} catch (error) {
+		console.error('Error loading NLP seminars:', error);
+		return {
+			seminars_upcoming: [],
+			seminars_past: []
+		};
+	}
 }) satisfies PageServerLoad;

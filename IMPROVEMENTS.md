@@ -127,12 +127,12 @@ const srcset = buildSrcSet(post.Image);
 <script lang="ts">
   import * as runtime from '$lib/paraglide/runtime.js';
   let { post, index } = $props();
-  
+
   function get_class(number: number) {
     if (number % 2 == 0) return 'even';
     else return 'odd';
   }
-  
+
   function formatDate(publishedAt: string) {
     return new Date(publishedAt).toLocaleDateString(runtime.getLocale(), {
       year: 'numeric',
@@ -317,7 +317,7 @@ const formattedDate = new Date(post.publishedAt).toLocaleDateString(...);
 <script>
   // ✅ DO: Use $derived for reactive computations
   let fullName = $derived(`${firstName} ${lastName}`);
-  
+
   // ❌ DON'T: Use $derived for static values
   let description = $derived(generateDescription(post.Content)); // post.Content won't change
 </script>
