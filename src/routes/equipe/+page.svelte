@@ -19,6 +19,8 @@
 							alt="{membre.FirstName} {membre.LastName}"
 							width="150"
 							height="150"
+							loading="lazy"
+							decoding="async"
 						/>
 						<div class="pl-4">
 							<strong class="mt-6 mb-2 text-xl">

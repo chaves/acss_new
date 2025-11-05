@@ -32,7 +32,11 @@
 			<img
 				class="w-80 rounded-xl object-cover shadow-md"
 				src="/images/photos_members/{data.membre.photo}"
-				alt={data.membre.last_name}
+				alt="{data.membre.first_name} {data.membre.last_name}"
+				width="320"
+				height="320"
+				loading="eager"
+				decoding="async"
 			/>
 		</div>
 

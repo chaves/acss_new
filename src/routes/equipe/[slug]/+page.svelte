@@ -31,7 +31,11 @@
 			<img
 				class="w-80 rounded-xl object-cover shadow-md"
 				src="/images/photos_equipe/{membre.ImageFileName}"
-				alt={membre.LastName}
+				alt="{membre.FirstName} {membre.LastName}"
+				width="320"
+				height="320"
+				loading="eager"
+				decoding="async"
 			/>
 		</div>
 		<div class="equipe-bio order-0 md:order-0 mb-12 w-full px-3 pr-12 md:w-2/3">
