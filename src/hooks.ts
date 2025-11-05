@@ -3,7 +3,7 @@ import { locales } from '$lib/paraglide/runtime';
 
 export const reroute: Reroute = ({ url }) => {
 	const pathname = url.pathname;
-	
+
 	// Don't reroute static assets, built files, or API routes
 	if (
 		pathname.startsWith('/_app/') ||
@@ -13,7 +13,7 @@ export const reroute: Reroute = ({ url }) => {
 	) {
 		return pathname;
 	}
-	
+
 	// Extract language from URL path
 	const [, lang, ...rest] = pathname.split('/');
 

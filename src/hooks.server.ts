@@ -1,6 +1,6 @@
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
-import { locales, baseLocale } from '$lib/paraglide/runtime';
+import { locales, baseLocale, setLocale } from '$lib/paraglide/runtime';
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
 	// Redirect root path to default language
@@ -18,6 +18,9 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 	const languageTag = locales.includes(lang as any)
 		? lang
 		: baseLocale;
+
+	// Set the locale for this request (Paraglide JS 2.0 uses request context)
+	setLocale(languageTag as any);
 
 	return resolve(event, {
 		transformPageChunk: ({ html }) => {
