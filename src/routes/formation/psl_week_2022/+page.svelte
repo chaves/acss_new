@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-	import { localizeUrl } from '$lib/utils';
+	import Link from '$lib/components/Link.svelte';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
@@ -76,8 +76,8 @@
 <p>r and Rstudio (with tidyverse) has to be installed before.</p>
 <h1>Team:</h1>
 <p>
-	<a href={localizeUrl('/membres/christophe-benavent')}>Christophe Benavent</a>,
-	<a href={localizeUrl('/equipe/bruno-chaves-ferreira')}>Bruno Chaves Ferreira</a>,
+	<Link href="/membres/christophe-benavent">Christophe Benavent</Link>,
+	<Link href="/equipe/bruno-chaves-ferreira">Bruno Chaves Ferreira</Link>,
 	<strong>José Carlos Romero Moreno</strong>
 	and <strong>Olivier Caron</strong> from the Acss Institute.
 </p>
