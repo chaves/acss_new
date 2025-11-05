@@ -22,7 +22,12 @@
 	link_text={m.training()}
 />
 
-<img src="/images/psl_week/image_nlp.jpg" alt="PSL Week : NLP for Social Sciences" />
+<img
+	src="/images/psl_week/image_nlp.jpg"
+	alt="PSL Week : NLP for Social Sciences"
+	loading="eager"
+	decoding="async"
+/>
 
 <p>
 	The aim of the course is to provide theoretical and practical training in modern NLP methods for

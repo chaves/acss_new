@@ -32,7 +32,14 @@
 <header class="sticky top-0 z-50 bg-white pb-2 pt-4">
 	<Navbar>
 		<NavBrand href="/">
-			<img src="/images/logos/acss_logo.svg" class="me-3 h-9 sm:h-12" alt="ACSS Logo" />
+			<img
+				src="/images/logos/acss_logo.svg"
+				class="me-3 h-9 sm:h-12"
+				alt="ACSS-PSL Institute Logo"
+				loading="eager"
+				decoding="async"
+				fetchpriority="high"
+			/>
 		</NavBrand>
 		<NavHamburger />
 		<NavUl {activeUrl} activeClass="text-acss_red" nonActiveClass="text-acss_blue">

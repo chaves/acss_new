@@ -17,7 +17,12 @@
 <div class="flex flex-wrap">
 	<div class="cadre">
         <a href="/formation/psl_week_2022">
-            <img src="/images/hackhaton_2022/psl_week.png" alt="Hackathon" />
+            <img
+				src="/images/hackhaton_2022/psl_week.png"
+				alt="PSL Week - NLP methods for social sciences"
+				loading="lazy"
+				decoding="async"
+			/>
 		<div class="formation">(novembre 2022) PSL-WEEK - NLP methods for social sciences</div>
     </a>
 	</div>
@@ -25,7 +30,12 @@
 	<div class="cadre">
 		<a href="{`/formation/hackathon_2022`}">
 			<div class="formation">
-				<img src="/images/hackhaton_2022/personnes/image_1.jpeg" alt="Hackathon" />
+				<img
+					src="/images/hackhaton_2022/personnes/image_1.jpeg"
+					alt="Hackathon master SIREN"
+					loading="lazy"
+					decoding="async"
+				/>
 				<span>
 					(juin 2022) Hackathon du master SIREN en collaboration avec Services Publics +
 				</span>

@@ -57,8 +57,10 @@
 	<div class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-8 md:text-left">
 		<img
 			src="/images/visuels/Visuel_26-11-25.jpg"
-			alt="ACSS Research Seminar"
+			alt="ACSS Research Seminar on LLMs in Finance"
 			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
+			loading="eager"
+			decoding="async"
 		/>
 		<div>
 			<p class="text-xl font-semibold text-blueGray-600">

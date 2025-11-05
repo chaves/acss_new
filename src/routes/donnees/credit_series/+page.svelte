@@ -11,12 +11,24 @@
 
 <div class="float-right ml-6 px-3 border-l-4 border-slate-300">
 	<a data-no-translate href="https://acss-dig.psl.eu/data/database_web_03_2022.csv"
-		><img src="/images/icons/format-de-fichier-csv.png" class="h-8 my-2 inline" alt="csv" />
+		><img
+			src="/images/icons/format-de-fichier-csv.png"
+			class="h-8 my-2 inline"
+			alt="CSV file format icon"
+			loading="lazy"
+			decoding="async"
+		/>
 		CSV (semi colon separator)
 	</a>
 	<br />
 	<a data-no-translate href="https://acss-dig.psl.eu/data/database_web_03_2022.dta"
-		><img src="/images/icons/file_type_stata_icon_130148.svg" alt="csv" class="h-8 my-2 inline" />
+		><img
+			src="/images/icons/file_type_stata_icon_130148.svg"
+			alt="Stata file format icon"
+			class="h-8 my-2 inline"
+			loading="lazy"
+			decoding="async"
+		/>
 		Stata Data File Format
 	</a>
 </div>

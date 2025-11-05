@@ -9,23 +9,49 @@
 			<h3>{m.partners()}</h3>
 
 			<a href="https://www.cnrs.fr/">
-				<img class="inline ml-12 h-24" src="/images/logos_autres/cnrs.png" alt="CNRS" />
+				<img
+					class="inline ml-12 h-24"
+					src="/images/logos_autres/cnrs.png"
+					alt="CNRS - Centre National de la Recherche Scientifique"
+					loading="lazy"
+					decoding="async"
+				/>
 			</a>
 			<a href="https://dauphine.psl.eu/">
 				<img
 					class="inline ml-9 h-14"
 					src="/images/logos_autres/logo_bleu_dauphine.png"
-					alt="Dauphine"
+					alt="Université Paris Dauphine-PSL"
+					loading="lazy"
+					decoding="async"
 				/>
 			</a>
 			<a href="https://insp.gouv.fr/">
-				<img class="inline ml-9 h-20" src="/images/logos_autres/Logo_INSP.png" alt="INSP" />
+				<img
+					class="inline ml-9 h-20"
+					src="/images/logos_autres/Logo_INSP.png"
+					alt="INSP - Institut National du Service Public"
+					loading="lazy"
+					decoding="async"
+				/>
 			</a>
 			<a href="https://www.minesparis.psl.eu/">
-				<img class="inline ml-9 h-24" src="/images/logos_autres/mines.png" alt="Mines" />
+				<img
+					class="inline ml-9 h-24"
+					src="/images/logos_autres/mines.png"
+					alt="Mines Paris - PSL"
+					loading="lazy"
+					decoding="async"
+				/>
 			</a>
 			<a href="http://www.institutnicod.org/">
-				<img class="inline ml-9 h-24" src="/images/logos_autres/nicod.png" alt="Nicod" />
+				<img
+					class="inline ml-9 h-24"
+					src="/images/logos_autres/nicod.png"
+					alt="Institut Jean Nicod"
+					loading="lazy"
+					decoding="async"
+				/>
 			</a>
 		</div>
 		<div class="flex flex-col lg:flex-row items-center lg:justify-between">
