@@ -53,18 +53,53 @@
 	</p>
 </div>
 
-<p class="annonce">
-	ACSS Research seminar on LLMs in Finance<br />to be held on Wednesday, November 26<sup>th</sup>
-	2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005 Paris
-	<br />
-	<em class="text-base">
-		To attend, please contact: <a href="mailto:bruno.chavesferreira@dauphine.psl.eu"
-			>bruno.chavesferreira@dauphine.psl.eu</a
-		></em
-	>
-</p>
+<div class="container">
+	<div class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-8 md:text-left">
+		<img
+			src="/images/visuels/Visuel_26-11-25.jpg"
+			alt="ACSS Research Seminar"
+			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
+		/>
+		<div>
+			<p class="text-xl font-semibold text-blueGray-600">
+				ACSS Research seminar on LLMs in Finance
+			</p>
 
-<div class="presentation">
+			<p class="md:leading-24 text-base leading-relaxed md:text-lg">
+				To be held on Wednesday, November 26<sup>th</sup>
+				2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005
+				Paris
+				<br />
+				<em class="text-base">
+					Organized by ACSS-PSL Institute with the financial support of PSL Global Seed Fund.
+				</em>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="presentation mt-6">
+	<div class="mb-6 mt-6 border-l-4 pl-3 text-sm">
+		<p>
+			The event will open with a keynote talk by Nicolas Hervé (INA), who will discuss the
+			intersection of audiovisual archives and computational social sciences, highlighting new
+			approaches to analyzing large-scale media data.
+		</p>
+		<p>
+			The first session, focused on academic perspectives, will feature Alexandre Allauzen (ESPCI)
+			on the challenges of frugality in large language models, and Elise Gourier (ESSEC) on the use
+			of LLMs to detect greenwashing in corporate communication.
+		</p>
+		<p>
+			The second session will turn to professional applications, with Romuald Elie (Google DeepMind)
+			presenting advances in denoising diffusion models for weather forecasting, and Emmanuel
+			Hauptmann (RAM AI) examining whether LLMs can deliver value-added insights in the investment
+			process.
+		</p>
+	</div>
+
+	<h3 class="text-lg font-semibold">Programme :</h3>
+
 	<p>8h30 : Welcome reception</p>
 
 	<p><strong>9h00-10h15 - Keynote talk</strong></p>
@@ -102,6 +137,12 @@
 	</ul>
 	<p>12h30 : Buffet</p>
 	<p>13h30 : End</p>
+
+	<p class="text-center">
+		<a href="https://www.fondation-dauphine.fr/inscriptions/acss-research-seminar-llms-finance"
+			>Register here to attend the conference.</a
+		>
+	</p>
 </div>
 
 <h2 class="past">Past Sessions:</h2>

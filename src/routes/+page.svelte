@@ -16,10 +16,20 @@
 	<title>Institut ACSS-PSL : Applied Computational Social Sciences</title>
 </svelte:head>
 
-<div class="mb-6 rounded-xl bg-blueGray-100 p-6 text-center text-lg md:text-xl">
-	<a href="/seminaires/acss">ACSS Research seminar on LLMs in Finance</a><br />to be held on
-	Wednesday, November 26<sup>th</sup>
-	2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005 Paris
+<div class="mb-6 rounded-xl bg-blueGray-100 p-6">
+	<div class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-8 md:text-left">
+		<img
+			src="/images/visuels/Visuel_26-11-25.jpg"
+			alt="ACSS Research Seminar"
+			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
+		/>
+		<div class="md:leading-24 text-lg leading-relaxed md:text-xl">
+			<a href="/seminaires/acss">ACSS Research seminar on LLMs in Finance</a><br />to be held on
+			Wednesday, November 26<sup>th</sup>
+			2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005
+			Paris
+		</div>
+	</div>
 </div>
 <div class="mx-3 grid grid-cols-12 gap-6 pb-6">
 	<div class="col-span-12 rounded-xl bg-white p-6 lg:col-span-6">
