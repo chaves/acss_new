@@ -9,6 +9,11 @@ const config = {
 
 	kit: {
 		adapter: adapter(),
+		paths: {
+			// Ensure assets are always loaded from root, not relative to language-prefixed paths
+			assets: '',
+			base: ''
+		},
 		prerender: {
 			//Needed for correctly prerendering <link rel="alternate" hreflang="x" href="y">
 			origin: 'https://acss-dig.psl.eu',

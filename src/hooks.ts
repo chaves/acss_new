@@ -2,8 +2,20 @@ import type { Reroute } from '@sveltejs/kit';
 import { locales } from '$lib/paraglide/runtime';
 
 export const reroute: Reroute = ({ url }) => {
+	const pathname = url.pathname;
+	
+	// Don't reroute static assets, built files, or API routes
+	if (
+		pathname.startsWith('/_app/') ||
+		pathname.startsWith('/images/') ||
+		pathname.startsWith('/files/') ||
+		pathname.startsWith('/api/')
+	) {
+		return pathname;
+	}
+	
 	// Extract language from URL path
-	const [, lang, ...rest] = url.pathname.split('/');
+	const [, lang, ...rest] = pathname.split('/');
 
 	// If the first segment is a valid language tag, remove it from the path
 	if (locales.includes(lang as any)) {
@@ -12,5 +24,5 @@ export const reroute: Reroute = ({ url }) => {
 	}
 
 	// Otherwise, return the original path
-	return url.pathname;
+	return pathname;
 };
