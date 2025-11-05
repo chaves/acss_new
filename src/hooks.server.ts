@@ -1,17 +1,16 @@
 import type { Handle } from '@sveltejs/kit';
 import { sequence } from '@sveltejs/kit/hooks';
-import { locales, baseLocale, setLocale, overwriteGetLocale } from '$lib/paraglide/runtime';
-
-// Override getLocale to get locale from event locals
-overwriteGetLocale(() => {
-	// This will be set by the middleware
-	return (globalThis as any).__PARAGLIDE_LOCALE__ || baseLocale;
-});
+import { locales, baseLocale } from '$lib/paraglide/runtime';
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
 	// Redirect root path to default language
 	if (event.url.pathname === '/') {
-		return Response.redirect(`${event.url.origin}/${baseLocale}/`, 302);
+		return new Response(null, {
+			status: 302,
+			headers: {
+				location: `/${baseLocale}/`
+			}
+		});
 	}
 
 	// Get the language from the URL path
@@ -20,16 +19,9 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 		? lang
 		: baseLocale;
 
-	// Set the locale globally for this request
-	(globalThis as any).__PARAGLIDE_LOCALE__ = languageTag;
-	
-	// Also set it using setLocale
-	setLocale(languageTag as any);
-
 	return resolve(event, {
 		transformPageChunk: ({ html }) => {
 			// Replace placeholders in app.html
-			// For now, using 'ltr' as default text direction (can be configured if needed)
 			return html
 				.replace('%lang%', languageTag)
 				.replace('%textDirection%', 'ltr');
