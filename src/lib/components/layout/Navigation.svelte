@@ -37,11 +37,16 @@
 		return pathname;
 	});
 
+	// Helper function to add language prefix to paths
+	function localizeUrl(path: string) {
+		return `/${lang}${path}`;
+	}
+
 </script>
 
 <header class="sticky top-0 z-50 bg-white pb-2 pt-4">
 	<Navbar>
-		<NavBrand href="/">
+		<NavBrand href={localizeUrl('/')}>
 			<img
 				src="/images/logos/acss_logo.svg"
 				class="me-3 h-9 sm:h-12"
@@ -62,12 +67,12 @@
 					</NavLi>
 					<Dropdown {activeUrl} class="z-20 w-fit text-acss_blue" activeClass="text-acss_red">
 						{#each item.children as child}
-							<DropdownItem href={child.path}>{child.title}</DropdownItem>
+							<DropdownItem href={localizeUrl(child.path)}>{child.title}</DropdownItem>
                             <DropdownDivider />
 						{/each}
 					</Dropdown>
 				{:else}
-					<NavLi href={item.path}>{item.title}</NavLi>
+					<NavLi href={localizeUrl(item.path)}>{item.title}</NavLi>
 				{/if}
 			{/each}
             <li>|</li>

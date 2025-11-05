@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
+	import { localizeUrl } from '$lib/utils';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
@@ -12,7 +13,7 @@
 <div class="seminars">
 	<h2>Seminar</h2>
 	<div class="seminar">
-		<h3><a href="/seminaires/acss">ACSS-PSL Institute Research Seminar</a></h3>
+		<h3><a href={localizeUrl('/seminaires/acss')}>ACSS-PSL Institute Research Seminar</a></h3>
 		<p>
 			This seminar will provide an opportunity to discuss about the activities of the institute and
 			will be organized in 3 sessions throughout the 2025-2026 academic year. Its purpose is
@@ -31,7 +32,7 @@
 
 	<div class="seminar">
 		<h3>
-			<a href="/seminaires/public-governance">Public Governance workshop</a>
+			<a href={localizeUrl('/seminaires/public-governance')}>Public Governance workshop</a>
 			<span>- on Mondays from 17h30 to 19h</span>
 		</h3>
 
@@ -47,7 +48,7 @@
 
 	<div class="seminar">
 		<h3>
-			<a href="/seminaires/nlp">AI & NLP (Natural Language Processing) workshop</a>
+			<a href={localizeUrl('/seminaires/nlp')}>AI & NLP (Natural Language Processing) workshop</a>
 			<span>- on Thursdays from 12h15 to 13h30</span>
 		</h3>
 		<p>

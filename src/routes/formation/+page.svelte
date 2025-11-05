@@ -1,6 +1,7 @@
 <script lang="ts">
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     import * as m from '$lib/paraglide/messages.js';
+    import { localizeUrl } from '$lib/utils';
 </script>
 
 <svelte:head>
@@ -16,7 +17,7 @@
 
 <div class="flex flex-wrap">
 	<div class="cadre">
-        <a href="/formation/psl_week_2022">
+        <a href={localizeUrl('/formation/psl_week_2022')}>
             <img
 				src="/images/hackhaton_2022/psl_week.png"
 				alt="PSL Week - NLP methods for social sciences"

@@ -2,9 +2,22 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { cubicOut } from "svelte/easing";
 import type { TransitionConfig } from "svelte/transition";
+import { getLocale } from "$lib/paraglide/runtime";
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
+}
+
+/**
+ * Add language prefix to a path
+ * @param path - The path to localize (e.g., "/about")
+ * @returns Localized path (e.g., "/fr/about" or "/en/about")
+ */
+export function localizeUrl(path: string): string {
+	const locale = getLocale();
+	// Remove leading slash if present to avoid double slashes
+	const cleanPath = path.startsWith('/') ? path : `/${path}`;
+	return `/${locale}${cleanPath}`;
 }
 
 type FlyAndScaleParams = {

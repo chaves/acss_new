@@ -1,6 +1,7 @@
 <script lang="ts">
     import type { PageData } from './$types';
     import * as m from '$lib/paraglide/messages.js';
+    import { localizeUrl } from '$lib/utils';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     let { data }: { data: PageData } = $props();
 </script>
@@ -10,7 +11,7 @@
 <div class="flex flex-wrap">
 	{#each data.equipe as membre}
 		<div class="w-full lg:w-1/2 py-3 lg:px-2">
-			<a href="/equipe/{membre.Slug}">
+			<a href={localizeUrl(`/equipe/${membre.Slug}`)}>
 				<div class="membre">
 					<div class="flex items-center">
 						<img

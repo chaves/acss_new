@@ -9,6 +9,11 @@ overwriteGetLocale(() => {
 });
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
+	// Redirect root path to default language
+	if (event.url.pathname === '/') {
+		return Response.redirect(`${event.url.origin}/${baseLocale}/`, 302);
+	}
+
 	// Get the language from the URL path
 	const [, lang] = event.url.pathname.split('/');
 	const languageTag = locales.includes(lang as any)
@@ -17,7 +22,7 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 
 	// Set the locale globally for this request
 	(globalThis as any).__PARAGLIDE_LOCALE__ = languageTag;
-
+	
 	// Also set it using setLocale
 	setLocale(languageTag as any);
 

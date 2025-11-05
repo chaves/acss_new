@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import { getLocale } from '$lib/paraglide/runtime.js';
+	import { localizeUrl } from '$lib/utils';
 
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import PostItem from '$lib/components/layout/PostItem.svelte';
@@ -38,7 +39,7 @@
 			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
 		/>
 		<div class="md:leading-24 text-lg leading-relaxed md:text-xl">
-			<a href="/seminaires/acss">ACSS Research seminar on LLMs in Finance</a><br />to be held on
+			<a href={localizeUrl('/seminaires/acss')}>ACSS Research seminar on LLMs in Finance</a><br />to be held on
 			Wednesday, November 26<sup>th</sup>
 			2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005
 			Paris
