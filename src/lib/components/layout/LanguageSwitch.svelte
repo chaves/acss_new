@@ -19,7 +19,7 @@
 	 */
 	function switchToLanguage(newLanguage: string) {
 		if (!browser) return;
-		
+
 		const currentPath = get(page).url.pathname;
 		const [, currentLang, ...pathParts] = currentPath.split('/');
 
