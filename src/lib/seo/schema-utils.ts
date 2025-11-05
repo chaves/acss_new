@@ -8,6 +8,11 @@ const BASE_URL = 'https://acss-dig.psl.eu';
  * Generate Organization schema
  */
 export function generateOrganizationSchema() {
+	const socialLinks = [
+		// 'https://twitter.com/AcssPsl',
+		// Add more social media URLs here when available
+	].filter(Boolean);
+
 	return {
 		'@type': 'Organization',
 		name: 'Institut ACSS-PSL',
@@ -16,10 +21,7 @@ export function generateOrganizationSchema() {
 		logo: `${BASE_URL}/favicon.png`,
 		description:
 			'Expertise in social sciences research coupled with data science capabilities for better governance',
-		sameAs: [
-			// 'https://twitter.com/AcssPsl'
-			// Add more social media URLs
-		],
+		...(socialLinks.length > 0 && { sameAs: socialLinks }),
 		address: {
 			'@type': 'PostalAddress',
 			streetAddress: 'Place du Maréchal de Lattre de Tassigny',

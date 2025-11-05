@@ -70,8 +70,8 @@
 <p>r and Rstudio (with tidyverse) has to be installed before.</p>
 <h1>Team:</h1>
 <p>
-	<a href="https://acss-dig.psl.eu/fr/membres/christophe-benavent">Christophe Benavent</a>,
-	<a href="https://acss-dig.psl.eu/fr/equipe/bruno-chaves-ferreira">Bruno Chaves Ferreira</a>,
+	<a href="/membres/christophe-benavent">Christophe Benavent</a>,
+	<a href="/equipe/bruno-chaves-ferreira">Bruno Chaves Ferreira</a>,
 	<strong>José Carlos Romero Moreno</strong>
 	and <strong>Olivier Caron</strong> from the Acss Institute.
 </p>

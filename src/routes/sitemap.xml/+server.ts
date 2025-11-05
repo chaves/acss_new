@@ -78,24 +78,31 @@ async function fetchDynamicPages() {
 }
 
 function generateSitemap(pages: Array<{ url: string; changefreq: string; priority: number; lastmod?: string }>) {
-	const urls = pages
-		.flatMap((page) =>
-			languages.map((lang) => {
-				const url = `${BASE_URL}/${lang}${page.url}`;
-				const lastmod = page.lastmod ? `\n    <lastmod>${new Date(page.lastmod).toISOString()}</lastmod>` : '';
-				return `  <url>
+	// Generate URLs for each page in each language
+	const urlEntries = pages.map((page) => {
+		const lastmod = page.lastmod ? `\n    <lastmod>${new Date(page.lastmod).toISOString()}</lastmod>` : '';
+
+		// Generate language-specific URLs
+		const langUrls = languages.map((lang) => `${BASE_URL}/${lang}${page.url}`);
+
+		// Build alternate links for each language
+		const alternates = languages
+			.map((lang) => `    <xhtml:link rel="alternate" hreflang="${lang}" href="${BASE_URL}/${lang}${page.url}" />`)
+			.join('\n');
+
+		// Create URL entry for each language variant
+		return langUrls.map((url, idx) => `  <url>
     <loc>${url}</loc>${lastmod}
+${alternates}
     <changefreq>${page.changefreq}</changefreq>
     <priority>${page.priority}</priority>
-  </url>`;
-			})
-		)
-		.join('\n');
+  </url>`).join('\n');
+	}).join('\n');
 
 	return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${urls}
+${urlEntries}
 </urlset>`;
 }
 
