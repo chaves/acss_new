@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 export const load = (async ({ params }) => {
 	try {
 		const post = await posts.getBySlug(params.slug);
-		
+
 		if (!post) {
 			throw error(404, `Post not found: ${params.slug}`);
 		}

@@ -1,6 +1,6 @@
 /**
  * Strapi API Client
- * 
+ *
  * Provides a centralized, type-safe interface for all Strapi CMS API calls.
  */
 

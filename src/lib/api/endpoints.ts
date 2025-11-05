@@ -1,6 +1,6 @@
 /**
  * Strapi API Endpoints
- * 
+ *
  * Type-safe wrapper functions for specific API endpoints.
  */
 

@@ -5,7 +5,7 @@ import { error } from '@sveltejs/kit';
 export const load = (async ({ params }) => {
 	try {
 		const membre = await authors.getBySlug(params.slug);
-		
+
 		if (!membre) {
 			throw error(404, `Team member not found: ${params.slug}`);
 		}

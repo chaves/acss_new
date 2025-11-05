@@ -4,7 +4,7 @@ import { seminars } from '$lib/api';
 export const load = (async () => {
 	try {
 		const today = new Date().toISOString();
-		
+
 		// Run both requests concurrently
 		const [seminars_upcoming, seminars_past] = await Promise.all([
 			seminars.getAll({

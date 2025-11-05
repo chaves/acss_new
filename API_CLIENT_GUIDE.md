@@ -37,7 +37,7 @@ export const load = async () => {
   const recentPosts = await posts.getRecent(5);
   const upcomingSeminars = await seminars.getUpcoming();
   const team = await authors.getTeam();
-  
+
   return { posts: recentPosts, seminars: upcomingSeminars, team };
 };
 ```
@@ -230,7 +230,7 @@ try {
     console.error('API Error:', err.message);
     console.error('Status:', err.status);
     console.error('Details:', err.details);
-    
+
     if (err.status === 404) {
       // Handle not found
     } else if (err.status === 408) {
@@ -253,7 +253,7 @@ export const load = async () => {
     seminars.getUpcoming(),
     authors.getTeam()
   ]);
-  
+
   return { posts, seminars, team };
 };
 ```
@@ -292,24 +292,24 @@ const data = await customClient.get('/custom-endpoint');
 export const load = async () => {
   const date = new Date().toISOString();
   const source = 'https://cms.acss-psl.eu/api/';
-  
+
   const url_seminars = `${source}seminars?filters[date][$gte]=${date}&sort=date:asc`;
   const url_posts = `${source}posts?pagination[pageSize]=10&populate=*&sort=publishedAt:desc`;
-  
+
   const [seminarRes, postsRes] = await Promise.all([
     fetch(url_seminars),
     fetch(url_posts)
   ]);
-  
+
   if (!seminarRes.ok || !postsRes.ok) {
     throw new Error('Failed to fetch data');
   }
-  
+
   const [seminarsJson, postsJson] = await Promise.all([
     seminarRes.json(),
     postsRes.json()
   ]);
-  
+
   return {
     seminars: seminarsJson.data,
     posts: postsJson.data
@@ -328,7 +328,7 @@ export const load = async () => {
       seminars.getUpcoming(),
       posts.getRecent(10)
     ]);
-    
+
     return {
       seminars: upcomingSeminars,
       posts: recentPosts
@@ -355,12 +355,12 @@ export const load = async () => {
 export const load = async ({ params }) => {
   const source = 'https://cms.acss-psl.eu/api/';
   const url = `${source}posts?filters[Slug]=${params.slug}&populate=*`;
-  
+
   const res = await fetch(url);
   if (!res.ok) {
     throw new Error(`Failed to fetch: ${res.status}`);
   }
-  
+
   const data = await res.json();
   return { post: data.data };
 };
@@ -374,11 +374,11 @@ import { error } from '@sveltejs/kit';
 export const load = async ({ params }) => {
   try {
     const post = await posts.getBySlug(params.slug);
-    
+
     if (!post) {
       throw error(404, `Post not found: ${params.slug}`);
     }
-    
+
     return { post: [post] };
   } catch (err) {
     console.error('Error loading post:', err);
@@ -399,12 +399,12 @@ export const load = async () => {
   const source = 'https://cms.acss-psl.eu/api/seminars';
   const url_upcoming = `${source}?filters[type]=nlp&filters[date][$gte]=${date}&sort=date:asc`;
   const url_past = `${source}?filters[type]=nlp&filters[date][$lt]=${date}&sort=date:desc`;
-  
+
   const [upcoming, past] = await Promise.all([
     (await fetch(url_upcoming)).json(),
     (await fetch(url_past)).json()
   ]);
-  
+
   return {
     seminars_upcoming: upcoming.data,
     seminars_past: past.data
@@ -419,7 +419,7 @@ import { seminars } from '$lib/api';
 export const load = async () => {
   try {
     const today = new Date().toISOString();
-    
+
     const [seminars_upcoming, seminars_past] = await Promise.all([
       seminars.getAll({
         filters: { type: 'nlp', date: { $gte: today } },
@@ -430,7 +430,7 @@ export const load = async () => {
         sort: 'date:desc'
       })
     ]);
-    
+
     return { seminars_upcoming, seminars_past };
   } catch (error) {
     console.error('Error loading NLP seminars:', error);
@@ -481,7 +481,7 @@ const client = new StrapiClient({ timeout: 5000 });
 Configure fetch cache strategy:
 
 ```typescript
-const client = new StrapiClient({ 
+const client = new StrapiClient({
   cache: 'no-cache' // or 'default', 'force-cache', etc.
 });
 ```
@@ -643,7 +643,7 @@ export const myNewEndpoint = {
     );
     return response.data;
   },
-  
+
   async getById(id: number): Promise<MyNewType> {
     const response = await apiClient.get<StrapiResponse<MyNewType>>(
       `/my-endpoint/${id}`
@@ -707,8 +707,8 @@ module.exports = {
 
 ---
 
-**Last Updated**: 2025-11-05  
-**Version**: 1.0.0  
-**Author**: AI Assistant  
+**Last Updated**: 2025-11-05
+**Version**: 1.0.0
+**Author**: AI Assistant
 **Project**: ACSS-PSL Institute Website
 
