@@ -1,5 +1,6 @@
 <script lang="ts">
 	import seminar_options from '$lib/data/seminars_options.json';
+	import Link from '$lib/components/Link.svelte';
 
 	let { seminar, index, type = 'all', abstract = true } = $props();
 
@@ -19,7 +20,7 @@
 	<p>
 		<strong>{seminar.date} at {seminar.time.slice(0, 5)}h</strong>
 		{#if type == 'all'}
-			- <em><a href="/seminaires/{url}">{title}</a></em>
+			- <em><Link href="/seminaires/{url}">{title}</Link></em>
 		{/if}
 	</p>
 	{#if seminar.homepage}
