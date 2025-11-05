@@ -2,6 +2,8 @@
 	import * as runtime from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
+	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
+
 	let { post, index } = $props();
 
 	function get_class(number: number) {
@@ -23,11 +25,14 @@
 </script>
 
 <div class="{get_class(index)} main">
-	<img
-		class="post-img mr-6 w-24 rounded-lg object-center"
-		src="https://cms.acss-psl.eu{post.Image.formats.thumbnail.url}"
-		alt={post.Title}
-	/>
+	{#if post.Image}
+		<OptimizedImage
+			image={post.Image}
+			alt={post.Title}
+			size="thumbnail"
+			class="post-img mr-6 w-24 rounded-lg object-center"
+		/>
+	{/if}
 	<p>
 		<a href="/blog/{post.Slug}">{post.Title}</a> -
 		<span class="font-light italic text-gray-500"

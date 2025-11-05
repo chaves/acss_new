@@ -1,6 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <svelte:head>
@@ -78,7 +78,7 @@
 
 <style>
 	h1 {
-		@apply font-semibold mt-6;
+		@apply mt-6 font-semibold;
 	}
 
 	h1 ~ p,
@@ -90,6 +90,6 @@
 		@apply mt-2;
 	}
 	img {
-		@apply float-right bg-white shadow rounded-xl border border-gray-200 ml-6 hidden lg:block;
+		@apply float-right ml-6 hidden rounded-xl border border-gray-200 bg-white shadow lg:block;
 	}
 </style>

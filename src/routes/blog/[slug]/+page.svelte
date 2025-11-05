@@ -9,6 +9,7 @@
 
 	import { marked } from 'marked';
 	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
+	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 
 	let { data }: { data: PageData } = $props();
 	let post = data.post[0];
@@ -78,11 +79,14 @@
 			<PostAuthors authors={post.authors} />
 		</p>
 	</div>
-	<div class="flex items-start justify-center md:w-1/3 md:pl-4">
-		<img
-			src="https://cms.acss-psl.eu{post.Image.formats.medium.url}"
-			alt="An alt text"
-			class="w-72 rounded-lg object-cover"
-		/>
-	</div>
+	{#if post.Image}
+		<div class="flex items-start justify-center md:w-1/3 md:pl-4">
+			<OptimizedImage
+				image={post.Image}
+				alt={post.Title}
+				size="medium"
+				class="w-72 rounded-lg object-cover"
+			/>
+		</div>
+	{/if}
 </div>
