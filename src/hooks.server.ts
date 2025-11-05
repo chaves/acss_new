@@ -53,13 +53,13 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 
 	// Cache control headers for static assets
 	const pathname = event.url.pathname;
-	const isStaticAsset = 
+	const isStaticAsset =
 		pathname.startsWith('/images/') ||
 		pathname.startsWith('/files/') ||
 		pathname.match(/^\/(en|fr)\/images\//) ||
 		pathname.match(/^\/(en|fr)\/files\//) ||
 		pathname.match(/\.(jpg|jpeg|png|webp|svg|woff|woff2|ttf|eot)$/);
-	
+
 	if (isStaticAsset) {
 		// Cache images and fonts for 1 year
 		response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');

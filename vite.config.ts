@@ -10,6 +10,12 @@ export default defineConfig({
 			outdir: './src/lib/paraglide'
 		})
 	],
+	server: {
+		fs: {
+			// Allow serving files from the static directory
+			strict: false
+		}
+	},
 	build: {
 		cssMinify: 'lightningcss',
 		cssCodeSplit: true,
