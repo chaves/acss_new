@@ -64,7 +64,7 @@
 		/>
 		<div>
 			<p class="text-xl font-semibold text-blueGray-600">
-				ACSS Research seminar : LLMs : from Archives to Finance
+				ACSS Research seminar<br />"<em>LLMs : from Archives to Finance</em>"
 			</p>
 
 			<p class="md:leading-24 text-base leading-relaxed md:text-lg">
