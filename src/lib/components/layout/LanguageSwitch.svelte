@@ -3,7 +3,6 @@
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';
 	import { browser } from '$app/environment';
-	import { GlobeOutline } from 'flowbite-svelte-icons';
 
 	interface Props {
 		reduced?: boolean;
@@ -48,11 +47,6 @@
 </script>
 
 <div class="languageSwitcher">
-	<!-- Globe icon for better recognition -->
-	<div class="globe-icon">
-		<GlobeOutline class="h-5 w-5" />
-	</div>
-	
 	<!-- Language buttons -->
 	<div class="language-buttons">
 		{#each locales as langTag}
@@ -73,13 +67,6 @@
 
 <style>
 	.languageSwitcher {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-	}
-
-	.globe-icon {
-		color: #1d4796;
 		display: flex;
 		align-items: center;
 	}
