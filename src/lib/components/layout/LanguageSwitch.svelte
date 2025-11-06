@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import { get } from 'svelte/store';
 	import { browser } from '$app/environment';
+	import { GlobeOutline } from 'flowbite-svelte-icons';
 
 	interface Props {
 		reduced?: boolean;
@@ -36,65 +37,108 @@
 	}
 
 	const labels = {
-		en: 'EN',
-		fr: 'FR'
+		en: 'English',
+		fr: 'Français'
 	};
 
-	const reducedLabels = {
-		en: 'en',
-		fr: 'fr'
+	const shortLabels = {
+		en: 'EN',
+		fr: 'FR'
 	};
 </script>
 
 <div class="languageSwitcher">
-	{#if reduced}
+	<!-- Globe icon for better recognition -->
+	<div class="globe-icon">
+		<GlobeOutline class="h-5 w-5" />
+	</div>
+	
+	<!-- Language buttons -->
+	<div class="language-buttons">
 		{#each locales as langTag}
 			<button
 				type="button"
 				onclick={() => switchToLanguage(langTag)}
-				class:selected={currentLang === langTag}
+				class="lang-button"
+				class:active={currentLang === langTag}
+				class:inactive={currentLang !== langTag}
 				aria-label="Switch to {labels[langTag]}"
+				aria-current={currentLang === langTag ? 'true' : 'false'}
 			>
-				{reducedLabels[langTag]}
+				{shortLabels[langTag]}
 			</button>
 		{/each}
-	{:else}
-		{#each locales as langTag}
-			<button
-				type="button"
-				onclick={() => switchToLanguage(langTag)}
-				class:selected={currentLang === langTag}
-				aria-label="Switch to {labels[langTag]}"
-			>
-				{labels[langTag]}
-			</button>
-		{/each}
-	{/if}
+	</div>
 </div>
 
 <style>
 	.languageSwitcher {
 		display: flex;
+		align-items: center;
 		gap: 0.5rem;
 	}
 
-	button {
-		font-size: 0.9rem;
-		text-decoration: none;
-		cursor: pointer;
+	.globe-icon {
 		color: #1d4796;
-		background: none;
-		border: none;
-		padding: 0;
-		font-family: inherit;
+		display: flex;
+		align-items: center;
 	}
 
-	button:hover {
-		opacity: 0.8;
+	.language-buttons {
+		display: flex;
+		gap: 0.25rem;
+		background: #f1f5f9;
+		border-radius: 0.5rem;
+		padding: 0.25rem;
 	}
 
-	button.selected {
-		color: #b84c7c;
+	.lang-button {
+		font-size: 0.875rem;
 		font-weight: 600;
+		cursor: pointer;
+		border: none;
+		padding: 0.5rem 0.875rem;
+		border-radius: 0.375rem;
+		transition: all 0.2s ease-in-out;
+		font-family: inherit;
+		min-width: 2.5rem;
+		text-align: center;
+	}
+
+	.lang-button.active {
+		background: #1d4796;
+		color: white;
+		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+	}
+
+	.lang-button.inactive {
+		background: transparent;
+		color: #64748b;
+	}
+
+	.lang-button.inactive:hover {
+		background: white;
+		color: #1d4796;
+	}
+
+	.lang-button.inactive:active {
+		transform: scale(0.95);
+	}
+
+	/* Mobile optimization */
+	@media (max-width: 768px) {
+		.languageSwitcher {
+			gap: 0.375rem;
+		}
+
+		.lang-button {
+			padding: 0.625rem 1rem;
+			font-size: 1rem;
+			min-width: 3rem;
+		}
+
+		.language-buttons {
+			padding: 0.375rem;
+		}
 	}
 </style>
