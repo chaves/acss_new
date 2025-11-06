@@ -236,8 +236,8 @@
 	.nav-link {
 		display: flex;
 		align-items: center;
-		padding: 0.625rem 1rem;
-		font-size: 0.9375rem;
+		padding: 0.5rem 0.75rem;
+		font-size: 0.875rem;
 		font-weight: 500;
 		color: #1d4796;
 		text-decoration: none;
@@ -306,8 +306,8 @@
 
 	.dropdown-item {
 		display: block;
-		padding: 0.75rem 1rem;
-		font-size: 0.9375rem;
+		padding: 0.625rem 0.875rem;
+		font-size: 0.875rem;
 		color: #334155;
 		text-decoration: none;
 		border-radius: 0.5rem;
@@ -328,8 +328,8 @@
 	}
 
 	.desktop-lang-switch {
-		margin-left: 1.5rem;
-		padding-left: 1.5rem;
+		margin-left: 1rem;
+		padding-left: 1rem;
 		border-left: 1px solid #e2e8f0;
 	}
 
@@ -571,15 +571,20 @@
 		}
 
 		.nav-list {
-			gap: 0.75rem;
+			gap: 0.5rem;
 		}
 
 		.nav-link {
-			font-size: 1rem;
+			font-size: 0.9375rem;
+			padding: 0.5rem 0.875rem;
 		}
 
 		.dropdown-menu {
-			min-width: 18rem;
+			min-width: 16rem;
+		}
+
+		.dropdown-item {
+			font-size: 0.9375rem;
 		}
 	}
 </style>
