@@ -10,7 +10,7 @@
 		DropdownItem,
 		DropdownDivider
 	} from 'flowbite-svelte';
-	import { ChevronDownOutline } from 'flowbite-svelte-icons';
+	import { ChevronDownOutline, CloseOutline } from 'flowbite-svelte-icons';
 
 	import { page } from '$app/state';
 	import { locales } from '$lib/paraglide/runtime';
@@ -25,6 +25,7 @@
 	// Variables
 	const { lang } = $props();
 	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
+	let hidden = $state(true); // Track menu visibility for mobile
 
 	// Get canonical path without language prefix for activeUrl matching
 	let activeUrl = $derived.by(() => {
@@ -42,6 +43,11 @@
 		return `/${lang}${path}`;
 	}
 
+	// Toggle menu visibility
+	function toggleMenu() {
+		hidden = !hidden;
+	}
+
 </script>
 
 <header class="sticky top-0 z-50 bg-white pb-2 pt-4">
@@ -56,8 +62,18 @@
 				fetchpriority="high"
 			/>
 		</NavBrand>
-		<NavHamburger />
-		<NavUl {activeUrl} activeClass="text-acss_red" nonActiveClass="text-acss_blue">
+		<NavHamburger onclick={toggleMenu} />
+		<NavUl bind:hidden {activeUrl} activeClass="text-acss_red" nonActiveClass="text-acss_blue">
+			<!-- Close button for mobile - positioned at top right of menu -->
+			<li class="block md:hidden">
+				<button
+					onclick={toggleMenu}
+					class="flex w-full items-center justify-end p-2 text-acss_red hover:text-acss_blue"
+					aria-label="Close menu"
+				>
+					<CloseOutline class="h-8 w-8" />
+				</button>
+			</li>
 			{#each menu as item}
 				{#if item.children}
 					<NavLi class="cursor-pointer text-acss_blue">
@@ -67,12 +83,12 @@
 					</NavLi>
 					<Dropdown {activeUrl} class="z-20 w-fit text-acss_blue" activeClass="text-acss_red">
 						{#each item.children as child}
-							<DropdownItem href={localizeUrl(child.path)}>{child.title}</DropdownItem>
+							<DropdownItem href={localizeUrl(child.path)} onclick={() => { hidden = true; }}>{child.title}</DropdownItem>
                             <DropdownDivider />
 						{/each}
 					</Dropdown>
 				{:else}
-					<NavLi href={localizeUrl(item.path)}>{item.title}</NavLi>
+					<NavLi href={localizeUrl(item.path)} onclick={() => { hidden = true; }}>{item.title}</NavLi>
 				{/if}
 			{/each}
             <li>|</li>
