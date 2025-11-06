@@ -40,8 +40,8 @@
 			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
 		/>
 		<div class="md:leading-24 text-lg leading-relaxed md:text-xl">
-			<Link href="/seminaires/acss">ACSS Research seminar on LLMs in Finance</Link><br />to be held on
-			Wednesday, November 26<sup>th</sup>
+			<Link href="/seminaires/acss">ACSS Research seminar : LLMs : from Archives to Finance</Link
+			><br />to be held on Wednesday, November 26<sup>th</sup>
 			2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005
 			Paris
 		</div>
