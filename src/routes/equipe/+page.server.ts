@@ -1,6 +1,13 @@
 import type { PageServerLoad } from './$types';
 import { authors } from '$lib/api';
 
+// ISR: Revalidate team page every 30 minutes (team changes infrequently)
+export const config = {
+	isr: {
+		expiration: 1800
+	}
+};
+
 export const load = (async () => {
 	try {
 		const team = await authors.getTeam();

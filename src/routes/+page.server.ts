@@ -1,6 +1,13 @@
 import type { PageServerLoad } from './$types';
 import { posts, seminars } from '$lib/api';
 
+// ISR: Revalidate homepage every 60 seconds
+export const config = {
+	isr: {
+		expiration: 60
+	}
+};
+
 export const load = (async () => {
 	try {
 		// Run both API requests concurrently

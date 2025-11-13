@@ -2,6 +2,13 @@ import type { PageServerLoad } from './$types';
 import { authors } from '$lib/api';
 import { error } from '@sveltejs/kit';
 
+// ISR: Revalidate individual team member pages every 1 hour
+export const config = {
+	isr: {
+		expiration: 3600
+	}
+};
+
 export const load = (async ({ params }) => {
 	try {
 		const membre = await authors.getBySlug(params.slug);

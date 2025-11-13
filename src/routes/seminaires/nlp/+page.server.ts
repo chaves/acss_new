@@ -1,6 +1,13 @@
 import type { PageServerLoad } from './$types';
 import { seminars } from '$lib/api';
 
+// ISR: Revalidate seminar pages every 10 minutes (seminars change frequently)
+export const config = {
+	isr: {
+		expiration: 600
+	}
+};
+
 export const load = (async () => {
 	try {
 		const today = new Date().toISOString();
