@@ -1,7 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
-	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
 	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 	import { getAlternatingClass } from '$lib/helpers/ui';
 	import { formatDate } from '$lib/helpers/locale';
@@ -29,9 +28,9 @@
 	<p>
 		<Link href="/blog/{post.Slug}">{post.Title}</Link> -
 		<span class="font-light italic text-gray-500">
-			({m.published_at()} {formattedDate})
+			({m.published_at()}
+			{formattedDate})
 		</span>
-		- <PostAuthors authors={post.authors} />
 	</p>
 </div>
 

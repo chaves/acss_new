@@ -15,7 +15,7 @@
 	<div class="seminar">
 		<h3><Link href="/seminaires/acss">ACSS-PSL Institute Research Seminar</Link></h3>
 		<p>
-			This seminar will provide an opportunity to discuss about the activities of the institute and
+			This seminar provides an opportunity to discuss about the activities of the institute and
 			will be organized in 3 sessions throughout the 2025-2026 academic year. Its purpose is
 			twofold:
 		</p>

@@ -65,18 +65,16 @@
 					<a
 						class="underline"
 						href="https://www.ens.psl.eu/laboratoire/laboratoire-de-neurosciences-cognitives-computationnelles-inserm-u960"
-						>Laboratoire de Neurosciences Cognitives & Computationnelles</a
+						>Laboratoire de Neurosciences Cognitives Computationnelles</a
 					> / Institut Jean Nicod, ENS
 				</li>
 				<li class="mt-3">
 					<a class="underline" href="https://www.ena.fr/index.php?page=ressources/cera"
 						>Centre d’Expertise et de Recherche Administrative</a
-					> / ENA
+					> / INSP
 				</li>
 				<li class="mt-3">
-					<a
-						class="underline"
-						href="https://www.minesparis.psl.eu/Recherche/Centres-de-recherche/Centre-d-economie-industrielle-CERNA/"
+					<a class="underline" href="https://www.cerna.minesparis.psl.eu/"
 						>Centre d’Économie Industrielle</a
 					> / Mines ParisTech
 				</li>
@@ -96,7 +94,7 @@
 					>
 				</li>
 				<li class="mt-3">
-					<a class="underline" href="https://philosophie.ens.fr/">Département Philosophie</a> / ENS
+					<a class="underline" href="https://philosophie.ens.fr/">Département de Philosophie</a> / ENS
 				</li>
 			</ul>
 
@@ -191,18 +189,16 @@
 					<a
 						class="underline"
 						href="https://www.ens.psl.eu/laboratoire/laboratoire-de-neurosciences-cognitives-computationnelles-inserm-u960"
-						>Laboratoire de Neurosciences Cognitives & Computationnelles</a
+						>Laboratoire de Neurosciences Cognitives Computationnelles</a
 					> / Institut Jean Nicod, ENS
 				</li>
 				<li class="mt-3">
 					<a class="underline" href="https://www.ena.fr/index.php?page=ressources/cera"
 						>Centre d’Expertise et de Recherche Administrative</a
-					> / ENA
+					> / INSP
 				</li>
 				<li class="mt-3">
-					<a
-						class="underline"
-						href="https://www.minesparis.psl.eu/Recherche/Centres-de-recherche/Centre-d-economie-industrielle-CERNA/"
+					<a class="underline" href="https://www.cerna.minesparis.psl.eu/"
 						>Centre d’Économie Industrielle</a
 					> / Mines ParisTech
 				</li>
@@ -222,7 +218,7 @@
 					>
 				</li>
 				<li class="mt-3">
-					<a class="underline" href="https://philosophie.ens.fr/">Département Philosophie</a> / ENS
+					<a class="underline" href="https://philosophie.ens.fr/">Département de Philosophie</a> / ENS
 				</li>
 			</ul>
 
