@@ -18,9 +18,9 @@ ISR (Incremental Static Regeneration) has expiration delays:
 
 **Best for**: Most use cases - immediate updates with minimal setup
 
-✅ Simple 5-minute setup  
-✅ Guaranteed to work  
-✅ No code changes needed  
+✅ Simple 5-minute setup
+✅ Guaranteed to work
+✅ No code changes needed
 ❌ Full site rebuild (1-3 minutes)
 
 👉 **Jump to:** [Vercel Deploy Hook Setup](#option-1-vercel-deploy-hook-recommended)
@@ -29,9 +29,9 @@ ISR (Incremental Static Regeneration) has expiration delays:
 
 **Best for**: When you want to regenerate only specific pages (faster, but more complex)
 
-✅ Only regenerates affected pages  
-✅ Faster updates (seconds vs minutes)  
-❌ More complex setup  
+✅ Only regenerates affected pages
+✅ Faster updates (seconds vs minutes)
+❌ More complex setup
 ❌ Requires custom endpoint
 
 👉 **Jump to:** [On-Demand Revalidation API Setup](#option-2-on-demand-revalidation-api)

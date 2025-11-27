@@ -1,9 +1,9 @@
 /**
  * On-Demand Revalidation API Endpoint
- * 
+ *
  * This endpoint allows Strapi (via webhook) to trigger immediate page regeneration
  * when content is updated, instead of waiting for ISR expiration.
- * 
+ *
  * Usage from Strapi webhook:
  * POST https://your-site.com/api/revalidate
  * Headers: { "Authorization": "Bearer YOUR_SECRET_TOKEN" }
@@ -23,12 +23,12 @@ const CONTENT_TYPE_TO_PATHS: Record<string, string[]> = {
 	'api::post.post': ['/en/blog', '/fr/blog'],
 	'post': ['/en/blog', '/fr/blog'],
 	'api::blog-post.blog-post': ['/en/blog', '/fr/blog'],
-	
+
 	// Team members / Authors (multiple possible names)
 	'api::author.author': ['/en/equipe', '/fr/equipe'],
 	'author': ['/en/equipe', '/fr/equipe'],
 	'api::team-member.team-member': ['/en/equipe', '/fr/equipe'],
-	
+
 	// Seminars (multiple possible names)
 	'api::seminar.seminar': [
 		'/en/seminaires/nlp',
@@ -68,7 +68,7 @@ function getPathsForContentType(
 	// If entry has a slug, add individual entry paths
 	// Handle both 'slug' and 'Slug' (Strapi might use capitalized field names)
 	const slug = entry?.slug || (entry as any)?.Slug;
-	
+
 	if (slug) {
 		// Check if this is a post, author, or seminar content type
 		if (contentType.includes('post') || contentType === 'post') {
@@ -104,7 +104,7 @@ async function revalidatePath(path: string, baseUrl: string): Promise<{
 }> {
 	try {
 		const url = `${baseUrl}${path}`;
-		
+
 		// Make a HEAD request to trigger revalidation
 		// Vercel's ISR will regenerate the page
 		const response = await fetch(url, {
@@ -221,7 +221,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		});
 	} catch (err) {
 		console.error('Revalidation error:', err);
-		
+
 		// If it's already a SvelteKit error, re-throw it
 		if ((err as any)?.status) {
 			throw err;
