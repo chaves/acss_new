@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Generate a secure token for revalidation webhooks
- * 
+ *
  * Usage:
  *   node scripts/generate-revalidate-token.js
- * 
+ *
  * This generates a cryptographically secure random token
  * suitable for securing the /api/revalidate endpoint.
  */

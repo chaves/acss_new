@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 /**
  * Test webhook connectivity and configuration
- * 
+ *
  * Usage:
  *   node scripts/test-webhook.js <webhook-url> [token]
- * 
+ *
  * Examples:
  *   node scripts/test-webhook.js https://api.vercel.com/v1/integrations/deploy/...
  *   node scripts/test-webhook.js https://acss-dig.psl.eu/api/revalidate YOUR_TOKEN

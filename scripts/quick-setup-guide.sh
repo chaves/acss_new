@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # Quick Setup Guide Helper Script
-# 
+#
 # This script guides you through setting up immediate content updates
 # with either Vercel Deploy Hook or On-Demand Revalidation API
 #
@@ -48,7 +48,7 @@ case $choice in
     echo ""
     read -p "Press Enter when you have the Vercel Deploy Hook URL..."
     read -p "Paste your Vercel Deploy Hook URL: " vercel_url
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "STEP 2: Configure Strapi Webhook"
@@ -65,7 +65,7 @@ case $choice in
     echo "5. Click: Save"
     echo ""
     read -p "Press Enter when you've configured the Strapi webhook..."
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "STEP 3: Test It!"
@@ -80,7 +80,7 @@ case $choice in
     echo "✅ Setup complete! Your site will now update immediately when Strapi content changes."
     echo ""
     ;;
-    
+
   2)
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
@@ -100,7 +100,7 @@ case $choice in
     echo "⚠️  IMPORTANT: Copy this token now! You won't see it again."
     echo ""
     read -p "Press Enter after you've copied the token..."
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "STEP 2: Add Token to Vercel"
@@ -118,7 +118,7 @@ case $choice in
     echo "7. Redeploy your site (or wait for next deployment)"
     echo ""
     read -p "Press Enter when you've added the token to Vercel..."
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "STEP 3: Configure Strapi Webhook"
@@ -138,7 +138,7 @@ case $choice in
     echo "5. Click: Save"
     echo ""
     read -p "Press Enter when you've configured the Strapi webhook..."
-    
+
     echo ""
     echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
     echo "STEP 4: Test It!"
@@ -146,21 +146,21 @@ case $choice in
     echo ""
     echo "Testing the API endpoint..."
     echo ""
-    
+
     # Test the endpoint
     TEST_URL="https://acss-dig.psl.eu/api/revalidate?token=$TOKEN&path=/en/blog"
     echo "Test command:"
     echo "curl \"$TEST_URL\""
     echo ""
     read -p "Run test now? [y/N]: " run_test
-    
+
     if [[ $run_test =~ ^[Yy]$ ]]; then
       echo ""
       echo "Running test..."
       curl -s "$TEST_URL" | jq '.' || curl -s "$TEST_URL"
       echo ""
     fi
-    
+
     echo ""
     echo "1. Go to Strapi and update any content"
     echo "2. Publish the changes"
@@ -170,7 +170,7 @@ case $choice in
     echo "✅ Setup complete! Your site will now update immediately when Strapi content changes."
     echo ""
     ;;
-    
+
   *)
     echo ""
     echo "❌ Invalid choice. Please run the script again and choose 1 or 2."
