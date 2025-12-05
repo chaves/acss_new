@@ -1,7 +1,8 @@
 <script lang="ts">
-	import { ChevronDownOutline, CloseOutline, BarsOutline } from 'flowbite-svelte-icons';
+	import { ChevronDownOutline, CloseOutline, BarsOutline, EnvelopeOutline } from 'flowbite-svelte-icons';
 	import { page } from '$app/state';
 	import { locales } from '$lib/paraglide/runtime';
+	import * as m from '$lib/paraglide/messages.js';
 	import LanguageSwitch from './LanguageSwitch.svelte';
 	import MenuFR from '$lib/data/menu_fr.json';
 	import MenuEN from '$lib/data/menu_en.json';
@@ -96,6 +97,15 @@
 				{/each}
 			</ul>
 
+			<!-- Newsletter Icon Button -->
+			<a
+				href={localizeUrl('/lettre-d-information')}
+				class="newsletter-button"
+				aria-label={m.subscribe_letter()}
+			>
+				<EnvelopeOutline class="newsletter-icon" />
+			</a>
+
 			<!-- Language Switcher for Desktop -->
 			<div class="desktop-lang-switch">
 				<LanguageSwitch />
@@ -170,6 +180,17 @@
 					{/if}
 				{/each}
 			</ul>
+
+			<!-- Newsletter Button for Mobile -->
+			<a
+				href={localizeUrl('/lettre-d-information')}
+				class="mobile-newsletter-button"
+				onclick={closeMobileMenu}
+				aria-label={m.subscribe_letter()}
+			>
+				<EnvelopeOutline class="mobile-newsletter-icon" />
+				<span>{m.subscribe_letter()}</span>
+			</a>
 
 			<!-- Language Switcher for Mobile -->
 			<div class="mobile-lang-switch">
@@ -325,6 +346,37 @@
 		background: #eff6ff;
 		color: #1d4796;
 		font-weight: 600;
+	}
+
+	/* ==================== Newsletter Button (Desktop) ==================== */
+	.newsletter-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.75rem;
+		height: 2.75rem;
+		background: linear-gradient(135deg, #B84C7C 0%, #9a3d65 100%);
+		color: white;
+		border-radius: 0.75rem;
+		margin-left: 1rem;
+		transition: all 0.3s ease-in-out;
+		box-shadow: 0 2px 8px rgba(184, 76, 124, 0.3);
+		text-decoration: none;
+	}
+
+	.newsletter-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(184, 76, 124, 0.4);
+		background: linear-gradient(135deg, #9a3d65 0%, #B84C7C 100%);
+	}
+
+	.newsletter-button:active {
+		transform: translateY(0);
+	}
+
+	.newsletter-icon {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.desktop-lang-switch {
@@ -538,6 +590,40 @@
 		color: #1d4796;
 		font-weight: 600;
 		border-left-color: #1d4796;
+	}
+
+	/* ==================== Newsletter Button (Mobile) ==================== */
+	.mobile-newsletter-button {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 0.75rem;
+		width: 100%;
+		padding: 1rem 1.5rem;
+		margin-top: 1rem;
+		background: linear-gradient(135deg, #B84C7C 0%, #9a3d65 100%);
+		color: white;
+		border-radius: 0.75rem;
+		font-weight: 600;
+		font-size: 1rem;
+		text-decoration: none;
+		transition: all 0.3s ease-in-out;
+		box-shadow: 0 2px 8px rgba(184, 76, 124, 0.3);
+	}
+
+	.mobile-newsletter-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(184, 76, 124, 0.4);
+		background: linear-gradient(135deg, #9a3d65 0%, #B84C7C 100%);
+	}
+
+	.mobile-newsletter-button:active {
+		transform: translateY(0);
+	}
+
+	.mobile-newsletter-icon {
+		width: 1.5rem;
+		height: 1.5rem;
 	}
 
 	.mobile-lang-switch {

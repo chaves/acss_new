@@ -20,5 +20,19 @@
     "seminaire_nlp": "AI & NLP (Natural Language Processing) workshop",
     "public_governance": "Public Governance workshop",
     "published_at": "Publié le",
-    "by": "par"
+    "by": "par",
+    "newsletter_title": "Inscription à la lettre d'information",
+    "newsletter_description": "Restez informé de nos activités, séminaires et actualités de recherche en vous abonnant à notre lettre d'information.",
+    "first_name": "Prénom",
+    "last_name": "Nom",
+    "institution": "Institution",
+    "email": "Email",
+    "first_name_required": "Le prénom est requis",
+    "last_name_required": "Le nom est requis",
+    "institution_required": "L'institution est requise",
+    "email_required": "L'email est requis",
+    "email_invalid": "Veuillez entrer une adresse email valide",
+    "subscription_success": "Merci ! Votre inscription a été enregistrée avec succès.",
+    "subscription_error": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "subscribing": "Inscription en cours..."
 }

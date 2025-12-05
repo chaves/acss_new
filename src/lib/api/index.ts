@@ -17,6 +17,7 @@
  */
 
 export { apiClient, StrapiClient, ApiError } from './client';
-export { posts, seminars, authors, fetchCollection, fetchSingle } from './endpoints';
+export { posts, seminars, authors, mailingList, fetchCollection, fetchSingle } from './endpoints';
 export type * from './types';
+export type { MailingListSubscriptionData, MailingListSubscriptionResponse } from './endpoints';
 

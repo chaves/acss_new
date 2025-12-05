@@ -16,15 +16,12 @@ export const posts = {
 	 * Get all posts with optional filtering and pagination
 	 */
 	async getAll(params?: StrapiQueryParams): Promise<BlogPost[]> {
-		const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>(
-			'/posts',
-			{
-				populate: '*',
-				sort: 'publishedAt:desc',
-				pagination: { pageSize: 10 },
-				...params
-			}
-		);
+		const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>('/posts', {
+			populate: '*',
+			sort: 'publishedAt:desc',
+			pagination: { pageSize: 10 },
+			...params
+		});
 		return response.data;
 	},
 
@@ -32,13 +29,10 @@ export const posts = {
 	 * Get a single post by slug
 	 */
 	async getBySlug(slug: string): Promise<BlogPost | null> {
-		const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>(
-			'/posts',
-			{
-				filters: { Slug: slug },
-				populate: '*'
-			}
-		);
+		const response = await apiClient.get<StrapiCollectionResponse<BlogPost>>('/posts', {
+			filters: { Slug: slug },
+			populate: '*'
+		});
 		return response.data[0] || null;
 	},
 
@@ -46,10 +40,9 @@ export const posts = {
 	 * Get a single post by ID
 	 */
 	async getById(id: number): Promise<BlogPost> {
-		const response = await apiClient.get<StrapiResponse<BlogPost>>(
-			`/posts/${id}`,
-			{ populate: '*' }
-		);
+		const response = await apiClient.get<StrapiResponse<BlogPost>>(`/posts/${id}`, {
+			populate: '*'
+		});
 		return response.data;
 	},
 
@@ -72,13 +65,10 @@ export const seminars = {
 	 * Get all seminars with optional filtering
 	 */
 	async getAll(params?: StrapiQueryParams): Promise<Seminar[]> {
-		const response = await apiClient.get<StrapiCollectionResponse<Seminar>>(
-			'/seminars',
-			{
-				sort: 'date:asc',
-				...params
-			}
-		);
+		const response = await apiClient.get<StrapiCollectionResponse<Seminar>>('/seminars', {
+			sort: 'date:asc',
+			...params
+		});
 		return response.data;
 	},
 
@@ -128,13 +118,10 @@ export const authors = {
 	 * Get all authors with optional filtering
 	 */
 	async getAll(params?: StrapiQueryParams): Promise<TeamMember[]> {
-		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>(
-			'/authors',
-			{
-				sort: 'LastName',
-				...params
-			}
-		);
+		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>('/authors', {
+			sort: 'LastName',
+			...params
+		});
 		return response.data;
 	},
 
@@ -152,13 +139,10 @@ export const authors = {
 	 * Get a single author by slug
 	 */
 	async getBySlug(slug: string): Promise<TeamMember | null> {
-		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>(
-			'/authors',
-			{
-				filters: { Slug: slug },
-				populate: '*'
-			}
-		);
+		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>('/authors', {
+			filters: { Slug: slug },
+			populate: '*'
+		});
 		return response.data[0] || null;
 	},
 
@@ -166,10 +150,9 @@ export const authors = {
 	 * Get a single author by ID
 	 */
 	async getById(id: number): Promise<TeamMember> {
-		const response = await apiClient.get<StrapiResponse<TeamMember>>(
-			`/authors/${id}`,
-			{ populate: '*' }
-		);
+		const response = await apiClient.get<StrapiResponse<TeamMember>>(`/authors/${id}`, {
+			populate: '*'
+		});
 		return response.data;
 	}
 };
@@ -181,24 +164,46 @@ export async function fetchCollection<T>(
 	endpoint: string,
 	params?: StrapiQueryParams
 ): Promise<T[]> {
-	const response = await apiClient.get<StrapiCollectionResponse<T>>(
-		endpoint,
-		params
-	);
+	const response = await apiClient.get<StrapiCollectionResponse<T>>(endpoint, params);
 	return response.data;
 }
 
 /**
  * Generic single item fetcher for custom endpoints
  */
-export async function fetchSingle<T>(
-	endpoint: string,
-	params?: StrapiQueryParams
-): Promise<T> {
-	const response = await apiClient.get<StrapiResponse<T>>(
-		endpoint,
-		params
-	);
+export async function fetchSingle<T>(endpoint: string, params?: StrapiQueryParams): Promise<T> {
+	const response = await apiClient.get<StrapiResponse<T>>(endpoint, params);
 	return response.data;
 }
 
+/**
+ * Mailing List Subscriptions API
+ */
+export interface MailingListSubscriptionData {
+	firstName: string;
+	lastName: string;
+	institution: string;
+	email: string;
+}
+
+export interface MailingListSubscriptionResponse {
+	data: {
+		id: number;
+		attributes: MailingListSubscriptionData & {
+			createdAt: string;
+			updatedAt: string;
+			publishedAt?: string;
+		};
+	};
+}
+
+export const mailingList = {
+	/**
+	 * Subscribe to the mailing list
+	 */
+	async subscribe(data: MailingListSubscriptionData): Promise<MailingListSubscriptionResponse> {
+		return apiClient.post<MailingListSubscriptionResponse>('/mailing-list-subscriptions', {
+			data
+		});
+	}
+};

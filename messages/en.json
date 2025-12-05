@@ -20,5 +20,19 @@
     "seminaire_nlp": "AI & NLP (Natural Language Processing) workshop",
     "public_governance": "Public Governance workshop",
     "published_at": "Published on",
-    "by": "by"
+    "by": "by",
+    "newsletter_title": "Newsletter Subscription",
+    "newsletter_description": "Stay updated about our activities, seminars, and research news by subscribing to our newsletter.",
+    "first_name": "First Name",
+    "last_name": "Last Name",
+    "institution": "Institution",
+    "email": "Email",
+    "first_name_required": "First name is required",
+    "last_name_required": "Last name is required",
+    "institution_required": "Institution is required",
+    "email_required": "Email is required",
+    "email_invalid": "Please enter a valid email address",
+    "subscription_success": "Thank you! Your subscription has been successfully submitted.",
+    "subscription_error": "An error occurred. Please try again later.",
+    "subscribing": "Subscribing..."
 }
