@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+	<defs>
+		<style>
+			.acss-blue { fill: #1d4796; }
+			.acss-red { fill: #b6467c; }
+		</style>
+	</defs>
+	<!-- Blue background matching brand -->
+	<rect width="200" height="200" fill="#1d4796" rx="30"/>
+	
+	<!-- White ACSS text -->
+	<text x="100" y="115" font-family="Arial, Helvetica, sans-serif" font-size="90" font-weight="bold" fill="#ffffff" text-anchor="middle" opacity="0.95">ACSS</text>
+	
+	<!-- Red accent line at bottom -->
+	<rect x="40" y="155" width="120" height="6" fill="#b6467c" rx="3"/>
+</svg>
