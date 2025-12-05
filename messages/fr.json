@@ -34,5 +34,6 @@
     "email_invalid": "Veuillez entrer une adresse email valide",
     "subscription_success": "Merci ! Votre inscription a été enregistrée avec succès.",
     "subscription_error": "Une erreur s'est produite. Veuillez réessayer plus tard.",
+    "email_already_registered": "Cette adresse email est déjà enregistrée. Vous êtes déjà abonné à notre lettre d'information.",
     "subscribing": "Inscription en cours..."
 }

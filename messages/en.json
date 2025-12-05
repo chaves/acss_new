@@ -34,5 +34,6 @@
     "email_invalid": "Please enter a valid email address",
     "subscription_success": "Thank you! Your subscription has been successfully submitted.",
     "subscription_error": "An error occurred. Please try again later.",
+    "email_already_registered": "This email address is already registered. You are already subscribed to our newsletter.",
     "subscribing": "Subscribing..."
 }

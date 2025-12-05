@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { mailingList } from '$lib/api';
+	import { mailingList, ApiError } from '$lib/api';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import { getLocale } from '$lib/paraglide/runtime.js';
@@ -82,9 +82,32 @@
 			formState = 'error';
 			console.error('Subscription error:', error);
 
-			// Try to extract a user-friendly error message
-			if (error instanceof Error) {
-				errorMessage = error.message;
+			// Check if it's a duplicate email error
+			if (error instanceof ApiError) {
+				const errorMsg = error.message.toLowerCase();
+				const isDuplicateError =
+					errorMsg.includes('unique') ||
+					errorMsg.includes('duplicate') ||
+					errorMsg.includes('already exists') ||
+					(error.status === 400 && errorMsg.includes('email'));
+
+				if (isDuplicateError) {
+					errorMessage = m.email_already_registered();
+				} else {
+					errorMessage = error.message || m.subscription_error();
+				}
+			} else if (error instanceof Error) {
+				// Check for duplicate in generic error messages
+				const errorMsg = error.message.toLowerCase();
+				if (
+					errorMsg.includes('unique') ||
+					errorMsg.includes('duplicate') ||
+					errorMsg.includes('already exists')
+				) {
+					errorMessage = m.email_already_registered();
+				} else {
+					errorMessage = error.message || m.subscription_error();
+				}
 			} else {
 				errorMessage = m.subscription_error();
 			}
