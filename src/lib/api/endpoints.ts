@@ -141,12 +141,12 @@ export const authors = {
 	async getBySlug(slug: string): Promise<TeamMember | null> {
 		// Trim the slug for matching
 		const normalizedSlug = slug.trim();
-		
+
 		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>('/authors', {
 			filters: { Slug: normalizedSlug },
 			populate: '*'
 		});
-		
+
 		return response.data[0] || null;
 	},
 
