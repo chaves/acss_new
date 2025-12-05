@@ -11,12 +11,21 @@ export const reroute: Reroute = ({ url }) => {
 	}
 
 	// Don't reroute static assets without language prefix
+	// Also exclude favicon files, manifest files, and other root assets
 	if (
 		pathname.startsWith('/_app/') ||
 		pathname.startsWith('/images/') ||
 		pathname.startsWith('/files/') ||
 		pathname.startsWith('/api/') ||
-		pathname.includes('/_app/')
+		pathname.includes('/_app/') ||
+		pathname.startsWith('/favicon') ||
+		pathname.startsWith('/apple-touch-icon') ||
+		pathname.startsWith('/site.webmanifest') ||
+		pathname.startsWith('/browserconfig.xml') ||
+		pathname.startsWith('/safari-pinned-tab.svg') ||
+		pathname.startsWith('/robots.txt') ||
+		pathname.startsWith('/sitemap.xml') ||
+		pathname.match(/^\/.*\.(ico|png|svg|xml|webmanifest|txt)$/)
 	) {
 		return pathname;
 	}

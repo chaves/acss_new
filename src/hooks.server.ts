@@ -3,8 +3,25 @@ import { sequence } from '@sveltejs/kit/hooks';
 import { locales, baseLocale, setLocale } from '$lib/paraglide/runtime';
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
+	const pathname = event.url.pathname;
+	
+	// Don't redirect favicon files, manifest files, or other root assets
+	const isRootAsset = 
+		pathname.startsWith('/favicon') ||
+		pathname.startsWith('/apple-touch-icon') ||
+		pathname.startsWith('/site.webmanifest') ||
+		pathname.startsWith('/browserconfig.xml') ||
+		pathname.startsWith('/safari-pinned-tab.svg') ||
+		pathname.startsWith('/robots.txt') ||
+		pathname.startsWith('/sitemap.xml') ||
+		pathname.match(/^\/.*\.(ico|png|svg|xml|webmanifest|txt)$/);
+	
+	if (isRootAsset) {
+		return resolve(event);
+	}
+	
 	// Redirect root path to default language
-	if (event.url.pathname === '/') {
+	if (pathname === '/') {
 		return new Response(null, {
 			status: 302,
 			headers: {
@@ -56,9 +73,14 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	const isStaticAsset =
 		pathname.startsWith('/images/') ||
 		pathname.startsWith('/files/') ||
+		pathname.startsWith('/favicon') ||
+		pathname.startsWith('/apple-touch-icon') ||
+		pathname.startsWith('/site.webmanifest') ||
+		pathname.startsWith('/browserconfig.xml') ||
+		pathname.startsWith('/safari-pinned-tab.svg') ||
 		pathname.match(/^\/(en|fr)\/images\//) ||
 		pathname.match(/^\/(en|fr)\/files\//) ||
-		pathname.match(/\.(jpg|jpeg|png|webp|svg|woff|woff2|ttf|eot)$/);
+		pathname.match(/\.(jpg|jpeg|png|webp|svg|ico|woff|woff2|ttf|eot|xml|webmanifest)$/);
 
 	if (isStaticAsset) {
 		// Cache images and fonts for 1 year
