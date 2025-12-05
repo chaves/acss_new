@@ -203,7 +203,7 @@
 
 	<!-- Carousel Card -->
 	<div class="carousel-card">
-		<Carousel {images} duration={3000} imgClass="object-contain h-full w-fit rounded-lg" />
+		<Carousel {images} duration={3000} imgClass="carousel-image" />
 	</div>
 </div>
 
@@ -539,9 +539,36 @@
 	.carousel-card {
 		background: white;
 		border-radius: 1rem;
-		padding: 1.5rem;
+		padding: 1rem;
 		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
 		border: 1px solid rgba(74, 108, 170, 0.08);
+		min-height: 350px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* Ensure carousel fills its container properly */
+	:global(.carousel-card > div) {
+		width: 100%;
+		height: 100%;
+		min-height: 320px;
+	}
+
+	:global(.carousel-card .carousel-image) {
+		max-width: 100%;
+		max-height: 300px;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		border-radius: 0.5rem;
+		margin: 0 auto;
+		display: block;
+	}
+
+	/* Style carousel navigation indicators */
+	:global(.carousel-card [role="group"]) {
+		height: 100%;
 		display: flex;
 		align-items: center;
 		justify-content: center;
