@@ -21,39 +21,39 @@
 	--acss-blue-dark: #1D4796;
 	--acss-blue-light: #6b8dc4;
 	--acss-blue-pale: rgba(74, 108, 170, 0.08);
-	
+
 	--acss-red: #b6467c;
 	--acss-red-dark: #9a3d65;
 	--acss-red-light: #d4729e;
 	--acss-red-pale: rgba(182, 70, 124, 0.08);
-	
+
 	/* Semantic colors */
 	--color-heading: #1e293b;
 	--color-body: #475569;
 	--color-muted: #94a3b8;
-	
+
 	/* Backgrounds */
 	--bg-primary: #ffffff;
 	--bg-secondary: #f8fafc;
 	--bg-tertiary: #f1f5f9;
-	
+
 	/* Gradients */
 	--gradient-brand: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-red) 100%);
 	--gradient-brand-soft: linear-gradient(135deg, var(--acss-blue-pale) 0%, var(--acss-red-pale) 100%);
 	--gradient-blue: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-blue-dark) 100%);
 	--gradient-red: linear-gradient(135deg, var(--acss-red) 0%, var(--acss-red-dark) 100%);
-	
+
 	/* Shadows */
 	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
 	--shadow-md: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
 	--shadow-lg: 0 10px 25px -5px rgba(74, 108, 170, 0.15), 0 4px 10px -5px rgba(74, 108, 170, 0.08);
 	--shadow-xl: 0 20px 40px -10px rgba(74, 108, 170, 0.2);
-	
+
 	/* Transitions */
 	--transition-fast: 150ms ease;
 	--transition-base: 300ms ease;
 	--transition-slow: 500ms ease;
-	
+
 	/* Tailwind compatibility */
 	--tw-text-opacity: 1;
 	--tw-divide-opacity: 1;

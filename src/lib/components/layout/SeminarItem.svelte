@@ -29,7 +29,7 @@
 				<span class="time">{seminar.time.slice(0, 5)}h</span>
 			</div>
 		</div>
-		
+
 		{#if type === 'all'}
 			<div class="seminar-type">
 				<Link href="/seminaires/{url}">{title}</Link>
@@ -50,7 +50,7 @@
 				{seminar.presenter}
 			{/if}
 		</h3>
-		
+
 		<p class="seminar-title">{seminar.title}</p>
 	</div>
 

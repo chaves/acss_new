@@ -16,7 +16,7 @@
 <section class="breadcrumb-section">
 	<!-- Left accent border -->
 	<div class="breadcrumb-accent"></div>
-	
+
 	<div class="breadcrumb-content">
 		<div class="container text-center">
 			<!-- Title -->
@@ -57,7 +57,7 @@
 							/>
 						</svg>
 					</li>
-					
+
 					{#if link !== undefined}
 						<li class="breadcrumb-item">
 							<a href={localizeUrl(`/${link}`)} class="breadcrumb-link">{link_text}</a>
@@ -86,8 +86,8 @@
 		margin-bottom: 2rem;
 		border-radius: 0.75rem;
 		overflow: hidden;
-		background: linear-gradient(135deg, 
-			rgba(74, 108, 170, 0.06) 0%, 
+		background: linear-gradient(135deg,
+			rgba(74, 108, 170, 0.06) 0%,
 			rgba(182, 70, 124, 0.06) 100%);
 	}
 
@@ -97,8 +97,8 @@
 		top: 0;
 		bottom: 0;
 		width: 4px;
-		background: linear-gradient(180deg, 
-			var(--acss-blue, #4a6caa) 0%, 
+		background: linear-gradient(180deg,
+			var(--acss-blue, #4a6caa) 0%,
 			var(--acss-red, #b6467c) 100%);
 	}
 

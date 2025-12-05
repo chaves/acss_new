@@ -12,7 +12,7 @@
 			<!-- Partners Section -->
 			<div class="partners-section">
 				<h3 class="partners-title">{m.partners()}</h3>
-				
+
 				<div class="partners-grid">
 					<a href="https://www.cnrs.fr/" class="partner-link" target="_blank" rel="noopener noreferrer">
 						<img

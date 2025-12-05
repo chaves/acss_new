@@ -127,6 +127,40 @@
 				</li>
 			</ul>
 		{/if}
+
+		<!-- Presentation Menu Links -->
+		<nav class="presentation-links" aria-label="Presentation">
+			<Link href="/mission" class="presentation-link">
+				<svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+				</svg>
+				<span>{isEn ? 'Mission' : 'Mission'}</span>
+			</Link>
+			<Link href="/plateforme" class="presentation-link">
+				<svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+				</svg>
+				<span>{isEn ? 'Platform' : 'Plateforme'}</span>
+			</Link>
+			<Link href="/membres" class="presentation-link">
+				<svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+				</svg>
+				<span>{isEn ? 'Members' : 'Membres'}</span>
+			</Link>
+			<Link href="/equipe" class="presentation-link">
+				<svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+				</svg>
+				<span>{isEn ? 'Team' : 'Équipe'}</span>
+			</Link>
+			<Link href="/partenariats" class="presentation-link">
+				<svg class="link-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+				</svg>
+				<span>{isEn ? 'Partnerships' : 'Partenariats'}</span>
+			</Link>
+		</nav>
 	</div>
 
 	<!-- Blog Card -->
@@ -360,6 +394,52 @@
 		.mission-title {
 			font-size: 1.5rem;
 		}
+	}
+
+	/* ==================== Presentation Links ==================== */
+	.presentation-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(74, 108, 170, 0.1);
+	}
+
+	:global(.presentation-link) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 0.875rem;
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.06) 0%, rgba(182, 70, 124, 0.06) 100%);
+		border-radius: 2rem;
+		font-size: 0.875rem;
+		font-weight: 500;
+		color: var(--acss-blue-dark, #1D4796);
+		text-decoration: none;
+		transition: all 0.3s ease;
+		border: 1px solid transparent;
+	}
+
+	:global(.presentation-link:hover) {
+		background: white;
+		border-color: rgba(74, 108, 170, 0.15);
+		box-shadow: 0 2px 8px rgba(74, 108, 170, 0.15);
+		transform: translateY(-2px);
+	}
+
+	:global(.presentation-link::after) {
+		display: none !important;
+	}
+
+	:global(.presentation-link .link-icon) {
+		width: 1rem;
+		height: 1rem;
+		color: var(--acss-blue, #4a6caa);
+	}
+
+	:global(.presentation-link:hover .link-icon) {
+		color: var(--acss-red, #b6467c);
 	}
 
 	/* ==================== Blog Card ==================== */
