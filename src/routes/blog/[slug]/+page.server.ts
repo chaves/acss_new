@@ -2,13 +2,6 @@ import type { PageServerLoad } from './$types';
 import { posts } from '$lib/api';
 import { error } from '@sveltejs/kit';
 
-// ISR: Revalidate individual blog posts every 1 hour
-export const config = {
-	isr: {
-		expiration: 3600
-	}
-};
-
 export const load = (async ({ params }) => {
 	try {
 		const post = await posts.getBySlug(params.slug);

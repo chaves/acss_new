@@ -1,21 +1,10 @@
 import type { PageServerLoad } from './$types';
 import { authors } from '$lib/api';
 import { error } from '@sveltejs/kit';
-import { baseLocale, locales } from '$lib/paraglide/runtime';
-
-// ISR: Revalidate individual team member pages every 1 hour
-export const config = {
-	isr: {
-		expiration: 3600
-	}
-};
 
 /**
  * Explicitly list all team member routes for prerendering
  * This ensures they are discovered at build time even if crawl misses them
- * 
- * Note: With ISR enabled, pages will be regenerated on-demand if not found,
- * but explicit entries help with initial build and SEO.
  */
 export async function entries() {
 	try {
@@ -34,9 +23,8 @@ export async function entries() {
 		console.log(`[equipe/[slug]] Generated ${entries.length} team member entries for prerendering:`, entries.map(e => e.slug));
 		return entries;
 	} catch (err) {
-		console.error('[equipe/[slug]] Error generating entries - pages will be generated on-demand:', err);
-		// Return empty array if API fails during build - ISR will handle on-demand generation
-		// This prevents build failures while still allowing pages to work via ISR
+		console.error('[equipe/[slug]] Error generating entries:', err);
+		// Return empty array if API fails during build
 		return [];
 	}
 }

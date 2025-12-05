@@ -3,9 +3,8 @@ import { getLocale } from '$lib/paraglide/runtime';
 import { getISOLocale } from '$lib/helpers/locale';
 import { DATETIME_FORMAT_OPTIONS } from '$lib/constants';
 
-// Note: We don't set prerender = true here because routes with ISR config
-// should not be prerendered. Static routes will be prerendered via svelte.config.js
-// Routes with ISR config will use Incremental Static Regeneration instead.
+// Enable prerendering for static generation
+export const prerender = true;
 
 export const load: LayoutServerLoad = async () => {
 	const lang = getLocale();

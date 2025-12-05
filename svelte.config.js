@@ -14,10 +14,11 @@ const config = {
 			assets: process.env.VERCEL ? 'https://acss-dig.psl.eu' : '',
 			base: ''
 		},
-		// Note: Global prerendering is disabled to allow ISR routes to work properly.
-		// Routes with ISR config will use Incremental Static Regeneration (generated on-demand).
-		// Static routes without ISR will be generated on-demand on Vercel (SSR/SSG).
-		// If you need specific routes prerendered, add `export const prerender = true` to their +page.server.ts
+		prerender: {
+			origin: 'https://acss-dig.psl.eu',
+			crawl: true,
+			entries: ['*']
+		},
 		csp: {
 			mode: 'auto',
 			directives: {
