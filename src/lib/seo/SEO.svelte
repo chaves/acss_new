@@ -18,7 +18,7 @@
 		title,
 		description,
 		type = 'website',
-		image = '/favicon.png',
+		image = '/images/logos/acss_logo.svg',
 		url = '',
 		author = 'ACSS-PSL Institute',
 		publishedTime,

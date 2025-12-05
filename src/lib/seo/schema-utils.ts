@@ -18,7 +18,7 @@ export function generateOrganizationSchema() {
 		name: 'Institut ACSS-PSL',
 		alternateName: 'Applied Computational Social Sciences - Data-Intensive Governance',
 		url: BASE_URL,
-		logo: `${BASE_URL}/favicon.png`,
+		logo: `${BASE_URL}/images/logos/acss_logo.svg`,
 		description:
 			'Expertise in social sciences research coupled with data science capabilities for better governance',
 		...(socialLinks.length > 0 && { sameAs: socialLinks }),
@@ -48,7 +48,7 @@ export function generateArticleSchema(article: {
 		'@type': 'Article',
 		headline: article.title,
 		description: article.description,
-		image: article.image ? `${BASE_URL}${article.image}` : `${BASE_URL}/favicon.png`,
+		image: article.image ? `${BASE_URL}${article.image}` : `${BASE_URL}/images/logos/acss_logo.svg`,
 		datePublished: article.publishedAt,
 		dateModified: article.modifiedAt || article.publishedAt,
 		author: article.authors?.map((author) => ({
@@ -65,7 +65,7 @@ export function generateArticleSchema(article: {
 			name: 'Institut ACSS-PSL',
 			logo: {
 				'@type': 'ImageObject',
-				url: `${BASE_URL}/favicon.png`
+				url: `${BASE_URL}/images/logos/acss_logo.svg`
 			}
 		},
 		mainEntityOfPage: {
@@ -107,7 +107,7 @@ export function generateEventSchema(event: {
 				addressCountry: 'FR'
 			}
 		},
-		image: event.image ? `${BASE_URL}${event.image}` : `${BASE_URL}/favicon.png`,
+		image: event.image ? `${BASE_URL}${event.image}` : `${BASE_URL}/images/logos/acss_logo.svg`,
 		organizer: {
 			'@type': 'Organization',
 			name: 'Institut ACSS-PSL',
