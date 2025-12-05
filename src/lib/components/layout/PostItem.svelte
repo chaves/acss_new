@@ -2,7 +2,6 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
-	import { getAlternatingClass } from '$lib/helpers/ui';
 	import { formatDate } from '$lib/helpers/locale';
 	import type { BlogPost } from '$lib/types';
 
@@ -12,43 +11,89 @@
 	}
 
 	let { post, index }: Props = $props();
-	let itemClass = $derived(getAlternatingClass(index));
 	let formattedDate = $derived(formatDate(post.publishedAt));
 </script>
 
-<div class="{itemClass} main">
+<article class="post-item">
 	{#if post.Image}
-		<OptimizedImage
-			image={post.Image}
-			alt={post.Title}
-			size="thumbnail"
-			class="post-img mr-6 w-24 rounded-lg object-center"
-		/>
+		<div class="post-image-wrapper">
+			<OptimizedImage
+				image={post.Image}
+				alt={post.Title}
+				size="thumbnail"
+				class="post-image"
+			/>
+		</div>
 	{/if}
-	<p>
-		<Link href="/blog/{post.Slug}">{post.Title}</Link> -
-		<span class="font-light italic text-gray-500">
-			({m.published_at()}
-			{formattedDate})
-		</span>
-	</p>
-</div>
+	<div class="post-content">
+		<h3 class="post-title">
+			<Link href="/blog/{post.Slug}">{post.Title}</Link>
+		</h3>
+		<p class="post-meta">
+			<span class="meta-label">{m.published_at()}</span>
+			<span class="meta-date">{formattedDate}</span>
+		</p>
+	</div>
+</article>
 
 <style>
-	.main {
-		@apply my-3 flex items-center rounded-xl p-3;
+	.post-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem;
+		background: white;
+		border-radius: 0.75rem;
+		border: 1px solid rgba(74, 108, 170, 0.08);
+		transition: all 0.3s ease;
 	}
 
-	.even {
-		@apply bg-white;
+	.post-item:hover {
+		transform: translateX(4px);
+		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.1);
+		border-color: rgba(74, 108, 170, 0.15);
 	}
 
-	.odd {
-		@apply bg-blueGray-100;
+	.post-image-wrapper {
+		flex-shrink: 0;
+		width: 4rem;
+		height: 4rem;
+		border-radius: 0.5rem;
+		overflow: hidden;
 	}
-	/* Custom styling for the image */
-	.post-img {
-		object-fit: cover; /* Ensures the image covers the container and stays centered */
-		margin-left: 1rem; /* Optional spacing from the main text */
+
+	:global(.post-item .post-image) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.post-content {
+		flex: 1;
+		min-width: 0;
+	}
+
+	.post-title {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1rem;
+		font-weight: 600;
+		line-height: 1.4;
+		margin-bottom: 0.25rem;
+	}
+
+	.post-meta {
+		font-size: 0.8125rem;
+		display: flex;
+		align-items: center;
+		gap: 0.375rem;
+	}
+
+	.meta-label {
+		color: var(--color-muted, #94a3b8);
+	}
+
+	.meta-date {
+		color: var(--acss-blue, #4a6caa);
+		font-weight: 500;
 	}
 </style>

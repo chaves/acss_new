@@ -10,19 +10,259 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
-@layer components {
-	.drop-down-menu {
-		@apply absolute left-0 bg-white rounded-lg shadow-sm w-max mt-14 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-4 transition-all duration-500 py-4 border border-blueGray-200;
-	}
-}
+/* ============================================
+   DESIGN SYSTEM - ACSS-PSL Institute
+   ============================================ */
 
-/*CUSTOM CSS*/
+/* CSS Custom Properties (Design Tokens) */
 :root {
+	/* Primary brand colors */
+	--acss-blue: #4a6caa;
+	--acss-blue-dark: #1D4796;
+	--acss-blue-light: #6b8dc4;
+	--acss-blue-pale: rgba(74, 108, 170, 0.08);
+	
+	--acss-red: #b6467c;
+	--acss-red-dark: #9a3d65;
+	--acss-red-light: #d4729e;
+	--acss-red-pale: rgba(182, 70, 124, 0.08);
+	
+	/* Semantic colors */
+	--color-heading: #1e293b;
+	--color-body: #475569;
+	--color-muted: #94a3b8;
+	
+	/* Backgrounds */
+	--bg-primary: #ffffff;
+	--bg-secondary: #f8fafc;
+	--bg-tertiary: #f1f5f9;
+	
+	/* Gradients */
+	--gradient-brand: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-red) 100%);
+	--gradient-brand-soft: linear-gradient(135deg, var(--acss-blue-pale) 0%, var(--acss-red-pale) 100%);
+	--gradient-blue: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-blue-dark) 100%);
+	--gradient-red: linear-gradient(135deg, var(--acss-red) 0%, var(--acss-red-dark) 100%);
+	
+	/* Shadows */
+	--shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	--shadow-md: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
+	--shadow-lg: 0 10px 25px -5px rgba(74, 108, 170, 0.15), 0 4px 10px -5px rgba(74, 108, 170, 0.08);
+	--shadow-xl: 0 20px 40px -10px rgba(74, 108, 170, 0.2);
+	
+	/* Transitions */
+	--transition-fast: 150ms ease;
+	--transition-base: 300ms ease;
+	--transition-slow: 500ms ease;
+	
+	/* Tailwind compatibility */
 	--tw-text-opacity: 1;
 	--tw-divide-opacity: 1;
 	--tw-border-opacity: 1;
 }
-/*Common*/
+
+/* ============================================
+   COMPONENT LAYER
+   ============================================ */
+
+@layer components {
+	.drop-down-menu {
+		@apply absolute left-0 bg-white rounded-lg shadow-sm w-max mt-14 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-4 transition-all duration-500 py-4 border border-blueGray-200;
+	}
+
+	/* Card System */
+	.card {
+		@apply bg-white rounded-xl p-6;
+		box-shadow: var(--shadow-md);
+		border: 1px solid rgba(74, 108, 170, 0.08);
+		transition: all var(--transition-base);
+	}
+
+	.card:hover {
+		transform: translateY(-4px);
+		box-shadow: var(--shadow-lg);
+	}
+
+	.card-flat {
+		@apply bg-white rounded-xl p-6;
+		border: 1px solid rgba(74, 108, 170, 0.1);
+	}
+
+	.card-gradient {
+		@apply rounded-xl p-6;
+		background: var(--gradient-brand-soft);
+	}
+
+	/* Featured card with gradient border */
+	.card-featured {
+		@apply relative bg-white rounded-xl p-6;
+	}
+
+	.card-featured::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		border-radius: 0.75rem;
+		padding: 2px;
+		background: var(--gradient-brand);
+		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		mask-composite: exclude;
+		-webkit-mask-composite: xor;
+		pointer-events: none;
+	}
+
+	/* Button System */
+	.btn {
+		@apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold;
+		transition: all var(--transition-base);
+	}
+
+	.btn-primary {
+		background: var(--gradient-blue);
+		color: white;
+		box-shadow: 0 4px 14px rgba(74, 108, 170, 0.3);
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 6px 20px rgba(74, 108, 170, 0.4);
+	}
+
+	.btn-secondary {
+		@apply bg-transparent border-2;
+		border-color: var(--acss-red);
+		color: var(--acss-red);
+	}
+
+	.btn-secondary:hover {
+		background: var(--acss-red);
+		color: white;
+	}
+
+	/* Accent Line */
+	.accent-line {
+		height: 4px;
+		background: var(--gradient-brand);
+		border-radius: 2px;
+	}
+
+	.accent-line-sm {
+		height: 3px;
+		width: 60px;
+		background: var(--gradient-brand);
+		border-radius: 2px;
+	}
+
+	/* Highlight Box */
+	.highlight-box {
+		background: var(--gradient-brand-soft);
+		border-left: 4px solid var(--acss-blue);
+		padding: 1.5rem 2rem;
+		border-radius: 0 1rem 1rem 0;
+		margin: 2rem 0;
+	}
+
+	/* Statistics */
+	.stat-number {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 3rem;
+		font-weight: 700;
+		background: var(--gradient-brand);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.stat-label {
+		color: var(--color-muted);
+		font-size: 0.875rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-top: 0.5rem;
+	}
+
+	/* Hero Gradients */
+	.hero-gradient {
+		background: var(--gradient-brand-soft);
+	}
+
+	.hero-gradient-strong {
+		background: var(--gradient-brand);
+		color: white;
+	}
+
+	/* Pattern backgrounds */
+	.pattern-dots {
+		background-image: radial-gradient(var(--acss-blue) 1px, transparent 1px);
+		background-size: 20px 20px;
+		opacity: 0.05;
+	}
+
+	/* Partner logo styling */
+	.partner-logo {
+		filter: grayscale(100%);
+		opacity: 0.6;
+		transition: all var(--transition-base);
+	}
+
+	.partner-logo:hover {
+		filter: grayscale(0%);
+		opacity: 1;
+	}
+}
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+/* Enhanced headings with accent underlines */
+.heading-accent {
+	position: relative;
+	padding-bottom: 0.75rem;
+	margin-bottom: 1.5rem;
+}
+
+.heading-accent::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 60px;
+	height: 3px;
+	background: var(--gradient-brand);
+	border-radius: 2px;
+}
+
+.heading-accent-center {
+	position: relative;
+	padding-bottom: 0.75rem;
+	margin-bottom: 1.5rem;
+	text-align: center;
+}
+
+.heading-accent-center::after {
+	content: '';
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 60px;
+	height: 3px;
+	background: var(--gradient-brand);
+	border-radius: 2px;
+}
+
+/* Gradient text */
+.text-gradient {
+	background: var(--gradient-brand);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+	background-clip: text;
+}
+
+/* ============================================
+   COMMON ELEMENTS
+   ============================================ */
+
 button:focus {
 	border: 0;
 	outline: none !important;
@@ -36,7 +276,10 @@ img {
 	z-index: 2;
 }
 
-/*Dropdown Menu*/
+/* ============================================
+   NAVIGATION (Legacy Support)
+   ============================================ */
+
 nav li.has-child {
 	position: relative;
 	padding-right: 10px;
@@ -132,6 +375,10 @@ nav li.has-child::after {
 	background-color: #fff;
 }
 
+/* ============================================
+   FORM ELEMENTS
+   ============================================ */
+
 .error {
 	@apply my-3 bg-red-500 shadow-md shadow-red-500/50 p-3 rounded-xl hover:shadow-none hover:bg-red-600 text-white;
 }
@@ -141,24 +388,68 @@ nav li.has-child::after {
 }
 
 .submit {
-@apply bg-blue-500 shadow-md shadow-blue-500/50 px-4 py-2 rounded-xl hover:shadow-none hover:bg-blue-600 text-white;
+	@apply bg-blue-500 shadow-md shadow-blue-500/50 px-4 py-2 rounded-xl hover:shadow-none hover:bg-blue-600 text-white;
 }
+
+/* ============================================
+   LINK STYLING
+   ============================================ */
 
 .main a {
-	@apply font-semibold text-blue-dark hover:underline hover:decoration-pink-500 hover:decoration-2;
+	color: var(--acss-blue-dark);
+	text-decoration: none;
+	position: relative;
+	font-weight: 600;
+	transition: color var(--transition-fast);
 }
 
+.main a::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: var(--gradient-brand);
+	transition: width var(--transition-base);
+	border-radius: 1px;
+}
+
+.main a:hover {
+	color: var(--acss-blue);
+}
+
+.main a:hover::after {
+	width: 100%;
+}
+
+/* ============================================
+   BRAND COLORS
+   ============================================ */
+
 .site_blue {
-	color: #4a6caa;
+	color: var(--acss-blue);
 }
 
 .site_red {
-	color: #b6467c;
+	color: var(--acss-red);
 }
 
+.bg-site-blue {
+	background-color: var(--acss-blue);
+}
+
+.bg-site-red {
+	background-color: var(--acss-red);
+}
+
+/* ============================================
+   CONTENT STYLING
+   ============================================ */
 
 .equipe-bio h3, .blogPost h3 {
 	@apply font-semibold uppercase mb-3;
+	color: var(--acss-blue-dark);
 }
 
 .equipe-bio h3:not(:first-child) {
@@ -172,3 +463,64 @@ nav li.has-child::after {
 .blogPost p {
 	@apply mb-4;
 }
+
+/* ============================================
+   SECTION BACKGROUNDS
+   ============================================ */
+
+.section-gradient {
+	background: var(--gradient-brand-soft);
+}
+
+.section-pattern {
+	position: relative;
+}
+
+.section-pattern::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background-image: radial-gradient(var(--acss-blue) 1px, transparent 1px);
+	background-size: 24px 24px;
+	opacity: 0.03;
+	pointer-events: none;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(20px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@keyframes pulse-soft {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.7;
+	}
+}
+
+.animate-fade-in-up {
+	animation: fadeInUp 0.6s ease-out forwards;
+}
+
+.animate-pulse-soft {
+	animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Staggered animations */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+.stagger-5 { animation-delay: 0.5s; }

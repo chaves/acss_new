@@ -32,93 +32,438 @@
 <StructuredData data={organizationSchema} />
 <StructuredData data={websiteSchema} />
 
-<div class="mb-6 rounded-xl bg-blueGray-100 p-6">
-	<div class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-8 md:text-left">
-		<img
-			src="/images/visuels/Visuel_26-11-25.jpg"
-			alt="ACSS Research Seminar"
-			class="h-auto w-full rounded-lg md:w-64 md:flex-shrink-0"
-		/>
-		<div class="md:leading-24 text-lg leading-relaxed md:text-xl">
-			<Link href="/seminaires/acss"
-				>ACSS Research seminar<br />"<em>LLMs : from Archives to Finance</em>"</Link
-			><br />to be held on Wednesday, November 26<sup>th</sup>
-			2025 from 8:30 to 13:30<br />Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade 75005
-			Paris
+<!-- Featured Announcement -->
+<div class="announcement-card">
+	<div class="announcement-accent"></div>
+	<div class="announcement-content">
+		<div class="announcement-badge">
+			{isEn ? 'Upcoming Event' : 'Événement à venir'}
+		</div>
+		<div class="announcement-body">
+			<img
+				src="/images/visuels/Visuel_26-11-25.jpg"
+				alt="ACSS Research Seminar"
+				class="announcement-image"
+			/>
+			<div class="announcement-text">
+				<h3 class="announcement-title">
+					<Link href="/seminaires/acss">ACSS Research seminar</Link>
+				</h3>
+				<p class="announcement-subtitle">"<em>LLMs : from Archives to Finance</em>"</p>
+				<div class="announcement-details">
+					<div class="detail-item">
+						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+						</svg>
+						<span>Wednesday, November 26<sup>th</sup> 2025</span>
+					</div>
+					<div class="detail-item">
+						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+						</svg>
+						<span>8:30 - 13:30</span>
+					</div>
+					<div class="detail-item">
+						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+						</svg>
+						<span>Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade, 75005 Paris</span>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="mx-3 grid grid-cols-12 gap-6 pb-6">
-	<div class="col-span-12 rounded-xl bg-white p-6 lg:col-span-6">
-		<h1>
-			Applied Computational Social Sciences<br />Data-Intensive Governance - PSL Institute
+
+<!-- Main Content Grid -->
+<div class="content-grid">
+	<!-- Mission Card -->
+	<div class="mission-card">
+		<h1 class="mission-title">
+			Applied Computational Social Sciences
+			<span class="mission-subtitle">Data-Intensive Governance - PSL Institute</span>
 		</h1>
 
+		<div class="accent-line-sm"></div>
+
 		{#if isEn}
-			<h2 class="text-md mb-4 font-heading font-bold lg:text-xl">
+			<h2 class="mission-description">
 				Expertise in <span class="site_blue">social sciences</span> research coupled with
 				<span class="site_red">data science</span> capabilities in order to:
 			</h2>
-			<ul class="ml-6 list-disc text-xl">
-				<li>Increase the relevance of academic research to the challenges facing society</li>
-				<li>Shed some light on governmental and private sectors decision-making</li>
-				<li>Foster better collective governance</li>
+			<ul class="mission-list">
+				<li>
+					<span class="list-marker"></span>
+					<span>Increase the relevance of academic research to the challenges facing society</span>
+				</li>
+				<li>
+					<span class="list-marker"></span>
+					<span>Shed some light on governmental and private sectors decision-making</span>
+				</li>
+				<li>
+					<span class="list-marker"></span>
+					<span>Foster better collective governance</span>
+				</li>
 			</ul>
 		{:else}
-			<h2 class="text-md mb-4 font-heading font-bold lg:text-xl">
+			<h2 class="mission-description">
 				Une expertise de recherche en <span class="site_blue">sciences sociales</span>
 				articulée avec des capacités en
 				<span class="site_red">sciences des données</span> pour :
 			</h2>
-			<ul class="text-md ml-6 list-disc">
+			<ul class="mission-list">
 				<li>
-					Renforcer la pertinence de la recherche académique sur les grandes problématiques
-					sociétales
+					<span class="list-marker"></span>
+					<span>Renforcer la pertinence de la recherche académique sur les grandes problématiques sociétales</span>
 				</li>
-				<li>Eclairer la décision publique et privée</li>
-				<li>Favoriser une meilleure gouvernance collective</li>
+				<li>
+					<span class="list-marker"></span>
+					<span>Éclairer la décision publique et privée</span>
+				</li>
+				<li>
+					<span class="list-marker"></span>
+					<span>Favoriser une meilleure gouvernance collective</span>
+				</li>
 			</ul>
 		{/if}
 	</div>
-	<div class="col-span-12 rounded-xl bg-blueGray-100 p-6 lg:col-span-6">
-		<h1>Blog</h1>
-		{#if data.posts.length > 0}
-			{#each data.posts as post, index}
-				<PostItem {post} {index} />
-			{/each}
-		{:else}
-			<p>No posts found</p>
-		{/if}
+
+	<!-- Blog Card -->
+	<div class="blog-card">
+		<h2 class="section-title">
+			<span class="title-text">Blog</span>
+			<span class="title-accent"></span>
+		</h2>
+		<div class="posts-list">
+			{#if data.posts.length > 0}
+				{#each data.posts as post, index}
+					<PostItem {post} {index} />
+				{/each}
+			{:else}
+				<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>
+			{/if}
+		</div>
 	</div>
 </div>
 
-<div class="mx-3 grid grid-cols-12 gap-6 pb-6">
-	<div class="col-span-12 rounded-xl bg-blueGray-100 p-6 text-center lg:col-span-8">
+<!-- Second Row -->
+<div class="content-grid-bottom">
+	<!-- Seminars Card -->
+	<div class="seminars-card">
 		{#if data.seminars.length > 0}
-			{#if isEn}
-				<h2>Upcoming working group sessions</h2>
-			{:else}
-				<h2>Prochaines sessions des groupes de travail</h2>
-			{/if}
+			<h2 class="section-title-center">
+				<span class="title-text">
+					{isEn ? 'Upcoming working group sessions' : 'Prochaines sessions des groupes de travail'}
+				</span>
+				<span class="title-accent-center"></span>
+			</h2>
 
-			{#each data.seminars as seminar, index}
-				<SeminarItem {seminar} {index} abstract={false} />
-			{/each}
+			<div class="seminars-list">
+				{#each data.seminars as seminar, index}
+					<SeminarItem {seminar} {index} abstract={false} />
+				{/each}
+			</div>
 		{/if}
 	</div>
-	<div class="col-span-12 rounded-xl bg-white p-6 lg:col-span-4">
+
+	<!-- Carousel Card -->
+	<div class="carousel-card">
 		<Carousel {images} duration={3000} imgClass="object-contain h-full w-fit rounded-lg" />
 	</div>
 </div>
 
 <style>
-	h1 {
-		@apply mb-4 font-heading font-bold lg:text-xl;
+	/* ==================== Announcement Card ==================== */
+	.announcement-card {
+		position: relative;
+		margin-bottom: 2rem;
+		border-radius: 1rem;
+		overflow: hidden;
+		background: white;
+		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
 	}
-	ul li {
-		@apply ml-6 mt-2 list-disc;
+
+	.announcement-accent {
+		height: 4px;
+		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
 	}
-	h2 {
-		@apply mt-6 text-lg font-semibold;
+
+	.announcement-content {
+		padding: 1.5rem;
+	}
+
+	.announcement-badge {
+		display: inline-block;
+		padding: 0.375rem 1rem;
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.1) 0%, rgba(182, 70, 124, 0.1) 100%);
+		color: var(--acss-blue-dark, #1D4796);
+		font-size: 0.75rem;
+		font-weight: 600;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-radius: 2rem;
+		margin-bottom: 1rem;
+	}
+
+	.announcement-body {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+	}
+
+	.announcement-image {
+		width: 100%;
+		height: auto;
+		border-radius: 0.75rem;
+		object-fit: cover;
+	}
+
+	.announcement-text {
+		flex: 1;
+	}
+
+	.announcement-title {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.5rem;
+		font-weight: 700;
+		margin-bottom: 0.5rem;
+	}
+
+	.announcement-subtitle {
+		font-size: 1.125rem;
+		color: var(--color-body, #475569);
+		margin-bottom: 1rem;
+	}
+
+	.announcement-details {
+		display: flex;
+		flex-direction: column;
+		gap: 0.75rem;
+	}
+
+	.detail-item {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		font-size: 0.9375rem;
+		color: var(--color-body, #475569);
+	}
+
+	.detail-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		color: var(--acss-blue, #4a6caa);
+		flex-shrink: 0;
+		margin-top: 0.125rem;
+	}
+
+	@media (min-width: 768px) {
+		.announcement-body {
+			flex-direction: row;
+			align-items: flex-start;
+		}
+
+		.announcement-image {
+			width: 16rem;
+			flex-shrink: 0;
+		}
+	}
+
+	/* ==================== Content Grid ==================== */
+	.content-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin: 0 0.75rem 1.5rem;
+	}
+
+	@media (min-width: 1024px) {
+		.content-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	/* ==================== Mission Card ==================== */
+	.mission-card {
+		background: white;
+		border-radius: 1rem;
+		padding: 2rem;
+		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
+		border: 1px solid rgba(74, 108, 170, 0.08);
+	}
+
+	.mission-title {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--color-heading, #1e293b);
+		line-height: 1.4;
+		margin-bottom: 1rem;
+	}
+
+	.mission-subtitle {
+		display: block;
+		font-size: 1rem;
+		font-weight: 600;
+		color: var(--acss-blue-dark, #1D4796);
+		margin-top: 0.25rem;
+	}
+
+	.accent-line-sm {
+		height: 3px;
+		width: 60px;
+		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		border-radius: 2px;
+		margin-bottom: 1.5rem;
+	}
+
+	.mission-description {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.125rem;
+		font-weight: 600;
+		color: var(--color-heading, #1e293b);
+		line-height: 1.5;
+		margin-bottom: 1.5rem;
+	}
+
+	.mission-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.mission-list li {
+		display: flex;
+		align-items: flex-start;
+		gap: 0.75rem;
+		padding: 0.75rem 0;
+		font-size: 1rem;
+		color: var(--color-body, #475569);
+		border-bottom: 1px solid rgba(74, 108, 170, 0.08);
+	}
+
+	.mission-list li:last-child {
+		border-bottom: none;
+	}
+
+	.list-marker {
+		width: 8px;
+		height: 8px;
+		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		border-radius: 50%;
+		flex-shrink: 0;
+		margin-top: 0.5rem;
+	}
+
+	@media (min-width: 1024px) {
+		.mission-title {
+			font-size: 1.5rem;
+		}
+	}
+
+	/* ==================== Blog Card ==================== */
+	.blog-card {
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.04) 0%, rgba(182, 70, 124, 0.04) 100%);
+		border-radius: 1rem;
+		padding: 2rem;
+		border: 1px solid rgba(74, 108, 170, 0.08);
+	}
+
+	.section-title {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.title-text {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--acss-blue-dark, #1D4796);
+	}
+
+	.title-accent {
+		flex: 1;
+		height: 2px;
+		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, transparent 100%);
+		border-radius: 1px;
+	}
+
+	.posts-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.no-content {
+		color: var(--color-muted, #94a3b8);
+		font-style: italic;
+		text-align: center;
+		padding: 2rem;
+	}
+
+	/* ==================== Second Row ==================== */
+	.content-grid-bottom {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+		margin: 0 0.75rem 1.5rem;
+	}
+
+	@media (min-width: 1024px) {
+		.content-grid-bottom {
+			grid-template-columns: 2fr 1fr;
+		}
+	}
+
+	/* ==================== Seminars Card ==================== */
+	.seminars-card {
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.04) 0%, rgba(182, 70, 124, 0.04) 100%);
+		border-radius: 1rem;
+		padding: 2rem;
+		border: 1px solid rgba(74, 108, 170, 0.08);
+	}
+
+	.section-title-center {
+		text-align: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-title-center .title-text {
+		display: block;
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.25rem;
+		font-weight: 700;
+		color: var(--acss-blue-dark, #1D4796);
+		margin-bottom: 0.75rem;
+	}
+
+	.title-accent-center {
+		display: block;
+		width: 60px;
+		height: 3px;
+		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		border-radius: 2px;
+		margin: 0 auto;
+	}
+
+	.seminars-list {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	/* ==================== Carousel Card ==================== */
+	.carousel-card {
+		background: white;
+		border-radius: 1rem;
+		padding: 1.5rem;
+		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
+		border: 1px solid rgba(74, 108, 170, 0.08);
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 </style>
