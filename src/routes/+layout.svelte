@@ -48,7 +48,7 @@
 	.main-content {
 		position: relative;
 		min-height: calc(100vh - 200px);
-		padding: 2.5rem 0;
+		padding: 2.5rem 0 1rem 0;
 		background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
 	}
 

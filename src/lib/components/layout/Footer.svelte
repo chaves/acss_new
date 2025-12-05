@@ -85,7 +85,7 @@
 	.footer {
 		position: relative;
 		background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-		margin-top: 3rem;
+		margin-top: 1rem;
 	}
 
 	.footer-accent {
@@ -94,13 +94,13 @@
 	}
 
 	.footer-content {
-		padding: 3rem 0 2rem;
+		padding: 2rem 0 1.5rem;
 	}
 
 	/* Partners Section */
 	.partners-section {
 		text-align: center;
-		margin-bottom: 3rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.partners-title {
@@ -168,7 +168,7 @@
 		flex-direction: column;
 		align-items: center;
 		gap: 1rem;
-		padding-top: 2rem;
+		padding-top: 1.5rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
