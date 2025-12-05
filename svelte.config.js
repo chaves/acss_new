@@ -14,14 +14,10 @@ const config = {
 			assets: process.env.VERCEL ? 'https://acss-dig.psl.eu' : '',
 			base: ''
 		},
-		prerender: {
-			//Needed for correctly prerendering <link rel="alternate" hreflang="x" href="y">
-			origin: 'https://acss-dig.psl.eu',
-			// Crawl all links to discover pages automatically
-			crawl: true,
-			// Start from root - Paraglide will handle language routing
-			entries: ['*']
-		},
+		// Note: Global prerendering is disabled to allow ISR routes to work properly.
+		// Routes with ISR config will use Incremental Static Regeneration (generated on-demand).
+		// Static routes without ISR will be generated on-demand on Vercel (SSR/SSG).
+		// If you need specific routes prerendered, add `export const prerender = true` to their +page.server.ts
 		csp: {
 			mode: 'auto',
 			directives: {
