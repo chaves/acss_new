@@ -19,7 +19,7 @@
 	const organizationSchema = generateOrganizationSchema();
 	const websiteSchema = generateWebSiteSchema();
 
-	// Format date for display
+	// Format date for display (always in English, not translated)
 	const formatDate = (dateStr: string) => {
 		const date = new Date(dateStr);
 		const day = date.getDate();
@@ -31,10 +31,10 @@
 					: day === 3 || day === 23
 						? 'rd'
 						: 'th';
-		return `${date.toLocaleDateString(isEn ? 'en-US' : 'fr-FR', {
+		return `${date.toLocaleDateString('en-US', {
 			weekday: 'long',
 			month: 'long'
-		})} ${day}${isEn ? suffix : ''} ${date.getFullYear()}`;
+		})} ${day}${suffix} ${date.getFullYear()}`;
 	};
 </script>
 
