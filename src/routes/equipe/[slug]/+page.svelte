@@ -4,10 +4,10 @@
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import { marked } from 'marked';
 	let { data }: { data: PageData } = $props();
-	let membre = data.membre[0];
-	const name = membre.FirstName + ' ' + membre.LastName;
+	let membre = $derived(data.membre[0]);
+	let name = $derived(membre.FirstName + ' ' + membre.LastName);
 	// Convert the Markdown biography to HTML.
-	const biographyHtml = marked(membre.biography);
+	let biographyHtml = $derived(marked(membre.biography));
 </script>
 
 <svelte:head>
