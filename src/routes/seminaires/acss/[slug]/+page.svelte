@@ -114,7 +114,7 @@
 	</header>
 
 	<!-- Content -->
-	<div class="session-content">
+	<div class="session-content prose">
 		{@html session.html}
 	</div>
 
@@ -217,9 +217,6 @@
 		@apply text-blue-600 hover:underline;
 	}
 
-	.session-content {
-		@apply prose prose-blue max-w-none;
-	}
 
 	/* Style the rendered markdown content */
 	.session-content :global(h2) {

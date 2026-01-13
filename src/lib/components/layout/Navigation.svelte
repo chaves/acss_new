@@ -367,13 +367,13 @@
 		gap: 0.25rem;
 	}
 
-	.chevron {
+	.dropdown-wrapper :global(.chevron) {
 		width: 1rem;
 		height: 1rem;
 		transition: transform 0.2s;
 	}
 
-	.dropdown-wrapper:hover .chevron {
+	.dropdown-wrapper:hover :global(.chevron) {
 		transform: rotate(180deg);
 	}
 
@@ -435,14 +435,14 @@
 		gap: 0.5rem;
 	}
 
-	.nested-chevron {
+	.nested-dropdown-wrapper :global(.nested-chevron) {
 		width: 0.875rem;
 		height: 0.875rem;
 		transform: rotate(-90deg);
 		transition: transform 0.2s;
 	}
 
-	.nested-dropdown-wrapper:hover .nested-chevron {
+	.nested-dropdown-wrapper:hover :global(.nested-chevron) {
 		transform: rotate(0deg);
 	}
 
@@ -512,7 +512,7 @@
 		transform: translateY(0);
 	}
 
-	.newsletter-icon {
+	:global(.newsletter-icon) {
 		width: 1.5rem;
 		height: 1.5rem;
 	}
@@ -674,13 +674,13 @@
 		text-align: left;
 	}
 
-	.mobile-chevron {
+	:global(.mobile-chevron) {
 		width: 1.25rem;
 		height: 1.25rem;
 		transition: transform 0.3s ease-in-out;
 	}
 
-	.mobile-chevron.open {
+	:global(.mobile-chevron.open) {
 		transform: rotate(180deg);
 	}
 
@@ -742,14 +742,14 @@
 		text-align: left;
 	}
 
-	.mobile-nested-chevron {
+	:global(.mobile-nested-chevron) {
 		width: 1rem;
 		height: 1rem;
 		transition: transform 0.3s ease-in-out;
 		flex-shrink: 0;
 	}
 
-	.mobile-nested-chevron.open {
+	:global(.mobile-nested-chevron.open) {
 		transform: rotate(180deg);
 	}
 
@@ -816,7 +816,7 @@
 		transform: translateY(0);
 	}
 
-	.mobile-newsletter-icon {
+	:global(.mobile-newsletter-icon) {
 		width: 1.5rem;
 		height: 1.5rem;
 	}

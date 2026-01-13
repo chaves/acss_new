@@ -24,9 +24,9 @@ This seminar explores how we measure information and meaning, from the fundament
 
 **9h00-9h10**: Introduction
 
-**9h10-10h00**: **Etienne Ollion** - *Augmenting ourselves. How LLMs change Content Analysis, and Social Sciences altogether*
+**9h10-10h00**: [Etienne Ollion](https://ollion.cnrs.fr/) (Ecole Polytechnique) - *Augmenting ourselves. How LLMs change Content Analysis, and Social Sciences altogether*
 
-**10h00-10h50**: **Thomas Renault** - *Turning text into economic measurement - From Lexicons to LLMs*
+**10h00-10h50**: [Thomas Renault](https://www.thomas-renault.com/) () - *Turning text into economic measurement - From Lexicons to LLMs*
 
 **10h50-11h20**: Coffee break
 

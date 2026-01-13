@@ -48,7 +48,7 @@
 		@apply object-cover mr-2 rounded-full;
 	}
 
-	a {
-		@apply hover:no-underline
+	.membre :global(a) {
+		@apply hover:no-underline;
 	}
 </style>

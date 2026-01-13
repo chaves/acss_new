@@ -53,7 +53,7 @@
 		@apply text-gray-500 text-xs mt-3;
 	}
 
-	a {
-		@apply hover:no-underline
+	.membre :global(a) {
+		@apply hover:no-underline;
 	}
 </style>
