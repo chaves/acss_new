@@ -18,6 +18,24 @@
 
 	const organizationSchema = generateOrganizationSchema();
 	const websiteSchema = generateWebSiteSchema();
+
+	// Format date for display
+	const formatDate = (dateStr: string) => {
+		const date = new Date(dateStr);
+		const day = date.getDate();
+		const suffix =
+			day === 1 || day === 21 || day === 31
+				? 'st'
+				: day === 2 || day === 22
+					? 'nd'
+					: day === 3 || day === 23
+						? 'rd'
+						: 'th';
+		return `${date.toLocaleDateString(isEn ? 'en-US' : 'fr-FR', {
+			weekday: 'long',
+			month: 'long'
+		})} ${day}${isEn ? suffix : ''} ${date.getFullYear()}`;
+	};
 </script>
 
 <SEO
@@ -32,49 +50,134 @@
 <StructuredData data={organizationSchema} />
 <StructuredData data={websiteSchema} />
 
-<!-- Featured Announcement -->
-<div class="announcement-card">
-	<div class="announcement-accent"></div>
-	<div class="announcement-content">
-		<div class="announcement-badge">
-			{isEn ? 'Upcoming Event' : 'Événement à venir'}
+<!-- Featured Announcement - ACSS Research Seminar -->
+{#if data.upcomingAcssSession}
+	{@const session = data.upcomingAcssSession}
+	<div class="announcement-card">
+		<div class="announcement-sparkle">
+			<div class="sparkle-dot"></div>
+			<div class="sparkle-dot"></div>
+			<div class="sparkle-dot"></div>
 		</div>
-		<div class="announcement-body">
-			<img
-				src="/images/visuels/Visuel_26-11-25.jpg"
-				alt="ACSS Research Seminar"
-				class="announcement-image"
-			/>
-			<div class="announcement-text">
-				<h3 class="announcement-title">
-					<Link href="/seminaires/acss">ACSS Research seminar</Link>
-				</h3>
-				<p class="announcement-subtitle">"<em>LLMs : from Archives to Finance</em>"</p>
-				<div class="announcement-details">
-					<div class="detail-item">
-						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-						</svg>
-						<span>Wednesday, November 26<sup>th</sup> 2025</span>
+		<div class="announcement-accent"></div>
+		<div class="announcement-content">
+			<div class="announcement-header">
+				<div class="announcement-badge">
+					<svg class="badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
+						/>
+					</svg>
+					<span>{isEn ? 'Upcoming ACSS Research Seminar' : 'Prochain séminaire de recherche ACSS'}</span>
+				</div>
+				<Link href="/seminaires/acss/{session.slug}" class="view-all-link">
+					{isEn ? 'View details' : 'Voir les détails'}
+					<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M17 8l4 4m0 0l-4 4m4-4H3"
+						/>
+					</svg>
+				</Link>
+			</div>
+
+			<div class="announcement-body">
+				{#if session.frontmatter.image}
+					<div class="announcement-image-wrapper">
+						<img
+							src={session.frontmatter.image}
+							alt={session.frontmatter.title}
+							class="announcement-image"
+						/>
+						<div class="image-overlay"></div>
 					</div>
-					<div class="detail-item">
-						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-						</svg>
-						<span>8:30 - 13:30</span>
+				{/if}
+
+				<div class="announcement-text">
+					<a href="/seminaires/acss/{session.slug}" class="announcement-title-link">
+						<h3 class="announcement-title">
+							{session.frontmatter.title}
+						</h3>
+					</a>
+
+					<div class="announcement-details">
+						<div class="detail-item highlight">
+							<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+								/>
+							</svg>
+							<span class="detail-text">{formatDate(session.frontmatter.date)}</span>
+						</div>
+
+						{#if session.frontmatter.time}
+							<div class="detail-item">
+								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+									/>
+								</svg>
+								<span class="detail-text">{session.frontmatter.time}</span>
+							</div>
+						{/if}
+
+						{#if session.frontmatter.location}
+							<div class="detail-item">
+								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+									/>
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+									/>
+								</svg>
+								<span class="detail-text">{session.frontmatter.location}</span>
+							</div>
+						{/if}
 					</div>
-					<div class="detail-item">
-						<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-							<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-						</svg>
-						<span>Campus de l'Estrapade de PSL - 16 bis rue de l'Estrapade, 75005 Paris</span>
-					</div>
+
+					{#if session.frontmatter.registration}
+						<div class="announcement-cta">
+							<a
+								href={session.frontmatter.registration}
+								class="cta-button"
+								target="_blank"
+								rel="noopener noreferrer"
+							>
+								<svg class="cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+									<path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
+									/>
+								</svg>
+								{isEn ? 'Register Now' : "S'inscrire maintenant"}
+							</a>
+						</div>
+					{/if}
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
+{/if}
 
 <!-- Main Content Grid -->
 <div class="content-grid">
@@ -212,76 +315,277 @@
 	.announcement-card {
 		position: relative;
 		margin-bottom: 2rem;
-		border-radius: 1rem;
+		border-radius: 1.25rem;
 		overflow: hidden;
-		background: white;
-		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
+		background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+		box-shadow:
+			0 20px 25px -5px rgba(74, 108, 170, 0.15),
+			0 10px 10px -5px rgba(74, 108, 170, 0.08);
+		border: 2px solid transparent;
+		background-clip: padding-box;
+		animation: cardPulse 3s ease-in-out infinite;
+	}
+
+	@keyframes cardPulse {
+		0%,
+		100% {
+			box-shadow:
+				0 20px 25px -5px rgba(74, 108, 170, 0.15),
+				0 10px 10px -5px rgba(74, 108, 170, 0.08);
+		}
+		50% {
+			box-shadow:
+				0 25px 30px -5px rgba(74, 108, 170, 0.2),
+				0 15px 15px -5px rgba(74, 108, 170, 0.12);
+		}
+	}
+
+	.announcement-sparkle {
+		position: absolute;
+		top: 0;
+		right: 0;
+		padding: 1rem;
+		display: flex;
+		gap: 0.5rem;
+		z-index: 10;
+	}
+
+	.sparkle-dot {
+		width: 8px;
+		height: 8px;
+		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		border-radius: 50%;
+		animation: sparkle 2s ease-in-out infinite;
+	}
+
+	.sparkle-dot:nth-child(2) {
+		animation-delay: 0.3s;
+	}
+
+	.sparkle-dot:nth-child(3) {
+		animation-delay: 0.6s;
+	}
+
+	@keyframes sparkle {
+		0%,
+		100% {
+			opacity: 0.3;
+			transform: scale(1);
+		}
+		50% {
+			opacity: 1;
+			transform: scale(1.2);
+		}
 	}
 
 	.announcement-accent {
-		height: 4px;
+		height: 6px;
 		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		position: relative;
+		overflow: hidden;
+	}
+
+	.announcement-accent::after {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: -100%;
+		width: 50%;
+		height: 100%;
+		background: linear-gradient(
+			90deg,
+			transparent 0%,
+			rgba(255, 255, 255, 0.6) 50%,
+			transparent 100%
+		);
+		animation: shimmer 3s ease-in-out infinite;
+	}
+
+	@keyframes shimmer {
+		0% {
+			left: -100%;
+		}
+		100% {
+			left: 200%;
+		}
 	}
 
 	.announcement-content {
-		padding: 1.5rem;
+		padding: 2rem;
+	}
+
+	.announcement-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		margin-bottom: 1.5rem;
+		flex-wrap: wrap;
+		gap: 1rem;
 	}
 
 	.announcement-badge {
-		display: inline-block;
-		padding: 0.375rem 1rem;
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.1) 0%, rgba(182, 70, 124, 0.1) 100%);
-		color: var(--acss-blue-dark, #1D4796);
-		font-size: 0.75rem;
-		font-weight: 600;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1.25rem;
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.12) 0%, rgba(182, 70, 124, 0.12) 100%);
+		color: var(--acss-blue-dark, #1d4796);
+		font-size: 0.875rem;
+		font-weight: 700;
 		text-transform: uppercase;
 		letter-spacing: 0.05em;
 		border-radius: 2rem;
-		margin-bottom: 1rem;
+		border: 2px solid rgba(74, 108, 170, 0.2);
+	}
+
+	.badge-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		color: var(--acss-red, #b6467c);
+	}
+
+	:global(.view-all-link) {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.5rem 1rem;
+		background: white;
+		color: var(--acss-blue, #4a6caa);
+		font-size: 0.875rem;
+		font-weight: 600;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		border: 2px solid rgba(74, 108, 170, 0.15);
+		transition: all 0.3s ease;
+	}
+
+	:global(.view-all-link:hover) {
+		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		color: white !important;
+		border-color: transparent;
+		transform: translateX(4px);
+		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.3);
+	}
+
+	:global(.view-all-link:hover *) {
+		color: white !important;
+	}
+
+	:global(.view-all-link::after) {
+		display: none !important;
+	}
+
+	:global(.arrow-icon) {
+		width: 1rem;
+		height: 1rem;
+		transition: transform 0.3s ease;
+		color: currentColor;
+	}
+
+	:global(.view-all-link:hover .arrow-icon) {
+		transform: translateX(4px);
+		color: white;
 	}
 
 	.announcement-body {
 		display: flex;
 		flex-direction: column;
-		gap: 1.5rem;
+		gap: 2rem;
+	}
+
+	.announcement-image-wrapper {
+		position: relative;
+		overflow: hidden;
+		border-radius: 1rem;
+		box-shadow: 0 10px 20px rgba(74, 108, 170, 0.15);
 	}
 
 	.announcement-image {
 		width: 100%;
 		height: auto;
-		border-radius: 0.75rem;
-		object-fit: cover;
+		display: block;
+		transition: transform 0.3s ease;
+	}
+
+	.announcement-image-wrapper:hover .announcement-image {
+		transform: scale(1.05);
+	}
+
+	.image-overlay {
+		position: absolute;
+		inset: 0;
+		background: linear-gradient(
+			135deg,
+			rgba(74, 108, 170, 0.05) 0%,
+			rgba(182, 70, 124, 0.05) 100%
+		);
+		pointer-events: none;
 	}
 
 	.announcement-text {
 		flex: 1;
 	}
 
-	.announcement-title {
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.5rem;
-		font-weight: 700;
-		margin-bottom: 0.5rem;
+	.announcement-title-link {
+		text-decoration: none;
+		display: block;
+		transition: transform 0.3s ease;
+		cursor: pointer;
 	}
 
-	.announcement-subtitle {
-		font-size: 1.125rem;
-		color: var(--color-body, #475569);
-		margin-bottom: 1rem;
+	.announcement-title-link:hover {
+		transform: translateX(4px);
+	}
+
+	.announcement-title-link:hover .announcement-title {
+		background: linear-gradient(135deg, var(--acss-red, #b6467c) 0%, var(--acss-blue, #4a6caa) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+	}
+
+	.announcement-title {
+		font-family: 'Quicksand', sans-serif;
+		font-size: 1.75rem;
+		font-weight: 700;
+		margin-bottom: 1.5rem;
+		color: var(--color-heading, #1e293b);
+		line-height: 1.3;
+		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		transition: all 0.3s ease;
 	}
 
 	.announcement-details {
 		display: flex;
 		flex-direction: column;
-		gap: 0.75rem;
+		gap: 1rem;
+		margin-bottom: 1.5rem;
 	}
 
 	.detail-item {
 		display: flex;
 		align-items: flex-start;
-		gap: 0.75rem;
+		gap: 0.875rem;
+		padding: 0.75rem;
+		background: rgba(74, 108, 170, 0.04);
+		border-radius: 0.75rem;
 		font-size: 0.9375rem;
 		color: var(--color-body, #475569);
+		transition: all 0.3s ease;
+	}
+
+	.detail-item:hover {
+		background: rgba(74, 108, 170, 0.08);
+		transform: translateX(4px);
+	}
+
+	.detail-item.highlight {
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.1) 0%, rgba(182, 70, 124, 0.1) 100%);
+		border: 2px solid rgba(74, 108, 170, 0.15);
+		font-weight: 600;
 	}
 
 	.detail-icon {
@@ -292,15 +596,57 @@
 		margin-top: 0.125rem;
 	}
 
+	.detail-item.highlight .detail-icon {
+		color: var(--acss-red, #b6467c);
+	}
+
+	.detail-text {
+		flex: 1;
+	}
+
+	.announcement-cta {
+		margin-top: 1rem;
+	}
+
+	.cta-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.875rem 1.75rem;
+		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		color: white;
+		font-size: 1rem;
+		font-weight: 700;
+		text-decoration: none;
+		border-radius: 0.75rem;
+		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.3);
+		transition: all 0.3s ease;
+		border: none;
+	}
+
+	.cta-button:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 20px rgba(74, 108, 170, 0.4);
+	}
+
+	.cta-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+	}
+
 	@media (min-width: 768px) {
 		.announcement-body {
 			flex-direction: row;
 			align-items: flex-start;
 		}
 
-		.announcement-image {
-			width: 16rem;
+		.announcement-image-wrapper {
+			width: 20rem;
 			flex-shrink: 0;
+		}
+
+		.announcement-title {
+			font-size: 2rem;
 		}
 	}
 

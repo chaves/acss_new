@@ -25,6 +25,7 @@
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.10",
 		"@tailwindcss/typography": "^0.5.16",
+		"@types/node": "^25.0.7",
 		"autoprefixer": "^10.4.20",
 		"clsx": "^2.1.1",
 		"cssnano": "^7.1.2",
@@ -36,7 +37,7 @@
 		"flowbite-svelte-icons": "^2.0.2",
 		"globals": "^15.14.0",
 		"lightningcss": "^1.30.2",
-		"marked": "^15.0.6",
+		"marked": "^15.0.12",
 		"prettier": "^3.4.2",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.10",
@@ -51,6 +52,7 @@
 	"dependencies": {
 		"@fontsource/montserrat": "^5.2.8",
 		"@fontsource/quicksand": "^5.2.10",
-		"@inlang/paraglide-js": "^2.4.0"
+		"@inlang/paraglide-js": "^2.4.0",
+		"gray-matter": "^4.0.3"
 	}
 }

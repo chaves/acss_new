@@ -11,6 +11,7 @@
 	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
 	let mobileMenuOpen = $state(false);
 	let openDropdown = $state<string | null>(null);
+	let openNestedDropdown = $state<string | null>(null);
 
 	// Get canonical path without language prefix for activeUrl matching
 	let activeUrl = $derived.by(() => {
@@ -36,10 +37,21 @@
 	function closeMobileMenu() {
 		mobileMenuOpen = false;
 		openDropdown = null;
+		openNestedDropdown = null;
 	}
 
 	function toggleDropdown(itemTitle: string) {
-		openDropdown = openDropdown === itemTitle ? null : itemTitle;
+		if (openDropdown === itemTitle) {
+			openDropdown = null;
+			openNestedDropdown = null;
+		} else {
+			openDropdown = itemTitle;
+			openNestedDropdown = null;
+		}
+	}
+
+	function toggleNestedDropdown(itemTitle: string) {
+		openNestedDropdown = openNestedDropdown === itemTitle ? null : itemTitle;
 	}
 
 	function isActive(path: string): boolean {
@@ -73,13 +85,37 @@
 							</button>
 							<div class="dropdown-menu">
 								{#each item.children as child}
-									<a
-										href={localizeUrl(child.path)}
-										class="dropdown-item"
-										class:active={isActive(child.path)}
-									>
-										{child.title}
-									</a>
+									{#if child.children}
+										<div class="nested-dropdown-wrapper">
+											<a
+												href={localizeUrl(child.path)}
+												class="dropdown-item nested-trigger"
+												class:active={isActive(child.path)}
+											>
+												{child.title}
+												<ChevronDownOutline class="nested-chevron" />
+											</a>
+											<div class="nested-dropdown-menu">
+												{#each child.children as nestedChild}
+													<a
+														href={localizeUrl(nestedChild.path)}
+														class="nested-dropdown-item"
+														class:active={isActive(nestedChild.path)}
+													>
+														{nestedChild.title}
+													</a>
+												{/each}
+											</div>
+										</div>
+									{:else}
+										<a
+											href={localizeUrl(child.path)}
+											class="dropdown-item"
+											class:active={isActive(child.path)}
+										>
+											{child.title}
+										</a>
+									{/if}
 								{/each}
 							</div>
 						</li>
@@ -152,16 +188,49 @@
 							{#if openDropdown === item.title}
 								<ul class="mobile-dropdown">
 									{#each item.children as child}
-										<li>
-											<a
-												href={localizeUrl(child.path)}
-												class="mobile-dropdown-item"
-												class:active={isActive(child.path)}
-												onclick={closeMobileMenu}
-											>
-												{child.title}
-											</a>
-										</li>
+										{#if child.children}
+											<li>
+												<button
+													class="mobile-dropdown-item mobile-nested-trigger"
+													onclick={() => toggleNestedDropdown(child.title)}
+													type="button"
+												>
+													{child.title}
+													<ChevronDownOutline
+														class={openNestedDropdown === child.title
+															? 'mobile-nested-chevron open'
+															: 'mobile-nested-chevron'}
+													/>
+												</button>
+												{#if openNestedDropdown === child.title}
+													<ul class="mobile-nested-dropdown">
+														{#each child.children as nestedChild}
+															<li>
+																<a
+																	href={localizeUrl(nestedChild.path)}
+																	class="mobile-nested-dropdown-item"
+																	class:active={isActive(nestedChild.path)}
+																	onclick={closeMobileMenu}
+																>
+																	{nestedChild.title}
+																</a>
+															</li>
+														{/each}
+													</ul>
+												{/if}
+											</li>
+										{:else}
+											<li>
+												<a
+													href={localizeUrl(child.path)}
+													class="mobile-dropdown-item"
+													class:active={isActive(child.path)}
+													onclick={closeMobileMenu}
+												>
+													{child.title}
+												</a>
+											</li>
+										{/if}
 									{/each}
 								</ul>
 							{/if}
@@ -343,6 +412,75 @@
 	}
 
 	.dropdown-item.active {
+		background: #eff6ff;
+		color: #1d4796;
+		font-weight: 600;
+	}
+
+	/* ==================== Nested Dropdown (Desktop) ==================== */
+	.nested-dropdown-wrapper {
+		position: relative;
+	}
+
+	.nested-dropdown-wrapper:hover .nested-dropdown-menu {
+		opacity: 1;
+		visibility: visible;
+		transform: translateX(0);
+	}
+
+	.nested-trigger {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 0.5rem;
+	}
+
+	.nested-chevron {
+		width: 0.875rem;
+		height: 0.875rem;
+		transform: rotate(-90deg);
+		transition: transform 0.2s;
+	}
+
+	.nested-dropdown-wrapper:hover .nested-chevron {
+		transform: rotate(0deg);
+	}
+
+	.nested-dropdown-menu {
+		position: absolute;
+		left: 100%;
+		top: 0;
+		margin-left: 0.5rem;
+		background: white;
+		border-radius: 0.75rem;
+		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+		padding: 0.5rem;
+		min-width: 14rem;
+		opacity: 0;
+		visibility: hidden;
+		transform: translateX(-10px);
+		transition: all 0.3s ease-in-out;
+		border: 1px solid #e2e8f0;
+	}
+
+	.nested-dropdown-item {
+		display: block;
+		padding: 0.625rem 0.875rem;
+		font-size: 0.875rem;
+		color: #334155;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		transition: all 0.2s;
+		white-space: nowrap;
+	}
+
+	.nested-dropdown-item:hover {
+		background: #f1f5f9;
+		color: #1d4796;
+		transform: translateX(4px);
+	}
+
+	.nested-dropdown-item.active {
 		background: #eff6ff;
 		color: #1d4796;
 		font-weight: 600;
@@ -587,6 +725,63 @@
 
 	.mobile-dropdown-item.active {
 		background: #eff6ff;
+		color: #1d4796;
+		font-weight: 600;
+		border-left-color: #1d4796;
+	}
+
+	/* ==================== Mobile Nested Dropdown ==================== */
+	.mobile-nested-trigger {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		width: 100%;
+		font-family: inherit;
+		border: none;
+		cursor: pointer;
+		text-align: left;
+	}
+
+	.mobile-nested-chevron {
+		width: 1rem;
+		height: 1rem;
+		transition: transform 0.3s ease-in-out;
+		flex-shrink: 0;
+	}
+
+	.mobile-nested-chevron.open {
+		transform: rotate(180deg);
+	}
+
+	.mobile-nested-dropdown {
+		list-style: none;
+		margin: 0.5rem 0 0 0;
+		padding: 0;
+		animation: expandDown 0.3s ease-in-out;
+	}
+
+	.mobile-nested-dropdown-item {
+		display: block;
+		padding: 0.875rem 1rem 0.875rem 2.5rem;
+		font-size: 0.875rem;
+		color: #64748b;
+		text-decoration: none;
+		border-radius: 0.75rem;
+		transition: all 0.2s;
+		background: #f8fafc;
+		margin-bottom: 0.25rem;
+		border-left: 3px solid transparent;
+	}
+
+	.mobile-nested-dropdown-item:hover {
+		background: #e0e7ff;
+		color: #1d4796;
+		border-left-color: #1d4796;
+		transform: translateX(4px);
+	}
+
+	.mobile-nested-dropdown-item.active {
+		background: #dbeafe;
 		color: #1d4796;
 		font-weight: 600;
 		border-left-color: #1d4796;

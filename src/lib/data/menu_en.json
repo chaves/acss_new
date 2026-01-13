@@ -33,7 +33,21 @@
     "children": [
       {
         "title": "Workshops and Seminars",
-        "path": "/seminaires"
+        "path": "/seminaires",
+        "children": [
+          {
+            "title": "ACSS-PSL Institute Research Seminar",
+            "path": "/seminaires/acss"
+          },
+          {
+            "title": "Public Governance workshop",
+            "path": "/seminaires/public-governance"
+          },
+          {
+            "title": "AI & NLP workshop",
+            "path": "/seminaires/nlp"
+          }
+        ]
       },
       {
         "title": "Training",
