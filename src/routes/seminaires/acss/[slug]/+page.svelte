@@ -217,6 +217,9 @@
 		@apply text-blue-600 hover:underline;
 	}
 
+	.session-content {
+		@apply rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
+	}
 
 	/* Style the rendered markdown content */
 	.session-content :global(h2) {
