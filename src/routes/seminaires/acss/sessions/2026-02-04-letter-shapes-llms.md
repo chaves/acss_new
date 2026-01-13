@@ -4,7 +4,9 @@ date: 2026-02-04
 time: "8:30-13:30"
 location: "Lecture Halls 2 and 3 - Paris Dauphine-PSL University"
 location_url: "https://dauphine.psl.eu/"
+image: "/images/visuels/Main-data2.jpg"
 status: "upcoming"
+registration: "https://www.fondation-dauphine.fr/inscriptions/acss-research-seminar-letter-shapes-large-language-models-measuring-information-and"
 organizers:
   - name: "Serge Darolles"
     url: "https://dauphine.psl.eu/recherche/cvtheque/profil/darolles-serge"
