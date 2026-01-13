@@ -32,8 +32,6 @@
 <article class="session-detail">
 	<!-- Header -->
 	<header class="session-header">
-		<h1>{session.frontmatter.title}</h1>
-
 		<div class="session-meta">
 			<div class="meta-item">
 				<span class="meta-label">Date:</span>
@@ -141,10 +139,6 @@
 		@apply mb-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
 	}
 
-	h1 {
-		@apply mb-4 text-2xl font-bold text-blueGray-700;
-	}
-
 	.session-meta {
 		@apply mb-4 flex flex-wrap gap-4;
 	}
@@ -218,7 +212,7 @@
 	}
 
 	.session-content {
-		@apply rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
+		@apply max-w-none rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
 	}
 
 	/* Style the rendered markdown content */

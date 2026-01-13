@@ -58,27 +58,8 @@
 		<div class="announcement-content">
 			<div class="announcement-header">
 				<div class="announcement-badge">
-					<svg class="badge-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"
-						/>
-					</svg>
 					<span>{isEn ? 'Upcoming ACSS Research Seminar' : 'Prochain séminaire de recherche ACSS'}</span>
 				</div>
-				<Link href="/seminaires/acss/{session.slug}" class="view-all-link">
-					{isEn ? 'View details' : 'Voir les détails'}
-					<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							stroke-width="2"
-							d="M17 8l4 4m0 0l-4 4m4-4H3"
-						/>
-					</svg>
-				</Link>
 			</div>
 
 			<div class="announcement-body">
@@ -148,15 +129,27 @@
 						{/if}
 					</div>
 
-					{#if session.frontmatter.registration}
-						<div class="announcement-cta">
+					<div class="announcement-buttons">
+						<Link href="/seminaires/acss/{session.slug}" class="view-all-link">
+							{isEn ? 'View details' : 'Voir les détails'}
+							<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M17 8l4 4m0 0l-4 4m4-4H3"
+								/>
+							</svg>
+						</Link>
+
+						{#if session.frontmatter.registration}
 							<a
 								href={session.frontmatter.registration}
-								class="cta-button"
+								class="view-all-link"
 								target="_blank"
 								rel="noopener noreferrer"
 							>
-								<svg class="cta-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
 										stroke-linecap="round"
 										stroke-linejoin="round"
@@ -166,8 +159,8 @@
 								</svg>
 								{isEn ? 'Register Now' : "S'inscrire maintenant"}
 							</a>
-						</div>
-					{/if}
+						{/if}
+					</div>
 				</div>
 			</div>
 		</div>
@@ -389,7 +382,7 @@
 	.announcement-header {
 		display: flex;
 		align-items: center;
-		justify-content: space-between;
+		justify-content: center;
 		margin-bottom: 1.5rem;
 		flex-wrap: wrap;
 		gap: 1rem;
@@ -408,12 +401,6 @@
 		letter-spacing: 0.05em;
 		border-radius: 2rem;
 		border: 2px solid rgba(74, 108, 170, 0.2);
-	}
-
-	.badge-icon {
-		width: 1.25rem;
-		height: 1.25rem;
-		color: var(--acss-red, #b6467c);
 	}
 
 	:global(.view-all-link) {
@@ -576,34 +563,11 @@
 		flex: 1;
 	}
 
-	.announcement-cta {
-		margin-top: 1rem;
-	}
-
-	.cta-button {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.75rem;
-		padding: 0.875rem 1.75rem;
-		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		color: white;
-		font-size: 1rem;
-		font-weight: 700;
-		text-decoration: none;
-		border-radius: 0.75rem;
-		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.3);
-		transition: all 0.3s ease;
-		border: none;
-	}
-
-	.cta-button:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 8px 20px rgba(74, 108, 170, 0.4);
-	}
-
-	.cta-icon {
-		width: 1.25rem;
-		height: 1.25rem;
+	.announcement-buttons {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 1.5rem;
 	}
 
 	@media (min-width: 768px) {
