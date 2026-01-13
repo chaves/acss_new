@@ -26,16 +26,12 @@ This seminar explores how we measure information and meaning, from the fundament
 
 **9h10-10h00**: [Etienne Ollion](https://ollion.cnrs.fr/) (Ecole Polytechnique) - *Augmenting ourselves. How LLMs change Content Analysis, and Social Sciences altogether*
 
-**10h00-10h50**: [Thomas Renault](https://www.thomas-renault.com/) () - *Turning text into economic measurement - From Lexicons to LLMs*
+**10h00-10h50**: [Thomas Renault](https://www.thomas-renault.com/) (Paris-Saclay) - *Turning text into economic measurement - From Lexicons to LLMs*
 
 **10h50-11h20**: Coffee break
 
-**11h20-12h10**: **Olivier Morin** - *Letter shapes do not encode information as efficiently as the sounds of languages do*
+**11h20-12h10**: [Olivier Morin](https://sites.google.com/site/sitedoliviermorin/) (Institut Jean Nicod) - *Letter shapes do not encode information as efficiently as the sounds of languages do*
 
 **12h10-12h15**: Conclusions
 
 **12h15-13h30**: Buffet lunch
-
----
-
-*Organized by ACSS-PSL Institute with the financial support of PSL Global Seed Fund.*
