@@ -18,7 +18,7 @@ contact_present: "simon.porcher@dauphine.psl.eu"
 contact_attend: "bruno.chavesferreira@dauphine.psl.eu"
 ---
 
-This seminar explores how we measure information and meaning, from the fundamental shapes of written letters to the sophisticated capabilities of Large Language Models. The session brings together leading researchers to discuss how computational methods are transforming our understanding of language, text, and information across multiple scales and disciplines.
+This workshop explores how digital technologies and language models are reshaping systems of representation and analysis. The session brings together leading researchers to discuss how computational methods are transforming our understanding of language, text, and information across multiple scales and disciplines. The first presentation examines the use of Large Language Models (LLMs) in social sciences, focusing on large-scale content analysis and discussing opportunities and epistemological risks linked to this “augmentation” of researchers. The second talk addresses the transition from traditional lexicons to LLMs in economic measurement, showing how these tools transform the production and interpretation of indicators derived from text. The third presentation investigates the informational efficiency of writing systems compared to spoken languages, using measures of compressibility and symmetry applied to typologically diverse scripts. Together, these contributions shed light on the socio-technical and cognitive challenges posed by codes and models that structure scientific and social practices.
 
 ## Programme
 
