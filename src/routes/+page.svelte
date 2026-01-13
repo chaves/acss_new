@@ -281,6 +281,21 @@
 				<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>
 			{/if}
 		</div>
+		{#if data.posts.length > 0}
+			<div class="view-all-wrapper">
+				<Link href="/blog" class="view-all-link">
+					{isEn ? 'View all posts' : 'Voir tous les articles'}
+					<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M17 8l4 4m0 0l-4 4m4-4H3"
+						/>
+					</svg>
+				</Link>
+			</div>
+		{/if}
 	</div>
 </div>
 
@@ -821,6 +836,13 @@
 		display: flex;
 		flex-direction: column;
 		gap: 0.5rem;
+	}
+
+	.view-all-wrapper {
+		margin-top: 1.5rem;
+		text-align: center;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
 	.no-content {
