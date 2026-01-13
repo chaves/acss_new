@@ -275,7 +275,7 @@
 		<div class="posts-list">
 			{#if data.posts.length > 0}
 				{#each data.posts as post, index}
-					<PostItem {post} {index} />
+					<PostItem {post} {index} priority={index < 3} />
 				{/each}
 			{:else}
 				<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>

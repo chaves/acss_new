@@ -27,6 +27,8 @@
 		size?: ImageSize;
 		/** Enable WebP format (default: true) */
 		webp?: boolean;
+		/** Fetch priority hint (high, low, auto) */
+		fetchpriority?: 'high' | 'low' | 'auto';
 	}
 
 	let {
@@ -35,7 +37,8 @@
 		class: className = '',
 		loading = 'lazy',
 		size = 'medium',
-		webp = true
+		webp = true,
+		fetchpriority = 'auto'
 	}: Props = $props();
 
 	// Derived values using the Strapi service
@@ -62,6 +65,7 @@
 		width={dimensions?.width}
 		height={dimensions?.height}
 		{loading}
+		{fetchpriority}
 		decoding="async"
 	/>
 {:else}

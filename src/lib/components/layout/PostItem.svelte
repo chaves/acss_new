@@ -4,14 +4,18 @@
 	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 	import { formatDate } from '$lib/helpers/locale';
 	import type { BlogPost } from '$lib/types';
+	import type { ImageLoading } from '$lib/constants';
 
 	interface Props {
 		post: BlogPost;
 		index: number;
+		priority?: boolean;
 	}
 
-	let { post, index }: Props = $props();
+	let { post, index, priority = false }: Props = $props();
 	let formattedDate = $derived(formatDate(post.publishedAt));
+	let imageLoading = $derived<ImageLoading>(priority ? 'eager' : 'lazy');
+	let imageFetchPriority = $derived<'high' | 'low' | 'auto'>(index === 0 ? 'high' : 'auto');
 </script>
 
 <article class="post-item">
@@ -22,6 +26,8 @@
 				alt={post.Title}
 				size="thumbnail"
 				class="post-image"
+				loading={imageLoading}
+				fetchpriority={imageFetchPriority}
 			/>
 		</div>
 	{/if}
