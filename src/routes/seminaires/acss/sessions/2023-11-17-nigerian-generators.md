@@ -1,5 +1,5 @@
 ---
-title: "Nigerian Auxiliary Generator Use & Electrification in Côte d'Ivoire"
+title: "ACSS Research Seminar - November 17, 2023"
 date: 2023-11-17
 time: "12:15-13:45"
 status: "past"

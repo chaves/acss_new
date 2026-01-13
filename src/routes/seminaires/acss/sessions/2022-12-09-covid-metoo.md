@@ -1,5 +1,5 @@
 ---
-title: "Covid-19 Crisis & #MeToo Movement"
+title: "ACSS Research Seminar - December 9, 2022"
 date: 2022-12-09
 time: "12:15-13:45"
 status: "past"

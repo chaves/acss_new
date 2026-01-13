@@ -1,5 +1,5 @@
 ---
-title: "Bubble Assets & Commodity Price Fluctuations"
+title: "ACSS Research Seminar - October 14, 2022"
 date: 2022-10-14
 time: "12:15-13:45"
 status: "past"

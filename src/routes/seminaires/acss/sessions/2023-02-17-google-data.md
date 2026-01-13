@@ -1,5 +1,5 @@
 ---
-title: "Google Data for GDP & Explainable Performance"
+title: "ACSS Research Seminar - February 17, 2023"
 date: 2023-02-17
 time: "12:15-13:45"
 status: "past"

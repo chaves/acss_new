@@ -159,13 +159,24 @@
 			{#each pastSessions as session}
 				<article class="session-item">
 					<a href="/seminaires/acss/{session.slug}" class="session-item-link">
-						<div class="session-item-header">
-							<h3 class="session-item-title">{session.frontmatter.title}</h3>
-							<span class="session-item-date">{formatDate(session.frontmatter.date)}</span>
+						{#if session.frontmatter.image}
+							<div class="session-item-thumbnail">
+								<img
+									src={session.frontmatter.image}
+									alt={session.frontmatter.title}
+									loading="lazy"
+								/>
+							</div>
+						{/if}
+						<div class="session-item-content">
+							<div class="session-item-header">
+								<h3 class="session-item-title">{session.frontmatter.title}</h3>
+								<span class="session-item-date">{formatDate(session.frontmatter.date)}</span>
+							</div>
+							<p class="session-item-excerpt">
+								{getExcerpt(session.content, 150)}
+							</p>
 						</div>
-						<p class="session-item-excerpt">
-							{getExcerpt(session.content, 150)}
-						</p>
 					</a>
 				</article>
 			{/each}
@@ -298,7 +309,7 @@
 	}
 
 	.session-item {
-		@apply rounded-lg border-l-4 border-gray-300 bg-white p-4 transition hover:shadow-md;
+		@apply rounded-lg border-l-4 border-gray-300 bg-white transition hover:shadow-md;
 	}
 
 	.session-item:hover {
@@ -306,7 +317,19 @@
 	}
 
 	.session-item-link {
-		@apply block;
+		@apply flex gap-4;
+	}
+
+	.session-item-thumbnail {
+		@apply h-24 w-32 flex-shrink-0 overflow-hidden rounded;
+	}
+
+	.session-item-thumbnail img {
+		@apply h-full w-full object-cover transition hover:scale-105;
+	}
+
+	.session-item-content {
+		@apply flex-1 p-4;
 	}
 
 	.session-item-header {

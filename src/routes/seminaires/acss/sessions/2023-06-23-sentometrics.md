@@ -1,5 +1,5 @@
 ---
-title: "Sentometrics & Social Media as Bank Run Catalyst"
+title: "ACSS Research Seminar - June 23, 2023"
 date: 2023-06-23
 time: "12:15-13:45"
 status: "past"
