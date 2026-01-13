@@ -257,7 +257,12 @@
 	}
 
 	.registration-button {
-		@apply inline-block rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:from-blue-700 hover:to-blue-800 hover:shadow-lg;
+		@apply inline-block rounded-lg bg-gradient-to-r from-blue-600 to-blue-700 px-6 py-3 font-semibold text-white shadow-md transition hover:from-blue-700 hover:to-blue-800 hover:shadow-lg no-underline;
+	}
+
+	.registration-button:hover {
+		text-decoration: none !important;
+		color: white !important;
 	}
 
 	.back-link {
