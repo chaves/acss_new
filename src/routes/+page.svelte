@@ -54,11 +54,6 @@
 {#if data.upcomingAcssSession}
 	{@const session = data.upcomingAcssSession}
 	<div class="announcement-card">
-		<div class="announcement-sparkle">
-			<div class="sparkle-dot"></div>
-			<div class="sparkle-dot"></div>
-			<div class="sparkle-dot"></div>
-		</div>
 		<div class="announcement-accent"></div>
 		<div class="announcement-content">
 			<div class="announcement-header">
@@ -352,44 +347,6 @@
 			box-shadow:
 				0 25px 30px -5px rgba(74, 108, 170, 0.2),
 				0 15px 15px -5px rgba(74, 108, 170, 0.12);
-		}
-	}
-
-	.announcement-sparkle {
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 1rem;
-		display: flex;
-		gap: 0.5rem;
-		z-index: 10;
-	}
-
-	.sparkle-dot {
-		width: 8px;
-		height: 8px;
-		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		border-radius: 50%;
-		animation: sparkle 2s ease-in-out infinite;
-	}
-
-	.sparkle-dot:nth-child(2) {
-		animation-delay: 0.3s;
-	}
-
-	.sparkle-dot:nth-child(3) {
-		animation-delay: 0.6s;
-	}
-
-	@keyframes sparkle {
-		0%,
-		100% {
-			opacity: 0.3;
-			transform: scale(1);
-		}
-		50% {
-			opacity: 1;
-			transform: scale(1.2);
 		}
 	}
 
