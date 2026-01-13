@@ -36,6 +36,18 @@ export default defineConfig({
 		rollupOptions: {
 			output: {
 				manualChunks: undefined
+			},
+			// Suppress sourcemap warnings from third-party libraries
+			onwarn(warning, warn) {
+				// Ignore sourcemap warnings from node_modules (flowbite-svelte, etc.)
+				if (
+					warning.code === 'SOURCEMAP_ERROR' &&
+					warning.message.includes('node_modules')
+				) {
+					return;
+				}
+				// Log other warnings
+				warn(warning);
 			}
 		}
 	}
