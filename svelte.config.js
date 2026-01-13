@@ -17,7 +17,17 @@ const config = {
 		prerender: {
 			origin: 'https://acss-dig.psl.eu',
 			crawl: true,
-			entries: ['*']
+			entries: ['*'],
+			// Handle 404s gracefully during prerendering (e.g., deleted team members linked from Strapi content)
+			handleHttpError: ({ path, referrer, message }) => {
+				// Ignore 404s for team member pages - they might be linked from old content
+				if (path.startsWith('/equipe/') || path.startsWith('/membres/')) {
+					console.warn(`Ignoring 404 for ${path} (linked from ${referrer})`);
+					return;
+				}
+				// Throw error for other 404s
+				throw new Error(message);
+			}
 		},
 		csp: {
 			mode: 'auto',

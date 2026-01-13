@@ -9,7 +9,7 @@ import { error } from '@sveltejs/kit';
 
 /**
  * Generate entries for prerendering at build time
- * Gracefully handles deleted members by skipping invalid entries
+ * Only includes existing members from the API
  */
 export async function entries() {
 	try {
@@ -19,20 +19,11 @@ export async function entries() {
 		for (const member of team) {
 			const slug = (member as any).Slug || (member as any).slug;
 			if (slug && typeof slug === 'string') {
-				// Validate that member data exists before adding to entries
-				try {
-					const memberData = await authors.getBySlug(slug);
-					if (memberData) {
-						entries.push({ slug: slug.trim() });
-					}
-				} catch (err) {
-					// Skip members that cause errors (deleted, invalid, etc.)
-					console.warn(`Skipping team member ${slug} due to error:`, (err as any).message);
-				}
+				entries.push({ slug: slug.trim() });
 			}
 		}
 
-		console.log(`[equipe/[slug]] Generated ${entries.length} valid team member entries`);
+		console.log(`[equipe/[slug]] Generated ${entries.length} team member entries`);
 		return entries;
 	} catch (err) {
 		console.error('[equipe/[slug]] Error generating entries:', err);
