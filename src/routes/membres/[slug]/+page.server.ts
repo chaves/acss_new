@@ -1,6 +1,9 @@
 import type { PageServerLoad } from './$types';
 import Membres from '$lib/data/membres.json';
 
+// Disable prerendering since we removed links to individual member pages
+export const prerender = false;
+
 const data_membres = Membres;
 
 function getBySlug(slug: string, data_membres: any[]) {
