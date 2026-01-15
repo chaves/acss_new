@@ -254,6 +254,27 @@
 		</nav>
 	</div>
 
+	<!-- Seminars Card -->
+	<div class="seminars-card">
+		{#if data.seminars.length > 0}
+			<h2 class="section-title-center">
+				<span class="title-text">
+					{isEn ? 'Upcoming working group sessions' : 'Prochaines sessions des groupes de travail'}
+				</span>
+				<span class="title-accent-center"></span>
+			</h2>
+
+			<div class="seminars-list">
+				{#each data.seminars as seminar, index}
+					<SeminarItem {seminar} {index} abstract={false} />
+				{/each}
+			</div>
+		{/if}
+	</div>
+</div>
+
+<!-- Second Row -->
+<div class="content-grid-bottom">
 	<!-- Blog Card -->
 	<div class="blog-card">
 		<h2 class="section-title">
@@ -282,27 +303,6 @@
 						/>
 					</svg>
 				</Link>
-			</div>
-		{/if}
-	</div>
-</div>
-
-<!-- Second Row -->
-<div class="content-grid-bottom">
-	<!-- Seminars Card -->
-	<div class="seminars-card">
-		{#if data.seminars.length > 0}
-			<h2 class="section-title-center">
-				<span class="title-text">
-					{isEn ? 'Upcoming working group sessions' : 'Prochaines sessions des groupes de travail'}
-				</span>
-				<span class="title-accent-center"></span>
-			</h2>
-
-			<div class="seminars-list">
-				{#each data.seminars as seminar, index}
-					<SeminarItem {seminar} {index} abstract={false} />
-				{/each}
 			</div>
 		{/if}
 	</div>
