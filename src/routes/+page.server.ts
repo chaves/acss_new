@@ -6,7 +6,7 @@ export const load = (async () => {
 	try {
 		// Run all API requests and markdown loading concurrently
 		const [upcomingSeminars, recentPosts, acssSessions] = await Promise.all([
-			seminars.getUpcoming(),
+			seminars.getUpcoming(5),
 			posts.getRecent(5),
 			Promise.resolve(getUpcomingSessions())
 		]);

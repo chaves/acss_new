@@ -252,6 +252,11 @@
 				<span>{isEn ? 'Partnerships' : 'Partenariats'}</span>
 			</Link>
 		</nav>
+
+		<!-- Carousel inside Mission Card -->
+		<div class="mission-carousel">
+			<Carousel {images} duration={3000} imgClass="carousel-image" />
+		</div>
 	</div>
 
 	<!-- Seminars Card -->
@@ -273,9 +278,8 @@
 	</div>
 </div>
 
-<!-- Second Row -->
-<div class="content-grid-bottom">
-	<!-- Blog Card -->
+<!-- Blog Section - Single Column -->
+<div class="blog-wrapper">
 	<div class="blog-card">
 		<h2 class="section-title">
 			<span class="title-text">Blog</span>
@@ -305,11 +309,6 @@
 				</Link>
 			</div>
 		{/if}
-	</div>
-
-	<!-- Carousel Card -->
-	<div class="carousel-card">
-		<Carousel {images} duration={3000} imgClass="carousel-image" />
 	</div>
 </div>
 
@@ -773,18 +772,39 @@
 		padding: 2rem;
 	}
 
-	/* ==================== Second Row ==================== */
-	.content-grid-bottom {
-		display: grid;
-		grid-template-columns: 1fr;
-		gap: 1.5rem;
-		margin: 0 0.75rem 0.5rem;
+	/* ==================== Mission Carousel ==================== */
+	.mission-carousel {
+		margin-top: 1.5rem;
+		padding-top: 1.5rem;
+		border-top: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
-	@media (min-width: 1024px) {
-		.content-grid-bottom {
-			grid-template-columns: 2fr 1fr;
-		}
+	.mission-carousel :global(> div) {
+		width: 100%;
+		min-height: 250px;
+	}
+
+	.mission-carousel :global(.carousel-image) {
+		max-width: 100%;
+		max-height: 250px;
+		width: auto;
+		height: auto;
+		object-fit: contain;
+		border-radius: 0.5rem;
+		margin: 0 auto;
+		display: block;
+	}
+
+	.mission-carousel :global([role="group"]) {
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	/* ==================== Blog Wrapper ==================== */
+	.blog-wrapper {
+		margin: 0 0.75rem 1.5rem;
 	}
 
 	/* ==================== Seminars Card ==================== */
@@ -824,42 +844,4 @@
 		gap: 0.5rem;
 	}
 
-	/* ==================== Carousel Card ==================== */
-	.carousel-card {
-		background: white;
-		border-radius: 1rem;
-		padding: 1rem;
-		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
-		border: 1px solid rgba(74, 108, 170, 0.08);
-		min-height: 350px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	/* Ensure carousel fills its container properly */
-	:global(.carousel-card > div) {
-		width: 100%;
-		height: 100%;
-		min-height: 320px;
-	}
-
-	:global(.carousel-card .carousel-image) {
-		max-width: 100%;
-		max-height: 300px;
-		width: auto;
-		height: auto;
-		object-fit: contain;
-		border-radius: 0.5rem;
-		margin: 0 auto;
-		display: block;
-	}
-
-	/* Style carousel navigation indicators */
-	:global(.carousel-card [role="group"]) {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
 </style>

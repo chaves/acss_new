@@ -75,13 +75,14 @@ export const seminars = {
 	/**
 	 * Get upcoming seminars (date >= today)
 	 */
-	async getUpcoming(): Promise<Seminar[]> {
+	async getUpcoming(limit?: number): Promise<Seminar[]> {
 		const today = new Date().toISOString();
 		return seminars.getAll({
 			filters: {
 				date: { $gte: today }
 			},
-			sort: 'date:asc'
+			sort: 'date:asc',
+			...(limit && { pagination: { pageSize: limit } })
 		});
 	},
 
