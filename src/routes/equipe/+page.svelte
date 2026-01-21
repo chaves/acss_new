@@ -2,6 +2,7 @@
     import type { PageData } from './$types';
     import * as m from '$lib/paraglide/messages.js';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+    import Link from '$lib/components/Link.svelte';
     let { data }: { data: PageData } = $props();
 </script>
 
@@ -9,29 +10,57 @@
 
 <div class="flex flex-wrap">
 	{#each data.equipe as membre}
+		{@const slug = membre.Slug ?? (membre as { slug?: string }).slug}
 		<div class="w-full lg:w-1/2 py-3 lg:px-2">
-			<div class="membre">
-				<div class="flex items-center">
-					<img
-						class="object-cover w-30 h-30 mr-2 rounded-full"
-						src="/images/photos_equipe/{membre.ImageFileName}"
-						alt="{membre.FirstName} {membre.LastName}"
-						width="150"
-						height="150"
-						loading="lazy"
-						decoding="async"
-					/>
-					<div class="pl-4">
-						<strong class="mt-6 mb-2 text-xl">
-							{membre.FirstName}
-							{membre.LastName}
-						</strong>
-						<p class="text-gray-500 mt-3">
-							{membre.fonction}
-						</p>
+			{#if slug}
+				<Link href="/equipe/{slug}" class="block no-underline text-inherit cursor-pointer">
+					<div class="membre">
+						<div class="flex items-center">
+							<img
+								class="object-cover w-30 h-30 mr-2 rounded-full"
+								src="/images/photos_equipe/{membre.ImageFileName}"
+								alt="{membre.FirstName} {membre.LastName}"
+								width="150"
+								height="150"
+								loading="lazy"
+								decoding="async"
+							/>
+							<div class="pl-4">
+								<strong class="mt-6 mb-2 text-xl">
+									{membre.FirstName}
+									{membre.LastName}
+								</strong>
+								<p class="text-gray-500 mt-3">
+									{membre.fonction}
+								</p>
+							</div>
+						</div>
+					</div>
+				</Link>
+			{:else}
+				<div class="membre">
+					<div class="flex items-center">
+						<img
+							class="object-cover w-30 h-30 mr-2 rounded-full"
+							src="/images/photos_equipe/{membre.ImageFileName}"
+							alt="{membre.FirstName} {membre.LastName}"
+							width="150"
+							height="150"
+							loading="lazy"
+							decoding="async"
+						/>
+						<div class="pl-4">
+							<strong class="mt-6 mb-2 text-xl">
+								{membre.FirstName}
+								{membre.LastName}
+							</strong>
+							<p class="text-gray-500 mt-3">
+								{membre.fonction}
+							</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			{/if}
 		</div>
 	{/each}
 </div>
