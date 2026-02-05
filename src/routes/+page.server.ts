@@ -2,7 +2,13 @@ import type { PageServerLoad } from './$types';
 import { posts, seminars } from '$lib/api';
 import { getUpcomingSessions } from '$lib/helpers/markdown';
 
-export const load = (async () => {
+export const load = (async ({ setHeaders }) => {
+	// Enable ISR with 24-hour revalidation (86400 seconds)
+	// This ensures the page is regenerated at least once per day
+	setHeaders({
+		'cache-control': 'public, max-age=0, s-maxage=86400, stale-while-revalidate=86400'
+	});
+
 	try {
 		// Run all API requests and markdown loading concurrently
 		const [upcomingSeminars, recentPosts, acssSessions] = await Promise.all([
