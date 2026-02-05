@@ -9,7 +9,7 @@
 
 	let { type, showRegistration = true, variant = 'card' }: Props = $props();
 
-	const workshop = workshops[type];
+	const workshop = $derived(workshops[type]);
 </script>
 
 <div class="workshop-info" class:card={variant === 'card'} class:section={variant === 'section'}>
@@ -27,9 +27,11 @@
 		</p>
 	{/if}
 
-	<p class="schedule">
-		<strong>Periodicity:</strong> {workshop.schedule}.
-	</p>
+	{#if 'schedule' in workshop}
+		<p class="schedule">
+			<strong>Periodicity:</strong> {workshop.schedule}.
+		</p>
+	{/if}
 
 	{#if showRegistration}
 		{#if workshop.registration.type === 'form'}
@@ -47,6 +49,23 @@
 						<a href="mailto:{contact.email}">{contact.email}</a>
 					</p>
 				{/each}
+			</div>
+		{:else if workshop.registration.type === 'customWithLinks'}
+			<div class="custom-registration">
+				<p>
+					If you would like to present, attend, or have any question about seminar, please contact
+					{#each workshop.registration.contacts as contact, i}
+						{#if i > 0}
+							{i === workshop.registration.contacts.length - 1 ? ' or ' : ', '}
+						{/if}
+						{contact.name} (<a href="mailto:{contact.email}">{contact.email}</a>)
+					{/each}
+				</p>
+				{#if 'registrationPageUrl' in workshop.registration}
+					<p class="registration-page">
+						Register on <a href={workshop.registration.registrationPageUrl}>this page</a> to receive our emails about upcoming presentations.
+					</p>
+				{/if}
 			</div>
 		{/if}
 	{/if}
@@ -102,6 +121,22 @@
 	}
 
 	.external-link a {
+		@apply text-blue-600 hover:underline;
+	}
+
+	.custom-registration {
+		@apply mt-4;
+	}
+
+	.custom-registration p {
+		@apply my-2;
+	}
+
+	.registration-page {
+		@apply mt-3 italic text-gray-500;
+	}
+
+	.registration-page a {
 		@apply text-blue-600 hover:underline;
 	}
 </style>
