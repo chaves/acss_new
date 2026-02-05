@@ -196,7 +196,7 @@
 	}
 
 	.organizers-list a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.contacts {
@@ -208,7 +208,7 @@
 	}
 
 	.contacts a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.session-content {
@@ -233,7 +233,7 @@
 	}
 
 	.session-content :global(a) {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.session-content :global(ul) {
@@ -270,6 +270,6 @@
 	}
 
 	.back-link a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 </style>

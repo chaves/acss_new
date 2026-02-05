@@ -120,6 +120,6 @@
 		@apply my-3 ml-9 list-disc;
 	}
 	a {
-		@apply font-semibold text-blue-dark hover:underline hover:decoration-pink-500 hover:decoration-2;
+		@apply font-semibold text-blue-dark;
 	}
 </style>

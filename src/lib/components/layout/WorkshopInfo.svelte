@@ -101,7 +101,7 @@
 	}
 
 	.registration a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.contacts {
@@ -113,7 +113,7 @@
 	}
 
 	.contact a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.external-link {
@@ -121,7 +121,7 @@
 	}
 
 	.external-link a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 
 	.custom-registration {
@@ -132,11 +132,15 @@
 		@apply my-2;
 	}
 
+	.custom-registration a {
+		@apply text-blue-600;
+	}
+
 	.registration-page {
 		@apply mt-3 italic text-gray-500;
 	}
 
 	.registration-page a {
-		@apply text-blue-600 hover:underline;
+		@apply text-blue-600;
 	}
 </style>

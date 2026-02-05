@@ -175,7 +175,7 @@
 	}
 
 	.presenter-homepage {
-		@apply text-sm text-purple-600 hover:text-purple-700 hover:underline break-all;
+		@apply text-sm text-purple-600 hover:text-purple-700 break-all;
 	}
 
 	.seminar-title {
