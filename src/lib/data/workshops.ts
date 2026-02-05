@@ -38,7 +38,7 @@ export const workshops = {
 			'This working group is developing a joint approach in order to establish a reasoned position on digital regulation in the context of current European (and American) initiatives. In particular, it is considering how to implement responsible governance while allowing for innovation. The issue of the effectiveness of public action and how it relates to competitiveness constraints is also central.'
 		],
 		externalLink: {
-			url: 'https://www.chaire-regulationdunumerique.fr/',
+			url: 'https://chairgovreg.fondation-dauphine.fr/en/node/1328',
 			text: 'Chair Governance and Regulation'
 		},
 		registration: {
@@ -47,8 +47,10 @@ export const workshops = {
 				{ name: 'Damien Mayaux', email: 'damien.mayaux@dauphine.psl.eu' },
 				{ name: 'Lucas Eustache', email: 'lucas.eustache@dauphine.psl.eu' }
 			],
-			registrationPageUrl: 'https://framagroupes.org/sympa/subscribe/dauphine_digital_regulation?previous_action=info',
-			registrationPageText: 'Register on this page to receive our emails about upcoming presentations.'
+			registrationPageUrl:
+				'https://framagroupes.org/sympa/subscribe/dauphine_digital_regulation?previous_action=info',
+			registrationPageText:
+				'Register on this page to receive our emails about upcoming presentations.'
 		}
 	},
 	TrEnCE: {
@@ -58,16 +60,15 @@ export const workshops = {
 			'The group provides a forum for exchange between researchers in these closely related sub-fields. The work is mainly in the field of economics, but contributions from related disciplines are regularly welcomed. The group allows both the presentation of very accomplished work and the discussion of research in progress, enabling authors to benefit from comments to refine their work.'
 		],
 		externalLink: {
-			url: 'https://www.chaire-regulationdunumerique.fr/',
+			url: 'https://chairgovreg.fondation-dauphine.fr/en/node/1331',
 			text: 'Chair Governance and Regulation'
 		},
 		registration: {
 			type: 'customWithLinks' as const,
-			contacts: [
-				{ name: 'Shahmeer Mohsin', email: 'shahmeer.mohsin@dauphine.psl.eu' }
-			],
+			contacts: [{ name: 'Shahmeer Mohsin', email: 'shahmeer.mohsin@dauphine.psl.eu' }],
 			registrationPageUrl: 'https://framagroupes.org/sympa/info/dauphine_transp_energ_clim',
-			registrationPageText: 'Register on this page to receive our emails about upcoming presentations.'
+			registrationPageText:
+				'Register on this page to receive our emails about upcoming presentations.'
 		}
 	}
 } as const;
