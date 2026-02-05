@@ -1,10 +1,13 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import { isEnglish } from '$lib/helpers/locale';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
-	const { upcomingSessions, pastSessions } = data;
+	const upcomingSessions = $derived(data.upcomingSessions);
+	const pastSessions = $derived(data.pastSessions);
+	const isEn = $derived(isEnglish());
 
 	// Format date
 	const formatDate = (dateStr: string) => {
@@ -77,7 +80,7 @@
 <!-- Upcoming Sessions -->
 {#if upcomingSessions.length > 0}
 	<section class="sessions-section">
-		<h2 class="section-title">Upcoming Sessions</h2>
+		<h2 class="section-title">{isEn ? 'Upcoming Sessions' : 'Sessions à venir'}</h2>
 		<div class="sessions-grid">
 			{#each upcomingSessions as session}
 				<article class="session-card upcoming">
@@ -95,7 +98,7 @@
 						<div class="session-body">
 							<div class="session-header">
 								<h3 class="session-title">{session.frontmatter.title}</h3>
-								<span class="status-badge upcoming">Upcoming</span>
+								<span class="status-badge upcoming">{isEn ? 'Upcoming' : 'À venir'}</span>
 							</div>
 
 							<div class="session-meta">
@@ -154,7 +157,7 @@
 <!-- Past Sessions -->
 {#if pastSessions.length > 0}
 	<section class="sessions-section">
-		<h2 class="section-title past">Past Sessions</h2>
+		<h2 class="section-title past">{isEn ? 'Past Sessions' : 'Sessions passées'}</h2>
 		<div class="sessions-list">
 			{#each pastSessions as session}
 				<article class="session-item">
