@@ -7,6 +7,7 @@
 	import StructuredData from '$lib/seo/StructuredData.svelte';
 	import { generateOrganizationSchema, generateWebSiteSchema } from '$lib/seo/schema-utils';
 	import { getOGLocale, isEnglish } from '$lib/helpers/locale';
+	import { formatTime } from '$lib/utils';
 	import { Carousel } from 'flowbite-svelte';
 	import images from '$lib/data/images_home.json';
 	import type { PageData } from './$types';
@@ -50,24 +51,40 @@
 <StructuredData data={organizationSchema} />
 <StructuredData data={websiteSchema} />
 
-<!-- Featured Announcement - ACSS Research Seminar -->
-{#if data.upcomingAcssSession}
-	{@const session = data.upcomingAcssSession}
+<!-- Featured Announcement - Next Seminar (any category) -->
+{#if data.nextSeminar}
+	{@const seminar = data.nextSeminar}
+	{@const isAcss = seminar.type === 'acss'}
+	{@const isNlp = seminar.type === 'nlp'}
+	{@const title = isAcss ? seminar.data.frontmatter.title : seminar.data.title}
+	{@const date = isAcss ? seminar.data.frontmatter.date : seminar.data.date}
+	{@const time = isAcss ? seminar.data.frontmatter.time : seminar.data.time}
+	{@const location = isAcss ? seminar.data.frontmatter.location : seminar.data.location}
+	{@const presenter = isAcss ? seminar.data.frontmatter.presenter : seminar.data.presenter}
+	{@const image = isAcss ? seminar.data.frontmatter.image : null}
+	{@const registration = isAcss ? seminar.data.frontmatter.registration : null}
+	{@const detailUrl = isAcss
+		? `/seminaires/acss/${seminar.data.slug}`
+		: isNlp
+			? `/seminaires/nlp/${seminar.data.slug}`
+			: `/seminaires/public-governance/${seminar.data.slug}`}
+	{@const badgeEn = isAcss ? 'Upcoming ACSS Research Seminar' : isNlp ? 'Upcoming AI & NLP (Natural Language Processing) Workshop' : 'Upcoming Public Governance Workshop'}
+	{@const badgeFr = isAcss ? 'Prochain séminaire de recherche ACSS' : isNlp ? 'Prochain atelier IA & NLP (Natural Language Processing)' : 'Prochain atelier Public Governance'}
 	<div class="announcement-card">
 		<div class="announcement-accent"></div>
 		<div class="announcement-content">
 			<div class="announcement-header">
 				<div class="announcement-badge">
-					<span>{isEn ? 'Upcoming ACSS Research Seminar' : 'Prochain séminaire de recherche ACSS'}</span>
+					<span>{isEn ? badgeEn : badgeFr}</span>
 				</div>
 			</div>
 
 			<div class="announcement-body">
-				{#if session.frontmatter.image}
+				{#if image}
 					<div class="announcement-image-wrapper">
 						<img
-							src={session.frontmatter.image}
-							alt={session.frontmatter.title}
+							src={image}
+							alt={title}
 							class="announcement-image"
 						/>
 						<div class="image-overlay"></div>
@@ -75,11 +92,25 @@
 				{/if}
 
 				<div class="announcement-text">
-					<a href="/seminaires/acss/{session.slug}" class="announcement-title-link">
+					<a href={detailUrl} class="announcement-title-link">
 						<h3 class="announcement-title">
-							{session.frontmatter.title}
+							{title}
 						</h3>
 					</a>
+
+					{#if !isAcss && presenter}
+						<div class="announcement-presenter">
+							<svg class="presenter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
+								/>
+							</svg>
+							<span class="presenter-name">{presenter}</span>
+						</div>
+					{/if}
 
 					<div class="announcement-details">
 						<div class="detail-item highlight">
@@ -91,10 +122,10 @@
 									d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
 								/>
 							</svg>
-							<span class="detail-text">{formatDate(session.frontmatter.date)}</span>
+							<span class="detail-text">{formatDate(date)}</span>
 						</div>
 
-						{#if session.frontmatter.time}
+						{#if time}
 							<div class="detail-item">
 								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
@@ -104,11 +135,11 @@
 										d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
 									/>
 								</svg>
-								<span class="detail-text">{session.frontmatter.time}</span>
+								<span class="detail-text">{formatTime(time)}</span>
 							</div>
 						{/if}
 
-						{#if session.frontmatter.location}
+						{#if location}
 							<div class="detail-item">
 								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 									<path
@@ -124,13 +155,13 @@
 										d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
 									/>
 								</svg>
-								<span class="detail-text">{session.frontmatter.location}</span>
+								<span class="detail-text">{location}</span>
 							</div>
 						{/if}
 					</div>
 
 					<div class="announcement-buttons">
-						<Link href="/seminaires/acss/{session.slug}" class="view-all-link">
+						<Link href={detailUrl} class="view-all-link">
 							{isEn ? 'View details' : 'Voir les détails'}
 							<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 								<path
@@ -142,9 +173,9 @@
 							</svg>
 						</Link>
 
-						{#if session.frontmatter.registration}
+						{#if registration}
 							<a
-								href={session.frontmatter.registration}
+								href={registration}
 								class="view-all-link"
 								target="_blank"
 								rel="noopener noreferrer"
@@ -264,7 +295,7 @@
 		{#if data.seminars.length > 0}
 			<h2 class="section-title-center">
 				<span class="title-text">
-					{isEn ? 'Upcoming working group sessions' : 'Prochaines sessions des groupes de travail'}
+					{isEn ? 'Next sessions' : 'Sessions suivantes'}
 				</span>
 				<span class="title-accent-center"></span>
 			</h2>
@@ -506,7 +537,7 @@
 		font-family: 'Quicksand', sans-serif;
 		font-size: 1.75rem;
 		font-weight: 700;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 		color: var(--color-heading, #1e293b);
 		line-height: 1.3;
 		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
@@ -514,6 +545,30 @@
 		-webkit-text-fill-color: transparent;
 		background-clip: text;
 		transition: all 0.3s ease;
+	}
+
+	.announcement-presenter {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1.5rem;
+		padding: 0.75rem 1rem;
+		background: linear-gradient(135deg, rgba(74, 108, 170, 0.08) 0%, rgba(182, 70, 124, 0.08) 100%);
+		border-left: 3px solid var(--acss-blue, #4a6caa);
+		border-radius: 0.5rem;
+	}
+
+	.presenter-icon {
+		width: 1.25rem;
+		height: 1.25rem;
+		color: var(--acss-blue, #4a6caa);
+		flex-shrink: 0;
+	}
+
+	.presenter-name {
+		font-size: 1.0625rem;
+		font-weight: 600;
+		color: var(--color-heading, #1e293b);
 	}
 
 	.announcement-details {

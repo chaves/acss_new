@@ -73,6 +73,21 @@ export const seminars = {
 	},
 
 	/**
+	 * Get a single seminar by slug
+	 */
+	async getBySlug(slug: string): Promise<Seminar | null> {
+		try {
+			const response = await apiClient.get<StrapiCollectionResponse<Seminar>>('/seminars', {
+				filters: { slug: { $eq: slug } },
+				populate: '*'
+			});
+			return response.data[0] || null;
+		} catch {
+			return null;
+		}
+	},
+
+	/**
 	 * Get upcoming seminars (date >= today)
 	 */
 	async getUpcoming(limit?: number): Promise<Seminar[]> {

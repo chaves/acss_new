@@ -3,6 +3,7 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import WorkshopInfo from '$lib/components/layout/WorkshopInfo.svelte';
 
 	let { data }: PageProps = $props();
 </script>
@@ -18,63 +19,38 @@
 	link_text={m.seminars()}
 />
 
-<div class="description">
-	<p>
-		The Public Governance workshop is an online seminar series focused on state of art research in
-		political economy that uses non-traditional data and data-intensive methods.
-	</p>
-	<p>
-		The workshop gives a platform for the research on the role of governance in designing and
-		developing better policies. Key features are the political environment, the role of the media,
-		the engagement of stakeholders such as civil society and firms, the market structure and level
-		of competition, and the independence of public regulators, among others. Particular emphasis is
-		placed on research with NLP methods due to the proven usefulness of transforming text into data
-		for further econometric analysis.
-	</p>
-	<p>Periodicity: on Mondays from 17h30 to 19h.</p>
-	<p>
-		To attend, please contact <strong>Vladimir Avetian:</strong>
-		<strong
-			><em
-				><a href="mailto:vladimir.avetian@dauphine.psl.eu">vladimir.avetian@dauphine.psl.eu</a></em
-			></strong
-		>
-		and <strong>Edgar Jimenez Bedolla</strong>
-		<strong
-			><em
-				><a href="mailto:edgar.jimenez-bedolla@dauphine.psl.eu"
-					>edgar.jimenez-bedolla@dauphine.psl.eu</a
-				></em
-			></strong
-		>
-	</p>
-</div>
+<WorkshopInfo type="pub" variant="card" />
 
 {#if data.seminars_upcoming.length > 0}
 	<h2>Upcoming sessions</h2>
-	{#each data.seminars_upcoming as seminar, index}
-		<SeminarItem {seminar} {index} type="pub" />
-	{/each}
+
+	<div class="sessions-grid">
+		{#each data.seminars_upcoming as seminar, index}
+			<SeminarItem {seminar} {index} type="pub" abstract={false} />
+		{/each}
+	</div>
 {/if}
 
 {#if data.seminars_past.length > 0}
-	<h2>Past sessions</h2>
+	<h2 class="past-title">Past sessions</h2>
 
-	{#each data.seminars_past as seminar, index}
-		<SeminarItem {seminar} {index} type="pub" />
-	{/each}
+	<div class="sessions-grid">
+		{#each data.seminars_past as seminar, index}
+			<SeminarItem {seminar} {index} type="pub" abstract={false} />
+		{/each}
+	</div>
 {/if}
 
 <style>
-	.description {
-		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
-	}
-
-	p {
-		@apply my-2;
-	}
-
 	h2 {
 		@apply text-lg font-semibold;
+	}
+
+	h2.past-title {
+		@apply mt-10;
+	}
+
+	.sessions-grid {
+		@apply grid gap-3 md:grid-cols-2;
 	}
 </style>

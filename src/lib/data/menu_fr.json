@@ -29,29 +29,20 @@
     ]
   },
   {
-    "title": "Activités",
+    "title": "Séminaires",
+    "path": "/seminaires",
     "children": [
       {
-        "title": "Workshops et séminaires",
-        "path": "/seminaires",
-        "children": [
-          {
-            "title": "Séminaire de recherche ACSS-PSL",
-            "path": "/seminaires/acss"
-          },
-          {
-            "title": "Atelier Public Governance",
-            "path": "/seminaires/public-governance"
-          },
-          {
-            "title": "Atelier IA & NLP",
-            "path": "/seminaires/nlp"
-          }
-        ]
+        "title": "Séminaire de recherche ACSS-PSL",
+        "path": "/seminaires/acss"
       },
       {
-        "title": "Formation",
-        "path": "/formation"
+        "title": "Atelier Public Governance",
+        "path": "/seminaires/public-governance"
+      },
+      {
+        "title": "Atelier IA & NLP",
+        "path": "/seminaires/nlp"
       }
     ]
   },
@@ -60,8 +51,12 @@
     "path": "/blog"
   },
   {
-    "title": "Bases de données",
+    "title": "Autres activités",
     "children": [
+      {
+        "title": "Formation",
+        "path": "/formation"
+      },
       {
         "title": "Measuring credit procyclicality",
         "path": "/donnees/credit_series"

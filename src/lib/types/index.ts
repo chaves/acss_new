@@ -59,6 +59,8 @@ export interface BlogPost {
  */
 export interface Seminar {
 	id: number;
+	documentId?: string;
+	slug: string;
 	date: string;
 	time: string;
 	type: string;

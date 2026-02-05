@@ -25,6 +25,11 @@ const config = {
 					console.warn(`Ignoring 404 for ${path} (linked from ${referrer})`);
 					return;
 				}
+				// Ignore 404s for dynamic seminar detail pages (SSR only, not prerendered)
+				if (path.match(/\/seminaires\/(nlp|public-governance)\/[^/]+$/)) {
+					console.warn(`Skipping prerender for dynamic seminar page ${path}`);
+					return;
+				}
 				// Throw error for other 404s
 				throw new Error(message);
 			}

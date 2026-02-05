@@ -11,6 +11,7 @@ export interface SessionFrontmatter {
 	image?: string;
 	status?: 'upcoming' | 'past';
 	theme?: string;
+	presenter?: string;
 	registration?: string;
 	organizers?: Array<{ name: string; url: string }>;
 	contact_present?: string;
