@@ -30,6 +30,43 @@ export const workshops = {
 				{ name: 'Edgar Jimenez Bedolla', email: 'edgar.jimenez-bedolla@dauphine.psl.eu' }
 			]
 		}
+	},
+	digitalReg: {
+		name: 'Digital Regulation',
+		description: [
+			'The Digital Regulation workshop is an online seminar series focused on digital activities and their regulation.',
+			'This working group is developing a joint approach in order to establish a reasoned position on digital regulation in the context of current European (and American) initiatives. In particular, it is considering how to implement responsible governance while allowing for innovation. The issue of the effectiveness of public action and how it relates to competitiveness constraints is also central.'
+		],
+		schedule: 'Online seminar series',
+		externalLink: {
+			url: 'https://www.chaire-regulationdunumerique.fr/',
+			text: 'Chair Governance and Regulation'
+		},
+		registration: {
+			type: 'contacts' as const,
+			contacts: [
+				{ name: 'Damien Mayaux', email: 'damien.mayaux@dauphine.psl.eu' },
+				{ name: 'Lucas Eustache', email: 'lucas.eustache@dauphine.psl.eu' }
+			]
+		}
+	},
+	TrEnCE: {
+		name: 'Transport, Energy and Climate Economics (TrEnCE)',
+		description: [
+			'The Transport, Energy and Climate Economics workshop is an online seminar series in the fields of transport, energy and environmental economics.',
+			'The group provides a forum for exchange between researchers in these closely related sub-fields. The work is mainly in the field of economics, but contributions from related disciplines are regularly welcomed. The group allows both the presentation of very accomplished work and the discussion of research in progress, enabling authors to benefit from comments to refine their work.'
+		],
+		schedule: 'Online seminar series',
+		externalLink: {
+			url: 'https://www.chaire-regulationdunumerique.fr/',
+			text: 'Chair Governance and Regulation'
+		},
+		registration: {
+			type: 'contacts' as const,
+			contacts: [
+				{ name: 'Shahmeer Mohsin', email: 'shahmeer.mohsin@dauphine.psl.eu' }
+			]
+		}
 	}
 } as const;
 

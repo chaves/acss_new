@@ -7,7 +7,7 @@
 	interface Props {
 		seminar: Seminar;
 		index: number;
-		type?: 'all' | 'nlp' | 'pub';
+		type?: 'all' | 'nlp' | 'pub' | 'digitalReg' | 'TrEnCE';
 		abstract?: boolean;
 	}
 
@@ -21,6 +21,8 @@
 	let detailUrl = $derived(
 		type === 'nlp' && seminar.slug ? `/seminaires/nlp/${seminar.slug}` :
 		type === 'pub' && seminar.slug ? `/seminaires/public-governance/${seminar.slug}` :
+		type === 'digitalReg' && seminar.slug ? `/seminaires/digital-regulation/${seminar.slug}` :
+		type === 'TrEnCE' && seminar.slug ? `/seminaires/trence/${seminar.slug}` :
 		null
 	);
 </script>

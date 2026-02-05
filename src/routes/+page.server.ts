@@ -17,7 +17,7 @@ export const load = (async () => {
 
 		// Combine all upcoming seminars with normalized structure
 		const allUpcoming: Array<{
-			type: 'acss' | 'nlp' | 'pub';
+			type: 'acss' | 'nlp' | 'pub' | 'digitalReg' | 'TrEnCE';
 			date: Date;
 			data: any;
 		}> = [];
@@ -34,12 +34,12 @@ export const load = (async () => {
 			}
 		}
 
-		// Add NLP and Public Governance seminars from Strapi
+		// Add NLP, Public Governance, Digital Regulation, and TrEnCE seminars from Strapi
 		for (const seminar of upcomingSeminars) {
 			const seminarDate = new Date(seminar.date);
 			if (seminarDate >= today) {
 				allUpcoming.push({
-					type: seminar.type as 'nlp' | 'pub',
+					type: seminar.type as 'nlp' | 'pub' | 'digitalReg' | 'TrEnCE',
 					date: seminarDate,
 					data: seminar
 				});

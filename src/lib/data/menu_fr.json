@@ -43,6 +43,14 @@
       {
         "title": "Atelier IA & NLP",
         "path": "/seminaires/nlp"
+      },
+      {
+        "title": "Digital Regulation",
+        "path": "/seminaires/digital-regulation"
+      },
+      {
+        "title": "Transport, Energy and Climate Economics (TrEnCE)",
+        "path": "/seminaires/trence"
       }
     ]
   },

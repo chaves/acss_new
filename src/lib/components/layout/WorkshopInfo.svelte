@@ -21,6 +21,12 @@
 		<p>{paragraph}</p>
 	{/each}
 
+	{#if 'externalLink' in workshop}
+		<p class="external-link">
+			More information can be found on the website of the <a href={workshop.externalLink.url} target="_blank" rel="noopener noreferrer">{workshop.externalLink.text}</a>.
+		</p>
+	{/if}
+
 	<p class="schedule">
 		<strong>Periodicity:</strong> {workshop.schedule}.
 	</p>
@@ -88,6 +94,14 @@
 	}
 
 	.contact a {
+		@apply text-blue-600 hover:underline;
+	}
+
+	.external-link {
+		@apply mt-2;
+	}
+
+	.external-link a {
 		@apply text-blue-600 hover:underline;
 	}
 </style>

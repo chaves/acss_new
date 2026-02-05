@@ -8,5 +8,15 @@
         "value": "nlp",
         "name": "AI & NLP (Natural Language Processing) workshop",
         "url": "nlp"
+    },
+    {
+        "value": "digitalReg",
+        "name": "Digital Regulation",
+        "url": "digital-regulation"
+    },
+    {
+        "value": "TrEnCE",
+        "name": "Transport, Energy and Climate Economics (TrEnCE)",
+        "url": "trence"
     }
 ]

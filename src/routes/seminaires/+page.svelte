@@ -57,6 +57,30 @@
 			and discovering new methods and models.
 		</p>
 	</div>
+
+	<div class="seminar">
+		<h3>
+			<Link href="/seminaires/digital-regulation">Digital Regulation</Link>
+			<span>- online seminar series</span>
+		</h3>
+		<p>
+			The Digital Regulation workshop is an online seminar series focused on digital activities and their regulation.
+			This working group is developing a joint approach in order to establish a reasoned position on digital regulation
+			in the context of current European (and American) initiatives.
+		</p>
+	</div>
+
+	<div class="seminar">
+		<h3>
+			<Link href="/seminaires/trence">Transport, Energy and Climate Economics (TrEnCE)</Link>
+			<span>- online seminar series</span>
+		</h3>
+		<p>
+			The Transport, Energy and Climate Economics workshop is an online seminar series in the fields of transport,
+			energy and environmental economics. The group provides a forum for exchange between researchers in these
+			closely related sub-fields.
+		</p>
+	</div>
 </div>
 
 <style>

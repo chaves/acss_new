@@ -56,6 +56,9 @@
 	{@const seminar = data.nextSeminar}
 	{@const isAcss = seminar.type === 'acss'}
 	{@const isNlp = seminar.type === 'nlp'}
+	{@const isPub = seminar.type === 'pub'}
+	{@const isDigitalReg = seminar.type === 'digitalReg'}
+	{@const isTrEnCE = seminar.type === 'TrEnCE'}
 	{@const title = isAcss ? seminar.data.frontmatter.title : seminar.data.title}
 	{@const date = isAcss ? seminar.data.frontmatter.date : seminar.data.date}
 	{@const time = isAcss ? seminar.data.frontmatter.time : seminar.data.time}
@@ -67,9 +70,29 @@
 		? `/seminaires/acss/${seminar.data.slug}`
 		: isNlp
 			? `/seminaires/nlp/${seminar.data.slug}`
-			: `/seminaires/public-governance/${seminar.data.slug}`}
-	{@const badgeEn = isAcss ? 'Upcoming ACSS Research Seminar' : isNlp ? 'Upcoming AI & NLP (Natural Language Processing) Workshop' : 'Upcoming Public Governance Workshop'}
-	{@const badgeFr = isAcss ? 'Prochain séminaire de recherche ACSS' : isNlp ? 'Prochain atelier IA & NLP (Natural Language Processing)' : 'Prochain atelier Public Governance'}
+			: isPub
+				? `/seminaires/public-governance/${seminar.data.slug}`
+				: isDigitalReg
+					? `/seminaires/digital-regulation/${seminar.data.slug}`
+					: `/seminaires/trence/${seminar.data.slug}`}
+	{@const badgeEn = isAcss 
+		? 'Upcoming ACSS Research Seminar' 
+		: isNlp 
+			? 'Upcoming AI & NLP (Natural Language Processing) Workshop' 
+			: isPub
+				? 'Upcoming Public Governance Workshop'
+				: isDigitalReg
+					? 'Upcoming Digital Regulation Workshop'
+					: 'Upcoming TrEnCE Workshop'}
+	{@const badgeFr = isAcss 
+		? 'Prochain séminaire de recherche ACSS' 
+		: isNlp 
+			? 'Prochain atelier IA & NLP (Natural Language Processing)' 
+			: isPub
+				? 'Prochain atelier Public Governance'
+				: isDigitalReg
+					? 'Prochain atelier Digital Regulation'
+					: 'Prochain atelier TrEnCE'}
 	<div class="announcement-card">
 		<div class="announcement-accent"></div>
 		<div class="announcement-content">
