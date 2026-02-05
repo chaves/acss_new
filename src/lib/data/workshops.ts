@@ -47,7 +47,7 @@ export const workshops = {
 				{ name: 'Damien Mayaux', email: 'damien.mayaux@dauphine.psl.eu' },
 				{ name: 'Lucas Eustache', email: 'lucas.eustache@dauphine.psl.eu' }
 			],
-			registrationPageUrl: '/lettre-d-information',
+			registrationPageUrl: 'https://framagroupes.org/sympa/subscribe/dauphine_digital_regulation?previous_action=info',
 			registrationPageText: 'Register on this page to receive our emails about upcoming presentations.'
 		}
 	},
@@ -66,7 +66,7 @@ export const workshops = {
 			contacts: [
 				{ name: 'Shahmeer Mohsin', email: 'shahmeer.mohsin@dauphine.psl.eu' }
 			],
-			registrationPageUrl: '/lettre-d-information',
+			registrationPageUrl: 'https://framagroupes.org/sympa/info/dauphine_transp_energ_clim',
 			registrationPageText: 'Register on this page to receive our emails about upcoming presentations.'
 		}
 	}
