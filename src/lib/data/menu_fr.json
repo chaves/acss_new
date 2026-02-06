@@ -59,20 +59,21 @@
     "path": "/blog"
   },
   {
-    "title": "Bases de données",
-    "children": [
-      {
-        "title": "Measuring credit procyclicality",
-        "path": "/donnees/credit_series"
-      }
-    ]
-  },
-  {
     "title": "Autres activités",
     "children": [
       {
         "title": "Formation",
         "path": "/formation"
+      },
+      {
+        "title": "Bases de données",
+        "path": "/donnees",
+        "children": [
+          {
+            "title": "Measuring credit procyclicality",
+            "path": "/donnees/credit_series"
+          }
+        ]
       }
     ]
   }
