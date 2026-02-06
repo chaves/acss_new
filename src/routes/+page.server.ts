@@ -3,10 +3,10 @@ import { posts, seminars } from '$lib/api';
 import { getUpcomingSessions } from '$lib/helpers/markdown';
 
 export const load = (async ({ setHeaders }) => {
-	// Enable ISR with 24-hour revalidation (86400 seconds)
-	// This ensures the page is regenerated at least once per day
+	// Enable ISR with 1-hour revalidation (3600 seconds)
+	// This ensures the page is regenerated at least once per hour to keep seminar listings current
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=86400, stale-while-revalidate=86400'
+		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=3600'
 	});
 
 	try {
@@ -18,8 +18,8 @@ export const load = (async ({ setHeaders }) => {
 		]);
 
 		// Find the next upcoming seminar across all categories
-		const today = new Date();
-		today.setHours(0, 0, 0, 0);
+		// Use current time instead of midnight to filter out past seminars from today
+		const now = new Date();
 
 		// Combine all upcoming seminars with normalized structure
 		const allUpcoming: Array<{
@@ -31,7 +31,8 @@ export const load = (async ({ setHeaders }) => {
 		// Add ACSS sessions
 		for (const session of acssSessions) {
 			const sessionDate = new Date(session.frontmatter.date);
-			if (sessionDate >= today) {
+			// Filter to only include future seminars (not past ones, even from today)
+			if (sessionDate >= now) {
 				allUpcoming.push({
 					type: 'acss',
 					date: sessionDate,
@@ -43,7 +44,8 @@ export const load = (async ({ setHeaders }) => {
 		// Add NLP, Public Governance, Digital Regulation, and TrEnCE seminars from Strapi
 		for (const seminar of upcomingSeminars) {
 			const seminarDate = new Date(seminar.date);
-			if (seminarDate >= today) {
+			// Filter to only include future seminars (not past ones, even from today)
+			if (seminarDate >= now) {
 				allUpcoming.push({
 					type: seminar.type as 'nlp' | 'pub' | 'digitalReg' | 'TrEnCE',
 					date: seminarDate,
