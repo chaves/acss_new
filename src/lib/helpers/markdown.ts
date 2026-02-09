@@ -16,6 +16,7 @@ export interface SessionFrontmatter {
 	organizers?: Array<{ name: string; url: string }>;
 	contact_present?: string;
 	contact_attend?: string;
+	presentations?: Array<{ title: string; speaker: string; file: string }>;
 }
 
 export interface Session {
