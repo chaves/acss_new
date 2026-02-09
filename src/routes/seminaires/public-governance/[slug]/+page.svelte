@@ -103,6 +103,45 @@
 		</div>
 	{/if}
 
+	<!-- Presentation Slides -->
+	{#if seminar.presentations && seminar.presentations.length > 0}
+		<section class="presentations-section">
+			<div class="presentations-header">
+				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+				</svg>
+				<h2>Presentation Slides</h2>
+			</div>
+			<div class="presentations-list">
+				{#each seminar.presentations as presentation}
+					<a
+						href={presentation.file}
+						class="presentation-card"
+						download
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<div class="presentation-file-icon">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+							</svg>
+						</div>
+						<div class="presentation-info">
+							<span class="presentation-name">{presentation.title}</span>
+							<span class="presentation-speaker">{presentation.speaker}</span>
+						</div>
+						<div class="presentation-download">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+							</svg>
+							<span>PDF</span>
+						</div>
+					</a>
+				{/each}
+			</div>
+		</section>
+	{/if}
+
 	<!-- Workshop Info Card -->
 	<WorkshopInfo type="pub" variant="section" showRegistration={!isPast} />
 
@@ -211,6 +250,73 @@
 		border-left: 4px solid;
 		border-image: linear-gradient(180deg, #9333ea, #db2777) 1;
 		padding-left: 1.5rem;
+	}
+
+	/* Presentations Section */
+	.presentations-section {
+		@apply mt-6 rounded-2xl border-2 border-blue-100 bg-white p-8;
+	}
+
+	.presentations-header {
+		@apply mb-5 flex items-center gap-3 text-gray-700;
+	}
+
+	.presentations-header svg {
+		@apply h-6 w-6 text-purple-500;
+	}
+
+	.presentations-header h2 {
+		@apply text-lg font-semibold;
+	}
+
+	.presentations-list {
+		@apply space-y-3;
+	}
+
+	.presentation-card {
+		@apply flex items-center gap-4 rounded-lg border border-gray-200 bg-gradient-to-r from-gray-50 to-white px-5 py-4 no-underline transition-all;
+	}
+
+	.presentation-card:hover {
+		@apply border-purple-300 shadow-md;
+		background: linear-gradient(135deg, rgba(147, 51, 234, 0.04) 0%, rgba(147, 51, 234, 0.02) 100%);
+		transform: translateY(-1px);
+	}
+
+	.presentation-file-icon {
+		@apply flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-red-50;
+	}
+
+	.presentation-file-icon svg {
+		@apply h-5 w-5 text-red-500;
+	}
+
+	.presentation-info {
+		@apply flex flex-1 flex-col gap-0.5;
+	}
+
+	.presentation-name {
+		@apply text-sm font-semibold text-gray-700;
+	}
+
+	.presentation-speaker {
+		@apply text-xs text-gray-500;
+	}
+
+	.presentation-download {
+		@apply flex flex-shrink-0 flex-col items-center gap-0.5 rounded-lg bg-purple-50 px-3 py-2 text-purple-600 transition-colors;
+	}
+
+	.presentation-card:hover .presentation-download {
+		@apply bg-purple-100 text-purple-700;
+	}
+
+	.presentation-download svg {
+		@apply h-5 w-5;
+	}
+
+	.presentation-download span {
+		@apply text-[10px] font-bold uppercase tracking-wider;
 	}
 
 	.back-link {
