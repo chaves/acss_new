@@ -91,10 +91,11 @@ export const seminars = {
 	 * Get upcoming seminars (date >= today)
 	 */
 	async getUpcoming(limit?: number): Promise<Seminar[]> {
-		const today = new Date().toISOString();
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
 		return seminars.getAll({
 			filters: {
-				date: { $gte: today }
+				date: { $gte: today.toISOString() }
 			},
 			sort: 'date:asc',
 			...(limit && { pagination: { pageSize: limit } })

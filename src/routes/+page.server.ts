@@ -18,8 +18,9 @@ export const load = (async ({ setHeaders }) => {
 		]);
 
 		// Find the next upcoming seminar across all categories
-		// Use current time instead of midnight to filter out past seminars from today
+		// Use start of today so seminars happening today are still shown
 		const now = new Date();
+		now.setHours(0, 0, 0, 0);
 
 		// Combine all upcoming seminars with normalized structure
 		const allUpcoming: Array<{
@@ -31,7 +32,6 @@ export const load = (async ({ setHeaders }) => {
 		// Add ACSS sessions
 		for (const session of acssSessions) {
 			const sessionDate = new Date(session.frontmatter.date);
-			// Filter to only include future seminars (not past ones, even from today)
 			if (sessionDate >= now) {
 				allUpcoming.push({
 					type: 'acss',
@@ -44,7 +44,6 @@ export const load = (async ({ setHeaders }) => {
 		// Add NLP, Public Governance, Digital Regulation, and TrEnCE seminars from Strapi
 		for (const seminar of upcomingSeminars) {
 			const seminarDate = new Date(seminar.date);
-			// Filter to only include future seminars (not past ones, even from today)
 			if (seminarDate >= now) {
 				allUpcoming.push({
 					type: seminar.type as 'nlp' | 'pub' | 'digitalReg' | 'TrEnCE',
