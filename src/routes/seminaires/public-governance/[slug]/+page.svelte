@@ -262,7 +262,7 @@
 	}
 
 	.presentations-header svg {
-		@apply h-6 w-6 text-purple-500;
+		@apply h-6 w-6 text-blue-500;
 	}
 
 	.presentations-header h2 {
@@ -278,8 +278,8 @@
 	}
 
 	.presentation-card:hover {
-		@apply border-purple-300 shadow-md;
-		background: linear-gradient(135deg, rgba(147, 51, 234, 0.04) 0%, rgba(147, 51, 234, 0.02) 100%);
+		@apply border-blue-300 shadow-md;
+		background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(59, 130, 246, 0.02) 100%);
 		transform: translateY(-1px);
 	}
 
@@ -304,11 +304,11 @@
 	}
 
 	.presentation-download {
-		@apply flex flex-shrink-0 flex-col items-center gap-0.5 rounded-lg bg-purple-50 px-3 py-2 text-purple-600 transition-colors;
+		@apply flex flex-shrink-0 flex-col items-center gap-0.5 rounded-lg bg-blue-50 px-3 py-2 text-blue-600 transition-colors;
 	}
 
 	.presentation-card:hover .presentation-download {
-		@apply bg-purple-100 text-purple-700;
+		@apply bg-blue-100 text-blue-700;
 	}
 
 	.presentation-download svg {
