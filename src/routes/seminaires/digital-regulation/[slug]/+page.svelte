@@ -119,7 +119,7 @@
 			<div class="presentations-list">
 				{#each seminar.presentations as presentation}
 					<a
-						href={presentation.file}
+						href={typeof presentation.file === 'string' ? presentation.file : presentation.file.url}
 						class="presentation-card"
 						download
 						target="_blank"

@@ -69,7 +69,7 @@ export interface Seminar {
 	abstract?: string;
 	homepage?: string;
 	location?: string;
-	presentations?: Array<{ title: string; speaker: string; file: string }>;
+	presentations?: Array<{ title: string; speaker: string; file: string | { url: string } }>;
 }
 
 /**
