@@ -116,10 +116,12 @@ export const seminars = {
 	 * Get past seminars (date < today)
 	 */
 	async getPast(limit?: number): Promise<Seminar[]> {
-		const today = new Date().toISOString();
+		const today = new Date();
+		today.setHours(0, 0, 0, 0);
+		const todayISO = today.toISOString();
 		return seminars.getAll({
 			filters: {
-				date: { $lt: today }
+				date: { $lt: todayISO }
 			},
 			sort: 'date:desc',
 			...(limit && { pagination: { pageSize: limit } })

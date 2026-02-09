@@ -9,7 +9,10 @@ export const load = (async ({ setHeaders }) => {
 	});
 
 	try {
-		const today = new Date().toISOString();
+		// Use start of today so seminars remain "upcoming" for the entire day
+		const todayDate = new Date();
+		todayDate.setHours(0, 0, 0, 0);
+		const today = todayDate.toISOString();
 
 		// Run both requests concurrently
 		const [seminars_upcoming, seminars_past] = await Promise.all([

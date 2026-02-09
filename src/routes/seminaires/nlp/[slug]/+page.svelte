@@ -17,7 +17,10 @@
 		});
 	};
 
-	const isPast = new Date(seminar.date) < new Date();
+	// Only mark as past the day after the seminar
+	const today = new Date();
+	today.setHours(0, 0, 0, 0);
+	const isPast = new Date(seminar.date) < today;
 </script>
 
 <svelte:head>
