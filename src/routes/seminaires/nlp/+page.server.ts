@@ -1,6 +1,8 @@
 import type { PageServerLoad } from './$types';
 import { seminars } from '$lib/api';
 
+export const prerender = false;
+
 export const load = (async ({ setHeaders }) => {
 	// Enable ISR with 24-hour revalidation (86400 seconds)
 	// This ensures the page is regenerated at least once per day

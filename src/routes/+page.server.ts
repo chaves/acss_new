@@ -2,6 +2,10 @@ import type { PageServerLoad } from './$types';
 import { posts, seminars } from '$lib/api';
 import { getUpcomingSessions } from '$lib/helpers/markdown';
 
+// Disable prerendering so the page is SSR'd with ISR on Vercel.
+// Prerendering freezes data at build time, causing stale seminar listings.
+export const prerender = false;
+
 export const load = (async ({ setHeaders }) => {
 	// Enable ISR with 1-hour revalidation (3600 seconds)
 	// This ensures the page is regenerated at least once per hour to keep seminar listings current
