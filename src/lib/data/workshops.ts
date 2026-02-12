@@ -24,11 +24,15 @@ export const workshops = {
 		],
 		schedule: 'Mondays from 17h30 to 19h',
 		registration: {
-			type: 'contacts' as const,
+			type: 'customWithLinks' as const,
 			contacts: [
 				{ name: 'Vladimir Avetian', email: 'vladimir.avetian@dauphine.psl.eu' },
 				{ name: 'Edgar Jimenez Bedolla', email: 'edgar.jimenez-bedolla@dauphine.psl.eu' }
-			]
+			],
+			registrationPageUrl:
+				'https://framagroupes.org/sympa/subscribe/dauphine_public_governance?previous_action=info',
+			registrationPageText:
+				'Register on this page to receive our emails about upcoming presentations.'
 		}
 	},
 	digitalReg: {
@@ -66,7 +70,8 @@ export const workshops = {
 		registration: {
 			type: 'customWithLinks' as const,
 			contacts: [{ name: 'Shahmeer Mohsin', email: 'shahmeer.mohsin@dauphine.psl.eu' }],
-			registrationPageUrl: 'https://framagroupes.org/sympa/info/dauphine_transp_energ_clim',
+			registrationPageUrl:
+				'https://framagroupes.org/sympa/subscribe/dauphine_transp_energ_clim?previous_action=info',
 			registrationPageText:
 				'Register on this page to receive our emails about upcoming presentations.'
 		}

@@ -51,6 +51,6 @@
 	}
 
 	.sessions-grid {
-		@apply grid gap-3 md:grid-cols-2;
+		@apply grid gap-3;
 	}
 </style>
