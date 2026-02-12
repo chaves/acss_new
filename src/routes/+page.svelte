@@ -75,19 +75,19 @@
 				: isDigitalReg
 					? `/seminaires/digital-regulation/${seminar.data.slug}`
 					: `/seminaires/trence/${seminar.data.slug}`}
-	{@const badgeEn = isAcss 
-		? 'Upcoming ACSS Research Seminar' 
-		: isNlp 
-			? 'Upcoming AI & NLP (Natural Language Processing) Workshop' 
+	{@const badgeEn = isAcss
+		? 'Upcoming ACSS Research Seminar'
+		: isNlp
+			? 'Upcoming AI & NLP (Natural Language Processing) Workshop'
 			: isPub
 				? 'Upcoming Public Governance Workshop'
 				: isDigitalReg
 					? 'Upcoming Digital Regulation Workshop'
 					: 'Upcoming TrEnCE Workshop'}
-	{@const badgeFr = isAcss 
-		? 'Prochain séminaire de recherche ACSS' 
-		: isNlp 
-			? 'Prochain atelier IA & NLP (Natural Language Processing)' 
+	{@const badgeFr = isAcss
+		? 'Prochain séminaire de recherche ACSS'
+		: isNlp
+			? 'Prochain atelier IA & NLP (Natural Language Processing)'
 			: isPub
 				? 'Prochain atelier Public Governance'
 				: isDigitalReg
@@ -226,8 +226,8 @@
 	<!-- Mission Card -->
 	<div class="mission-card">
 		<h1 class="mission-title">
-			Applied Computational Social Sciences
-			<span class="mission-subtitle">Data-Intensive Governance - PSL Institute</span>
+			Applied Computational Social Sciences (ACSS)
+			<span class="mission-subtitle">Paris Sciences et Lettres (PSL) Institute</span>
 		</h1>
 
 		<div class="accent-line-sm"></div>
