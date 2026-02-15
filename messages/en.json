@@ -2,6 +2,7 @@
     "$schema": "https://inlang.com/schema/inlang-message-format",
     "home": "Home",
     "copyright": "© {year} all rights reserved.",
+    "site_made_by": "Website made by Bruno Chaves Ferreira",
     "plafform": "Plafform",
     "members": "Members",
     "team": "Team",

@@ -66,6 +66,8 @@
 			<div class="footer-bottom">
 				<p class="copyright">
 					{m.copyright({ year: new Date().getFullYear() })}
+					<br />
+					{m.site_made_by()}
 				</p>
 				<div class="footer-links">
 					<a href={localizeUrl('/lettre-d-information')} class="footer-link">
@@ -176,6 +178,7 @@
 		font-size: 0.875rem;
 		color: #94a3b8;
 	}
+
 
 	.footer-links {
 		display: flex;
