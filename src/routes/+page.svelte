@@ -313,27 +313,7 @@
 		</div>
 	</div>
 
-	<!-- Seminars Card -->
-	<div class="seminars-card">
-		{#if data.seminars.length > 0}
-			<h2 class="section-title-center">
-				<span class="title-text">
-					{isEn ? 'Next sessions' : 'Sessions suivantes'}
-				</span>
-				<span class="title-accent-center"></span>
-			</h2>
-
-			<div class="seminars-list">
-				{#each data.seminars as seminar, index}
-					<SeminarItem {seminar} {index} abstract={false} />
-				{/each}
-			</div>
-		{/if}
-	</div>
-</div>
-
-<!-- Blog Section - Single Column -->
-<div class="blog-wrapper">
+	<!-- Blog Card -->
 	<div class="blog-card">
 		<h2 class="section-title">
 			<span class="title-text">Blog</span>
@@ -365,6 +345,25 @@
 		{/if}
 	</div>
 </div>
+
+<!-- Seminars Section - Full Width (hidden if no upcoming seminars) -->
+{#if data.seminars.length > 0}
+	<div class="seminars-wrapper">
+		<div class="seminars-card">
+			<h2 class="section-title">
+				<span class="title-text">
+					{isEn ? 'Next sessions' : 'Sessions suivantes'}
+				</span>
+				<span class="title-accent"></span>
+			</h2>
+			<div class="seminars-list">
+				{#each data.seminars as seminar, index}
+					<SeminarItem {seminar} {index} abstract={false} />
+				{/each}
+			</div>
+		</div>
+	</div>
+{/if}
 
 <style>
 	/* ==================== Announcement Card ==================== */
@@ -880,8 +879,8 @@
 		justify-content: center;
 	}
 
-	/* ==================== Blog Wrapper ==================== */
-	.blog-wrapper {
+	/* ==================== Seminars Wrapper ==================== */
+	.seminars-wrapper {
 		margin: 0 0.75rem 1.5rem;
 	}
 
@@ -891,29 +890,6 @@
 		border-radius: 1rem;
 		padding: 2rem;
 		border: 1px solid rgba(74, 108, 170, 0.08);
-	}
-
-	.section-title-center {
-		text-align: center;
-		margin-bottom: 1.5rem;
-	}
-
-	.section-title-center .title-text {
-		display: block;
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.25rem;
-		font-weight: 700;
-		color: var(--acss-blue-dark, #1D4796);
-		margin-bottom: 0.75rem;
-	}
-
-	.title-accent-center {
-		display: block;
-		width: 60px;
-		height: 3px;
-		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		border-radius: 2px;
-		margin: 0 auto;
 	}
 
 	.seminars-list {
