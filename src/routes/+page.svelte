@@ -850,25 +850,32 @@
 	}
 
 	/* ==================== Mission Carousel ==================== */
+	.mission-card {
+		display: flex;
+		flex-direction: column;
+	}
+
 	.mission-carousel {
 		margin-top: 1.5rem;
 		padding-top: 1.5rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
+		flex: 1;
+		display: flex;
+		flex-direction: column;
 	}
 
 	.mission-carousel :global(> div) {
 		width: 100%;
-		min-height: 250px;
+		flex: 1;
+		min-height: 200px;
 	}
 
 	.mission-carousel :global(.carousel-image) {
 		max-width: 100%;
-		max-height: 250px;
-		width: auto;
-		height: auto;
-		object-fit: contain;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 		border-radius: 0.5rem;
-		margin: 0 auto;
 		display: block;
 	}
 
