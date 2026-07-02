@@ -16,7 +16,7 @@
 	</li>
 </ul>
 
-<style>
+<style lang="postcss">
 	ul li {
 		@apply my-3 ml-9 list-disc;
 	}

@@ -78,7 +78,7 @@
 	</svelte:fragment>
 </SideTwo>
 
-<style>
+<style lang="postcss">
 	p {
 		@apply mb-6;
 	}

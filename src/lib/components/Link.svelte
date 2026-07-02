@@ -11,9 +11,9 @@
 
 	// Automatically localize internal links (starting with /)
 	// External links (starting with http) are left as-is
-	const localizedHref = href.startsWith('/') && !href.startsWith('//')
-		? localizeUrl(href)
-		: href;
+	const localizedHref = $derived(
+		href.startsWith('/') && !href.startsWith('//') ? localizeUrl(href) : href
+	);
 </script>
 
 <a href={localizedHref} class={className} {...restProps}>

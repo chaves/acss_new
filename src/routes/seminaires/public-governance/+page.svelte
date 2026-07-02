@@ -41,7 +41,7 @@
 	</div>
 {/if}
 
-<style>
+<style lang="postcss">
 	h2 {
 		@apply text-lg font-semibold;
 	}

@@ -7,7 +7,7 @@
 	let membre = $derived(data.membre[0]);
 	let name = $derived(membre.FirstName + ' ' + membre.LastName);
 	// Convert the Markdown biography to HTML.
-	let biographyHtml = $derived(marked(membre.biography));
+	let biographyHtml = $derived(marked(membre.biography ?? ''));
 </script>
 
 <svelte:head>

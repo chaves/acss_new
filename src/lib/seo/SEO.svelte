@@ -31,8 +31,8 @@
 
 	// Build full URLs
 	const baseUrl = 'https://acss-dig.psl.eu';
-	const fullUrl = canonical || (url ? `${baseUrl}${url}` : baseUrl);
-	const fullImageUrl = image.startsWith('http') ? image : `${baseUrl}${image}`;
+	const fullUrl = $derived(canonical || (url ? `${baseUrl}${url}` : baseUrl));
+	const fullImageUrl = $derived(image.startsWith('http') ? image : `${baseUrl}${image}`);
 </script>
 
 <svelte:head>

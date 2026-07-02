@@ -5,7 +5,7 @@
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
-	const { seminar } = data;
+	const seminar = $derived(data.seminar);
 
 	const formatDate = (dateStr: string) => {
 		const date = new Date(dateStr);
@@ -20,7 +20,7 @@
 	// Only mark as past the day after the seminar
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
-	const isPast = new Date(seminar.date) < today;
+	const isPast = $derived(new Date(seminar.date) < today);
 </script>
 
 <svelte:head>
@@ -159,7 +159,7 @@
 	</div>
 </article>
 
-<style>
+<style lang="postcss">
 	.seminar-detail {
 		@apply mx-auto max-w-3xl;
 	}

@@ -112,7 +112,7 @@
 	</li>
 </ul>
 
-<style>
+<style lang="postcss">
 	ol {
 		@apply mt-6 mb-2 text-lg;
 	}

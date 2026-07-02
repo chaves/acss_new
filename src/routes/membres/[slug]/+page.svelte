@@ -4,7 +4,7 @@
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 
 	let { data }: { data: PageData } = $props();
-	const name = data.membre.first_name + ' ' + data.membre.last_name;
+	const name = $derived(data.membre.first_name + ' ' + data.membre.last_name);
 </script>
 
 <svelte:head>

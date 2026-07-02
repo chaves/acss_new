@@ -81,7 +81,7 @@ export interface TeamMember {
 	Slug: string;
 	ImageFileName: string;
 	fonction: string;
-	bio?: string;
+	biography?: string;
 	email?: string;
 }
 

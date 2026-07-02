@@ -13,28 +13,32 @@
 	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
 
 	let { data }: { data: PageData } = $props();
-	let post = data.post[0];
+	const post = $derived(data.post[0]);
 
 	// Compute static values
-	const description = generateDescription(post.Content);
-	const imageUrl = post.Image ? getImageUrl(post.Image, 'medium') : undefined;
+	const description = $derived(generateDescription(post.Content));
+	const imageUrl = $derived(post.Image ? getImageUrl(post.Image, 'medium') : undefined);
 
 	// Create schemas
-	const articleSchema = generateArticleSchema({
-		title: post.Title,
-		description,
-		publishedAt: post.publishedAt,
-		modifiedAt: post.updatedAt,
-		image: imageUrl,
-		authors: post.authors,
-		url: `/blog/${post.Slug}`
-	});
+	const articleSchema = $derived(
+		generateArticleSchema({
+			title: post.Title,
+			description,
+			publishedAt: post.publishedAt,
+			modifiedAt: post.updatedAt,
+			image: imageUrl,
+			authors: post.authors,
+			url: `/blog/${post.Slug}`
+		})
+	);
 
-	const breadcrumbSchema = generateBreadcrumbSchema([
-		{ name: 'Home', url: '/' },
-		{ name: 'Blog', url: '/blog' },
-		{ name: post.Title, url: `/blog/${post.Slug}` }
-	]);
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: 'Home', url: '/' },
+			{ name: 'Blog', url: '/blog' },
+			{ name: post.Title, url: `/blog/${post.Slug}` }
+		])
+	);
 
 	// Derived reactive values
 	let contentHtml = $derived(marked(post.Content));

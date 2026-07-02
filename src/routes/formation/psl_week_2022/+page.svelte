@@ -82,7 +82,7 @@
 	and <strong>Olivier Caron</strong> from the Acss Institute.
 </p>
 
-<style>
+<style lang="postcss">
 	h1 {
 		@apply mt-6 font-semibold;
 	}

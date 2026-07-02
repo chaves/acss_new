@@ -187,7 +187,7 @@
 	</section>
 {/if}
 
-<style>
+<style lang="postcss">
 	.description {
 		@apply mb-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-4 text-sm;
 	}

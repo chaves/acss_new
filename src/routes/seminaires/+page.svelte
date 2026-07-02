@@ -83,7 +83,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
 	span {
 		@apply text-sm font-normal italic;
 	}

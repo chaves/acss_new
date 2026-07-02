@@ -65,7 +65,7 @@
 	{/each}
 </div>
 
-<style>
+<style lang="postcss">
 	.membre {
 		@apply px-6 py-10 md:h-60 bg-white shadow rounded border border-gray-100;
 	}

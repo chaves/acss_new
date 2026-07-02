@@ -45,7 +45,7 @@
 	</div>
 </div>
 
-<style>
+<style lang="postcss">
 	.cadre {
 		@apply w-full md:w-1/2 py-3 md:px-3;
 	}

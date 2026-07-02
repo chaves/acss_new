@@ -6,10 +6,10 @@
 	let { data }: Props = $props();
 
 	// Ensure @context is always present
-	const structuredData = {
+	const structuredData = $derived({
 		'@context': 'https://schema.org',
 		...data
-	};
+	});
 </script>
 
 <svelte:head>

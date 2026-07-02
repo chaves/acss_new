@@ -7,8 +7,14 @@
 	import MenuFR from '$lib/data/menu_fr.json';
 	import MenuEN from '$lib/data/menu_en.json';
 
+	interface MenuItem {
+		title: string;
+		path?: string;
+		children?: MenuItem[];
+	}
+
 	const { lang } = $props();
-	let menu = $derived(lang === 'en' ? MenuEN : MenuFR);
+	let menu = $derived((lang === 'en' ? MenuEN : MenuFR) as MenuItem[]);
 	let mobileMenuOpen = $state(false);
 	let openDropdown = $state<string | null>(null);
 	let openNestedDropdown = $state<string | null>(null);
@@ -23,8 +29,8 @@
 		return pathname;
 	});
 
-	function localizeUrl(path: string) {
-		return `/${lang}${path}`;
+	function localizeUrl(path: string | undefined) {
+		return `/${lang}${path ?? ''}`;
 	}
 
 	function toggleMobileMenu() {
@@ -54,7 +60,8 @@
 		openNestedDropdown = openNestedDropdown === itemTitle ? null : itemTitle;
 	}
 
-	function isActive(path: string): boolean {
+	function isActive(path: string | undefined): boolean {
+		if (!path) return false;
 		return activeUrl === path || (path !== '/' && activeUrl.startsWith(path));
 	}
 </script>
@@ -308,7 +315,7 @@
 	}
 
 	.logo {
-		height: 2.5rem;
+		height: 3.25rem;
 		width: auto;
 	}
 
@@ -604,7 +611,7 @@
 	}
 
 	.mobile-logo {
-		height: 2rem;
+		height: 2.5rem;
 		width: auto;
 	}
 
@@ -839,7 +846,7 @@
 	/* ==================== Responsive ==================== */
 	@media (min-width: 768px) {
 		.logo {
-			height: 3rem;
+			height: 3.75rem;
 		}
 
 		.desktop-nav {

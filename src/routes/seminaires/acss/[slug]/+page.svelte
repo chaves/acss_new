@@ -4,7 +4,7 @@
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
-	const { session } = data;
+	const session = $derived(data.session);
 
 	// Format date
 	const formatDate = (dateStr: string) => {
@@ -168,7 +168,7 @@
 	</div>
 </article>
 
-<style>
+<style lang="postcss">
 	.session-detail {
 		@apply mx-auto max-w-4xl;
 	}

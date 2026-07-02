@@ -49,9 +49,11 @@
 	let altText = $derived(alt || image?.alternativeText || 'Image');
 
 	// Warn in development if no image provided
-	if (!image || !image.url) {
-		console.warn('OptimizedImage: No image provided or image has no URL');
-	}
+	$effect(() => {
+		if (!image || !image.url) {
+			console.warn('OptimizedImage: No image provided or image has no URL');
+		}
+	});
 </script>
 
 {#if fullUrl}

@@ -40,16 +40,6 @@
 					To attend, <a href={workshop.registration.url} target="_blank" rel="noopener noreferrer">{workshop.registration.text}</a>.
 				</strong>
 			</p>
-		{:else if workshop.registration.type === 'contacts'}
-			<div class="contacts">
-				<p><strong>To attend, please contact:</strong></p>
-				{#each workshop.registration.contacts as contact}
-					<p class="contact">
-						<strong>{contact.name}:</strong>
-						<a href="mailto:{contact.email}">{contact.email}</a>
-					</p>
-				{/each}
-			</div>
 		{:else if workshop.registration.type === 'customWithLinks'}
 			<div class="custom-registration">
 				<p>
@@ -71,7 +61,7 @@
 	{/if}
 </div>
 
-<style>
+<style lang="postcss">
 	.workshop-info.card {
 		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
 	}
@@ -101,18 +91,6 @@
 	}
 
 	.registration a {
-		@apply text-blue-600;
-	}
-
-	.contacts {
-		@apply mt-4;
-	}
-
-	.contact {
-		@apply my-1;
-	}
-
-	.contact a {
 		@apply text-blue-600;
 	}
 
