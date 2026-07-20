@@ -9,7 +9,8 @@
 		link_text = undefined,
 		email = undefined,
 		fonction = undefined,
-		publishedAt = undefined
+		publishedAt = undefined,
+		richTitle = false
 	} = $props();
 </script>
 
@@ -47,7 +48,13 @@
 				</ol>
 			</nav>
 
-			<h1 class="breadcrumb-title">{title}</h1>
+			<h1 class="breadcrumb-title">
+				{#if richTitle}
+					{@html title}
+				{:else}
+					{title}
+				{/if}
+			</h1>
 
 			<!-- Optional function/role -->
 			{#if fonction !== undefined}

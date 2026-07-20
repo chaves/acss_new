@@ -17,7 +17,7 @@
 	<title>Institut ACSS-PSL : {m.plafform()}</title>
 </svelte:head>
 
-<Breadcrumb {title} title_path={m.plafform()} />
+<Breadcrumb {title} title_path={m.plafform()} richTitle />
 
 <div class="editorial-page editorial-page-wide">
 {#if getLocale() == 'fr'}

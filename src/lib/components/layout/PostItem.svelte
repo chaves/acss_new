@@ -91,11 +91,17 @@
 		overflow: hidden;
 	}
 
-	.card-variant .post-image-wrapper,
+	.card-variant .post-image-wrapper {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 2 / 1;
+		border-radius: 0;
+	}
+
 	.featured-variant .post-image-wrapper {
 		width: 100%;
 		height: auto;
-		aspect-ratio: 16 / 10;
+		aspect-ratio: 16 / 8.5;
 		border-radius: 0;
 	}
 
@@ -165,7 +171,7 @@
 		.post-item.featured-variant {
 			display: grid;
 			grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
-			height: clamp(22rem, 36vw, 26rem);
+			height: clamp(18rem, 27vw, 20rem);
 		}
 
 		.featured-variant .post-image-wrapper {

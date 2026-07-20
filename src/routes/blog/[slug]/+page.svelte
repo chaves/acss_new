@@ -98,17 +98,27 @@
 	}
 
 	.article-image {
-		aspect-ratio: 16 / 9;
-		margin-bottom: clamp(2rem, 5vw, 4rem);
+		width: min(100%, 840px);
+		aspect-ratio: 2 / 1;
+		margin: 0 auto clamp(1.75rem, 4vw, 3rem);
 		overflow: hidden;
 		border-radius: var(--radius-lg, 1.25rem);
 		background: var(--bg-secondary, #f8fafc);
+		border: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
 	.article-image :global(.article-image-element) {
 		width: 100%;
 		height: 100%;
-		object-fit: cover;
+		object-fit: contain;
+		padding: clamp(0.75rem, 2vw, 1.25rem);
+	}
+
+	@media (min-width: 700px) {
+		.article-image {
+			height: clamp(15rem, 28vw, 21rem);
+			aspect-ratio: auto;
+		}
 	}
 
 	.article-content {

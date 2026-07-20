@@ -15,6 +15,26 @@ test('English blog index renders publications in the English locale', async ({ p
 	await expect(page.locator('.publication-grid .post-item')).toHaveCount(6);
 });
 
+test('blog imagery stays compact on desktop', async ({ page }) => {
+	await page.setViewportSize({ width: 1440, height: 900 });
+	await page.goto('/en/blog');
+
+	const featuredImage = await page.locator('.featured-publication .post-image-wrapper').boundingBox();
+	const cardImage = await page.locator('.publication-grid .post-image-wrapper').first().boundingBox();
+
+	expect(featuredImage?.height).toBeLessThan(350);
+	expect(cardImage?.height).toBeLessThan(220);
+});
+
+test('platform title renders its approved rich formatting', async ({ page }) => {
+	await page.goto('/fr/plateforme');
+
+	const title = page.locator('.breadcrumb-title');
+	await expect(title).not.toContainText('<span');
+	await expect(title.locator('.site_blue, .site_red')).toHaveCount(2);
+	await expect(title.locator('br')).toHaveCount(1);
+});
+
 test('long page titles remain compact on mobile', async ({ page }) => {
 	await page.setViewportSize({ width: 390, height: 844 });
 	await page.goto('/en/seminaires/acss/2026-02-04-letter-shapes-llms');
