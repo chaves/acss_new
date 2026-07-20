@@ -139,7 +139,7 @@
 
 	.featured-variant .post-title {
 		max-width: 25ch;
-		font-size: clamp(1.45rem, 3vw, 2rem);
+		font-size: clamp(1.4rem, 2.4vw, 1.75rem);
 		line-height: 1.2;
 		letter-spacing: -0.02em;
 		text-wrap: balance;
@@ -170,18 +170,29 @@
 	@media (min-width: 800px) {
 		.post-item.featured-variant {
 			display: grid;
-			grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+			grid-template-columns: minmax(0, 0.8fr) minmax(19rem, 1.2fr);
 			height: clamp(18rem, 27vw, 20rem);
 		}
 
 		.featured-variant .post-image-wrapper {
 			height: 100%;
+			min-height: 0;
 			aspect-ratio: auto;
+		}
+
+		:global(.featured-variant .post-image) {
+			object-fit: contain;
+			padding: clamp(0.75rem, 1.5vw, 1rem);
 		}
 
 		.featured-variant .post-content {
 			justify-content: center;
-			padding: clamp(2rem, 4vw, 3.25rem);
+			min-height: 0;
+			padding: clamp(1.35rem, 2.2vw, 1.75rem);
+		}
+
+		.featured-variant .post-meta {
+			margin-top: 0;
 		}
 	}
 </style>

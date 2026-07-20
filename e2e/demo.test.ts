@@ -29,6 +29,23 @@ test('blog imagery stays compact on desktop', async ({ page }) => {
 	expect(cardImage?.height).toBeLessThan(220);
 });
 
+test('home featured publication keeps its title and date inside the card', async ({ page }) => {
+	await page.setViewportSize({ width: 1280, height: 900 });
+	await page.goto('/fr/');
+
+	const card = await page.locator('.home-featured-publication .post-item').boundingBox();
+	const image = await page.locator('.home-featured-publication .post-image-wrapper').boundingBox();
+	const content = await page.locator('.home-featured-publication .post-content').boundingBox();
+	const meta = await page.locator('.home-featured-publication .post-meta').boundingBox();
+	const publicationGrid = await page.locator('.home-publication-grid').boundingBox();
+	const cardBottom = (card?.y ?? 0) + (card?.height ?? 0);
+	const metaBottom = (meta?.y ?? 0) + (meta?.height ?? 0);
+
+	expect(metaBottom).toBeLessThan(cardBottom);
+	expect(image?.width).toBeLessThan(content?.width ?? 0);
+	expect(card?.height).toBeCloseTo(publicationGrid?.height ?? 0, 0);
+});
+
 test('platform title renders its approved rich formatting', async ({ page }) => {
 	await page.goto('/fr/plateforme');
 
