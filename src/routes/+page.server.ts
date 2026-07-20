@@ -17,7 +17,7 @@ export const load = (async ({ setHeaders }) => {
 		// Run all API requests and markdown loading concurrently
 		const [upcomingSeminars, recentPosts, acssSessions] = await Promise.all([
 			seminars.getUpcoming(5),
-			posts.getRecent(5),
+			posts.getRecent(7),
 			Promise.resolve(getUpcomingSessions())
 		]);
 
@@ -63,9 +63,10 @@ export const load = (async ({ setHeaders }) => {
 
 		// Filter out the next seminar from the seminars list to avoid duplication
 		// Only filter if nextSeminar is not ACSS (since seminars list only contains NLP and Public Governance)
-		const filteredSeminars = nextSeminar && nextSeminar.type !== 'acss'
-			? upcomingSeminars.filter(s => s.id !== nextSeminar.data.id)
-			: upcomingSeminars;
+		const filteredSeminars =
+			nextSeminar && nextSeminar.type !== 'acss'
+				? upcomingSeminars.filter((s) => s.id !== nextSeminar.data.id)
+				: upcomingSeminars;
 
 		return {
 			seminars: filteredSeminars,

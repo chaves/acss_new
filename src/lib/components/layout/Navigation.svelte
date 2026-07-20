@@ -471,9 +471,10 @@
 
 	.nested-dropdown-menu {
 		position: absolute;
-		left: 100%;
+		left: auto;
+		right: 100%;
 		top: 0;
-		margin-left: 0.5rem;
+		margin-right: 0.5rem;
 		background: white;
 		border-radius: 0.75rem;
 		box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
@@ -481,7 +482,7 @@
 		min-width: 14rem;
 		opacity: 0;
 		visibility: hidden;
-		transform: translateX(-10px);
+		transform: translateX(10px);
 		transition: all 0.3s ease-in-out;
 		border: 1px solid #e2e8f0;
 	}

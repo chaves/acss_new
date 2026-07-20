@@ -18,11 +18,36 @@
 	<div class="breadcrumb-accent"></div>
 
 	<div class="breadcrumb-content">
-		<div class="container">
-			<!-- Title -->
-			<h1 class="breadcrumb-title">
-				{@html title}
-			</h1>
+		<div class="breadcrumb-inner">
+			<!-- Breadcrumb navigation appears first to establish context before the page title. -->
+			<nav class="breadcrumb-nav" aria-label="Breadcrumb">
+				<ol class="breadcrumb-list">
+					<li class="breadcrumb-item">
+						<a href={localizeUrl('/')} class="breadcrumb-link">{m.home()}</a>
+						<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+							<path
+								fill-rule="evenodd"
+								d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+								clip-rule="evenodd"
+							/>
+						</svg>
+					</li>
+
+					{#if link !== undefined}
+						<li class="breadcrumb-item">
+							<a href={localizeUrl(`/${link}`)} class="breadcrumb-link">{link_text}</a>
+						</li>
+						<!-- The h1 immediately below supplies the current page name visually. -->
+						<li class="sr-only" aria-current="page">{title_path}</li>
+					{:else}
+						<li class="breadcrumb-item current" aria-current="page">
+							<span>{title_path}</span>
+						</li>
+					{/if}
+				</ol>
+			</nav>
+
+			<h1 class="breadcrumb-title">{title}</h1>
 
 			<!-- Optional function/role -->
 			{#if fonction !== undefined}
@@ -44,38 +69,6 @@
 				</p>
 			{/if}
 
-			<!-- Breadcrumb navigation -->
-			<nav class="breadcrumb-nav" aria-label="Breadcrumb">
-				<ol class="breadcrumb-list">
-					<li class="breadcrumb-item">
-						<a href={localizeUrl('/')} class="breadcrumb-link">{m.home()}</a>
-						<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20">
-							<path
-								fill-rule="evenodd"
-								d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-								clip-rule="evenodd"
-							/>
-						</svg>
-					</li>
-
-					{#if link !== undefined}
-						<li class="breadcrumb-item">
-							<a href={localizeUrl(`/${link}`)} class="breadcrumb-link">{link_text}</a>
-							<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20">
-								<path
-									fill-rule="evenodd"
-									d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-									clip-rule="evenodd"
-								/>
-							</svg>
-						</li>
-					{/if}
-
-					<li class="breadcrumb-item current" aria-current="page">
-						<span>{title_path}</span>
-					</li>
-				</ol>
-			</nav>
 		</div>
 	</div>
 </section>
@@ -83,10 +76,12 @@
 <style>
 	.breadcrumb-section {
 		position: relative;
-		margin-bottom: clamp(2rem, 5vw, 4rem);
-		border-radius: var(--radius-lg, 1.25rem);
+		margin-bottom: clamp(1.75rem, 4vw, 3rem);
+		border-radius: 1rem;
 		overflow: hidden;
-		background: var(--bg-secondary, #f8fafc);
+		background:
+			linear-gradient(115deg, rgba(74, 108, 170, 0.035), transparent 48%),
+			var(--bg-secondary, #f8fafc);
 		border: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
@@ -95,36 +90,43 @@
 		left: 0;
 		top: 0;
 		bottom: 0;
-		width: 5px;
-		background: var(--acss-red, #b6467c);
+		width: 4px;
+		background: linear-gradient(
+			180deg,
+			var(--acss-red, #b6467c),
+			var(--acss-blue, #4a6caa)
+		);
 	}
 
 	.breadcrumb-content {
-		padding: clamp(1.5rem, 4vw, 3.5rem);
+		padding: clamp(1.4rem, 3.5vw, 2.75rem);
 	}
 
 	/* Title */
 	.breadcrumb-title {
 		font-family: var(--font-heading, 'Quicksand', sans-serif);
-		font-size: clamp(2rem, 4vw, 3.5rem);
+		font-size: clamp(1.75rem, 3.2vw, 2.75rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		max-width: 20ch;
-		margin-bottom: 1.25rem;
-		line-height: 1.12;
+		max-width: 30ch;
+		margin: 0;
+		line-height: 1.1;
+		letter-spacing: -0.025em;
+		text-wrap: balance;
 	}
 
 	/* Optional elements */
 	.breadcrumb-fonction {
 		font-size: 1rem;
 		color: var(--acss-blue-dark, #1D4796);
-		margin-bottom: 0.5rem;
+		margin-top: 0.85rem;
 		font-weight: 500;
+		max-width: 72ch;
 	}
 
 	.breadcrumb-date {
 		font-size: 0.875rem;
-		margin-bottom: 0.75rem;
+		margin-top: 0.85rem;
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
@@ -142,7 +144,7 @@
 
 	.breadcrumb-email {
 		font-size: 0.875rem;
-		margin-bottom: 0.75rem;
+		margin-top: 0.65rem;
 	}
 
 	.breadcrumb-email a {
@@ -158,7 +160,7 @@
 
 	/* Breadcrumb navigation */
 	.breadcrumb-nav {
-		margin-top: 0.5rem;
+		margin-bottom: clamp(0.75rem, 1.8vw, 1.15rem);
 	}
 
 	.breadcrumb-list {
@@ -178,11 +180,12 @@
 	}
 
 	.breadcrumb-link {
-		font-size: 0.875rem;
+		font-size: 0.78rem;
 		color: var(--color-body, #475569);
 		text-decoration: none;
 		transition: color 0.2s ease;
-		font-weight: 500;
+		font-weight: 600;
+		letter-spacing: 0.015em;
 	}
 
 	.breadcrumb-link:hover {
@@ -190,15 +193,37 @@
 	}
 
 	.breadcrumb-separator {
-		width: 1.25rem;
-		height: 1.25rem;
+		width: 1rem;
+		height: 1rem;
 		color: #cbd5e1;
 		flex-shrink: 0;
 	}
 
 	.breadcrumb-item.current span {
-		font-size: 0.875rem;
+		font-size: 0.78rem;
 		color: var(--color-muted, #94a3b8);
 	}
 
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
+	}
+
+	@media (max-width: 480px) {
+		.breadcrumb-content {
+			padding-left: 2rem;
+		}
+
+		.breadcrumb-title {
+			font-size: 1.75rem;
+			line-height: 1.12;
+		}
+	}
 </style>

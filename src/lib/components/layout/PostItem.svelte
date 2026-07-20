@@ -10,7 +10,7 @@
 		post: BlogPost;
 		index: number;
 		priority?: boolean;
-		variant?: 'compact' | 'card';
+		variant?: 'compact' | 'card' | 'featured';
 	}
 
 	let { post, index, priority = false, variant = 'compact' }: Props = $props();
@@ -19,7 +19,11 @@
 	let imageFetchPriority = $derived<'high' | 'low' | 'auto'>(index === 0 ? 'high' : 'auto');
 </script>
 
-<article class:card-variant={variant === 'card'} class="post-item">
+<article
+	class:card-variant={variant === 'card'}
+	class:featured-variant={variant === 'featured'}
+	class="post-item"
+>
 	{#if post.Image}
 		<div class="post-image-wrapper">
 			<OptimizedImage
@@ -48,26 +52,35 @@
 		display: flex;
 		align-items: center;
 		gap: 1rem;
-		padding: 1rem;
-		background: white;
-		border-radius: var(--radius-md, 0.875rem);
-		border: 1px solid rgba(74, 108, 170, 0.08);
+		padding: 0.95rem 0;
+		background: transparent;
+		border-bottom: 1px solid rgba(74, 108, 170, 0.11);
 		transition:
 			transform var(--transition-fast, 150ms ease),
 			border-color var(--transition-fast, 150ms ease);
 	}
 
 	.post-item:hover {
-		transform: translateY(-2px);
-		border-color: rgba(74, 108, 170, 0.15);
+		transform: translateX(3px);
+		border-color: rgba(74, 108, 170, 0.28);
 	}
 
-	.post-item.card-variant {
+	.post-item.card-variant,
+	.post-item.featured-variant {
 		align-items: stretch;
 		flex-direction: column;
 		gap: 0;
 		padding: 0;
 		overflow: hidden;
+		background: white;
+		border: 1px solid rgba(74, 108, 170, 0.11);
+		border-radius: var(--radius-md, 0.875rem);
+	}
+
+	.post-item.card-variant:hover,
+	.post-item.featured-variant:hover {
+		transform: translateY(-3px);
+		border-color: rgba(74, 108, 170, 0.28);
 	}
 
 	.post-image-wrapper {
@@ -78,7 +91,8 @@
 		overflow: hidden;
 	}
 
-	.card-variant .post-image-wrapper {
+	.card-variant .post-image-wrapper,
+	.featured-variant .post-image-wrapper {
 		width: 100%;
 		height: auto;
 		aspect-ratio: 16 / 10;
@@ -96,7 +110,8 @@
 		min-width: 0;
 	}
 
-	.card-variant .post-content {
+	.card-variant .post-content,
+	.featured-variant .post-content {
 		display: flex;
 		flex-direction: column;
 		padding: 1.25rem;
@@ -116,7 +131,17 @@
 		margin-bottom: 0.75rem;
 	}
 
-	.card-variant .post-meta {
+	.featured-variant .post-title {
+		max-width: 25ch;
+		font-size: clamp(1.45rem, 3vw, 2rem);
+		line-height: 1.2;
+		letter-spacing: -0.02em;
+		text-wrap: balance;
+		margin-bottom: 1rem;
+	}
+
+	.card-variant .post-meta,
+	.featured-variant .post-meta {
 		margin-top: auto;
 	}
 
@@ -134,5 +159,23 @@
 	.meta-date {
 		color: var(--acss-blue, #4a6caa);
 		font-weight: 500;
+	}
+
+	@media (min-width: 800px) {
+		.post-item.featured-variant {
+			display: grid;
+			grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+			height: clamp(22rem, 36vw, 26rem);
+		}
+
+		.featured-variant .post-image-wrapper {
+			height: 100%;
+			aspect-ratio: auto;
+		}
+
+		.featured-variant .post-content {
+			justify-content: center;
+			padding: clamp(2rem, 4vw, 3.25rem);
+		}
 	}
 </style>

@@ -4,9 +4,9 @@ import { locales, baseLocale, setLocale } from '$lib/paraglide/runtime';
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
 	const pathname = event.url.pathname;
-	
+
 	// Don't redirect favicon files, manifest files, or other root assets
-	const isRootAsset = 
+	const isRootAsset =
 		pathname.startsWith('/favicon') ||
 		pathname.startsWith('/apple-touch-icon') ||
 		pathname.startsWith('/site.webmanifest') ||
@@ -15,11 +15,11 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 		pathname.startsWith('/robots.txt') ||
 		pathname.startsWith('/sitemap.xml') ||
 		pathname.match(/^\/.*\.(ico|png|svg|xml|webmanifest|txt)$/);
-	
+
 	if (isRootAsset) {
 		return resolve(event);
 	}
-	
+
 	// Redirect root path to default language
 	if (pathname === '/') {
 		return new Response(null, {
@@ -32,9 +32,7 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 
 	// Get the language from the URL path
 	const [, lang] = event.url.pathname.split('/');
-	const languageTag = locales.includes(lang as any)
-		? lang
-		: baseLocale;
+	const languageTag = locales.includes(lang as any) ? lang : baseLocale;
 
 	// Set the locale for this request (Paraglide JS 2.0 uses request context)
 	setLocale(languageTag as any);
@@ -42,9 +40,7 @@ const handleParaglide: Handle = async ({ event, resolve }) => {
 	return resolve(event, {
 		transformPageChunk: ({ html }) => {
 			// Replace placeholders in app.html
-			return html
-				.replace('%lang%', languageTag)
-				.replace('%textDirection%', 'ltr');
+			return html.replace('%lang%', languageTag).replace('%textDirection%', 'ltr');
 		}
 	});
 };
@@ -57,10 +53,7 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	response.headers.set('X-Frame-Options', 'SAMEORIGIN');
 	response.headers.set('X-Content-Type-Options', 'nosniff');
 	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
-	response.headers.set(
-		'Permissions-Policy',
-		'camera=(), microphone=(), geolocation=()'
-	);
+	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
 	// CORS headers for API endpoints
 	if (event.url.pathname.startsWith('/api/')) {
@@ -88,7 +81,7 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	} else if (pathname.startsWith('/_app/') || pathname.includes('/_app/')) {
 		// Cache built assets with hash for 1 year
 		response.headers.set('Cache-Control', 'public, max-age=31536000, immutable');
-	} else {
+	} else if (!response.headers.has('cache-control')) {
 		// Cache HTML pages with revalidation
 		response.headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
 	}

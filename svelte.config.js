@@ -12,7 +12,8 @@ const config = {
 		paths: {
 			// Only set absolute assets path in production (Vercel will set VERCEL env var)
 			assets: process.env.VERCEL ? 'https://acss-dig.psl.eu' : '',
-			base: ''
+			base: '',
+			relative: false
 		},
 		prerender: {
 			origin: 'https://acss-dig.psl.eu',

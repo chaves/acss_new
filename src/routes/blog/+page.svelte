@@ -13,19 +13,41 @@
 <Breadcrumb title="Blog" title_path="blog" />
 
 {#if data.posts.length > 0}
-	<div class="blog-grid">
-		{#each data.posts as post, index}
-			<PostItem {post} {index} variant="card" priority={index < 3} />
-		{/each}
+	<div class="featured-publication">
+		<PostItem post={data.posts[0]} index={0} variant="featured" priority={true} />
 	</div>
+
+	{#if data.posts.length > 1}
+		<div class="publication-grid">
+			{#each data.posts.slice(1) as post, index}
+				<PostItem {post} index={index + 1} variant="card" priority={index < 2} />
+			{/each}
+		</div>
+	{/if}
 {:else}
 	<p>No posts found</p>
 {/if}
 
 <style>
-	.blog-grid {
+	.featured-publication {
+		margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+	}
+
+	.publication-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		grid-template-columns: repeat(3, minmax(0, 1fr));
 		gap: clamp(1rem, 2.5vw, 2rem);
+	}
+
+	@media (max-width: 900px) {
+		.publication-grid {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	@media (max-width: 600px) {
+		.publication-grid {
+			grid-template-columns: 1fr;
+		}
 	}
 </style>

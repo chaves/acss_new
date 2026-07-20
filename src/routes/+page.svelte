@@ -319,8 +319,8 @@
 		</h2>
 		<div class="posts-list">
 			{#if data.posts.length > 0}
-				{#each data.posts.slice(0, 3) as post, index}
-					<PostItem {post} {index} priority={index < 3} />
+				{#each data.posts as post, index}
+					<PostItem {post} {index} priority={index < 2} />
 				{/each}
 			{:else}
 				<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>
@@ -668,12 +668,14 @@
 
 	.mission-title {
 		font-family: var(--font-heading, 'Quicksand', sans-serif);
-		font-size: clamp(2rem, 4.2vw, 3.5rem);
+		font-size: clamp(1.875rem, 3.4vw, 2.85rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		line-height: 1.08;
-		letter-spacing: -0.035em;
+		max-width: 18ch;
+		line-height: 1.1;
+		letter-spacing: -0.025em;
 		margin-bottom: 1.25rem;
+		text-wrap: balance;
 	}
 
 	.mission-subtitle {
@@ -780,10 +782,20 @@
 
 	/* ==================== Blog Card ==================== */
 	.blog-card {
-		background: var(--bg-secondary, #f8fafc);
+		position: relative;
+		overflow: hidden;
+		background: #fbfcfe;
 		border-radius: var(--radius-lg, 1.25rem);
 		padding: clamp(1.25rem, 3vw, 2rem);
-		border: 1px solid rgba(74, 108, 170, 0.08);
+		border: 1px solid rgba(74, 108, 170, 0.11);
+	}
+
+	.blog-card::before {
+		content: '';
+		position: absolute;
+		inset: 0 0 auto;
+		height: 4px;
+		background: linear-gradient(90deg, var(--acss-red, #b6467c), var(--acss-blue, #4a6caa));
 	}
 
 	.section-title {
@@ -810,14 +822,21 @@
 	.posts-list {
 		display: flex;
 		flex-direction: column;
-		gap: 0.5rem;
+	}
+
+	.posts-list :global(.post-item:last-child) {
+		border-bottom: 0;
 	}
 
 	.view-all-wrapper {
-		margin-top: 1.5rem;
-		text-align: center;
-		padding-top: 1rem;
+		margin-top: 1rem;
+		padding-top: 1.25rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
+	}
+
+	.view-all-wrapper :global(.view-all-link) {
+		width: 100%;
+		justify-content: center;
 	}
 
 	.no-content {
