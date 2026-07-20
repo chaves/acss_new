@@ -7,7 +7,7 @@
 	import { generateOrganizationSchema, generateWebSiteSchema } from '$lib/seo/schema-utils';
 	import { getOGLocale, isEnglish } from '$lib/helpers/locale';
 	import { formatTime } from '$lib/utils';
-	import { Carousel } from 'flowbite-svelte';
+	import { LinkedinSolid } from 'flowbite-svelte-icons';
 	import images from '$lib/data/images_home.json';
 	import type { PageData } from './$types';
 
@@ -305,9 +305,17 @@
 			</Link>
 		</nav>
 
-		<!-- Carousel inside Mission Card -->
-		<div class="mission-carousel">
-			<Carousel {images} duration={3000} imgClass="carousel-image" />
+		<div class="mission-visuals">
+			{#each images.slice(0, 3) as image, index}
+				<div class:mission-visual-main={index === 0} class="mission-visual">
+					<img
+						src={image.src}
+						alt={image.alt}
+						loading={index === 0 ? 'eager' : 'lazy'}
+						decoding="async"
+					/>
+				</div>
+			{/each}
 		</div>
 	</div>
 
@@ -318,11 +326,22 @@
 				<span class="title-text">Blog</span>
 				<span class="title-accent"></span>
 			</h2>
-			{#if data.posts.length > 0}
-				<span class="blog-count" aria-hidden="true">
-					{String(data.posts.length).padStart(2, '0')}
+			<a
+				href="https://www.linkedin.com/company/acss-psl"
+				class="linkedin-card"
+				target="_blank"
+				rel="noopener noreferrer"
+				aria-label="LinkedIn ACSS-PSL"
+			>
+				<LinkedinSolid class="linkedin-icon" />
+				<span>
+					<strong>LinkedIn</strong>
+					<small>ACSS-PSL</small>
 				</span>
-			{/if}
+				<svg class="linkedin-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+					<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 17L17 7M7 7h10v10" />
+				</svg>
+			</a>
 		</div>
 
 		{#if data.posts.length > 0}
@@ -674,13 +693,10 @@
 			align-items: start;
 		}
 
-		.content-grid .mission-carousel {
+		.content-grid .mission-visuals {
 			grid-column: 2;
 			grid-row: 1 / 6;
-			align-self: stretch;
-			margin: 0;
-			padding: 0;
-			border: 0;
+			align-self: center;
 		}
 	}
 
@@ -810,26 +826,12 @@
 	.blog-card {
 		position: relative;
 		overflow: hidden;
-		isolation: isolate;
 		background:
-			radial-gradient(circle at 92% 12%, rgba(182, 70, 124, 0.28), transparent 24rem),
-			linear-gradient(135deg, #163873 0%, var(--acss-blue-dark, #1d4796) 55%, #244f98 100%);
+			linear-gradient(120deg, rgba(74, 108, 170, 0.035), transparent 45%),
+			#fbfcfe;
 		border-radius: var(--radius-lg, 1.25rem);
 		padding: clamp(1.5rem, 4vw, 3rem);
-		border: 1px solid rgba(29, 71, 150, 0.35);
-		box-shadow: 0 22px 60px rgba(29, 71, 150, 0.18);
-	}
-
-	.blog-card::before {
-		content: '';
-		position: absolute;
-		z-index: -1;
-		width: 24rem;
-		aspect-ratio: 1;
-		right: -12rem;
-		bottom: -15rem;
-		border: 1px solid rgba(255, 255, 255, 0.15);
-		border-radius: 50%;
+		border: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
 	.blog-card-header {
@@ -846,24 +848,66 @@
 	}
 
 	.blog-card-header .title-text {
-		font-size: clamp(2rem, 4vw, 3.5rem);
+		font-size: clamp(1.75rem, 3vw, 2.5rem);
 		line-height: 1;
-		color: white;
+		color: var(--acss-blue-dark, #1d4796);
 	}
 
 	.blog-card-header .title-accent {
-		background: linear-gradient(90deg, rgba(255, 255, 255, 0.58), transparent 100%);
+		background: linear-gradient(90deg, var(--acss-blue, #4a6caa), transparent 100%);
 	}
 
-	.blog-count {
+	.linkedin-card {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.75rem 0.9rem;
+		border: 1px solid rgba(10, 102, 194, 0.18);
+		border-radius: 0.9rem;
+		background: white;
+		color: #0a66c2;
+		text-decoration: none;
+		box-shadow: 0 8px 24px rgba(10, 102, 194, 0.08);
+		transition:
+			transform 180ms ease,
+			box-shadow 180ms ease,
+			border-color 180ms ease;
+	}
+
+	.linkedin-card:hover {
+		transform: translateY(-2px);
+		border-color: rgba(10, 102, 194, 0.34);
+		box-shadow: 0 12px 30px rgba(10, 102, 194, 0.14);
+	}
+
+	.linkedin-card :global(.linkedin-icon) {
+		width: 1.75rem;
+		height: 1.75rem;
+	}
+
+	.linkedin-card span {
+		display: flex;
+		flex-direction: column;
+		line-height: 1.1;
+	}
+
+	.linkedin-card strong {
 		font-family: var(--font-heading, 'Quicksand', sans-serif);
-		font-size: clamp(3.5rem, 8vw, 7rem);
-		font-weight: 700;
-		line-height: 0.72;
-		letter-spacing: -0.08em;
-		color: transparent;
-		-webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
-		user-select: none;
+		font-size: 0.95rem;
+	}
+
+	.linkedin-card small {
+		margin-top: 0.2rem;
+		font-size: 0.68rem;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		color: var(--color-muted, #64748b);
+	}
+
+	.linkedin-arrow {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.section-title {
@@ -895,8 +939,7 @@
 	}
 
 	.home-featured-publication :global(.post-item) {
-		border: 0;
-		box-shadow: 0 18px 40px rgba(8, 27, 63, 0.24);
+		box-shadow: 0 14px 34px rgba(29, 71, 150, 0.11);
 	}
 
 	.home-publication-grid {
@@ -908,19 +951,18 @@
 	.home-publication-grid :global(.post-item) {
 		min-height: 6.5rem;
 		padding: 0.85rem;
-		border: 1px solid rgba(255, 255, 255, 0.14);
+		border: 1px solid rgba(74, 108, 170, 0.11);
 		border-radius: 0.8rem;
-		background: rgba(255, 255, 255, 0.08);
-		backdrop-filter: blur(10px);
+		background: white;
 	}
 
 	.home-publication-grid :global(.post-item:hover) {
-		background: rgba(255, 255, 255, 0.13);
-		border-color: rgba(255, 255, 255, 0.26);
+		background: var(--bg-accent, #eef3fb);
+		border-color: rgba(74, 108, 170, 0.24);
 	}
 
 	.home-publication-grid :global(.post-title a) {
-		color: white;
+		color: var(--color-heading, #1e293b);
 	}
 
 	.home-publication-grid :global(.post-title) {
@@ -934,11 +976,11 @@
 	}
 
 	.home-publication-grid :global(.meta-label) {
-		color: rgba(255, 255, 255, 0.55);
+		color: var(--color-muted, #94a3b8);
 	}
 
 	.home-publication-grid :global(.meta-date) {
-		color: rgba(255, 255, 255, 0.82);
+		color: var(--acss-blue, #4a6caa);
 	}
 
 	.home-publication-grid :global(.post-image-wrapper) {
@@ -948,19 +990,16 @@
 	.view-all-wrapper {
 		margin-top: clamp(1.5rem, 3vw, 2.25rem);
 		padding-top: 1.25rem;
-		border-top: 1px solid rgba(255, 255, 255, 0.18);
+		border-top: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
 	.view-all-wrapper :global(.view-all-link) {
 		width: 100%;
 		justify-content: center;
-		background: white;
-		color: var(--acss-blue-dark, #1d4796);
-		border-color: white;
 	}
 
 	.no-content {
-		color: rgba(255, 255, 255, 0.72);
+		color: var(--color-muted, #94a3b8);
 		font-style: italic;
 		text-align: center;
 		padding: 2rem;
@@ -974,11 +1013,17 @@
 
 	@media (max-width: 640px) {
 		.blog-card-header {
-			gap: 0.75rem;
+			grid-template-columns: 1fr;
+			gap: 1rem;
 		}
 
 		.blog-card-header .title-accent {
 			display: none;
+		}
+
+		.linkedin-card {
+			width: 100%;
+			grid-template-columns: auto 1fr auto;
 		}
 
 		.home-publication-grid {
@@ -990,40 +1035,60 @@
 		}
 	}
 
-	/* ==================== Mission Carousel ==================== */
+	/* ==================== Mission Visuals ==================== */
 	.mission-card {
 		display: flex;
 		flex-direction: column;
 	}
 
-	.mission-carousel {
+	.mission-visuals {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr);
+		gap: 0.65rem;
+		width: 100%;
+		height: clamp(14rem, 70vw, 18rem);
+		overflow: hidden;
 		margin-top: 1.5rem;
 		padding-top: 1.5rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
-		display: flex;
-		flex-direction: column;
 	}
 
-	.mission-carousel :global(> div) {
-		width: 100%;
-		aspect-ratio: 16 / 9;
+	.mission-visual {
+		position: relative;
+		min-width: 0;
 		min-height: 0;
+		overflow: hidden;
+		border: 1px solid rgba(74, 108, 170, 0.1);
+		border-radius: 0.75rem;
+		background: var(--bg-secondary, #f8fafc);
 	}
 
-	.mission-carousel :global(.carousel-image) {
-		max-width: 100%;
+	.mission-visual-main {
+		grid-column: 1 / -1;
+	}
+
+	.mission-visual img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		border-radius: 0.5rem;
 		display: block;
+		filter: saturate(0.92) contrast(1.03);
+		transition: transform 400ms ease;
 	}
 
-	.mission-carousel :global([role="group"]) {
-		height: 100%;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.mission-visuals:hover .mission-visual img {
+		transform: scale(1.015);
+	}
+
+	@media (min-width: 1024px) {
+		.content-grid .mission-visuals {
+			height: auto;
+			aspect-ratio: 4 / 3;
+			margin-top: 0;
+			padding-top: 0;
+			border-top: 0;
+		}
 	}
 
 	/* ==================== Seminars Wrapper ==================== */

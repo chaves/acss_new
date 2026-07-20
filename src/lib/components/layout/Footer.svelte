@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import { localizeUrl } from '$lib/utils';
+	import { LinkedinSolid } from 'flowbite-svelte-icons';
 </script>
 
 <footer class="footer">
@@ -70,6 +71,16 @@
 					{m.site_made_by()}
 				</p>
 				<div class="footer-links">
+					<a
+						href="https://www.linkedin.com/company/acss-psl"
+						class="footer-link social-link"
+						target="_blank"
+						rel="noopener noreferrer"
+					>
+						<LinkedinSolid class="footer-social-icon" />
+						<span>LinkedIn</span>
+					</a>
+					<span class="divider">•</span>
 					<a href={localizeUrl('/lettre-d-information')} class="footer-link">
 						{m.subscribe_letter()}
 					</a>
@@ -183,7 +194,9 @@
 
 	.footer-links {
 		display: flex;
+		flex-wrap: wrap;
 		align-items: center;
+		justify-content: center;
 		gap: 1rem;
 	}
 
@@ -197,6 +210,18 @@
 
 	.footer-link:hover {
 		color: var(--acss-red, #b6467c);
+	}
+
+	.footer-link.social-link {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		color: #0a66c2;
+	}
+
+	.footer-link.social-link :global(.footer-social-icon) {
+		width: 1rem;
+		height: 1rem;
 	}
 
 	.footer-link.contact {
