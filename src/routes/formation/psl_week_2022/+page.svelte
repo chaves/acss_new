@@ -23,6 +23,7 @@
 	link_text={m.training()}
 />
 
+<div class="reading-page">
 <img
 	src="/images/psl_week/image_nlp.jpg"
 	alt="PSL Week : NLP for Social Sciences"
@@ -81,6 +82,7 @@
 	<strong>José Carlos Romero Moreno</strong>
 	and <strong>Olivier Caron</strong> from the Acss Institute.
 </p>
+</div>
 
 <style lang="postcss">
 	h1 {

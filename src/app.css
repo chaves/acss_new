@@ -449,12 +449,18 @@ nav li.has-child::after {
    EDITORIAL LAYOUT
    ============================================ */
 
-.editorial-page {
+.editorial-page,
+.reading-page {
 	max-width: var(--reading-max);
 	margin-inline: auto;
 	font-size: 1rem;
 	line-height: 1.75;
 	color: var(--color-body);
+	overflow-wrap: anywhere;
+}
+
+.reading-page {
+	display: flow-root;
 }
 
 .editorial-page > p:first-child {
@@ -508,13 +514,16 @@ nav li.has-child::after {
 }
 
 @media (min-width: 900px) {
-	.editorial-page.editorial-page-wide {
-		max-width: 1120px;
-	}
-
 	.editorial-columns {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: clamp(2rem, 5vw, 4rem);
+	}
+
+	.editorial-page-wide .editorial-columns {
+		position: relative;
+		left: 50%;
+		width: min(1120px, calc(100vw - 4rem));
+		transform: translateX(-50%);
 	}
 }
 

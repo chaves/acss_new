@@ -9,6 +9,7 @@
 	<meta name="description" content="" />
 </svelte:head>
 
+<div class="reading-page">
 <div class="float-right ml-6 px-3 border-l-4 border-slate-300">
 	<a data-no-translate href="https://acss-dig.psl.eu/data/database_web_03_2022.csv"
 		><img
@@ -111,6 +112,7 @@
 		>.
 	</li>
 </ul>
+</div>
 
 <style lang="postcss">
 	ol {

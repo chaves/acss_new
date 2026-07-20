@@ -42,6 +42,7 @@
 />
 
 <div class="description">
+	<div class="description-copy">
 	<p>
 		This seminar provides an opportunity to discuss about the activities of the institute and
 		will be organized in 3 sessions throughout the 2025-2026 academic year. Its purpose is
@@ -75,6 +76,7 @@
 			></em
 		>
 	</p>
+	</div>
 </div>
 
 <!-- Upcoming Sessions -->
@@ -190,6 +192,11 @@
 <style lang="postcss">
 	.description {
 		@apply mb-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-4 text-sm;
+	}
+
+	.description-copy {
+		max-width: var(--reading-max, 72ch);
+		margin-inline: auto;
 	}
 
 	.description p {

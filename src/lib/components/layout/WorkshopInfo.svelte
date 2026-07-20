@@ -13,6 +13,7 @@
 </script>
 
 <div class="workshop-info" class:card={variant === 'card'} class:section={variant === 'section'}>
+	<div class="workshop-copy">
 	{#if variant === 'section'}
 		<h3>About this workshop</h3>
 	{/if}
@@ -59,9 +60,15 @@
 			</div>
 		{/if}
 	{/if}
+	</div>
 </div>
 
 <style lang="postcss">
+	.workshop-copy {
+		max-width: var(--reading-max, 72ch);
+		margin-inline: auto;
+	}
+
 	.workshop-info.card {
 		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
 	}

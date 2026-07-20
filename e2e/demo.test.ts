@@ -48,3 +48,39 @@ test('long page titles remain compact on mobile', async ({ page }) => {
 	const box = await titleBand.boundingBox();
 	expect(box?.height).toBeLessThan(320);
 });
+
+test('long-form pages share one readable text measure', async ({ page }) => {
+	await page.setViewportSize({ width: 1280, height: 900 });
+
+	await page.goto('/fr/mission');
+	const reference = await page.locator('.editorial-page').boundingBox();
+
+	for (const path of [
+		'/fr/plateforme',
+		'/fr/donnees/credit_series',
+		'/fr/formation/psl_week_2022'
+	]) {
+		await page.goto(path);
+		const content = await page.locator('.editorial-page, .reading-page').first().boundingBox();
+		expect(content?.width).toBeCloseTo(reference?.width ?? 0, 0);
+	}
+
+	await page.goto('/fr/plateforme');
+	const narrative = await page.locator('.editorial-page').boundingBox();
+	const columns = await page.locator('.editorial-columns').boundingBox();
+	expect(columns?.width).toBeGreaterThan(narrative?.width ?? Number.POSITIVE_INFINITY);
+
+	await page.setViewportSize({ width: 390, height: 844 });
+	for (const path of [
+		'/fr/plateforme',
+		'/fr/donnees/credit_series',
+		'/fr/formation/psl_week_2022',
+		'/fr/seminaires/nlp'
+	]) {
+		await page.goto(path);
+		const hasHorizontalOverflow = await page.evaluate(
+			() => document.documentElement.scrollWidth > document.documentElement.clientWidth
+		);
+		expect(hasHorizontalOverflow).toBe(false);
+	}
+});

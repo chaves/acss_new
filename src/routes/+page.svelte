@@ -830,7 +830,7 @@
 			linear-gradient(120deg, rgba(74, 108, 170, 0.035), transparent 45%),
 			#fbfcfe;
 		border-radius: var(--radius-lg, 1.25rem);
-		padding: clamp(1.5rem, 4vw, 3rem);
+		padding: clamp(1.25rem, 3vw, 2.25rem);
 		border: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
@@ -839,7 +839,7 @@
 		grid-template-columns: minmax(0, 1fr) auto;
 		align-items: start;
 		gap: 1.5rem;
-		margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+		margin-bottom: clamp(1.25rem, 2vw, 1.75rem);
 	}
 
 	.blog-card-header .section-title {
