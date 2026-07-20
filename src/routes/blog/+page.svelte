@@ -13,9 +13,19 @@
 <Breadcrumb title="Blog" title_path="blog" />
 
 {#if data.posts.length > 0}
-	{#each data.posts as post, index}
-		<PostItem {post} {index} />
-	{/each}
+	<div class="blog-grid">
+		{#each data.posts as post, index}
+			<PostItem {post} {index} variant="card" priority={index < 3} />
+		{/each}
+	</div>
 {:else}
 	<p>No posts found</p>
 {/if}
+
+<style>
+	.blog-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+		gap: clamp(1rem, 2.5vw, 2rem);
+	}
+</style>

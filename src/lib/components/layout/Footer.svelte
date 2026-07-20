@@ -86,31 +86,32 @@
 <style>
 	.footer {
 		position: relative;
-		background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
-		margin-top: 1rem;
+		background: var(--bg-secondary, #f8fafc);
+		margin-top: clamp(2rem, 5vw, 4rem);
+		border-top: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
 	.footer-accent {
-		height: 4px;
-		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		height: 3px;
+		background: var(--acss-red, #b6467c);
 	}
 
 	.footer-content {
-		padding: 2rem 0 1.5rem;
+		padding: clamp(1.5rem, 3vw, 2.5rem) 0 1.5rem;
 	}
 
 	/* Partners Section */
 	.partners-section {
 		text-align: center;
-		margin-bottom: 1.5rem;
+		margin-bottom: 1rem;
 	}
 
 	.partners-title {
-		font-family: 'Quicksand', sans-serif;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
 		font-size: 1.25rem;
 		font-weight: 600;
 		color: var(--acss-blue-dark, #1D4796);
-		margin-bottom: 2rem;
+		margin-bottom: 1.5rem;
 		position: relative;
 		display: inline-block;
 	}
@@ -132,14 +133,14 @@
 		flex-wrap: wrap;
 		align-items: center;
 		justify-content: center;
-		gap: 2rem;
+		gap: clamp(1rem, 3vw, 2rem);
 	}
 
 	.partner-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 1rem;
+		padding: 0.75rem;
 		border-radius: 0.75rem;
 		transition: all 0.3s ease;
 	}
@@ -150,7 +151,7 @@
 	}
 
 	.partner-logo {
-		height: 4rem;
+		height: 3.25rem;
 		width: auto;
 		max-width: 140px;
 		object-fit: contain;
@@ -213,8 +214,8 @@
 	/* Responsive */
 	@media (min-width: 768px) {
 		.partner-logo {
-			height: 5rem;
-			max-width: 160px;
+			height: 4rem;
+			max-width: 150px;
 		}
 
 		.footer-bottom {
@@ -225,12 +226,12 @@
 
 	@media (min-width: 1024px) {
 		.partners-grid {
-			gap: 3rem;
+			gap: 2.5rem;
 		}
 
 		.partner-logo {
-			height: 6rem;
-			max-width: 180px;
+			height: 4.5rem;
+			max-width: 165px;
 		}
 	}
 </style>

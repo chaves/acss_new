@@ -10,6 +10,7 @@
 
 <Breadcrumb title={m.mission()} title_path={m.mission()} />
 
+<div class="editorial-page">
 {#if getLocale() == 'fr'}
 	<p class="mt-0">
 		La <span class="site_blue font-bold">transformation numérique</span> rend possible la collecte
@@ -27,7 +28,7 @@
 		pour mieux comprendre les transformations en cours et les maîtriser.
 	</p>
 
-	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
+	<h2 class="editorial-callout">
 		L’Institut réunit directement plus de 25 porteurs de projets scientifiques qui eux-mêmes
 		mobilisent une communauté d’environ 60 chercheurs seniors et 30 chercheurs juniors, cet effectif
 		ayant vocation à monter en puissance. Ils sont porteurs notamment de cinq chaires d’enseignement
@@ -92,7 +93,7 @@
 		and steer the transformations under way.
 	</p>
 
-	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
+	<h2 class="editorial-callout">
 		The Institute directly brings together around 30 scientific project leaders, who in turn
 		mobilise a community of approximately 60 senior and 30 junior scientific researchers—a workforce
 		that is slated to grow. They notably hold five teaching and research chairs and are in charge of
@@ -134,3 +135,4 @@
 		> and a need for a redesign of the international order.
 	</p>
 {/if}
+</div>

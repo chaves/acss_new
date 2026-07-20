@@ -79,7 +79,7 @@
 		</div>
 
 		<!-- Title -->
-		<h1 class="seminar-title">{seminar.title}</h1>
+		<h2 class="seminar-title">{seminar.title}</h2>
 
 		<!-- Location if available -->
 		{#if seminar.location}

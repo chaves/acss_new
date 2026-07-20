@@ -66,6 +66,14 @@
 	}
 </script>
 
+<svelte:window
+	onkeydown={(event) => {
+		if (event.key === 'Escape' && mobileMenuOpen) {
+			closeMobileMenu();
+		}
+	}}
+/>
+
 <header class="header">
 	<nav class="nav-container">
 		<!-- Logo -->
@@ -86,7 +94,7 @@
 				{#each menu as item}
 					{#if item.children}
 						<li class="nav-item dropdown-wrapper">
-							<button class="nav-link dropdown-trigger" type="button">
+							<button class="nav-link dropdown-trigger" type="button" aria-haspopup="true">
 								{item.title}
 								<ChevronDownOutline class="chevron" />
 							</button>
@@ -172,7 +180,7 @@
 		onclick={closeMobileMenu}
 		onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? closeMobileMenu() : null}
 	></div>
-	<div class="mobile-menu">
+	<div class="mobile-menu" role="dialog" aria-modal="true">
 		<!-- Mobile Menu Header -->
 		<div class="mobile-menu-header">
 			<img src="/images/logos/acss_logo.svg" class="mobile-logo" alt="ACSS-PSL" />
@@ -290,12 +298,11 @@
 		top: 0;
 		z-index: 50;
 		background: white;
-		box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-		border-bottom: 1px solid #e2e8f0;
+		border-bottom: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
 	.nav-container {
-		max-width: 1280px;
+		max-width: var(--content-max, 1280px);
 		margin: 0 auto;
 		padding: 1rem 1.5rem;
 		display: flex;
@@ -343,7 +350,7 @@
 		padding: 0.5rem 0.75rem;
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: #1d4796;
+		color: var(--acss-blue-dark, #1d4796);
 		text-decoration: none;
 		border-radius: 0.5rem;
 		transition: all 0.2s ease-in-out;
@@ -360,16 +367,17 @@
 	}
 
 	.nav-link.active {
-		background: #1d4796;
+		background: var(--acss-blue-dark, #1d4796);
 		color: white;
 	}
 
 	.nav-link.active:hover {
-		background: #0f3474;
+		background: var(--acss-blue-dark, #1d4796);
 	}
 
 	/* ==================== Dropdown (Desktop) ==================== */
-	.dropdown-wrapper:hover .dropdown-menu {
+	.dropdown-wrapper:hover .dropdown-menu,
+	.dropdown-wrapper:focus-within .dropdown-menu {
 		opacity: 1;
 		visibility: visible;
 		transform: translateY(0);
@@ -436,7 +444,8 @@
 		position: relative;
 	}
 
-	.nested-dropdown-wrapper:hover .nested-dropdown-menu {
+	.nested-dropdown-wrapper:hover .nested-dropdown-menu,
+	.nested-dropdown-wrapper:focus-within .nested-dropdown-menu {
 		opacity: 1;
 		visibility: visible;
 		transform: translateX(0);
@@ -507,19 +516,17 @@
 		justify-content: center;
 		width: 2.75rem;
 		height: 2.75rem;
-		background: linear-gradient(135deg, #B84C7C 0%, #9a3d65 100%);
+		background: var(--acss-red, #b6467c);
 		color: white;
 		border-radius: 0.75rem;
 		margin-left: 1rem;
 		transition: all 0.3s ease-in-out;
-		box-shadow: 0 2px 8px rgba(184, 76, 124, 0.3);
 		text-decoration: none;
 	}
 
 	.newsletter-button:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(184, 76, 124, 0.4);
-		background: linear-gradient(135deg, #9a3d65 0%, #B84C7C 100%);
+		background: var(--acss-red-dark, #9a3d65);
 	}
 
 	.newsletter-button:active {
@@ -810,20 +817,18 @@
 		width: 100%;
 		padding: 1rem 1.5rem;
 		margin-top: 1rem;
-		background: linear-gradient(135deg, #B84C7C 0%, #9a3d65 100%);
+		background: var(--acss-red, #b6467c);
 		color: white;
 		border-radius: 0.75rem;
 		font-weight: 600;
 		font-size: 1rem;
 		text-decoration: none;
 		transition: all 0.3s ease-in-out;
-		box-shadow: 0 2px 8px rgba(184, 76, 124, 0.3);
 	}
 
 	.mobile-newsletter-button:hover {
 		transform: translateY(-2px);
-		box-shadow: 0 4px 12px rgba(184, 76, 124, 0.4);
-		background: linear-gradient(135deg, #9a3d65 0%, #B84C7C 100%);
+		background: var(--acss-red-dark, #9a3d65);
 	}
 
 	.mobile-newsletter-button:active {

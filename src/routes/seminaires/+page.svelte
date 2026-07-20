@@ -84,27 +84,60 @@
 </div>
 
 <style lang="postcss">
-	span {
-		@apply text-sm font-normal italic;
+	.seminars {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(min(100%, 25rem), 1fr));
+		gap: 1rem;
 	}
 
-	h2 {
-		@apply mt-6 text-lg font-semibold;
-	}
-	h3 {
-		@apply mt-3 text-base font-semibold;
-	}
-
-	ul {
-		@apply ml-5 list-decimal;
-	}
-
-	p,
-	ul li {
-		@apply mt-2;
+	.seminars > h2 {
+		grid-column: 1 / -1;
+		margin-top: clamp(1rem, 4vw, 2.5rem);
+		font-family: var(--font-heading);
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		color: var(--color-heading);
 	}
 
 	.seminar {
-		@apply border-l-4 pl-3 text-sm;
+		padding: clamp(1.25rem, 3vw, 2rem);
+		border: 1px solid rgba(74, 108, 170, 0.12);
+		border-radius: var(--radius-md);
+		background: white;
+	}
+
+	.seminar h3 {
+		margin-bottom: 1rem;
+		font-family: var(--font-heading);
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.45;
+	}
+
+	.seminar h3 span {
+		display: block;
+		margin-top: 0.35rem;
+		font-family: var(--font-body);
+		font-size: 0.8rem;
+		font-weight: 500;
+		font-style: normal;
+		color: var(--color-muted);
+	}
+
+	.seminar p,
+	.seminar ul {
+		font-size: 0.9rem;
+		line-height: 1.7;
+		color: var(--color-body);
+	}
+
+	.seminar ul {
+		margin-top: 1rem;
+		margin-left: 1.25rem;
+		list-style: disc;
+	}
+
+	.seminar li + li {
+		margin-top: 0.5rem;
 	}
 </style>

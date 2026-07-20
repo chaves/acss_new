@@ -18,7 +18,7 @@
 :root {
 	/* Primary brand colors */
 	--acss-blue: #4a6caa;
-	--acss-blue-dark: #1D4796;
+	--acss-blue-dark: #1d4796;
 	--acss-blue-light: #6b8dc4;
 	--acss-blue-pale: rgba(74, 108, 170, 0.08);
 
@@ -36,10 +36,24 @@
 	--bg-primary: #ffffff;
 	--bg-secondary: #f8fafc;
 	--bg-tertiary: #f1f5f9;
+	--bg-accent: #eef3fb;
+
+	/* Layout and type */
+	--content-max: 1280px;
+	--reading-max: 72ch;
+	--radius-sm: 0.5rem;
+	--radius-md: 0.875rem;
+	--radius-lg: 1.25rem;
+	--font-heading: 'Quicksand', sans-serif;
+	--font-body: 'Montserrat', sans-serif;
 
 	/* Gradients */
 	--gradient-brand: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-red) 100%);
-	--gradient-brand-soft: linear-gradient(135deg, var(--acss-blue-pale) 0%, var(--acss-red-pale) 100%);
+	--gradient-brand-soft: linear-gradient(
+		135deg,
+		var(--acss-blue-pale) 0%,
+		var(--acss-red-pale) 100%
+	);
 	--gradient-blue: linear-gradient(135deg, var(--acss-blue) 0%, var(--acss-blue-dark) 100%);
 	--gradient-red: linear-gradient(135deg, var(--acss-red) 0%, var(--acss-red-dark) 100%);
 
@@ -66,12 +80,12 @@
 
 @layer components {
 	.drop-down-menu {
-		@apply absolute left-0 bg-white rounded-lg shadow-sm w-max mt-14 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:mt-4 transition-all duration-500 py-4 border border-blueGray-200;
+		@apply invisible absolute left-0 mt-14 w-max rounded-lg border border-blueGray-200 bg-white py-4 opacity-0 shadow-sm transition-all duration-500 group-hover:visible group-hover:mt-4 group-hover:opacity-100;
 	}
 
 	/* Card System */
 	.card {
-		@apply bg-white rounded-xl p-6;
+		@apply rounded-xl bg-white p-6;
 		box-shadow: var(--shadow-md);
 		border: 1px solid rgba(74, 108, 170, 0.08);
 		transition: all var(--transition-base);
@@ -83,7 +97,7 @@
 	}
 
 	.card-flat {
-		@apply bg-white rounded-xl p-6;
+		@apply rounded-xl bg-white p-6;
 		border: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
@@ -94,7 +108,7 @@
 
 	/* Featured card with gradient border */
 	.card-featured {
-		@apply relative bg-white rounded-xl p-6;
+		@apply relative rounded-xl bg-white p-6;
 	}
 
 	.card-featured::before {
@@ -104,7 +118,9 @@
 		border-radius: 0.75rem;
 		padding: 2px;
 		background: var(--gradient-brand);
-		-webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+		-webkit-mask:
+			linear-gradient(#fff 0 0) content-box,
+			linear-gradient(#fff 0 0);
 		mask-composite: exclude;
 		-webkit-mask-composite: xor;
 		pointer-events: none;
@@ -112,7 +128,7 @@
 
 	/* Button System */
 	.btn {
-		@apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold;
+		@apply inline-flex items-center justify-center rounded-lg px-6 py-3 font-semibold;
 		transition: all var(--transition-base);
 	}
 
@@ -128,7 +144,7 @@
 	}
 
 	.btn-secondary {
-		@apply bg-transparent border-2;
+		@apply border-2 bg-transparent;
 		border-color: var(--acss-red);
 		color: var(--acss-red);
 	}
@@ -263,9 +279,15 @@
    COMMON ELEMENTS
    ============================================ */
 
-button:focus {
-	border: 0;
-	outline: none !important;
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+	outline: 3px solid var(--acss-red);
+	outline-offset: 3px;
+	border-radius: 0.25rem;
 }
 
 .max-h-0 {
@@ -380,7 +402,7 @@ nav li.has-child::after {
    ============================================ */
 
 .error {
-	@apply my-3 bg-red-500 shadow-md shadow-red-500/50 p-3 rounded-xl hover:shadow-none hover:bg-red-600 text-white;
+	@apply my-3 rounded-xl bg-red-500 p-3 text-white shadow-md shadow-red-500/50 hover:bg-red-600 hover:shadow-none;
 }
 
 .help {
@@ -388,7 +410,7 @@ nav li.has-child::after {
 }
 
 .submit {
-	@apply bg-blue-500 shadow-md shadow-blue-500/50 px-4 py-2 rounded-xl hover:shadow-none hover:bg-blue-600 text-white;
+	@apply rounded-xl bg-blue-500 px-4 py-2 text-white shadow-md shadow-blue-500/50 hover:bg-blue-600 hover:shadow-none;
 }
 
 /* ============================================
@@ -424,6 +446,79 @@ nav li.has-child::after {
 }
 
 /* ============================================
+   EDITORIAL LAYOUT
+   ============================================ */
+
+.editorial-page {
+	max-width: var(--reading-max);
+	margin-inline: auto;
+	font-size: 1rem;
+	line-height: 1.75;
+	color: var(--color-body);
+}
+
+.editorial-page > p:first-child {
+	font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+	line-height: 1.7;
+	color: var(--color-heading);
+}
+
+.editorial-page h2 {
+	font-family: var(--font-heading);
+	color: var(--color-heading);
+	line-height: 1.45;
+}
+
+.editorial-page ul {
+	margin-block: 1.5rem;
+}
+
+.editorial-page li {
+	padding-left: 0.35rem;
+}
+
+.editorial-callout {
+	margin-block: 2.25rem;
+	padding: 1.5rem clamp(1.25rem, 3vw, 2rem);
+	border-block: 1px solid rgba(74, 108, 170, 0.22);
+	border-left: 4px solid var(--acss-red);
+	background: var(--bg-secondary);
+	font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+}
+
+.editorial-columns {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	gap: 2rem;
+	margin-top: 2rem;
+}
+
+.editorial-columns > * {
+	min-width: 0;
+}
+
+.editorial-kicker {
+	font-family: var(--font-heading);
+	font-size: 0.8rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1.5;
+	text-transform: uppercase;
+	color: var(--acss-blue-dark);
+}
+
+@media (min-width: 900px) {
+	.editorial-page.editorial-page-wide {
+		max-width: 1120px;
+	}
+
+	.editorial-columns {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: clamp(2rem, 5vw, 4rem);
+	}
+}
+
+/* ============================================
    BRAND COLORS
    ============================================ */
 
@@ -447,8 +542,9 @@ nav li.has-child::after {
    CONTENT STYLING
    ============================================ */
 
-.equipe-bio h3, .blogPost h3 {
-	@apply font-semibold uppercase mb-3;
+.equipe-bio h3,
+.blogPost h3 {
+	@apply mb-3 font-semibold uppercase;
 	color: var(--acss-blue-dark);
 }
 
@@ -456,8 +552,9 @@ nav li.has-child::after {
 	@apply mt-6;
 }
 
-.blogPost ul li, .equipe-bio ul li {
-	@apply ml-6 my-3 list-disc;
+.blogPost ul li,
+.equipe-bio ul li {
+	@apply my-3 ml-6 list-disc;
 }
 
 .blogPost p {
@@ -487,6 +584,106 @@ nav li.has-child::after {
 }
 
 /* ============================================
+   SEMINAR DETAIL PATTERN
+   ============================================ */
+
+.main .seminar-detail {
+	max-width: 880px;
+}
+
+.main .seminar-detail .status-banner {
+	width: fit-content;
+	border-radius: 999px;
+	border: 1px solid rgba(74, 108, 170, 0.14);
+	background: var(--bg-secondary);
+	color: var(--color-body);
+}
+
+.main .seminar-detail .status-banner.upcoming {
+	background: var(--bg-accent);
+	color: var(--acss-blue-dark);
+}
+
+.main .seminar-detail .status-banner.past {
+	background: var(--bg-tertiary);
+	color: var(--color-body);
+}
+
+.main .seminar-detail .main-card,
+.main .seminar-detail .abstract-card,
+.main .seminar-detail .presentations-section {
+	border: 1px solid rgba(74, 108, 170, 0.12);
+	border-radius: var(--radius-lg);
+	background: var(--bg-primary);
+	box-shadow: none;
+}
+
+.main .seminar-detail .main-card {
+	padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.main .seminar-detail .datetime-header {
+	border-color: rgba(74, 108, 170, 0.12);
+}
+
+.main .seminar-detail .date-large,
+.main .seminar-detail .presenter-name {
+	font-family: var(--font-heading);
+	color: var(--color-heading);
+}
+
+.main .seminar-detail .date-large {
+	font-size: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.main .seminar-detail .presenter-homepage,
+.main .seminar-detail .back-link a {
+	color: var(--acss-blue-dark);
+}
+
+.main .seminar-detail .seminar-title {
+	font-family: var(--font-heading);
+	font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+	font-style: normal;
+	color: var(--color-heading);
+}
+
+.main .seminar-detail .abstract-header svg,
+.main .seminar-detail .presentations-header svg {
+	color: var(--acss-blue);
+}
+
+.main .seminar-detail .abstract-content {
+	border-image: none;
+	border-left: 3px solid var(--acss-red);
+	color: var(--color-body);
+	line-height: 1.75;
+}
+
+.main .seminar-detail .presentation-card {
+	border-color: rgba(74, 108, 170, 0.12);
+	background: var(--bg-secondary);
+	background-image: none;
+	box-shadow: none;
+}
+
+.main .seminar-detail .presentation-card:hover {
+	border-color: rgba(74, 108, 170, 0.32);
+	background: var(--bg-primary);
+	background-image: none;
+	box-shadow: none;
+}
+
+.main .seminar-detail .presentation-download {
+	background: var(--bg-accent);
+	color: var(--acss-blue-dark);
+}
+
+.main .seminar-detail .back-link {
+	border-color: rgba(74, 108, 170, 0.12);
+}
+
+/* ============================================
    ANIMATIONS
    ============================================ */
 
@@ -502,7 +699,8 @@ nav li.has-child::after {
 }
 
 @keyframes pulse-soft {
-	0%, 100% {
+	0%,
+	100% {
 		opacity: 1;
 	}
 	50% {
@@ -519,8 +717,29 @@ nav li.has-child::after {
 }
 
 /* Staggered animations */
-.stagger-1 { animation-delay: 0.1s; }
-.stagger-2 { animation-delay: 0.2s; }
-.stagger-3 { animation-delay: 0.3s; }
-.stagger-4 { animation-delay: 0.4s; }
-.stagger-5 { animation-delay: 0.5s; }
+.stagger-1 {
+	animation-delay: 0.1s;
+}
+.stagger-2 {
+	animation-delay: 0.2s;
+}
+.stagger-3 {
+	animation-delay: 0.3s;
+}
+.stagger-4 {
+	animation-delay: 0.4s;
+}
+.stagger-5 {
+	animation-delay: 0.5s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		scroll-behavior: auto !important;
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}

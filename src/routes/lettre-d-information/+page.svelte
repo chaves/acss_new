@@ -2,8 +2,6 @@
 	import { mailingList, ApiError } from '$lib/api';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import * as m from '$lib/paraglide/messages.js';
-	import { getLocale } from '$lib/paraglide/runtime.js';
-	import { localizeUrl } from '$lib/utils';
 
 	type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
@@ -116,7 +114,6 @@
 
 	// Get localized page title
 	const pageTitle = $derived(m.newsletter_title());
-	const locale = $derived(getLocale());
 </script>
 
 <svelte:head>
@@ -125,10 +122,10 @@
 
 <Breadcrumb title={pageTitle} title_path={pageTitle} />
 
-<div class="max-w-2xl mx-auto">
-	<div class="bg-white rounded-lg shadow-md p-8">
-		<h2 class="text-2xl font-bold text-gray-900 mb-4">{pageTitle}</h2>
-		<p class="text-gray-600 mb-8">{m.newsletter_description()}</p>
+<div class="newsletter-shell">
+	<div class="newsletter-card">
+		<h2 class="newsletter-title">{pageTitle}</h2>
+		<p class="newsletter-description">{m.newsletter_description()}</p>
 
 		{#if formState === 'success'}
 			<div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
@@ -178,7 +175,7 @@
 						type="text"
 						id="firstName"
 						bind:value={firstName}
-						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+						class="form-input"
 						class:border-red-500={errors.firstName}
 						disabled={formState === 'submitting'}
 						required
@@ -198,7 +195,7 @@
 						type="text"
 						id="lastName"
 						bind:value={lastName}
-						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+						class="form-input"
 						class:border-red-500={errors.lastName}
 						disabled={formState === 'submitting'}
 						required
@@ -218,7 +215,7 @@
 						type="text"
 						id="institution"
 						bind:value={institution}
-						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+						class="form-input"
 						class:border-red-500={errors.institution}
 						disabled={formState === 'submitting'}
 						required
@@ -238,7 +235,7 @@
 						type="email"
 						id="email"
 						bind:value={email}
-						class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition"
+						class="form-input"
 						class:border-red-500={errors.email}
 						disabled={formState === 'submitting'}
 						required
@@ -253,7 +250,7 @@
 					<button
 						type="submit"
 						disabled={formState === 'submitting'}
-						class="w-full bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition disabled:opacity-50 disabled:cursor-not-allowed"
+						class="submit-button"
 					>
 						{#if formState === 'submitting'}
 							<span class="flex items-center justify-center">
@@ -290,8 +287,62 @@
 </div>
 
 <style>
-	:global(input:focus) {
-		outline: none;
+	.newsletter-shell {
+		max-width: 42rem;
+		margin-inline: auto;
+	}
+
+	.newsletter-card {
+		padding: clamp(1.5rem, 5vw, 3rem);
+		border: 1px solid rgba(74, 108, 170, 0.12);
+		border-radius: var(--radius-lg);
+		background: white;
+	}
+
+	.newsletter-title {
+		margin-bottom: 0.75rem;
+		font-family: var(--font-heading);
+		font-size: clamp(1.5rem, 3vw, 2rem);
+		font-weight: 700;
+		color: var(--color-heading);
+	}
+
+	.newsletter-description {
+		margin-bottom: 2rem;
+		line-height: 1.7;
+		color: var(--color-body);
+	}
+
+	.form-input {
+		width: 100%;
+		padding: 0.75rem 1rem;
+		border: 1px solid rgba(71, 85, 105, 0.3);
+		border-radius: var(--radius-sm);
+		background: white;
+		transition: border-color var(--transition-fast);
+	}
+
+	.form-input:focus {
+		border-color: var(--acss-blue);
+	}
+
+	.submit-button {
+		width: 100%;
+		padding: 0.85rem 1.5rem;
+		border-radius: var(--radius-sm);
+		background: var(--acss-blue-dark);
+		color: white;
+		font-weight: 700;
+		transition: background var(--transition-fast);
+	}
+
+	.submit-button:hover {
+		background: var(--acss-blue);
+	}
+
+	.submit-button:disabled {
+		cursor: not-allowed;
+		opacity: 0.55;
 	}
 </style>
 

@@ -10,15 +10,16 @@
 		post: BlogPost;
 		index: number;
 		priority?: boolean;
+		variant?: 'compact' | 'card';
 	}
 
-	let { post, index, priority = false }: Props = $props();
+	let { post, index, priority = false, variant = 'compact' }: Props = $props();
 	let formattedDate = $derived(formatDate(post.publishedAt));
 	let imageLoading = $derived<ImageLoading>(priority ? 'eager' : 'lazy');
 	let imageFetchPriority = $derived<'high' | 'low' | 'auto'>(index === 0 ? 'high' : 'auto');
 </script>
 
-<article class="post-item">
+<article class:card-variant={variant === 'card'} class="post-item">
 	{#if post.Image}
 		<div class="post-image-wrapper">
 			<OptimizedImage
@@ -49,15 +50,24 @@
 		gap: 1rem;
 		padding: 1rem;
 		background: white;
-		border-radius: 0.75rem;
+		border-radius: var(--radius-md, 0.875rem);
 		border: 1px solid rgba(74, 108, 170, 0.08);
-		transition: all 0.3s ease;
+		transition:
+			transform var(--transition-fast, 150ms ease),
+			border-color var(--transition-fast, 150ms ease);
 	}
 
 	.post-item:hover {
-		transform: translateX(4px);
-		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.1);
+		transform: translateY(-2px);
 		border-color: rgba(74, 108, 170, 0.15);
+	}
+
+	.post-item.card-variant {
+		align-items: stretch;
+		flex-direction: column;
+		gap: 0;
+		padding: 0;
+		overflow: hidden;
 	}
 
 	.post-image-wrapper {
@@ -66,6 +76,13 @@
 		height: 4rem;
 		border-radius: 0.5rem;
 		overflow: hidden;
+	}
+
+	.card-variant .post-image-wrapper {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 10;
+		border-radius: 0;
 	}
 
 	:global(.post-item .post-image) {
@@ -79,12 +96,28 @@
 		min-width: 0;
 	}
 
+	.card-variant .post-content {
+		display: flex;
+		flex-direction: column;
+		padding: 1.25rem;
+	}
+
 	.post-title {
-		font-family: 'Quicksand', sans-serif;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
 		font-size: 1rem;
 		font-weight: 600;
 		line-height: 1.4;
 		margin-bottom: 0.25rem;
+	}
+
+	.card-variant .post-title {
+		font-size: 1.125rem;
+		line-height: 1.45;
+		margin-bottom: 0.75rem;
+	}
+
+	.card-variant .post-meta {
+		margin-top: auto;
 	}
 
 	.post-meta {

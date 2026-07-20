@@ -18,7 +18,7 @@
 	<div class="breadcrumb-accent"></div>
 
 	<div class="breadcrumb-content">
-		<div class="container text-center">
+		<div class="container">
 			<!-- Title -->
 			<h1 class="breadcrumb-title">
 				{@html title}
@@ -83,12 +83,11 @@
 <style>
 	.breadcrumb-section {
 		position: relative;
-		margin-bottom: 2rem;
-		border-radius: 0.75rem;
+		margin-bottom: clamp(2rem, 5vw, 4rem);
+		border-radius: var(--radius-lg, 1.25rem);
 		overflow: hidden;
-		background: linear-gradient(135deg,
-			rgba(74, 108, 170, 0.06) 0%,
-			rgba(182, 70, 124, 0.06) 100%);
+		background: var(--bg-secondary, #f8fafc);
+		border: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
 	.breadcrumb-accent {
@@ -96,24 +95,23 @@
 		left: 0;
 		top: 0;
 		bottom: 0;
-		width: 4px;
-		background: linear-gradient(180deg,
-			var(--acss-blue, #4a6caa) 0%,
-			var(--acss-red, #b6467c) 100%);
+		width: 5px;
+		background: var(--acss-red, #b6467c);
 	}
 
 	.breadcrumb-content {
-		padding: 1.5rem 1rem 1.5rem 1.5rem;
+		padding: clamp(1.5rem, 4vw, 3.5rem);
 	}
 
 	/* Title */
 	.breadcrumb-title {
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.75rem;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		font-size: clamp(2rem, 4vw, 3.5rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		margin-bottom: 1rem;
-		line-height: 1.3;
+		max-width: 20ch;
+		margin-bottom: 1.25rem;
+		line-height: 1.12;
 	}
 
 	/* Optional elements */
@@ -129,7 +127,7 @@
 		margin-bottom: 0.75rem;
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		gap: 0.5rem;
 	}
 
@@ -166,7 +164,7 @@
 	.breadcrumb-list {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		gap: 0.25rem;
 		list-style: none;
@@ -203,14 +201,4 @@
 		color: var(--color-muted, #94a3b8);
 	}
 
-	/* Responsive */
-	@media (min-width: 1024px) {
-		.breadcrumb-title {
-			font-size: 2rem;
-		}
-
-		.breadcrumb-content {
-			padding: 2rem 1.5rem 2rem 2rem;
-		}
-	}
 </style>

@@ -19,6 +19,7 @@
 
 <Breadcrumb {title} title_path={m.plafform()} />
 
+<div class="editorial-page editorial-page-wide">
 {#if getLocale() == 'fr'}
 	<p>
 		L’Institut constitue une plateforme pour les chercheurs de PSL dont l’objectif fondamental est
@@ -41,13 +42,13 @@
 		</li>
 	</ul>
 
-	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
+	<h2 class="editorial-callout">
 		L’Institut <strong>PSL–<span class="site_blue">AC</span><span class="site_red">SS</span></strong
 		> fédère sur toutes ses thématiques, un large spectre de contributeurs associés à d’importants programmes
 		de recherche financés.
 	</h2>
 
-	<div class="grid grid-cols-2 gap-10">
+	<div class="editorial-columns">
 		<div>
 			<p class="mt-6 font-bold">CENTRES DE RECHERCHES CONCERNÉS AU SEIN DE PSL:</p>
 			<ul class="ml-6 list-disc">
@@ -165,13 +166,13 @@
 		</li>
 	</ul>
 
-	<h2 class="mt-6 border-b-4 border-t-4 border-blue-200 py-3 text-xl">
+	<h2 class="editorial-callout">
 		For all of its subjects, the <strong
 			>PSL-<span class="site_blue">AC</span><span class="site_red">SS</span></strong
 		> Institute unites a wide range of individuals who contribute to major funded research programmes
 	</h2>
 
-	<div class="grid grid-cols-2 gap-10">
+	<div class="editorial-columns">
 		<div>
 			<p class="mt-6 font-bold">RESEARCH CENTERS CONCERNED AT PSL UNIVERSITY:</p>
 			<ul class="ml-6 list-disc">
@@ -269,3 +270,4 @@
 		</div>
 	</div>
 {/if}
+</div>

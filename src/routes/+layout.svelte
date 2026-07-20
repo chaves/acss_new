@@ -8,7 +8,7 @@
 	import Navigation from '$lib/components/layout/Navigation.svelte';
 	import Footer from '$lib/components/layout/Footer.svelte';
 
-	let { data, children }: LayoutProps = $props();
+	let { children }: LayoutProps = $props();
 
 	// Update locale when URL changes (client-side navigation)
 	$effect(() => {
@@ -32,7 +32,7 @@
 <Navigation lang={currentLocale} />
 
 <!-- Main Content Area -->
-<main class="main-content">
+<main id="main-content" class="main-content">
 	<div class="content-pattern"></div>
 	<div class="container main">
 		<div class="mx-auto">
@@ -48,8 +48,8 @@
 	.main-content {
 		position: relative;
 		min-height: calc(100vh - 200px);
-		padding: 2.5rem 0 1rem 0;
-		background: linear-gradient(180deg, #f8fafc 0%, #ffffff 50%, #f8fafc 100%);
+		padding: clamp(1.5rem, 4vw, 3.5rem) 0 2rem;
+		background: var(--bg-primary);
 	}
 
 	.content-pattern {
@@ -63,5 +63,7 @@
 	.container {
 		position: relative;
 		z-index: 1;
+		max-width: var(--content-max);
+		padding-inline: clamp(1rem, 3vw, 2rem);
 	}
 </style>

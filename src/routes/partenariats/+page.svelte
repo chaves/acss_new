@@ -10,6 +10,7 @@
 
 <Breadcrumb title={m.partners()} title_path={m.partners()} />
 
+<div class="editorial-page">
 {#if getLocale() == 'fr'}
 	<p>
 		Des partenaires sont nécessaires au développement de l’Institut, tant pour financer son
@@ -79,3 +80,4 @@
 		</li>
 	</ul>
 {/if}
+</div>

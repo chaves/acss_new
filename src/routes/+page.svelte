@@ -1,5 +1,4 @@
 <script lang="ts">
-	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
 	import PostItem from '$lib/components/layout/PostItem.svelte';
@@ -58,7 +57,6 @@
 	{@const isNlp = seminar.type === 'nlp'}
 	{@const isPub = seminar.type === 'pub'}
 	{@const isDigitalReg = seminar.type === 'digitalReg'}
-	{@const isTrEnCE = seminar.type === 'TrEnCE'}
 	{@const title = isAcss ? seminar.data.frontmatter.title : seminar.data.title}
 	{@const date = isAcss ? seminar.data.frontmatter.date : seminar.data.date}
 	{@const time = isAcss ? seminar.data.frontmatter.time : seminar.data.time}
@@ -321,7 +319,7 @@
 		</h2>
 		<div class="posts-list">
 			{#if data.posts.length > 0}
-				{#each data.posts as post, index}
+				{#each data.posts.slice(0, 3) as post, index}
 					<PostItem {post} {index} priority={index < 3} />
 				{/each}
 			{:else}
@@ -369,16 +367,11 @@
 	/* ==================== Announcement Card ==================== */
 	.announcement-card {
 		position: relative;
-		margin-bottom: 2rem;
-		border-radius: 1.25rem;
+		margin-bottom: clamp(1.5rem, 4vw, 3rem);
+		border-radius: var(--radius-lg, 1.25rem);
 		overflow: hidden;
-		background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
-		box-shadow:
-			0 20px 25px -5px rgba(74, 108, 170, 0.15),
-			0 10px 10px -5px rgba(74, 108, 170, 0.08);
-		border: 2px solid transparent;
-		background-clip: padding-box;
-		animation: cardPulse 3s ease-in-out infinite;
+		background: var(--bg-secondary, #f8fafc);
+		border: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
 	@keyframes cardPulse {
@@ -396,26 +389,14 @@
 	}
 
 	.announcement-accent {
-		height: 6px;
-		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
+		height: 5px;
+		background: var(--acss-red, #b6467c);
 		position: relative;
 		overflow: hidden;
 	}
 
 	.announcement-accent::after {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 50%;
-		height: 100%;
-		background: linear-gradient(
-			90deg,
-			transparent 0%,
-			rgba(255, 255, 255, 0.6) 50%,
-			transparent 100%
-		);
-		animation: shimmer 3s ease-in-out infinite;
+		content: none;
 	}
 
 	@keyframes shimmer {
@@ -666,40 +647,43 @@
 	.content-grid {
 		display: grid;
 		grid-template-columns: 1fr;
-		gap: 1.5rem;
-		margin: 0 0.75rem 1rem;
+		align-items: start;
+		gap: clamp(1.5rem, 4vw, 3rem);
+		margin: 0 0 2rem;
 	}
 
 	@media (min-width: 1024px) {
 		.content-grid {
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
 		}
 	}
 
 	/* ==================== Mission Card ==================== */
 	.mission-card {
 		background: white;
-		border-radius: 1rem;
-		padding: 2rem;
-		box-shadow: 0 4px 6px -1px rgba(74, 108, 170, 0.1), 0 2px 4px -1px rgba(74, 108, 170, 0.06);
+		border-radius: var(--radius-lg, 1.25rem);
+		padding: clamp(1.5rem, 3vw, 2.5rem);
 		border: 1px solid rgba(74, 108, 170, 0.08);
 	}
 
 	.mission-title {
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.25rem;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		font-size: clamp(2rem, 4.2vw, 3.5rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		line-height: 1.4;
-		margin-bottom: 1rem;
+		line-height: 1.08;
+		letter-spacing: -0.035em;
+		margin-bottom: 1.25rem;
 	}
 
 	.mission-subtitle {
 		display: block;
-		font-size: 1rem;
+		font-size: clamp(0.95rem, 1.5vw, 1.15rem);
 		font-weight: 600;
 		color: var(--acss-blue-dark, #1D4796);
-		margin-top: 0.25rem;
+		letter-spacing: 0;
+		line-height: 1.45;
+		margin-top: 0.75rem;
 	}
 
 	.accent-line-sm {
@@ -746,12 +730,6 @@
 		border-radius: 50%;
 		flex-shrink: 0;
 		margin-top: 0.5rem;
-	}
-
-	@media (min-width: 1024px) {
-		.mission-title {
-			font-size: 1.5rem;
-		}
 	}
 
 	/* ==================== Presentation Links ==================== */
@@ -802,9 +780,9 @@
 
 	/* ==================== Blog Card ==================== */
 	.blog-card {
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.04) 0%, rgba(182, 70, 124, 0.04) 100%);
-		border-radius: 1rem;
-		padding: 2rem;
+		background: var(--bg-secondary, #f8fafc);
+		border-radius: var(--radius-lg, 1.25rem);
+		padding: clamp(1.25rem, 3vw, 2rem);
 		border: 1px solid rgba(74, 108, 170, 0.08);
 	}
 
@@ -816,8 +794,8 @@
 	}
 
 	.title-text {
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.25rem;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		font-size: clamp(1.35rem, 2vw, 1.75rem);
 		font-weight: 700;
 		color: var(--acss-blue-dark, #1D4796);
 	}
@@ -859,15 +837,14 @@
 		margin-top: 1.5rem;
 		padding-top: 1.5rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
-		flex: 1;
 		display: flex;
 		flex-direction: column;
 	}
 
 	.mission-carousel :global(> div) {
 		width: 100%;
-		flex: 1;
-		min-height: 200px;
+		aspect-ratio: 16 / 9;
+		min-height: 0;
 	}
 
 	.mission-carousel :global(.carousel-image) {
@@ -888,14 +865,14 @@
 
 	/* ==================== Seminars Wrapper ==================== */
 	.seminars-wrapper {
-		margin: 0 0.75rem 1.5rem;
+		margin: 0 0 1.5rem;
 	}
 
 	/* ==================== Seminars Card ==================== */
 	.seminars-card {
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.04) 0%, rgba(182, 70, 124, 0.04) 100%);
-		border-radius: 1rem;
-		padding: 2rem;
+		background: var(--bg-secondary, #f8fafc);
+		border-radius: var(--radius-lg, 1.25rem);
+		padding: clamp(1.25rem, 3vw, 2rem);
 		border: 1px solid rgba(74, 108, 170, 0.08);
 	}
 

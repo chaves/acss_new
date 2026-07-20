@@ -68,24 +68,80 @@
 	link_text="blog"
 	publishedAt={localizedPublishedAt}
 />
-<!-- Container flex layout to place post content on the left and image on the right -->
-<div class="flex flex-col md:flex-row">
-	<div class="blogPost flex-1">
+<article class="article-shell">
+	{#if post.Image}
+		<div class="article-image">
+			<OptimizedImage
+				image={post.Image}
+				alt={post.Title}
+				size="large"
+				class="article-image-element"
+				loading="eager"
+				fetchpriority="high"
+			/>
+		</div>
+	{/if}
+	<div class="blogPost article-content">
 		<div class="prose max-w-none text-justify">{@html contentHtml}</div>
-		<p class="text-right italic text-gray-500">
+		<p class="article-meta">
 			{m.published_at()}
 			{localizedPublishedAt}
 			<PostAuthors authors={post.authors} />
 		</p>
 	</div>
-	{#if post.Image}
-		<div class="flex items-start justify-center md:w-1/3 md:pl-4">
-			<OptimizedImage
-				image={post.Image}
-				alt={post.Title}
-				size="medium"
-				class="w-72 rounded-lg object-cover"
-			/>
-		</div>
-	{/if}
-</div>
+</article>
+
+<style>
+	.article-shell {
+		max-width: 960px;
+		margin-inline: auto;
+	}
+
+	.article-image {
+		aspect-ratio: 16 / 9;
+		margin-bottom: clamp(2rem, 5vw, 4rem);
+		overflow: hidden;
+		border-radius: var(--radius-lg, 1.25rem);
+		background: var(--bg-secondary, #f8fafc);
+	}
+
+	.article-image :global(.article-image-element) {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+
+	.article-content {
+		max-width: var(--reading-max, 72ch);
+		margin-inline: auto;
+	}
+
+	.article-content :global(.prose) {
+		font-size: 1rem;
+		line-height: 1.8;
+		color: var(--color-body, #475569);
+	}
+
+	.article-content :global(.prose h2),
+	.article-content :global(.prose h3) {
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		color: var(--color-heading, #1e293b);
+	}
+
+	.article-content :global(.prose a) {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: underline;
+		text-decoration-thickness: 1px;
+		text-underline-offset: 0.2em;
+	}
+
+	.article-meta {
+		margin-top: 3rem;
+		padding-top: 1.25rem;
+		border-top: 1px solid rgba(74, 108, 170, 0.14);
+		color: var(--color-muted, #94a3b8);
+		font-size: 0.875rem;
+		font-style: italic;
+		text-align: right;
+	}
+</style>

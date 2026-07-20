@@ -22,11 +22,15 @@ const config: Config = {
 		},
 		container: {
 			center: true,
-			padding: '1rem'
+			padding: {
+				DEFAULT: '1rem',
+				md: '1.5rem',
+				xl: '2rem'
+			}
 		},
 		fontFamily: {
-			heading: ['Quicksand, sans-serif'],
-			body: ['Montserrat, sans-serif']
+			heading: ['Quicksand', 'sans-serif'],
+			body: ['Montserrat', 'sans-serif']
 		},
 		boxShadow: {
 			sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
@@ -57,19 +61,19 @@ const config: Config = {
 			colors: {
 				// flowbite-svelte
 				primary: {
-					50: '#FFF5F2',
-					100: '#FFF1EE',
-					200: '#FFE4DE',
-					300: '#FFD5CC',
-					400: '#FFBCAD',
-					500: '#FE795D',
-					600: '#EF562F',
-					700: '#EB4F27',
-					800: '#CC4522',
-					900: '#A5371B'
+					50: '#f5f7fb',
+					100: '#e9eef7',
+					200: '#cfdaf0',
+					300: '#a9bee2',
+					400: '#7d9bcf',
+					500: '#5d7dbc',
+					600: '#4a6caa',
+					700: '#3d588b',
+					800: '#344a72',
+					900: '#1d4796'
 				},
 				white: '#ffffff',
-				body: '#1e293b',
+				body: '#475569',
 				'blueGray-50': '#f8fafc',
 				'blueGray-100': '#f1f5f9',
 				'blueGray-200': '#e2e8f0',
@@ -97,13 +101,18 @@ const config: Config = {
 					light: '#e0e6ed',
 					lightest: '#f9fafc'
 				},
-				acss_red: '#B84C7C',
-				acss_blue: '#1D4796'
+				acss: {
+					blue: '#4a6caa',
+					blueDark: '#1d4796',
+					red: '#b6467c',
+					redDark: '#9a3d65'
+				},
+				acss_red: '#b6467c',
+				acss_blue: '#1d4796'
 			},
 			height: {
 				128: '32rem'
-			},
-			important: true
+			}
 		}
 	},
 	plugins: [flowbitePlugin, typography, forms, containerQueries]
