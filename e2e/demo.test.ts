@@ -4,13 +4,15 @@ test('home page foregrounds the seven latest publications', async ({ page }) => 
 	await page.goto('/fr/');
 
 	await expect(page.getByRole('heading', { level: 2, name: 'Blog' })).toBeVisible();
-	await expect(page.locator('.posts-list .post-item')).toHaveCount(7);
+	await expect(page.locator('.production-wall .post-item')).toHaveCount(7);
+	await expect(page.locator('.blog-count')).toHaveText('07');
 });
 
 test('English blog index renders publications in the English locale', async ({ page }) => {
 	await page.goto('/en/blog');
 
 	await expect(page.getByRole('heading', { level: 1, name: 'Blog' })).toBeVisible();
+	await expect(page.locator('.catalogue-count')).toHaveText('07');
 	await expect(page.locator('.featured-publication .post-item')).toHaveCount(1);
 	await expect(page.locator('.publication-grid .post-item')).toHaveCount(6);
 });

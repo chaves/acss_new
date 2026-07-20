@@ -313,19 +313,33 @@
 
 	<!-- Blog Card -->
 	<div class="blog-card">
-		<h2 class="section-title">
-			<span class="title-text">Blog</span>
-			<span class="title-accent"></span>
-		</h2>
-		<div class="posts-list">
+		<div class="blog-card-header">
+			<h2 class="section-title">
+				<span class="title-text">Blog</span>
+				<span class="title-accent"></span>
+			</h2>
 			{#if data.posts.length > 0}
-				{#each data.posts as post, index}
-					<PostItem {post} {index} priority={index < 2} />
-				{/each}
-			{:else}
-				<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>
+				<span class="blog-count" aria-hidden="true">
+					{String(data.posts.length).padStart(2, '0')}
+				</span>
 			{/if}
 		</div>
+
+		{#if data.posts.length > 0}
+			<div class="production-wall">
+				<div class="home-featured-publication">
+					<PostItem post={data.posts[0]} index={0} variant="featured" priority={true} />
+				</div>
+				<div class="home-publication-grid">
+					{#each data.posts.slice(1) as post, index}
+						<PostItem {post} index={index + 1} priority={index < 2} />
+					{/each}
+				</div>
+			</div>
+		{:else}
+			<p class="no-content">{isEn ? 'No posts found' : 'Aucun article trouvé'}</p>
+		{/if}
+
 		{#if data.posts.length > 0}
 			<div class="view-all-wrapper">
 				<Link href="/blog" class="view-all-link">
@@ -653,8 +667,20 @@
 	}
 
 	@media (min-width: 1024px) {
-		.content-grid {
-			grid-template-columns: minmax(0, 1.15fr) minmax(22rem, 0.85fr);
+		.content-grid .mission-card {
+			display: grid;
+			grid-template-columns: minmax(0, 1.08fr) minmax(24rem, 0.92fr);
+			column-gap: clamp(2rem, 5vw, 4.5rem);
+			align-items: start;
+		}
+
+		.content-grid .mission-carousel {
+			grid-column: 2;
+			grid-row: 1 / 6;
+			align-self: stretch;
+			margin: 0;
+			padding: 0;
+			border: 0;
 		}
 	}
 
@@ -784,18 +810,60 @@
 	.blog-card {
 		position: relative;
 		overflow: hidden;
-		background: #fbfcfe;
+		isolation: isolate;
+		background:
+			radial-gradient(circle at 92% 12%, rgba(182, 70, 124, 0.28), transparent 24rem),
+			linear-gradient(135deg, #163873 0%, var(--acss-blue-dark, #1d4796) 55%, #244f98 100%);
 		border-radius: var(--radius-lg, 1.25rem);
-		padding: clamp(1.25rem, 3vw, 2rem);
-		border: 1px solid rgba(74, 108, 170, 0.11);
+		padding: clamp(1.5rem, 4vw, 3rem);
+		border: 1px solid rgba(29, 71, 150, 0.35);
+		box-shadow: 0 22px 60px rgba(29, 71, 150, 0.18);
 	}
 
 	.blog-card::before {
 		content: '';
 		position: absolute;
-		inset: 0 0 auto;
-		height: 4px;
-		background: linear-gradient(90deg, var(--acss-red, #b6467c), var(--acss-blue, #4a6caa));
+		z-index: -1;
+		width: 24rem;
+		aspect-ratio: 1;
+		right: -12rem;
+		bottom: -15rem;
+		border: 1px solid rgba(255, 255, 255, 0.15);
+		border-radius: 50%;
+	}
+
+	.blog-card-header {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) auto;
+		align-items: start;
+		gap: 1.5rem;
+		margin-bottom: clamp(1.5rem, 3vw, 2.25rem);
+	}
+
+	.blog-card-header .section-title {
+		margin: 0;
+		align-self: center;
+	}
+
+	.blog-card-header .title-text {
+		font-size: clamp(2rem, 4vw, 3.5rem);
+		line-height: 1;
+		color: white;
+	}
+
+	.blog-card-header .title-accent {
+		background: linear-gradient(90deg, rgba(255, 255, 255, 0.58), transparent 100%);
+	}
+
+	.blog-count {
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		font-size: clamp(3.5rem, 8vw, 7rem);
+		font-weight: 700;
+		line-height: 0.72;
+		letter-spacing: -0.08em;
+		color: transparent;
+		-webkit-text-stroke: 1px rgba(255, 255, 255, 0.35);
+		user-select: none;
 	}
 
 	.section-title {
@@ -819,31 +887,107 @@
 		border-radius: 1px;
 	}
 
-	.posts-list {
-		display: flex;
-		flex-direction: column;
+	.production-wall {
+		display: grid;
+		grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+		align-items: start;
+		gap: clamp(1rem, 2.5vw, 2rem);
 	}
 
-	.posts-list :global(.post-item:last-child) {
-		border-bottom: 0;
+	.home-featured-publication :global(.post-item) {
+		border: 0;
+		box-shadow: 0 18px 40px rgba(8, 27, 63, 0.24);
+	}
+
+	.home-publication-grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 0.75rem;
+	}
+
+	.home-publication-grid :global(.post-item) {
+		min-height: 6.5rem;
+		padding: 0.85rem;
+		border: 1px solid rgba(255, 255, 255, 0.14);
+		border-radius: 0.8rem;
+		background: rgba(255, 255, 255, 0.08);
+		backdrop-filter: blur(10px);
+	}
+
+	.home-publication-grid :global(.post-item:hover) {
+		background: rgba(255, 255, 255, 0.13);
+		border-color: rgba(255, 255, 255, 0.26);
+	}
+
+	.home-publication-grid :global(.post-title a) {
+		color: white;
+	}
+
+	.home-publication-grid :global(.post-title) {
+		font-size: 0.9rem;
+		line-height: 1.3;
+		margin-bottom: 0.4rem;
+	}
+
+	.home-publication-grid :global(.post-meta) {
+		font-size: 0.75rem;
+	}
+
+	.home-publication-grid :global(.meta-label) {
+		color: rgba(255, 255, 255, 0.55);
+	}
+
+	.home-publication-grid :global(.meta-date) {
+		color: rgba(255, 255, 255, 0.82);
+	}
+
+	.home-publication-grid :global(.post-image-wrapper) {
+		display: none;
 	}
 
 	.view-all-wrapper {
-		margin-top: 1rem;
+		margin-top: clamp(1.5rem, 3vw, 2.25rem);
 		padding-top: 1.25rem;
-		border-top: 1px solid rgba(74, 108, 170, 0.1);
+		border-top: 1px solid rgba(255, 255, 255, 0.18);
 	}
 
 	.view-all-wrapper :global(.view-all-link) {
 		width: 100%;
 		justify-content: center;
+		background: white;
+		color: var(--acss-blue-dark, #1d4796);
+		border-color: white;
 	}
 
 	.no-content {
-		color: var(--color-muted, #94a3b8);
+		color: rgba(255, 255, 255, 0.72);
 		font-style: italic;
 		text-align: center;
 		padding: 2rem;
+	}
+
+	@media (max-width: 980px) {
+		.production-wall {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.blog-card-header {
+			gap: 0.75rem;
+		}
+
+		.blog-card-header .title-accent {
+			display: none;
+		}
+
+		.home-publication-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.home-publication-grid :global(.post-item) {
+			min-height: 0;
+		}
 	}
 
 	/* ==================== Mission Carousel ==================== */
