@@ -64,7 +64,9 @@
 </div>
 
 <style lang="postcss">
-	.workshop-copy {
+	/* The card variant is a compact info box: its copy fills the card.
+	   Only the wider section variant gets the centred reading measure. */
+	.workshop-info.section .workshop-copy {
 		max-width: var(--reading-max, 72ch);
 		margin-inline: auto;
 	}
