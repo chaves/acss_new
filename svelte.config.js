@@ -18,7 +18,7 @@ const config = {
 		prerender: {
 			origin: 'https://acss-dig.psl.eu',
 			crawl: true,
-			entries: ['*'],
+			entries: ['*', '/fr/candidate', '/en/candidate'],
 			// Handle 404s gracefully during prerendering (e.g., deleted team members linked from Strapi content)
 			handleHttpError: ({ path, referrer, message }) => {
 				// Ignore 404s for team member pages - they might be linked from old content
