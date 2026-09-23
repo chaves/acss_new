@@ -26,7 +26,33 @@
 
 	// Make locale reactive
 	let currentLocale = $derived(getLocale());
+
+	const BASE_URL = 'https://acss-dig.psl.eu';
+
+	// Path with the locale segment stripped, so we can rebuild it per language.
+	const pathWithoutLocale = $derived.by(() => {
+		const segments = $page.url.pathname.split('/').filter(Boolean);
+		if (segments.length && locales.includes(segments[0] as any)) {
+			segments.shift();
+		}
+		return segments.length ? `/${segments.join('/')}` : '';
+	});
+
+	// rel="alternate" targets for every locale, plus x-default pointing at the base locale.
+	const alternates = $derived(
+		locales.map((locale) => ({
+			hreflang: locale,
+			href: `${BASE_URL}/${locale}${pathWithoutLocale}`
+		}))
+	);
 </script>
+
+<svelte:head>
+	{#each alternates as alternate (alternate.hreflang)}
+		<link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
+	{/each}
+	<link rel="alternate" hreflang="x-default" href={`${BASE_URL}/${baseLocale}${pathWithoutLocale}`} />
+</svelte:head>
 
 <!-- Header / Navigation -->
 <Navigation lang={currentLocale} />

@@ -2,14 +2,56 @@
 	import type { PageData } from './$types';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import { generatePersonSchema, generateBreadcrumbSchema } from '$lib/seo/schema-utils';
 
 	let { data }: { data: PageData } = $props();
 	const name = $derived(data.membre.first_name + ' ' + data.membre.last_name);
+
+	// Research areas are the most informative thing about a member; put them in the
+	// description so the page says something beyond the person's name.
+	const seoDescription = $derived.by(() => {
+		const areas = data.membre.main_areas?.filter(Boolean) ?? [];
+		const affiliation = data.membre.affiliations?.filter(Boolean)?.[0];
+		const parts = [
+			`${name}, chercheur membre de l'Institut ACSS-PSL`,
+			affiliation,
+			areas.length ? `Domaines de recherche : ${areas.join(', ')}` : undefined
+		].filter(Boolean);
+		return parts.join('. ').slice(0, 300);
+	});
+
+	const personSchema = $derived(
+		generatePersonSchema({
+			name,
+			affiliations: data.membre.affiliations?.filter(Boolean) ?? [],
+			knowsAbout: [
+				...(data.membre.main_areas ?? []),
+				...(data.membre.disciplines ?? [])
+			].filter(Boolean),
+			sameAs: [
+				data.membre.web_page,
+				data.membre.twitter ? `https://twitter.com/${data.membre.twitter.replace(/^@/, '')}` : undefined
+			].filter(Boolean) as string[],
+			image: data.membre.photo ? `/images/photos_members/${data.membre.photo}` : undefined,
+			url: `/membres/${data.membre.slug}`,
+			email: data.membre.email
+		})
+	);
+
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: 'Institut ACSS-PSL', url: '/' },
+			{ name: m.members(), url: '/membres' },
+			{ name, url: `/membres/${data.membre.slug}` }
+		])
+	);
 </script>
 
-<svelte:head>
-	<title>{name}</title>
-</svelte:head>
+<SEO title="{name} | Institut ACSS-PSL" description={seoDescription} />
+<StructuredData data={personSchema} />
+<StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
 	title={name}

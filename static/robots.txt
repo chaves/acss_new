@@ -1,4 +1,14 @@
 User-agent: *
 Allow: /
 
+# Sitemaps
 Sitemap: https://acss-dig.psl.eu/sitemap.xml
+
+# Curated summary for language models: https://acss-dig.psl.eu/llms.txt
+
+# Crawl-delay (optional, helps prevent server overload)
+Crawl-delay: 1
+
+# Disallow admin or sensitive paths (if any)
+# Disallow: /admin/
+# Disallow: /api/

@@ -7,6 +7,8 @@ Allow: /
 # Sitemaps
 Sitemap: https://acss-dig.psl.eu/sitemap.xml
 
+# Curated summary for language models: https://acss-dig.psl.eu/llms.txt
+
 # Crawl-delay (optional, helps prevent server overload)
 Crawl-delay: 1
 
@@ -22,4 +24,3 @@ Crawl-delay: 1
 		}
 	});
 };
-

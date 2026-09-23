@@ -1,17 +1,11 @@
 <script lang="ts">
+    import SEO from '$lib/seo/SEO.svelte';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     import * as m from '$lib/paraglide/messages.js';
     import Link from '$lib/components/Link.svelte';
 </script>
 
-<svelte:head>
-	<title>Institut PSL-ACSS : {m.training()}</title>
-	<meta
-		name="description"
-		content="Une expertise de recherche en sciences sociales articulée avec des capacités en sciences des données pour renforcer
-	la pertinence de la recherche académique sur les grandes problématiques sociétales"
-	/>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : {m.training()}" description={m.seo_training_description()} />
 
 <Breadcrumb title={m.training()} title_path={m.training()} />
 

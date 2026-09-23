@@ -1,13 +1,12 @@
 <script lang="ts">
+    import SEO from '$lib/seo/SEO.svelte';
+    import * as m from '$lib/paraglide/messages.js';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <Breadcrumb title="Credit procyclicality database" title_path="Credit procyclicality database" />
 
-<svelte:head>
-	<title>Credit procyclicality database</title>
-	<meta name="description" content="" />
-</svelte:head>
+<SEO title="Credit procyclicality database" description={m.seo_credit_series_description()} />
 
 <div class="reading-page">
 <div class="float-right ml-6 px-3 border-l-4 border-slate-300">

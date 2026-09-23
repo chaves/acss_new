@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import { mailingList, ApiError } from '$lib/api';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import * as m from '$lib/paraglide/messages.js';
@@ -116,9 +117,7 @@
 	const pageTitle = $derived(m.newsletter_title());
 </script>
 
-<svelte:head>
-	<title>Institut ACSS-PSL : {pageTitle}</title>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : {pageTitle}" description={m.seo_newsletter_description()} />
 
 <Breadcrumb title={pageTitle} title_path={pageTitle} />
 

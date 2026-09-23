@@ -1,10 +1,58 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import {
+		generateEventSchema,
+		generateBreadcrumbSchema,
+		buildEventName
+	} from '$lib/seo/schema-utils';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
 	const session = $derived(data.session);
+
+	// Strip markdown/HTML from the body to build a real description instead of
+	// repeating the title, which is what the page did before.
+	const seoDescription = $derived.by(() => {
+		const plain = session.content
+			?.replace(/^---[\s\S]*?---/, '')
+			.replace(/!\[[^\]]*\]\([^)]*\)/g, '')
+			.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+			.replace(/[#*_>`]/g, '')
+			.replace(/\s+/g, ' ')
+			.trim();
+
+		if (plain) return plain.slice(0, 300);
+
+		return session.frontmatter.presenter
+			? `${session.frontmatter.presenter} - ${session.frontmatter.title}`
+			: session.frontmatter.title;
+	});
+
+	const eventSchema = $derived(
+		generateEventSchema({
+			name: buildEventName('ACSS Research Seminar', session.frontmatter.title),
+			description: seoDescription,
+			startDate: session.frontmatter.date,
+			location: session.frontmatter.location
+				? { name: session.frontmatter.location }
+				: undefined,
+			presenter: session.frontmatter.presenter,
+			image: session.frontmatter.image,
+			url: `/seminaires/acss/${session.slug}`
+		})
+	);
+
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: 'Institut ACSS-PSL', url: '/' },
+			{ name: 'Séminaires', url: '/seminaires' },
+			{ name: 'ACSS Research Seminar', url: '/seminaires/acss' },
+			{ name: session.frontmatter.title, url: `/seminaires/acss/${session.slug}` }
+		])
+	);
 
 	// Format date
 	const formatDate = (dateStr: string) => {
@@ -17,10 +65,14 @@
 	};
 </script>
 
-<svelte:head>
-	<title>ACSS-PSL: {session.frontmatter.title}</title>
-	<meta name="description" content={session.frontmatter.title} />
-</svelte:head>
+<SEO
+	title="ACSS-PSL: {session.frontmatter.title}"
+	description={seoDescription}
+	type="article"
+	image={session.frontmatter.image}
+/>
+<StructuredData data={eventSchema} />
+<StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
 	title={session.frontmatter.title}

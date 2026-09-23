@@ -1,4 +1,11 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import {
+		generateEventSchema,
+		generateBreadcrumbSchema,
+		buildEventName
+	} from '$lib/seo/schema-utils';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import WorkshopInfo from '$lib/components/layout/WorkshopInfo.svelte';
@@ -21,12 +28,40 @@
 	const today = new Date();
 	today.setHours(0, 0, 0, 0);
 	const isPast = $derived(new Date(seminar.date) < today);
+
+	// Abstract makes the better description; fall back to speaker + title.
+	const seoDescription = $derived(
+		seminar.abstract?.trim() || `${seminar.presenter} - ${seminar.title}`
+	);
+
+	const eventSchema = $derived(
+		generateEventSchema({
+			name: buildEventName('AI & NLP Workshop', seminar.title),
+			description: seoDescription,
+			startDate: seminar.date,
+			location: seminar.location ? { name: seminar.location } : undefined,
+			presenter: seminar.presenter,
+			url: `/seminaires/nlp/${seminar.slug}`
+		})
+	);
+
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: 'Institut ACSS-PSL', url: '/' },
+			{ name: 'Séminaires', url: '/seminaires' },
+			{ name: 'AI & NLP Workshop', url: '/seminaires/nlp' },
+			{ name: seminar.title, url: `/seminaires/nlp/${seminar.slug}` }
+		])
+	);
 </script>
 
-<svelte:head>
-	<title>NLP Workshop: {seminar.title} | Institut ACSS-PSL</title>
-	<meta name="description" content="{seminar.presenter} - {seminar.title}" />
-</svelte:head>
+<SEO
+	title="NLP Workshop: {seminar.title} | Institut ACSS-PSL"
+	description={seoDescription}
+	type="article"
+/>
+<StructuredData data={eventSchema} />
+<StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
 	title={seminar.title}

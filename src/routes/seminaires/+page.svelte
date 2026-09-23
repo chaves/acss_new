@@ -1,12 +1,11 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<svelte:head>
-	<title>Institut PSL-ACSS : {m.seminars()}</title>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : {m.seminars()}" description={m.seo_seminars_description()} />
 
 <Breadcrumb title={m.seminars()} title_path={m.seminars()} />
 

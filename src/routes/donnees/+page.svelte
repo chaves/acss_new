@@ -1,12 +1,11 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
+	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<svelte:head>
-	<title>Databases</title>
-	<meta name="description" content="ACSS-PSL Institute databases" />
-</svelte:head>
+<SEO title="Institut ACSS-PSL : Databases" description={m.seo_data_description()} />
 
 <Breadcrumb title="Databases" title_path="Databases" />
 

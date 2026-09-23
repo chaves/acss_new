@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import { isEnglish } from '$lib/helpers/locale';
@@ -26,13 +27,7 @@
 	};
 </script>
 
-<svelte:head>
-	<title>ACSS-PSL Institute: Research Seminar</title>
-	<meta
-		name="description"
-		content="ACSS-PSL Institute Research Seminar provides an opportunity to discuss the activities of the institute throughout the academic year."
-	/>
-</svelte:head>
+<SEO title="ACSS-PSL Institute: Research Seminar" description={m.seo_acss_seminar_description()} />
 
 <Breadcrumb
 	title="ACSS-PSL Institute Research Seminar"

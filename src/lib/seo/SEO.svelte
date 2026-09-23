@@ -1,4 +1,8 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	import { getLocale } from '$lib/paraglide/runtime';
+	import { pageUrl } from './schema-utils';
+
 	interface Props {
 		title: string;
 		description: string;
@@ -23,16 +27,22 @@
 		author = 'ACSS-PSL Institute',
 		publishedTime,
 		modifiedTime,
-		locale = 'fr_FR',
+		locale,
 		keywords = '',
 		canonical = '',
 		noindex = false
 	}: Props = $props();
 
-	// Build full URLs
+	// Build full URLs. Without an explicit url/canonical, fall back to the current
+	// route so every page gets a correct canonical without repeating it by hand.
+	// pageUrl adds the locale prefix, which keeps the canonical identical to the
+	// URLs used in the JSON-LD and avoids canonicalising to a redirect.
 	const baseUrl = 'https://acss-dig.psl.eu';
-	const fullUrl = $derived(canonical || (url ? `${baseUrl}${url}` : baseUrl));
+	const fullUrl = $derived(canonical || pageUrl(url || $page.url.pathname));
 	const fullImageUrl = $derived(image.startsWith('http') ? image : `${baseUrl}${image}`);
+
+	// Open Graph wants a territory-qualified locale; derive it from the active language.
+	const ogLocale = $derived(locale ?? (getLocale() === 'en' ? 'en_GB' : 'fr_FR'));
 </script>
 
 <svelte:head>
@@ -59,7 +69,7 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={fullImageUrl} />
-	<meta property="og:locale" content={locale} />
+	<meta property="og:locale" content={ogLocale} />
 	<meta property="og:site_name" content="ACSS-PSL Institute" />
 	{#if type === 'article'}
 		{#if author}
@@ -81,6 +91,6 @@
 	<meta property="twitter:image" content={fullImageUrl} />
 
 	<!-- Additional Meta Tags -->
-	<meta name="language" content={locale.split('_')[0]} />
+	<meta name="language" content={ogLocale.split('_')[0]} />
 </svelte:head>
 

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import { getLocale } from '$lib/paraglide/runtime.js';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
@@ -13,9 +14,7 @@
 	const title = getTitle();
 </script>
 
-<svelte:head>
-	<title>Institut ACSS-PSL : {m.plafform()}</title>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : {m.plafform()}" description={m.seo_platform_description()} />
 
 <Breadcrumb {title} title_path={m.plafform()} richTitle />
 

@@ -42,7 +42,6 @@
 	title="Institut ACSS-PSL : Applied Computational Social Sciences"
 	description="Expertise in social sciences research coupled with data science capabilities to increase research relevance, inform decision-making, and foster better collective governance."
 	type="website"
-	url="/"
 	locale={currentLocale}
 	keywords="computational social sciences, data science, governance, PSL, research institute"
 />

@@ -1,10 +1,13 @@
 <script lang="ts">
+    import SEO from '$lib/seo/SEO.svelte';
     import type { PageData } from './$types';
     import * as m from '$lib/paraglide/messages.js';
     import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
     import Link from '$lib/components/Link.svelte';
     let { data }: { data: PageData } = $props();
 </script>
+
+<SEO title="Institut ACSS-PSL : {m.team()}" description={m.seo_team_description()} />
 
 <Breadcrumb title={m.team()} title_path={m.team()} />
 

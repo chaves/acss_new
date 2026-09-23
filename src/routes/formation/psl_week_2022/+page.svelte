@@ -1,20 +1,11 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import Link from '$lib/components/Link.svelte';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 </script>
 
-<svelte:head>
-	<title
-		>Institut PSL-ACSS : Applied Computational Social Sciences - Data-Intensive Governance - PSL
-		Institute</title
-	>
-	<meta
-		name="description"
-		content="Une expertise de recherche en sciences sociales articulée avec des capacités en sciences des données pour renforcer
-	la pertinence de la recherche académique sur les grandes problématiques sociétales"
-	/>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : PSL Week 2022" description={m.seo_psl_week_description()} />
 
 <Breadcrumb
 	title="PSL Week : NLP for Social Sciences"

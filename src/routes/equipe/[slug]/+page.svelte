@@ -3,16 +3,52 @@
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import { marked } from 'marked';
+	import SEO from '$lib/seo/SEO.svelte';
+	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import { generatePersonSchema, generateBreadcrumbSchema } from '$lib/seo/schema-utils';
+
 	let { data }: { data: PageData } = $props();
 	let membre = $derived(data.membre[0]);
 	let name = $derived(membre.FirstName + ' ' + membre.LastName);
 	// Convert the Markdown biography to HTML.
 	let biographyHtml = $derived(marked(membre.biography ?? ''));
+
+	// Use the start of the biography as the description rather than just the name.
+	const seoDescription = $derived.by(() => {
+		const plain = membre.biography
+			?.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+			.replace(/[#*_>`]/g, '')
+			.replace(/\s+/g, ' ')
+			.trim();
+
+		const role = membre.fonction ? `${name}, ${membre.fonction}` : name;
+		const lead = `${role} — Institut ACSS-PSL.`;
+		return plain ? `${lead} ${plain}`.slice(0, 300) : lead;
+	});
+
+	const personSchema = $derived(
+		generatePersonSchema({
+			name,
+			jobTitle: membre.fonction,
+			affiliation: 'Institut ACSS-PSL',
+			image: membre.ImageFileName ? `/images/photos_equipe/${membre.ImageFileName}` : undefined,
+			url: `/equipe/${membre.Slug}`,
+			email: membre.email
+		})
+	);
+
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: 'Institut ACSS-PSL', url: '/' },
+			{ name: m.team(), url: '/equipe' },
+			{ name, url: `/equipe/${membre.Slug}` }
+		])
+	);
 </script>
 
-<svelte:head>
-	<title>{name}</title>
-</svelte:head>
+<SEO title="{name} | Institut ACSS-PSL" description={seoDescription} />
+<StructuredData data={personSchema} />
+<StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
 	title={name}

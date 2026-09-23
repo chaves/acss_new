@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import * as m from '$lib/paraglide/messages.js';
 	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
 	import SideTwo from '$lib/components/layout/SideTwo.svelte';
@@ -6,6 +7,8 @@
 	import images_personnes from '$lib/data/images_hackathon_2022_personnes.json';
 	import images_presentations from '$lib/data/images_hackathon_2022_presentations.json';
 </script>
+
+<SEO title="Institut ACSS-PSL : Hackathon 2022" description={m.seo_hackathon_description()} />
 
 <Breadcrumb
 	title="Hackathon du master SIREN en collaboration avec Services Publics +"

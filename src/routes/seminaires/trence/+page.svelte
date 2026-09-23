@@ -1,4 +1,5 @@
 <script lang="ts">
+	import SEO from '$lib/seo/SEO.svelte';
 	import type { PageProps } from './$types';
 	import * as m from '$lib/paraglide/messages.js';
 	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
@@ -8,9 +9,7 @@
 	let { data }: PageProps = $props();
 </script>
 
-<svelte:head>
-	<title>Institut ACSS-PSL : {m.trence()}</title>
-</svelte:head>
+<SEO title="Institut ACSS-PSL : {m.trence()}" description={m.seo_seminars_description()} />
 
 <Breadcrumb title={m.trence()} title_path="TrEnCE" link="seminaires" link_text={m.seminars()} />
 
