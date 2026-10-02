@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { page } from '$app/stores';
-	import { getLocale } from '$lib/paraglide/runtime';
+	import { page } from '$app/state';
+	import { getLocale } from '#lib/paraglide/runtime.js';
 	import { pageUrl } from './schema-utils';
 
 	interface Props {
@@ -38,7 +38,7 @@
 	// pageUrl adds the locale prefix, which keeps the canonical identical to the
 	// URLs used in the JSON-LD and avoids canonicalising to a redirect.
 	const baseUrl = 'https://acss-dig.psl.eu';
-	const fullUrl = $derived(canonical || pageUrl(url || $page.url.pathname));
+	const fullUrl = $derived(canonical || pageUrl(url || page.url.pathname));
 	const fullImageUrl = $derived(image.startsWith('http') ? image : `${baseUrl}${image}`);
 
 	// Open Graph wants a territory-qualified locale; derive it from the active language.

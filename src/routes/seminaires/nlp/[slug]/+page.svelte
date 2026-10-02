@@ -1,14 +1,14 @@
 <script lang="ts">
-	import SEO from '$lib/seo/SEO.svelte';
-	import StructuredData from '$lib/seo/StructuredData.svelte';
+	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
 	import {
 		generateEventSchema,
 		generateBreadcrumbSchema,
 		buildEventName
-	} from '$lib/seo/schema-utils';
-	import * as m from '$lib/paraglide/messages.js';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-	import WorkshopInfo from '$lib/components/layout/WorkshopInfo.svelte';
+	} from '#lib/seo/schema-utils.js';
+	import * as m from '#lib/paraglide/messages.js';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+	import WorkshopInfo from '#lib/components/layout/WorkshopInfo.svelte';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();

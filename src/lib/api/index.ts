@@ -5,7 +5,7 @@
  *
  * Usage:
  * ```typescript
- * import { posts, seminars, authors } from '$lib/api';
+ * import { posts, seminars, authors } from '#lib/api/index.js';
  *
  * // In a +page.server.ts file:
  * export const load = async () => {
@@ -20,4 +20,3 @@ export { apiClient, StrapiClient, ApiError } from './client';
 export { posts, seminars, authors, mailingList, fetchCollection, fetchSingle } from './endpoints';
 export type * from './types';
 export type { MailingListSubscriptionData, MailingListSubscriptionResponse } from './endpoints';
-

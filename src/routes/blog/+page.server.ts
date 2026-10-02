@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { posts } from '$lib/api';
+import { posts } from '#lib/api/index.js';
 
 // Blog content comes from Strapi and must be rendered per locale/request.
 // Prerendering can permanently bake a transient CMS failure into one locale.

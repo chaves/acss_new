@@ -1,8 +1,7 @@
 <script lang="ts">
-	import { locales, getLocale } from '$lib/paraglide/runtime';
-	import { page } from '$app/stores';
-	import { get } from 'svelte/store';
-	import { browser } from '$app/environment';
+	import { locales, getLocale } from '#lib/paraglide/runtime.js';
+	import { page } from '$app/state';
+	import { browser } from '$app/env';
 
 	interface Props {
 		reduced?: boolean;
@@ -20,7 +19,7 @@
 	function switchToLanguage(newLanguage: string) {
 		if (!browser) return;
 
-		const currentPath = get(page).url.pathname;
+		const currentPath = page.url.pathname;
 		const [, currentLang, ...pathParts] = currentPath.split('/');
 
 		// Check if the first segment is a language tag

@@ -1,5 +1,5 @@
-import type { Reroute } from '@sveltejs/kit';
-import { locales } from '$lib/paraglide/runtime';
+import type { Reroute } from '@sveltejs/kit/hooks';
+import { locales } from '#lib/paraglide/runtime.js';
 
 export const reroute: Reroute = ({ url }) => {
 	const pathname = url.pathname;

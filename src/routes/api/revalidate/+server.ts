@@ -9,9 +9,9 @@
  * Headers: { "Authorization": "Bearer YOUR_SECRET_TOKEN" }
  * Body: { "paths": ["/en/blog", "/fr/blog", "/en/blog/my-post"] }
  */
-import { json, error } from '@sveltejs/kit';
+import { error } from '@sveltejs/kit';
 import type { RequestHandler } from './$types';
-import { LOCALES } from '$lib/constants';
+import { LOCALES } from '#lib/constants.js';
 
 // Secret token to secure the endpoint (set in Vercel environment variables)
 const REVALIDATE_TOKEN = process.env.REVALIDATE_TOKEN || '';
@@ -21,12 +21,12 @@ const REVALIDATE_TOKEN = process.env.REVALIDATE_TOKEN || '';
 const CONTENT_TYPE_TO_PATHS: Record<string, string[]> = {
 	// Blog posts (multiple possible names)
 	'api::post.post': ['/en/blog', '/fr/blog'],
-	'post': ['/en/blog', '/fr/blog'],
+	post: ['/en/blog', '/fr/blog'],
 	'api::blog-post.blog-post': ['/en/blog', '/fr/blog'],
 
 	// Team members / Authors (multiple possible names)
 	'api::author.author': ['/en/equipe', '/fr/equipe'],
-	'author': ['/en/equipe', '/fr/equipe'],
+	author: ['/en/equipe', '/fr/equipe'],
 	'api::team-member.team-member': ['/en/equipe', '/fr/equipe'],
 
 	// Seminars (multiple possible names)
@@ -36,7 +36,7 @@ const CONTENT_TYPE_TO_PATHS: Record<string, string[]> = {
 		'/en/seminaires/public-governance',
 		'/fr/seminaires/public-governance'
 	],
-	'seminar': [
+	seminar: [
 		'/en/seminaires/nlp',
 		'/fr/seminaires/nlp',
 		'/en/seminaires/public-governance',
@@ -58,9 +58,10 @@ function getPathsForContentType(
 	for (const basePath of basePaths) {
 		for (const locale of Object.values(LOCALES)) {
 			// Replace language prefix if it exists, or add it
-			const localizedPath = basePath.startsWith('/en/') || basePath.startsWith('/fr/')
-				? basePath.replace(/^\/(en|fr)\//, `/${locale}/`)
-				: `/${locale}${basePath}`;
+			const localizedPath =
+				basePath.startsWith('/en/') || basePath.startsWith('/fr/')
+					? basePath.replace(/^\/(en|fr)\//, `/${locale}/`)
+					: `/${locale}${basePath}`;
 			paths.push(localizedPath);
 		}
 	}
@@ -75,7 +76,11 @@ function getPathsForContentType(
 			for (const locale of Object.values(LOCALES)) {
 				paths.push(`/${locale}/blog/${slug}`);
 			}
-		} else if (contentType.includes('author') || contentType === 'author' || contentType.includes('team')) {
+		} else if (
+			contentType.includes('author') ||
+			contentType === 'author' ||
+			contentType.includes('team')
+		) {
 			for (const locale of Object.values(LOCALES)) {
 				paths.push(`/${locale}/equipe/${slug}`);
 			}
@@ -96,7 +101,10 @@ function getPathsForContentType(
  * Revalidate a single path by making a HEAD request
  * Vercel's ISR will detect this and regenerate the page
  */
-async function revalidatePath(path: string, baseUrl: string): Promise<{
+async function revalidatePath(
+	path: string,
+	baseUrl: string
+): Promise<{
 	path: string;
 	success: boolean;
 	status?: number;
@@ -172,7 +180,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		}
 
 		if (pathsToRevalidate.length === 0) {
-			return json({
+			return Response.json({
 				success: true,
 				message: 'No paths to revalidate',
 				revalidated: []
@@ -180,9 +188,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 		}
 
 		// Get base URL for revalidation requests
-		const baseUrl = process.env.VERCEL_URL
-			? `https://${process.env.VERCEL_URL}`
-			: url.origin;
+		const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : url.origin;
 
 		// Revalidate all paths concurrently
 		console.log(`Revalidating ${pathsToRevalidate.length} paths:`, pathsToRevalidate);
@@ -212,7 +218,7 @@ export const POST: RequestHandler = async ({ request, url }) => {
 			}
 		}
 
-		return json({
+		return Response.json({
 			success: true,
 			revalidated: successful,
 			failed: failed.length > 0 ? failed : undefined,
@@ -240,17 +246,14 @@ export const GET: RequestHandler = async ({ url, request }) => {
 		throw error(401, 'Unauthorized');
 	}
 
-	const baseUrl = process.env.VERCEL_URL
-		? `https://${process.env.VERCEL_URL}`
-		: url.origin;
+	const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : url.origin;
 
 	const result = await revalidatePath(path, baseUrl);
 
-	return json({
+	return Response.json({
 		success: result.success,
 		path: result.path,
 		status: result.status,
 		error: result.error
 	});
 };
-

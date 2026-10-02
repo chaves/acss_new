@@ -1,8 +1,8 @@
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-import { cubicOut } from "svelte/easing";
-import type { TransitionConfig } from "svelte/transition";
-import { getLocale } from "$lib/paraglide/runtime";
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+import { cubicOut } from 'svelte/easing';
+import type { TransitionConfig } from 'svelte/transition';
+import { getLocale } from '#lib/paraglide/runtime.js';
 
 export function cn(...inputs: ClassValue[]) {
 	return twMerge(clsx(inputs));
@@ -17,21 +17,23 @@ export function cn(...inputs: ClassValue[]) {
  */
 export function formatTime(timeStr: string): string {
 	if (!timeStr) return '';
-	
+
 	const locale = getLocale();
 	const isEn = locale === 'en';
-	
+
 	// If time contains a range (e.g., "8:30-13:30" or "14:00-16:00")
 	if (timeStr.includes('-')) {
-		const [start, end] = timeStr.split('-').map(t => t.trim());
-		
+		const [start, end] = timeStr.split('-').map((t) => t.trim());
+
 		if (isEn) {
 			// English format: 8:30 AM - 1:30 PM
 			const formatEnglishTime = (time: string) => {
 				const [hours, minutes] = time.split(':').map(Number);
 				const period = hours >= 12 ? 'PM' : 'AM';
 				const displayHours = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
-				return minutes > 0 ? `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}` : `${displayHours} ${period}`;
+				return minutes > 0
+					? `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`
+					: `${displayHours} ${period}`;
 			};
 			return `${formatEnglishTime(start)} - ${formatEnglishTime(end)}`;
 		} else {
@@ -43,13 +45,15 @@ export function formatTime(timeStr: string): string {
 			return `${formatFrenchTime(start)}-${formatFrenchTime(end)}`;
 		}
 	}
-	
+
 	// Single time (e.g., "14:00")
 	const [hours, minutes] = timeStr.split(':').map(Number);
 	if (isEn) {
 		const period = hours >= 12 ? 'PM' : 'AM';
 		const displayHours = hours > 12 ? hours - 12 : hours === 0 ? 12 : hours;
-		return minutes > 0 ? `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}` : `${displayHours} ${period}`;
+		return minutes > 0
+			? `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`
+			: `${displayHours} ${period}`;
 	} else {
 		return minutes > 0 ? `${hours}h${minutes.toString().padStart(2, '0')}` : `${hours}h`;
 	}
@@ -79,13 +83,9 @@ export const flyAndScale = (
 	params: FlyAndScaleParams = { y: -8, x: 0, start: 0.95, duration: 150 }
 ): TransitionConfig => {
 	const style = getComputedStyle(node);
-	const transform = style.transform === "none" ? "" : style.transform;
+	const transform = style.transform === 'none' ? '' : style.transform;
 
-	const scaleConversion = (
-		valueA: number,
-		scaleA: [number, number],
-		scaleB: [number, number]
-	) => {
+	const scaleConversion = (valueA: number, scaleA: [number, number], scaleB: [number, number]) => {
 		const [minA, maxA] = scaleA;
 		const [minB, maxB] = scaleB;
 
@@ -95,13 +95,11 @@ export const flyAndScale = (
 		return valueB;
 	};
 
-	const styleToString = (
-		style: Record<string, number | string | undefined>
-	): string => {
+	const styleToString = (style: Record<string, number | string | undefined>): string => {
 		return Object.keys(style).reduce((str, key) => {
 			if (style[key] === undefined) return str;
 			return str + `${key}:${style[key]};`;
-		}, "");
+		}, '');
 	};
 
 	return {

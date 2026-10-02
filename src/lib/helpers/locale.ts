@@ -2,8 +2,8 @@
  * Locale and internationalization helper functions
  */
 
-import { getLocale } from '$lib/paraglide/runtime';
-import { LOCALE_TO_ISO, LOCALE_TO_OG, DATE_FORMAT_OPTIONS, type Locale } from '$lib/constants';
+import { getLocale } from '#lib/paraglide/runtime.js';
+import { LOCALE_TO_ISO, LOCALE_TO_OG, DATE_FORMAT_OPTIONS, type Locale } from '#lib/constants.js';
 
 /**
  * Convert current locale to ISO format (en-US, fr-FR)
@@ -52,10 +52,6 @@ export function formatDate(
  * @param dateString - ISO date string
  * @param options - Intl.DateTimeFormatOptions
  */
-export function formatDateTime(
-	dateString: string,
-	options: Intl.DateTimeFormatOptions
-): string {
+export function formatDateTime(dateString: string, options: Intl.DateTimeFormatOptions): string {
 	return new Date(dateString).toLocaleDateString(getISOLocale(), options);
 }
-

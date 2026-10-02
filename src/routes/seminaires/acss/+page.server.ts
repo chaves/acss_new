@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getAllSessions, getUpcomingSessions, getPastSessions } from '$lib/helpers/markdown';
+import { getAllSessions, getUpcomingSessions, getPastSessions } from '#lib/helpers/markdown.js';
 
 export const load = (async ({ setHeaders }) => {
 	// Enable ISR with 24-hour revalidation (86400 seconds)

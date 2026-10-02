@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { workshops, type WorkshopType } from '$lib/data/workshops';
+	import { workshops, type WorkshopType } from '#lib/data/workshops.js';
 
 	interface Props {
 		type: WorkshopType;

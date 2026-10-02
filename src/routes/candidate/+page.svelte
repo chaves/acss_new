@@ -1,8 +1,8 @@
 <script lang="ts">
-	import SEO from '$lib/seo/SEO.svelte';
-	import { getLocale } from '$lib/paraglide/runtime.js';
-	import * as m from '$lib/paraglide/messages.js';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import SEO from '#lib/seo/SEO.svelte';
+	import { getLocale } from '#lib/paraglide/runtime.js';
+	import * as m from '#lib/paraglide/messages.js';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <SEO title="Institut ACSS-PSL : {m.recruitments()}" description={m.seo_recruitments_description()} />

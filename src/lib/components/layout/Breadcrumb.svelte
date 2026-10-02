@@ -1,6 +1,6 @@
 <script lang="ts">
-	import * as m from '$lib/paraglide/messages.js';
-	import { localizeUrl } from '$lib/utils';
+	import * as m from '#lib/paraglide/messages.js';
+	import { localizeUrl } from '#lib/utils.js';
 
 	let {
 		title,

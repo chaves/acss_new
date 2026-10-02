@@ -1,16 +1,16 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-	import * as m from '$lib/paraglide/messages.js';
-	import SEO from '$lib/seo/SEO.svelte';
-	import StructuredData from '$lib/seo/StructuredData.svelte';
-	import { generateArticleSchema, generateBreadcrumbSchema } from '$lib/seo/schema-utils';
-	import { formatDate, getOGLocale } from '$lib/helpers/locale';
-	import { generateDescription } from '$lib/helpers/ui';
-	import { getImageUrl } from '$lib/services/strapi';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+	import * as m from '#lib/paraglide/messages.js';
+	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generateArticleSchema, generateBreadcrumbSchema } from '#lib/seo/schema-utils.js';
+	import { formatDate, getOGLocale } from '#lib/helpers/locale.js';
+	import { generateDescription } from '#lib/helpers/ui.js';
+	import { getImageUrl } from '#lib/services/strapi.js';
 	import { marked } from 'marked';
-	import PostAuthors from '$lib/components/layout/PostAuthors.svelte';
-	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
+	import PostAuthors from '#lib/components/layout/PostAuthors.svelte';
+	import OptimizedImage from '#lib/components/OptimizedImage.svelte';
 
 	let { data }: { data: PageData } = $props();
 	const post = $derived(data.post[0]);

@@ -1,6 +1,6 @@
 import type { RequestHandler } from './$types';
-import { posts } from '$lib/api';
-import { getAllSessions } from '$lib/helpers/markdown';
+import { posts } from '#lib/api/index.js';
+import { getAllSessions } from '#lib/helpers/markdown.js';
 
 const BASE_URL = 'https://acss-dig.psl.eu';
 

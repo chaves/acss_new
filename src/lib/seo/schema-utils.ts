@@ -2,7 +2,7 @@
  * Utility functions for generating Schema.org structured data
  */
 
-import { getLocale, locales } from '$lib/paraglide/runtime';
+import { getLocale, locales } from '#lib/paraglide/runtime.js';
 
 const BASE_URL = 'https://acss-dig.psl.eu';
 

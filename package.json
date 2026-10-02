@@ -20,9 +20,9 @@
 		"@eslint/compat": "^1.4.1",
 		"@eslint/js": "^9.39.5",
 		"@playwright/test": "^1.61.1",
-		"@sveltejs/adapter-vercel": "^5.10.3",
-		"@sveltejs/kit": "^2.70.1",
-		"@sveltejs/vite-plugin-svelte": "^5.1.1",
+		"@sveltejs/adapter-vercel": "^7.0.0",
+		"@sveltejs/kit": "^3.0.0",
+		"@sveltejs/vite-plugin-svelte": "^7.0.0",
 		"@tailwindcss/container-queries": "^0.1.1",
 		"@tailwindcss/forms": "^0.5.11",
 		"@tailwindcss/typography": "^0.5.20",
@@ -42,18 +42,22 @@
 		"prettier": "^3.9.5",
 		"prettier-plugin-svelte": "^3.5.2",
 		"prettier-plugin-tailwindcss": "^0.6.14",
-		"svelte": "^5.56.6",
-		"svelte-check": "^4.7.3",
+		"svelte": "^5.57.1",
+		"svelte-check": "^4.7.5",
 		"tailwind-merge": "^2.6.1",
 		"tailwindcss": "^3.4.19",
-		"typescript": "^5.9.3",
+		"typescript": "^6.0.0",
 		"typescript-eslint": "^8.64.0",
-		"vite": "^6.4.3"
+		"vite": "^8.0.12"
 	},
 	"dependencies": {
 		"@fontsource/montserrat": "^5.3.0",
 		"@fontsource/quicksand": "^5.3.0",
 		"@inlang/paraglide-js": "^2.22.0",
 		"gray-matter": "^4.0.3"
+	},
+	"imports": {
+		"#lib": "./src/lib/index.js",
+		"#lib/*": "./src/lib/*"
 	}
 }

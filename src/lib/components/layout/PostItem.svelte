@@ -1,10 +1,10 @@
 <script lang="ts">
-	import * as m from '$lib/paraglide/messages.js';
-	import Link from '$lib/components/Link.svelte';
-	import OptimizedImage from '$lib/components/OptimizedImage.svelte';
-	import { formatDate } from '$lib/helpers/locale';
-	import type { BlogPost } from '$lib/types';
-	import type { ImageLoading } from '$lib/constants';
+	import * as m from '#lib/paraglide/messages.js';
+	import Link from '#lib/components/Link.svelte';
+	import OptimizedImage from '#lib/components/OptimizedImage.svelte';
+	import { formatDate } from '#lib/helpers/locale.js';
+	import type { BlogPost } from '#lib/types/index.js';
+	import type { ImageLoading } from '#lib/constants.js';
 
 	interface Props {
 		post: BlogPost;

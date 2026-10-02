@@ -1,6 +1,5 @@
-import type { Handle } from '@sveltejs/kit';
-import { sequence } from '@sveltejs/kit/hooks';
-import { locales, baseLocale, setLocale } from '$lib/paraglide/runtime';
+import { sequence, type Handle } from '@sveltejs/kit/hooks';
+import { locales, baseLocale, setLocale } from '#lib/paraglide/runtime.js';
 
 const handleParaglide: Handle = async ({ event, resolve }) => {
 	const pathname = event.url.pathname;

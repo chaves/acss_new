@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { authors } from '$lib/api';
+import { authors } from '#lib/api/index.js';
 
 export const load = (async () => {
 	try {

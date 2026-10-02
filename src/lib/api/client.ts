@@ -4,7 +4,7 @@
  * Provides a centralized, type-safe interface for all Strapi CMS API calls.
  */
 
-import { CMS_URL } from '$lib/constants';
+import { CMS_URL } from '#lib/constants.js';
 import type {
 	ApiClientConfig,
 	ApiRequestOptions,
@@ -119,10 +119,7 @@ export class StrapiClient {
 	/**
 	 * Make a request to the Strapi API
 	 */
-	private async request<T>(
-		endpoint: string,
-		options: ApiRequestOptions = {}
-	): Promise<T> {
+	private async request<T>(endpoint: string, options: ApiRequestOptions = {}): Promise<T> {
 		const url = `${this.config.baseUrl}${endpoint}`;
 		const controller = new AbortController();
 		const timeoutId = setTimeout(() => controller.abort(), this.config.timeout);
@@ -170,10 +167,7 @@ export class StrapiClient {
 				throw new ApiError('Request timeout', 408);
 			}
 
-			throw new ApiError(
-				`Network error: ${(error as Error).message}`,
-				0
-			);
+			throw new ApiError(`Network error: ${(error as Error).message}`, 0);
 		}
 	}
 
@@ -195,11 +189,7 @@ export class StrapiClient {
 	/**
 	 * POST request
 	 */
-	async post<T>(
-		endpoint: string,
-		body: any,
-		options?: ApiRequestOptions
-	): Promise<T> {
+	async post<T>(endpoint: string, body: any, options?: ApiRequestOptions): Promise<T> {
 		return this.request<T>(endpoint, {
 			...options,
 			method: 'POST',
@@ -210,11 +200,7 @@ export class StrapiClient {
 	/**
 	 * PUT request
 	 */
-	async put<T>(
-		endpoint: string,
-		body: any,
-		options?: ApiRequestOptions
-	): Promise<T> {
+	async put<T>(endpoint: string, body: any, options?: ApiRequestOptions): Promise<T> {
 		return this.request<T>(endpoint, {
 			...options,
 			method: 'PUT',
@@ -225,10 +211,7 @@ export class StrapiClient {
 	/**
 	 * DELETE request
 	 */
-	async delete<T>(
-		endpoint: string,
-		options?: ApiRequestOptions
-	): Promise<T> {
+	async delete<T>(endpoint: string, options?: ApiRequestOptions): Promise<T> {
 		return this.request<T>(endpoint, {
 			...options,
 			method: 'DELETE'
@@ -240,4 +223,3 @@ export class StrapiClient {
  * Default API client instance
  */
 export const apiClient = new StrapiClient();
-

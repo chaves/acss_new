@@ -1,10 +1,10 @@
 <script lang="ts">
-	import SEO from '$lib/seo/SEO.svelte';
+	import SEO from '#lib/seo/SEO.svelte';
 	import type { PageProps } from './$types';
-	import * as m from '$lib/paraglide/messages.js';
-	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-	import WorkshopInfo from '$lib/components/layout/WorkshopInfo.svelte';
+	import * as m from '#lib/paraglide/messages.js';
+	import SeminarItem from '#lib/components/layout/SeminarItem.svelte';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+	import WorkshopInfo from '#lib/components/layout/WorkshopInfo.svelte';
 
 	let { data }: PageProps = $props();
 </script>

@@ -1,7 +1,7 @@
 import type { LayoutServerLoad } from './$types';
-import { getLocale } from '$lib/paraglide/runtime';
-import { getISOLocale } from '$lib/helpers/locale';
-import { DATETIME_FORMAT_OPTIONS } from '$lib/constants';
+import { getLocale } from '#lib/paraglide/runtime.js';
+import { getISOLocale } from '#lib/helpers/locale.js';
+import { DATETIME_FORMAT_OPTIONS } from '#lib/constants.js';
 
 // Enable prerendering for static generation
 export const prerender = true;

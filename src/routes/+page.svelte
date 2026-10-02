@@ -1,14 +1,14 @@
 <script lang="ts">
-	import Link from '$lib/components/Link.svelte';
-	import SeminarItem from '$lib/components/layout/SeminarItem.svelte';
-	import PostItem from '$lib/components/layout/PostItem.svelte';
-	import SEO from '$lib/seo/SEO.svelte';
-	import StructuredData from '$lib/seo/StructuredData.svelte';
-	import { generateOrganizationSchema, generateWebSiteSchema } from '$lib/seo/schema-utils';
-	import { getOGLocale, isEnglish } from '$lib/helpers/locale';
-	import { formatTime } from '$lib/utils';
+	import Link from '#lib/components/Link.svelte';
+	import SeminarItem from '#lib/components/layout/SeminarItem.svelte';
+	import PostItem from '#lib/components/layout/PostItem.svelte';
+	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generateOrganizationSchema, generateWebSiteSchema } from '#lib/seo/schema-utils.js';
+	import { getOGLocale, isEnglish } from '#lib/helpers/locale.js';
+	import { formatTime } from '#lib/utils.js';
 	import { LinkedinSolid } from 'flowbite-svelte-icons';
-	import images from '$lib/data/images_home.json';
+	import images from '#lib/data/images_home.json';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();

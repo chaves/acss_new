@@ -6,7 +6,7 @@
 
 import { apiClient } from './client';
 import type { StrapiCollectionResponse, StrapiResponse, StrapiQueryParams } from './types';
-import type { BlogPost, Seminar, TeamMember } from '$lib/types';
+import type { BlogPost, Seminar, TeamMember } from '#lib/types/index.js';
 
 /**
  * Posts API

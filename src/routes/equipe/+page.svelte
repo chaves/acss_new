@@ -1,9 +1,9 @@
 <script lang="ts">
-    import SEO from '$lib/seo/SEO.svelte';
+    import SEO from '#lib/seo/SEO.svelte';
     import type { PageData } from './$types';
-    import * as m from '$lib/paraglide/messages.js';
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-    import Link from '$lib/components/Link.svelte';
+    import * as m from '#lib/paraglide/messages.js';
+    import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+    import Link from '#lib/components/Link.svelte';
     let { data }: { data: PageData } = $props();
 </script>
 

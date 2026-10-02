@@ -1,6 +1,6 @@
 import type { PageServerLoad } from './$types';
-import { posts, seminars } from '$lib/api';
-import { getUpcomingSessions } from '$lib/helpers/markdown';
+import { posts, seminars } from '#lib/api/index.js';
+import { getUpcomingSessions } from '#lib/helpers/markdown.js';
 
 // Disable prerendering so the page is SSR'd with ISR on Vercel.
 // Prerendering freezes data at build time, causing stale seminar listings.

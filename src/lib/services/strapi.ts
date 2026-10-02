@@ -2,7 +2,7 @@
  * Strapi CMS service for API interactions
  */
 
-import { CMS_URL } from '$lib/constants';
+import { CMS_URL } from '#lib/constants.js';
 
 /**
  * Build full Strapi URL for an image
@@ -97,4 +97,3 @@ export function getImageDimensions(
 
 	return undefined;
 }
-

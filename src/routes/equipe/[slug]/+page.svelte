@@ -1,11 +1,11 @@
 <script lang="ts">
 	import type { PageData } from './$types';
-	import * as m from '$lib/paraglide/messages.js';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+	import * as m from '#lib/paraglide/messages.js';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import { marked } from 'marked';
-	import SEO from '$lib/seo/SEO.svelte';
-	import StructuredData from '$lib/seo/StructuredData.svelte';
-	import { generatePersonSchema, generateBreadcrumbSchema } from '$lib/seo/schema-utils';
+	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generatePersonSchema, generateBreadcrumbSchema } from '#lib/seo/schema-utils.js';
 
 	let { data }: { data: PageData } = $props();
 	let membre = $derived(data.membre[0]);

@@ -10,9 +10,9 @@
 	 * - SEO-friendly alt text
 	 */
 
-	import { getImageUrl, buildSrcSet, buildWebPSrcSet, getImageDimensions } from '$lib/services/strapi';
-	import type { StrapiImage } from '$lib/types';
-	import type { ImageSize, ImageLoading } from '$lib/constants';
+	import { getImageUrl, buildSrcSet, buildWebPSrcSet, getImageDimensions } from '#lib/services/strapi.js';
+	import type { StrapiImage } from '#lib/types/index.js';
+	import type { ImageSize, ImageLoading } from '#lib/constants.js';
 
 	interface Props {
 		/** Strapi image object with formats */

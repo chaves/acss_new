@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { getSessionBySlug, getAllSessions } from '$lib/helpers/markdown';
+import { getSessionBySlug, getAllSessions } from '#lib/helpers/markdown.js';
 import { error } from '@sveltejs/kit';
 
 export const load = (async ({ params }) => {

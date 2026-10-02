@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { seminars } from '$lib/api';
+import { seminars } from '#lib/api/index.js';
 
 export const prerender = false;
 

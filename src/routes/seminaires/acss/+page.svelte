@@ -1,8 +1,8 @@
 <script lang="ts">
-	import SEO from '$lib/seo/SEO.svelte';
-	import * as m from '$lib/paraglide/messages.js';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-	import { isEnglish } from '$lib/helpers/locale';
+	import SEO from '#lib/seo/SEO.svelte';
+	import * as m from '#lib/paraglide/messages.js';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+	import { isEnglish } from '#lib/helpers/locale.js';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();

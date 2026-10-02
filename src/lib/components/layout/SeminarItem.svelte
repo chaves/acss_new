@@ -1,8 +1,8 @@
 <script lang="ts">
-	import seminar_options from '$lib/data/seminars_options.json';
-	import Link from '$lib/components/Link.svelte';
-	import type { Seminar } from '$lib/types';
-	import { formatTime } from '$lib/utils';
+	import seminar_options from '#lib/data/seminars_options.json';
+	import Link from '#lib/components/Link.svelte';
+	import type { Seminar } from '#lib/types/index.js';
+	import { formatTime } from '#lib/utils.js';
 
 	interface Props {
 		seminar: Seminar;

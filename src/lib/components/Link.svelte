@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { localizeUrl } from '$lib/utils';
+	import { localizeUrl } from '#lib/utils.js';
 
 	interface Props {
 		href: string;

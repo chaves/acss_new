@@ -1,8 +1,8 @@
 <script lang="ts">
-	import SEO from '$lib/seo/SEO.svelte';
-	import { mailingList, ApiError } from '$lib/api';
-	import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
-	import * as m from '$lib/paraglide/messages.js';
+	import SEO from '#lib/seo/SEO.svelte';
+	import { mailingList, ApiError } from '#lib/api/index.js';
+	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
+	import * as m from '#lib/paraglide/messages.js';
 
 	type FormState = 'idle' | 'submitting' | 'success' | 'error';
 

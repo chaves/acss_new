@@ -1,11 +1,11 @@
 <script lang="ts">
 	import { ChevronDownOutline, CloseOutline, BarsOutline, EnvelopeOutline } from 'flowbite-svelte-icons';
 	import { page } from '$app/state';
-	import { locales } from '$lib/paraglide/runtime';
-	import * as m from '$lib/paraglide/messages.js';
+	import { locales } from '#lib/paraglide/runtime.js';
+	import * as m from '#lib/paraglide/messages.js';
 	import LanguageSwitch from './LanguageSwitch.svelte';
-	import MenuFR from '$lib/data/menu_fr.json';
-	import MenuEN from '$lib/data/menu_en.json';
+	import MenuFR from '#lib/data/menu_fr.json';
+	import MenuEN from '#lib/data/menu_en.json';
 
 	interface MenuItem {
 		title: string;

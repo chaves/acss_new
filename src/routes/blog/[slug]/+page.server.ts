@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { posts } from '$lib/api';
+import { posts } from '#lib/api/index.js';
 import { error } from '@sveltejs/kit';
 
 // Keep the request locale available to Paraglide when rendering CMS pages.

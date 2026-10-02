@@ -1,19 +1,19 @@
 <script lang="ts">
 	import type { LayoutProps } from './$types';
-	import { page } from '$app/stores';
-	import { browser } from '$app/environment';
-	import { getLocale, setLocale, locales, baseLocale } from '$lib/paraglide/runtime.js';
+	import { page } from '$app/state';
+	import { browser } from '$app/env';
+	import { getLocale, setLocale, locales, baseLocale } from '#lib/paraglide/runtime.js';
 	import '../app.css';
 
-	import Navigation from '$lib/components/layout/Navigation.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
+	import Navigation from '#lib/components/layout/Navigation.svelte';
+	import Footer from '#lib/components/layout/Footer.svelte';
 
 	let { children }: LayoutProps = $props();
 
 	// Update locale when URL changes (client-side navigation)
 	$effect(() => {
 		if (browser) {
-			const pathname = $page.url.pathname;
+			const pathname = page.url.pathname;
 			const [, lang] = pathname.split('/');
 			const newLocale = locales.includes(lang as any) ? lang : baseLocale;
 
@@ -31,7 +31,7 @@
 
 	// Path with the locale segment stripped, so we can rebuild it per language.
 	const pathWithoutLocale = $derived.by(() => {
-		const segments = $page.url.pathname.split('/').filter(Boolean);
+		const segments = page.url.pathname.split('/').filter(Boolean);
 		if (segments.length && locales.includes(segments[0] as any)) {
 			segments.shift();
 		}

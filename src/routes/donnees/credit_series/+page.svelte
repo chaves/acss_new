@@ -1,7 +1,7 @@
 <script lang="ts">
-    import SEO from '$lib/seo/SEO.svelte';
-    import * as m from '$lib/paraglide/messages.js';
-    import Breadcrumb from '$lib/components/layout/Breadcrumb.svelte';
+    import SEO from '#lib/seo/SEO.svelte';
+    import * as m from '#lib/paraglide/messages.js';
+    import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 </script>
 
 <Breadcrumb title="Credit procyclicality database" title_path="Credit procyclicality database" />

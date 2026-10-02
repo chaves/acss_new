@@ -1,5 +1,5 @@
 import type { PageServerLoad } from './$types';
-import { seminars } from '$lib/api';
+import { seminars } from '#lib/api/index.js';
 import { error } from '@sveltejs/kit';
 
 // Disable prerendering for dynamic seminar pages (data comes from CMS)
