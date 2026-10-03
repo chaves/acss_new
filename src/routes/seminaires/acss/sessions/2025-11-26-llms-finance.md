@@ -38,7 +38,7 @@ The second session will turn to professional applications, with Romuald Elie (Go
 
 **11h30-12h30: Session 2 - Professional concerns**
 - [Romuald Elie](https://www.linkedin.com/in/romuald-elie-b9bb817b/) (Google Deepmind): *Denoising diffusion models and weather forecasting*
-- [Emmanuel Hauptmann](https://www.ram-ai.com/fr/unsere-mitarbeiter/emmanuel-hauptmann) (RAM AI): *Can LLMs bring value-added in the investment process?*
+- [Emmanuel Hauptmann](https://ram-ai.com/about-us/our-people) (RAM AI): *Can LLMs bring value-added in the investment process?*
 
 **12h30**: Buffet
 

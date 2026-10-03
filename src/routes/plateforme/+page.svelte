@@ -69,7 +69,7 @@
 					> / Institut Jean Nicod, ENS
 				</li>
 				<li class="mt-3">
-					<a class="underline" href="https://www.ena.fr/index.php?page=ressources/cera"
+					<a class="underline" href="https://insp.gouv.fr/recherche"
 						>Centre d’Expertise et de Recherche Administrative</a
 					> / INSP
 				</li>
@@ -193,7 +193,7 @@
 					> / Institut Jean Nicod, ENS
 				</li>
 				<li class="mt-3">
-					<a class="underline" href="https://www.ena.fr/index.php?page=ressources/cera"
+					<a class="underline" href="https://insp.gouv.fr/recherche"
 						>Centre d’Expertise et de Recherche Administrative</a
 					> / INSP
 				</li>

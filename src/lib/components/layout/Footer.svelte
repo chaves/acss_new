@@ -51,7 +51,7 @@
 							decoding="async"
 						/>
 					</a>
-					<a href="http://www.institutnicod.org/" class="partner-link" target="_blank" rel="noopener noreferrer">
+					<a href="https://institutnicod.ens.psl.eu/" class="partner-link" target="_blank" rel="noopener noreferrer">
 						<img
 							class="partner-logo"
 							src="/images/logos_autres/nicod.png"

@@ -7,7 +7,7 @@ status: "past"
 
 ## Bet on a bubble asset? An optimal portfolio allocation strategy
 
-**Speaker**: [Arthur Thomas](https://www.arthurthomas.fr/), Associate Professor in Economics, Laboratoire d'Economie de Dauphine (LEDA)
+**Speaker**: [Arthur Thomas](https://dauphine.psl.eu/recherche/cvtheque/profil/thomas-arthur), Associate Professor in Economics, Laboratoire d'Economie de Dauphine (LEDA)
 
 **Coauthors**: Gilles de Truchis, Elena Dumitrescu, Sebastien Fries
 
