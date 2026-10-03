@@ -8,7 +8,6 @@
 	import { getOGLocale, isEnglish } from '#lib/helpers/locale.js';
 	import { formatTime } from '#lib/utils.js';
 	import { LinkedinSolid } from 'flowbite-svelte-icons';
-	import images from '#lib/data/images_home.json';
 	import type { PageData } from './$types';
 
 	let { data }: { data: PageData } = $props();
@@ -304,18 +303,26 @@
 			</Link>
 		</nav>
 
-		<div class="mission-visuals">
-			{#each images.slice(0, 3) as image, index}
-				<div class:mission-visual-main={index === 0} class="mission-visual">
-					<img
-						src={image.src}
-						alt={image.alt}
-						loading={index === 0 ? 'eager' : 'lazy'}
-						decoding="async"
-					/>
-				</div>
-			{/each}
-		</div>
+		<figure class="mission-network">
+			<picture>
+				<source
+					type="image/webp"
+					srcset="/images/home_graphs/reseau-communautes-640.webp 640w, /images/home_graphs/reseau-communautes-960.webp 960w, /images/home_graphs/reseau-communautes-1280.webp 1280w"
+					sizes="(max-width: 1023px) calc(100vw - 5rem), 500px"
+				/>
+				<img
+					src="/images/home_graphs/reseau-communautes-960.jpg"
+					width="960"
+					height="809"
+					alt={isEn
+						? 'Network map of Twitter communities: clusters of accounts (medical-institutional, national media, sovereigntist protest, left-wing critique, Quebec/Canada…) with their share of the conversation'
+						: 'Carte de réseau des communautés Twitter : clusters de comptes (médico-institutionnel, médias nationaux, contestataire souverainiste, critique de gauche, Québec/Canada…) et leur part de la conversation'}
+					loading="eager"
+					fetchpriority="high"
+					decoding="async"
+				/>
+			</picture>
+		</figure>
 	</div>
 
 	<!-- Blog Card -->
@@ -692,7 +699,7 @@
 			align-items: start;
 		}
 
-		.content-grid .mission-visuals {
+		.content-grid .mission-network {
 			grid-column: 2;
 			grid-row: 1 / 6;
 			align-self: center;
@@ -1045,50 +1052,23 @@
 		flex-direction: column;
 	}
 
-	.mission-visuals {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		grid-template-rows: minmax(0, 1.5fr) minmax(0, 1fr);
-		gap: 0.65rem;
+	/* Single network map: shown whole (no crop) so the clusters stay readable */
+	.mission-network {
 		width: 100%;
-		height: clamp(14rem, 70vw, 18rem);
-		overflow: hidden;
-		margin-top: 1.5rem;
+		margin: 1.5rem 0 0;
 		padding-top: 1.5rem;
 		border-top: 1px solid rgba(74, 108, 170, 0.1);
 	}
 
-	.mission-visual {
-		position: relative;
-		min-width: 0;
-		min-height: 0;
-		overflow: hidden;
-		border: 1px solid rgba(74, 108, 170, 0.1);
-		border-radius: 0.75rem;
-		background: var(--bg-secondary, #f8fafc);
-	}
-
-	.mission-visual-main {
-		grid-column: 1 / -1;
-	}
-
-	.mission-visual img {
-		width: 100%;
-		height: 100%;
-		object-fit: cover;
+	.mission-network img {
 		display: block;
-		filter: saturate(0.92) contrast(1.03);
-		transition: transform 400ms ease;
-	}
-
-	.mission-visuals:hover .mission-visual img {
-		transform: scale(1.015);
+		width: 100%;
+		height: auto;
+		border-radius: 0.75rem;
 	}
 
 	@media (min-width: 1024px) {
-		.content-grid .mission-visuals {
-			height: auto;
-			aspect-ratio: 4 / 3;
+		.content-grid .mission-network {
 			margin-top: 0;
 			padding-top: 0;
 			border-top: 0;

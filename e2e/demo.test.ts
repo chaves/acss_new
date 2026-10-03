@@ -6,7 +6,7 @@ test('home page foregrounds the seven latest publications', async ({ page }) => 
 	await expect(page.getByRole('heading', { level: 2, name: 'Blog' })).toBeVisible();
 	await expect(page.locator('.production-wall .post-item')).toHaveCount(7);
 	await expect(page.locator('a[href="https://www.linkedin.com/company/acss-psl"]')).toHaveCount(2);
-	await expect(page.locator('.mission-visuals img')).toHaveCount(3);
+	await expect(page.locator('.mission-network img')).toHaveCount(1);
 	await expect(page.locator('.mission-carousel')).toHaveCount(0);
 });
 
