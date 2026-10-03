@@ -11,9 +11,11 @@
 		index: number;
 		priority?: boolean;
 		variant?: 'compact' | 'card' | 'featured';
+		/** Heading level of the title: 3 under a section h2 (home), 2 directly under the page h1 (blog index) */
+		headingLevel?: 2 | 3;
 	}
 
-	let { post, index, priority = false, variant = 'compact' }: Props = $props();
+	let { post, index, priority = false, variant = 'compact', headingLevel = 3 }: Props = $props();
 	let formattedDate = $derived(formatDate(post.publishedAt));
 	let imageLoading = $derived<ImageLoading>(priority ? 'eager' : 'lazy');
 	let imageFetchPriority = $derived<'high' | 'low' | 'auto'>(index === 0 ? 'high' : 'auto');
@@ -37,9 +39,9 @@
 		</div>
 	{/if}
 	<div class="post-content">
-		<h3 class="post-title">
+		<svelte:element this={`h${headingLevel}`} class="post-title">
 			<Link href="/blog/{post.Slug}">{post.Title}</Link>
-		</h3>
+		</svelte:element>
 		<p class="post-meta">
 			<span class="meta-label">{m.published_at()}</span>
 			<span class="meta-date">{formattedDate}</span>

@@ -28,12 +28,12 @@
 	students in the process of completing their thesis or for master's students who are considering
 	pursuing a doctorate and adopting these rapidly developing methods.&nbsp;
 </p>
-<h1>Dates &amp; place:</h1>
+<h2>Dates &amp; place:</h2>
 <p>21/25 November - 9h-12h : 14h-17h&nbsp;</p>
 <p>24 rue Saint-Georges 75009 Paris</p>
 <p>Room I101 (Amphi Pierre Miquel) - from Monday to Thursday and room I102 on Friday</p>
 <p>contact : christophe.benavent@dauphine.psl.eu</p>
-<h1>Public:</h1>
+<h2>Public:</h2>
 <p>
 	This course is primarily intended for master students at <a href="https://psl.eu/" target="_blank"
 		>PSL University</a
@@ -41,7 +41,7 @@
 	universities (limited number, Prerequisite : Prior training in r and/or python is required.)
 </p>
 
-<h1>Syllabus:</h1>
+<h2>Syllabus:</h2>
 <ul>
 	<li>Session 1 : Tokenize and annotate</li>
 	<li>Session 2 : Semantic spaces</li>
@@ -66,7 +66,7 @@
 	>
 </p>
 <p>r and Rstudio (with tidyverse) has to be installed before.</p>
-<h1>Team:</h1>
+<h2>Team:</h2>
 <p>
 	<Link href="/membres/christophe-benavent">Christophe Benavent</Link>,
 	<Link href="/equipe/bruno-chaves-ferreira">Bruno Chaves Ferreira</Link>,
@@ -76,12 +76,12 @@
 </div>
 
 <style lang="postcss">
-	h1 {
+	h2 {
 		@apply mt-6 font-semibold;
 	}
 
-	h1 ~ p,
-	h1 ~ ul {
+	h2 ~ p,
+	h2 ~ ul {
 		@apply ml-6;
 	}
 	p,

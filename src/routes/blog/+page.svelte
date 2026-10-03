@@ -14,13 +14,13 @@
 
 {#if data.posts.length > 0}
 	<div class="featured-publication">
-		<PostItem post={data.posts[0]} index={0} variant="featured" priority={true} />
+		<PostItem post={data.posts[0]} index={0} variant="featured" priority={true} headingLevel={2} />
 	</div>
 
 	{#if data.posts.length > 1}
 		<div class="publication-grid">
 			{#each data.posts.slice(1) as post, index}
-				<PostItem {post} index={index + 1} variant="card" priority={index < 2} />
+				<PostItem {post} index={index + 1} variant="card" priority={index < 2} headingLevel={2} />
 			{/each}
 		</div>
 	{/if}

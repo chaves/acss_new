@@ -30,7 +30,7 @@
 	/* Semantic colors */
 	--color-heading: #1e293b;
 	--color-body: #475569;
-	--color-muted: #94a3b8;
+	--color-muted: #64748b; /* slate-500: >= 4.5:1 on white and #f8fafc (WCAG AA) */
 
 	/* Backgrounds */
 	--bg-primary: #ffffff;
