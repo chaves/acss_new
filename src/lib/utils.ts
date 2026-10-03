@@ -71,6 +71,27 @@ export function localizeUrl(path: string): string {
 	return `/${locale}${cleanPath}`;
 }
 
+// Absolute links to this site written in CMS content (e.g. https://acss-dig.psl.eu/equipe/x)
+// skip the locale prefix, so they land on the default (French) version.
+const SITE_URL_RE = /^https?:\/\/(?:www\.)?acss-dig\.psl\.eu(\/[^"'\s]*)?$/;
+// Paths that are not localized pages (static assets, already-prefixed URLs)
+const NON_PAGE_RE = /^\/(?:fr|en|images|files|data|css|_app)(?:\/|$)|\.[a-z0-9]{2,5}$/i;
+
+/** Turn an absolute link to this site into a localized relative link; other URLs are returned unchanged. */
+export function localizeSiteUrl(url: string): string {
+	const match = url.trim().match(SITE_URL_RE);
+	if (!match) return url;
+	const path = match[1] || '/';
+	if (NON_PAGE_RE.test(path.split(/[?#]/)[0])) return path;
+	// the home page's canonical form is /fr, not /fr/ (which redirects)
+	return path === '/' ? localizeUrl('/').replace(/\/$/, '') : localizeUrl(path);
+}
+
+/** Apply localizeSiteUrl to every href in a rendered HTML string (CMS / markdown content). */
+export function localizeSiteLinks(html: string): string {
+	return html.replace(/href="([^"]*)"/g, (_, url: string) => `href="${localizeSiteUrl(url)}"`);
+}
+
 type FlyAndScaleParams = {
 	y?: number;
 	x?: number;

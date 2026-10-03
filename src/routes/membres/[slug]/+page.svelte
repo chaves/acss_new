@@ -54,6 +54,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={name}
 	title_path={name}
 	fonction={data.membre.title}

@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeSiteLinks } from '#lib/utils.js';
 	import type { PageData } from './$types';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import * as m from '#lib/paraglide/messages.js';
@@ -41,7 +42,7 @@
 	);
 
 	// Derived reactive values
-	let contentHtml = $derived(marked(post.Content));
+	let contentHtml = $derived(localizeSiteLinks(marked(post.Content) as string));
 	let localizedPublishedAt = $derived(formatDate(post.publishedAt));
 	let ogLocale = $derived(getOGLocale());
 </script>
@@ -62,6 +63,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={post.Title}
 	title_path={post.Title}
 	link="blog"

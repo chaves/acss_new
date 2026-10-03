@@ -1,5 +1,7 @@
 <script lang="ts">
 	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generateCollectionPageSchema } from '#lib/seo/schema-utils.js';
 	import type { PageProps } from './$types';
 	import * as m from '#lib/paraglide/messages.js';
 	import SeminarItem from '#lib/components/layout/SeminarItem.svelte';
@@ -10,6 +12,16 @@
 </script>
 
 <SEO title="Institut ACSS-PSL : {m.digital_regulation()}" description={m.seo_seminars_description()} />
+<StructuredData
+	data={generateCollectionPageSchema({
+		name: m.digital_regulation(),
+		description: m.seo_seminars_description(),
+		url: '/seminaires/digital-regulation',
+		items: [...data.seminars_upcoming, ...data.seminars_past]
+			.filter((seminar) => seminar.slug)
+			.map((seminar) => ({ name: seminar.title, url: `/seminaires/digital-regulation/${seminar.slug}` }))
+	})}
+/>
 
 <Breadcrumb title={m.digital_regulation()} title_path="Digital Regulation" link="seminaires" link_text={m.seminars()} />
 

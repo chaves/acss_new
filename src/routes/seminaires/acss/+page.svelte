@@ -1,6 +1,8 @@
 <script lang="ts">
 	import { localizeUrl } from '#lib/utils.js';
 	import SEO from '#lib/seo/SEO.svelte';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generateCollectionPageSchema } from '#lib/seo/schema-utils.js';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import { isEnglish } from '#lib/helpers/locale.js';
@@ -32,6 +34,17 @@
 </script>
 
 <SEO title="ACSS-PSL Institute: Research Seminar" description={m.seo_acss_seminar_description()} />
+<StructuredData
+	data={generateCollectionPageSchema({
+		name: 'ACSS-PSL Institute Research Seminar',
+		description: m.seo_acss_seminar_description(),
+		url: '/seminaires/acss',
+		items: [...upcomingSessions, ...pastSessions].map((session) => ({
+			name: session.frontmatter.title,
+			url: `/seminaires/acss/${session.slug}`
+		}))
+	})}
+/>
 
 <Breadcrumb
 	title="ACSS-PSL Institute Research Seminar"

@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { localizeUrl } from '#lib/utils.js';
+	import { localizeUrl, localizeSiteUrl } from '#lib/utils.js';
 	import SEO from '#lib/seo/SEO.svelte';
 	import StructuredData from '#lib/seo/StructuredData.svelte';
 	import {
@@ -65,6 +65,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={seminar.title}
 	title_path={seminar.title}
 	link="seminaires/public-governance"
@@ -108,7 +109,7 @@
 			<div class="presenter-label">Presented by</div>
 			<div class="presenter-name">{seminar.presenter}</div>
 			{#if seminar.homepage}
-				<a href={seminar.homepage} target="_blank" rel="noopener noreferrer" class="presenter-homepage">
+				<a href={localizeSiteUrl(seminar.homepage)} target="_blank" rel="noopener noreferrer" class="presenter-homepage">
 					{seminar.homepage}
 				</a>
 			{/if}

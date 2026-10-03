@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeSiteLinks } from '#lib/utils.js';
 	import type { PageData } from './$types';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
@@ -11,7 +12,7 @@
 	let membre = $derived(data.membre[0]);
 	let name = $derived(membre.FirstName + ' ' + membre.LastName);
 	// Convert the Markdown biography to HTML.
-	let biographyHtml = $derived(marked(membre.biography ?? ''));
+	let biographyHtml = $derived(localizeSiteLinks(marked(membre.biography ?? '') as string));
 
 	// Use the start of the biography as the description rather than just the name.
 	const seoDescription = $derived.by(() => {
@@ -51,6 +52,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={name}
 	title_path={name}
 	fonction={membre.fonction}

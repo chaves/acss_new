@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { localizeUrl } from '#lib/utils.js';
+	import { localizeUrl, localizeSiteLinks } from '#lib/utils.js';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import SEO from '#lib/seo/SEO.svelte';
@@ -76,6 +76,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={session.frontmatter.title}
 	title_path={session.frontmatter.title}
 	link="seminaires/acss"
@@ -166,7 +167,7 @@
 
 	<!-- Content -->
 	<div class="session-content prose">
-		{@html session.html}
+		{@html localizeSiteLinks(session.html)}
 	</div>
 
 	{#if session.frontmatter.presentations && session.frontmatter.presentations.length > 0}

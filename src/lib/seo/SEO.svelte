@@ -22,7 +22,8 @@
 		title,
 		description,
 		type = 'website',
-		image = '/images/logos/acss_logo.svg',
+		// Social networks don't render SVG previews: default to a 1200x630 PNG card
+		image = '/images/og-default.png',
 		url = '',
 		author = 'ACSS-PSL Institute',
 		publishedTime,
@@ -69,6 +70,10 @@
 	<meta property="og:title" content={title} />
 	<meta property="og:description" content={description} />
 	<meta property="og:image" content={fullImageUrl} />
+	{#if fullImageUrl.endsWith('/images/og-default.png')}
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+	{/if}
 	<meta property="og:locale" content={ogLocale} />
 	<meta property="og:site_name" content="ACSS-PSL Institute" />
 	{#if type === 'article'}

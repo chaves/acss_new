@@ -9,7 +9,7 @@
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import WorkshopInfo from '#lib/components/layout/WorkshopInfo.svelte';
-	import { formatTime, localizeUrl } from '#lib/utils.js';
+	import { formatTime, localizeUrl, localizeSiteUrl } from '#lib/utils.js';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
@@ -65,6 +65,7 @@
 <StructuredData data={breadcrumbSchema} />
 
 <Breadcrumb
+	schema={false}
 	title={seminar.title}
 	title_path={seminar.title}
 	link="seminaires/digital-regulation"
@@ -108,7 +109,7 @@
 			<div class="presenter-label">Presented by</div>
 			<div class="presenter-name">{seminar.presenter}</div>
 			{#if seminar.homepage}
-				<a href={seminar.homepage} target="_blank" rel="noopener noreferrer" class="presenter-homepage">
+				<a href={localizeSiteUrl(seminar.homepage)} target="_blank" rel="noopener noreferrer" class="presenter-homepage">
 					{seminar.homepage}
 				</a>
 			{/if}

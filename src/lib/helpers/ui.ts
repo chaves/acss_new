@@ -28,7 +28,13 @@ export function truncate(text: string, maxLength: number): string {
  * @returns Plain text
  */
 export function stripMarkdown(text: string): string {
-	return text.replace(/[#*\[\]`_~]/g, '').trim();
+	return text
+		.replace(/<[^>]*>/g, '') // inline HTML
+		.replace(/!\[[^\]]*\]\([^)]*\)/g, '') // images
+		.replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // links: keep the text, drop the URL
+		.replace(/[#*\[\]`_~>]/g, '')
+		.replace(/\s+/g, ' ')
+		.trim();
 }
 
 /**

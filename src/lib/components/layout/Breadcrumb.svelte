@@ -1,6 +1,9 @@
 <script lang="ts">
+	import { page } from '$app/state';
 	import * as m from '#lib/paraglide/messages.js';
 	import { localizeUrl } from '#lib/utils.js';
+	import StructuredData from '#lib/seo/StructuredData.svelte';
+	import { generateBreadcrumbSchema } from '#lib/seo/schema-utils.js';
 
 	let {
 		title,
@@ -10,9 +13,24 @@
 		email = undefined,
 		fonction = undefined,
 		publishedAt = undefined,
-		richTitle = false
+		richTitle = false,
+		// Emit BreadcrumbList JSON-LD mirroring the visible trail. Pages that already
+		// build a more specific breadcrumb schema themselves pass schema={false}.
+		schema = true
 	} = $props();
+
+	const breadcrumbSchema = $derived(
+		generateBreadcrumbSchema([
+			{ name: m.home(), url: '/' },
+			...(link !== undefined ? [{ name: link_text, url: `/${link}` }] : []),
+			{ name: title_path, url: page.url.pathname }
+		])
+	);
 </script>
+
+{#if schema}
+	<StructuredData data={breadcrumbSchema} />
+{/if}
 
 <section class="breadcrumb-section">
 	<!-- Left accent border -->

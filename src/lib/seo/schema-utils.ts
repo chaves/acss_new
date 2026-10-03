@@ -255,3 +255,33 @@ export function generateWebSiteSchema() {
 		}
 	};
 }
+
+/**
+ * Generate CollectionPage schema for listing pages (blog, seminar series, team),
+ * with an ItemList pointing at each detail page.
+ */
+export function generateCollectionPageSchema(collection: {
+	name: string;
+	description: string;
+	url: string;
+	items: Array<{ name: string; url: string }>;
+}) {
+	return {
+		'@type': 'CollectionPage',
+		name: collection.name,
+		description: collection.description,
+		url: pageUrl(collection.url),
+		inLanguage: getLocale(),
+		isPartOf: { '@type': 'WebSite', name: 'Institut ACSS-PSL', url: BASE_URL },
+		mainEntity: {
+			'@type': 'ItemList',
+			numberOfItems: collection.items.length,
+			itemListElement: collection.items.map((item, index) => ({
+				'@type': 'ListItem',
+				position: index + 1,
+				name: item.name,
+				url: pageUrl(item.url)
+			}))
+		}
+	};
+}
