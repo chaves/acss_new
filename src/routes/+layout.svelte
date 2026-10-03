@@ -4,6 +4,12 @@
 	import { browser } from '$app/env';
 	import { getLocale, setLocale, locales, baseLocale } from '#lib/paraglide/runtime.js';
 	import '../app.css';
+	// Fonts on the critical path: Quicksand 600 (home LCP text), Quicksand 700 (h1),
+	// Montserrat 400 (body). Preloading them avoids waiting for the CSS to discover
+	// them. ?url resolves to the same hashed file the @fontsource CSS references.
+	import quicksand600 from '@fontsource/quicksand/files/quicksand-latin-600-normal.woff2?url';
+	import quicksand700 from '@fontsource/quicksand/files/quicksand-latin-700-normal.woff2?url';
+	import montserrat400 from '@fontsource/montserrat/files/montserrat-latin-400-normal.woff2?url';
 
 	import Navigation from '#lib/components/layout/Navigation.svelte';
 	import Footer from '#lib/components/layout/Footer.svelte';
@@ -48,6 +54,9 @@
 </script>
 
 <svelte:head>
+	{#each [quicksand600, quicksand700, montserrat400] as font (font)}
+		<link rel="preload" href={font} as="font" type="font/woff2" crossorigin="anonymous" />
+	{/each}
 	{#each alternates as alternate (alternate.hreflang)}
 		<link rel="alternate" hreflang={alternate.hreflang} href={alternate.href} />
 	{/each}

@@ -350,7 +350,7 @@
 				</div>
 				<div class="home-publication-grid">
 					{#each data.posts.slice(1) as post, index}
-						<PostItem {post} index={index + 1} priority={index < 2} />
+						<PostItem {post} index={index + 1} priority={index < 2} showImage={false} />
 					{/each}
 				</div>
 			</div>

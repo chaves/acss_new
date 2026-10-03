@@ -84,7 +84,7 @@
 				alt="ACSS-PSL Institute Logo"
 				loading="eager"
 				decoding="async"
-				fetchpriority="high"
+				fetchpriority="high" width="386" height="75"
 			/>
 		</a>
 
@@ -183,7 +183,7 @@
 	<div class="mobile-menu" role="dialog" aria-modal="true">
 		<!-- Mobile Menu Header -->
 		<div class="mobile-menu-header">
-			<img src="/images/logos/acss_logo.svg" class="mobile-logo" alt="ACSS-PSL" />
+			<img src="/images/logos/acss_logo.svg" class="mobile-logo" alt="ACSS-PSL" width="386" height="75" />
 			<button class="mobile-close-button" onclick={closeMobileMenu} aria-label="Close menu">
 				<CloseOutline class="h-7 w-7" />
 			</button>

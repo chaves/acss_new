@@ -29,6 +29,8 @@
 		webp?: boolean;
 		/** Fetch priority hint (high, low, auto) */
 		fetchpriority?: 'high' | 'low' | 'auto';
+		/** Rendered width hint for srcset selection; pass the real layout width when known */
+		sizes?: string;
 	}
 
 	let {
@@ -38,7 +40,8 @@
 		loading = 'lazy',
 		size = 'medium',
 		webp = true,
-		fetchpriority = 'auto'
+		fetchpriority = 'auto',
+		sizes = '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw'
 	}: Props = $props();
 
 	// Derived values using the Strapi service
@@ -61,7 +64,7 @@
 	<img
 		src={fullUrl}
 		srcset={srcset}
-		sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+		{sizes}
 		alt={altText}
 		class={className}
 		width={dimensions?.width}

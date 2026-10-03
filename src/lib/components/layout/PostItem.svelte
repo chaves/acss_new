@@ -13,12 +13,27 @@
 		variant?: 'compact' | 'card' | 'featured';
 		/** Heading level of the title: 3 under a section h2 (home), 2 directly under the page h1 (blog index) */
 		headingLevel?: 2 | 3;
+		/** Render the thumbnail; layouts that hide it should pass false so it isn't downloaded */
+		showImage?: boolean;
 	}
 
-	let { post, index, priority = false, variant = 'compact', headingLevel = 3 }: Props = $props();
+	let {
+		post,
+		index,
+		priority = false,
+		variant = 'compact',
+		headingLevel = 3,
+		showImage = true
+	}: Props = $props();
 	let formattedDate = $derived(formatDate(post.publishedAt));
 	let imageLoading = $derived<ImageLoading>(priority ? 'eager' : 'lazy');
 	let imageFetchPriority = $derived<'high' | 'low' | 'auto'>(index === 0 ? 'high' : 'auto');
+	// Rendered widths measured per variant: compact 4rem; card ~360-385px; featured up to ~490px
+	const imageSizes = {
+		compact: '64px',
+		card: '(max-width: 640px) calc(100vw - 2rem), 400px',
+		featured: '(max-width: 640px) calc(100vw - 2rem), 500px'
+	};
 </script>
 
 <article
@@ -26,7 +41,7 @@
 	class:featured-variant={variant === 'featured'}
 	class="post-item"
 >
-	{#if post.Image}
+	{#if post.Image && showImage}
 		<div class="post-image-wrapper">
 			<OptimizedImage
 				image={post.Image}
@@ -35,6 +50,7 @@
 				class="post-image"
 				loading={imageLoading}
 				fetchpriority={imageFetchPriority}
+				sizes={imageSizes[variant]}
 			/>
 		</div>
 	{/if}

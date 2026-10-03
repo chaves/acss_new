@@ -21,7 +21,7 @@
 							src="/images/logos_autres/cnrs.png"
 							alt="CNRS - Centre National de la Recherche Scientifique"
 							loading="lazy"
-							decoding="async"
+							decoding="async" width="89" height="89"
 						/>
 					</a>
 					<a href="https://dauphine.psl.eu/" class="partner-link" target="_blank" rel="noopener noreferrer">
@@ -30,7 +30,7 @@
 							src="/images/logos_autres/logo_bleu_dauphine.png"
 							alt="Université Paris Dauphine-PSL"
 							loading="lazy"
-							decoding="async"
+							decoding="async" width="1001" height="143"
 						/>
 					</a>
 					<a href="https://insp.gouv.fr/" class="partner-link" target="_blank" rel="noopener noreferrer">
@@ -39,7 +39,7 @@
 							src="/images/logos_autres/Logo_INSP.png"
 							alt="INSP - Institut National du Service Public"
 							loading="lazy"
-							decoding="async"
+							decoding="async" width="150" height="93"
 						/>
 					</a>
 					<a href="https://www.minesparis.psl.eu/" class="partner-link" target="_blank" rel="noopener noreferrer">
@@ -48,7 +48,7 @@
 							src="/images/logos_autres/mines.png"
 							alt="Mines Paris - PSL"
 							loading="lazy"
-							decoding="async"
+							decoding="async" width="131" height="98"
 						/>
 					</a>
 					<a href="https://institutnicod.ens.psl.eu/" class="partner-link" target="_blank" rel="noopener noreferrer">
@@ -57,7 +57,7 @@
 							src="/images/logos_autres/nicod.png"
 							alt="Institut Jean Nicod"
 							loading="lazy"
-							decoding="async"
+							decoding="async" width="150" height="150"
 						/>
 					</a>
 				</div>
