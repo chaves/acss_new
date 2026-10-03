@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeUrl } from '#lib/utils.js';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import SEO from '#lib/seo/SEO.svelte';
@@ -216,7 +217,7 @@
 
 	<!-- Back link -->
 	<div class="back-link">
-		<a href="/seminaires/acss">← Back to all ACSS sessions</a>
+		<a href={localizeUrl('/seminaires/acss')}>← Back to all ACSS sessions</a>
 	</div>
 </article>
 

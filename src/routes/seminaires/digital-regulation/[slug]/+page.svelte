@@ -9,7 +9,7 @@
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import WorkshopInfo from '#lib/components/layout/WorkshopInfo.svelte';
-	import { formatTime } from '#lib/utils.js';
+	import { formatTime, localizeUrl } from '#lib/utils.js';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
@@ -186,7 +186,7 @@
 
 	<!-- Back link -->
 	<div class="back-link">
-		<a href="/seminaires/digital-regulation">
+		<a href={localizeUrl('/seminaires/digital-regulation')}>
 			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
 			</svg>

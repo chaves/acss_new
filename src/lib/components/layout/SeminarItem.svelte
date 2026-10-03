@@ -2,7 +2,7 @@
 	import seminar_options from '#lib/data/seminars_options.json';
 	import Link from '#lib/components/Link.svelte';
 	import type { Seminar } from '#lib/types/index.js';
-	import { formatTime } from '#lib/utils.js';
+	import { formatTime, localizeUrl } from '#lib/utils.js';
 
 	interface Props {
 		seminar: Seminar;
@@ -29,7 +29,7 @@
 
 {#if detailUrl}
 	<!-- Clickable card for NLP and Public Governance seminars -->
-	<a href={detailUrl} class="seminar-item clickable">
+	<a href={localizeUrl(detailUrl)} class="seminar-item clickable">
 		<div class="seminar-header">
 			<div class="seminar-datetime">
 				<div class="datetime-badge">

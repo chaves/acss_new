@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeUrl } from '#lib/utils.js';
 	import SEO from '#lib/seo/SEO.svelte';
 	import StructuredData from '#lib/seo/StructuredData.svelte';
 	import {
@@ -185,7 +186,7 @@
 
 	<!-- Back link -->
 	<div class="back-link">
-		<a href="/seminaires/public-governance">
+		<a href={localizeUrl('/seminaires/public-governance')}>
 			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
 			</svg>

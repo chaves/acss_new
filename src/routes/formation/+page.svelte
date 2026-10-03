@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeUrl } from '#lib/utils.js';
     import SEO from '#lib/seo/SEO.svelte';
     import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
     import * as m from '#lib/paraglide/messages.js';
@@ -23,7 +24,7 @@
 	</div>
 
 	<div class="cadre">
-		<a href="{`/formation/hackathon_2022`}">
+		<a href={localizeUrl('/formation/hackathon_2022')}>
 			<div class="formation">
 				<img
 					src="/images/hackhaton_2022/personnes/image_1.jpeg"
