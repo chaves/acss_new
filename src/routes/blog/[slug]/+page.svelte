@@ -143,6 +143,8 @@
 		text-decoration: underline;
 		text-decoration-thickness: 1px;
 		text-underline-offset: 0.2em;
+		/* long bare URLs (DOIs, etc.) must wrap instead of overflowing on mobile */
+		overflow-wrap: anywhere;
 	}
 
 	.article-meta {

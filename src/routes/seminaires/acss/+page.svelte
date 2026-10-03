@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { localizeUrl } from '#lib/utils.js';
 	import SEO from '#lib/seo/SEO.svelte';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
@@ -22,7 +23,10 @@
 
 	// Extract excerpt from content
 	const getExcerpt = (content: string, maxLength: number = 200) => {
-		const text = content.replace(/<[^>]*>/g, '').replace(/[#*\[\]`_~]/g, '');
+		const text = content
+			.replace(/<[^>]*>/g, '')
+			.replace(/!?\[([^\]]*)\]\([^)]*\)/g, '$1') // keep link/image text, drop the URL
+			.replace(/[#*\[\]`_~]/g, '');
 		return text.length > maxLength ? text.substring(0, maxLength) + '...' : text;
 	};
 </script>
@@ -81,7 +85,7 @@
 		<div class="sessions-grid">
 			{#each upcomingSessions as session}
 				<article class="session-card upcoming">
-					<a href="/seminaires/acss/{session.slug}" class="session-link">
+					<a href={localizeUrl(`/seminaires/acss/${session.slug}`)} class="session-link">
 						{#if session.frontmatter.image}
 							<div class="session-image">
 								<img
@@ -158,7 +162,7 @@
 		<div class="sessions-list">
 			{#each pastSessions as session}
 				<article class="session-item">
-					<a href="/seminaires/acss/{session.slug}" class="session-item-link">
+					<a href={localizeUrl(`/seminaires/acss/${session.slug}`)} class="session-item-link">
 						{#if session.frontmatter.image}
 							<div class="session-item-thumbnail">
 								<img
@@ -351,5 +355,6 @@
 
 	.session-item-excerpt {
 		@apply text-sm leading-relaxed text-blueGray-600;
+		overflow-wrap: anywhere;
 	}
 </style>
