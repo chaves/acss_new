@@ -305,6 +305,11 @@
 
 		<figure class="mission-network">
 			<picture>
+				<!-- Hidden on phones: a 1px placeholder avoids downloading the map at all -->
+				<source
+					media="(max-width: 767px)"
+					srcset="data:image/gif;base64,R0lGODlhAQABAIAAAAAAACH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
+				/>
 				<source
 					type="image/webp"
 					srcset="/images/home_graphs/reseau-communautes-640.webp 640w, /images/home_graphs/reseau-communautes-960.webp 960w, /images/home_graphs/reseau-communautes-1280.webp 1280w"
@@ -1065,6 +1070,13 @@
 		width: 100%;
 		height: auto;
 		border-radius: 0.75rem;
+	}
+
+	/* Cluster labels are unreadable at phone width */
+	@media (max-width: 767px) {
+		.mission-network {
+			display: none;
+		}
 	}
 
 	@media (min-width: 1024px) {
