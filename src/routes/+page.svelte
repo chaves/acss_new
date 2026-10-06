@@ -327,6 +327,12 @@
 					decoding="async"
 				/>
 			</picture>
+			<figcaption>
+				{isEn
+					? 'Map of the eight main communities in the French-language retweet network on Twitter during the Covid-19 pandemic'
+					: 'Cartographie des huit principales communautés du réseau de retweets francophone sur Twitter pendant la pandémie de Covid-19'}
+				<span class="mission-network-credit">{isEn ? 'By' : 'Par'} Olivier Caron</span>
+			</figcaption>
 		</figure>
 	</div>
 
@@ -1070,6 +1076,19 @@
 		width: 100%;
 		height: auto;
 		border-radius: 0.75rem;
+	}
+
+	.mission-network figcaption {
+		margin-top: 0.75rem;
+		font-size: 0.875rem;
+		line-height: 1.5;
+		color: var(--color-body, #475569);
+	}
+
+	.mission-network-credit {
+		display: block;
+		margin-top: 0.25rem;
+		font-style: italic;
 	}
 
 	/* Cluster labels are unreadable at phone width */
