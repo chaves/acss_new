@@ -329,8 +329,8 @@
 			</picture>
 			<figcaption>
 				{isEn
-					? 'Map of the eight main communities in the French-language retweet network on Twitter during the Covid-19 pandemic'
-					: 'Cartographie des huit principales communautés du réseau de retweets francophone sur Twitter pendant la pandémie de Covid-19'}
+					? 'Map of the eight main communities in the French-language retweet network during the Covid-19 pandemic'
+					: 'Cartographie des huit principales communautés du réseau de retweets francophone pendant la pandémie de Covid-19'}
 				<span class="mission-network-credit">{isEn ? 'By' : 'Par'} Olivier Caron</span>
 			</figcaption>
 		</figure>
