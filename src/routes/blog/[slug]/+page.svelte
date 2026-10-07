@@ -77,6 +77,7 @@
 				image={post.Image}
 				alt={post.Title}
 				size="large"
+				sizes="(max-width: 880px) 100vw, 840px"
 				class="article-image-element"
 				loading="eager"
 				fetchpriority="high"
