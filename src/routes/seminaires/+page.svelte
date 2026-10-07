@@ -38,7 +38,8 @@
 		<p>
 			The Political Economy + AI seminar is an online seminar focused on political economy research
 			using AI and computational methods. We welcome work in progress and methods talks on these
-			topics. The seminar is co-organized with King's College London and has its own website:
+			topics. Formerly the Public Governance working group, the seminar is organized jointly by King's
+			College London and Université Paris-Dauphine – PSL. It has its own website:
 			<a href="https://peai-seminar.org" target="_blank" rel="noopener noreferrer">peai-seminar.org</a>.
 		</p>
 	</div>

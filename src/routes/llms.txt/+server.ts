@@ -48,7 +48,7 @@ const sections = [
 			{
 				url: '/fr/seminaires/public-governance',
 				title: 'Political Economy + AI Seminar',
-				note: "Political economy research using AI and computational methods, co-organized with King's College London (https://peai-seminar.org)"
+				note: "Political economy research using AI and computational methods (formerly the Public Governance working group), organized jointly by King's College London and Université Paris-Dauphine – PSL (https://peai-seminar.org)"
 			},
 			{
 				url: '/fr/seminaires/digital-regulation',

@@ -20,7 +20,7 @@ export const workshops = {
 		name: 'Political Economy + AI Seminar',
 		description: [
 			'The Political Economy + AI seminar is an online seminar focused on political economy research using AI and computational methods. We welcome work in progress and methods talks on these topics.',
-			"The seminar is co-organized with King's College London."
+			"Formerly the Public Governance working group, the seminar is organized jointly by King's College London and Université Paris-Dauphine – PSL."
 		],
 		externalLink: {
 			url: 'https://peai-seminar.org',
