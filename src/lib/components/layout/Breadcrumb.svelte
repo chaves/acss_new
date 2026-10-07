@@ -133,7 +133,7 @@
 		font-size: clamp(1.75rem, 3.2vw, 2.75rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		max-width: 30ch;
+		max-width: 48ch;
 		margin: 0;
 		line-height: 1.1;
 		letter-spacing: -0.025em;
