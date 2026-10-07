@@ -25,7 +25,7 @@
 
 <Breadcrumb
 	title={m.public_governance()}
-	title_path="Public Governance"
+	title_path="Political Economy + AI"
 	link="seminaires"
 	link_text={m.seminars()}
 />

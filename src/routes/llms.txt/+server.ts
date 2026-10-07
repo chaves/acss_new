@@ -47,8 +47,8 @@ const sections = [
 			},
 			{
 				url: '/fr/seminaires/public-governance',
-				title: 'Public Governance Seminar',
-				note: 'Data-intensive governance of public action'
+				title: 'Political Economy + AI Seminar',
+				note: "Political economy research using AI and computational methods, co-organized with King's College London (https://peai-seminar.org)"
 			},
 			{
 				url: '/fr/seminaires/digital-regulation',

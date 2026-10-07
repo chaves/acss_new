@@ -76,7 +76,7 @@
 		: isNlp
 			? 'Upcoming AI & NLP (Natural Language Processing) Workshop'
 			: isPub
-				? 'Upcoming Public Governance Workshop'
+				? 'Upcoming Political Economy + AI Seminar'
 				: isDigitalReg
 					? 'Upcoming Digital Regulation Workshop'
 					: 'Upcoming TrEnCE Workshop'}
@@ -85,7 +85,7 @@
 		: isNlp
 			? 'Prochain atelier IA & NLP (Natural Language Processing)'
 			: isPub
-				? 'Prochain atelier Public Governance'
+				? 'Prochain séminaire Political Economy + AI'
 				: isDigitalReg
 					? 'Prochain atelier Digital Regulation'
 					: 'Prochain atelier TrEnCE'}

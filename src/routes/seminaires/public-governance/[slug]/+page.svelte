@@ -37,7 +37,7 @@
 
 	const eventSchema = $derived(
 		generateEventSchema({
-			name: buildEventName('Public Governance Workshop', seminar.title),
+			name: buildEventName('Political Economy + AI Seminar', seminar.title),
 			description: seoDescription,
 			startDate: seminar.date,
 			location: seminar.location ? { name: seminar.location } : undefined,
@@ -50,14 +50,14 @@
 		generateBreadcrumbSchema([
 			{ name: 'Institut ACSS-PSL', url: '/' },
 			{ name: 'Séminaires', url: '/seminaires' },
-			{ name: 'Public Governance Workshop', url: '/seminaires/public-governance' },
+			{ name: 'Political Economy + AI Seminar', url: '/seminaires/public-governance' },
 			{ name: seminar.title, url: `/seminaires/public-governance/${seminar.slug}` }
 		])
 	);
 </script>
 
 <SEO
-	title="Public Governance: {seminar.title} | Institut ACSS-PSL"
+	title="Political Economy + AI: {seminar.title} | Institut ACSS-PSL"
 	description={seoDescription}
 	type="article"
 />
@@ -191,7 +191,7 @@
 			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
 			</svg>
-			Back to all Public Governance sessions
+			Back to all Political Economy + AI sessions
 		</a>
 	</div>
 </article>

@@ -17,16 +17,20 @@ export const workshops = {
 		}
 	},
 	pub: {
-		name: 'Public Governance Workshop',
+		name: 'Political Economy + AI Seminar',
 		description: [
-			'The Public Governance workshop is an online seminar series focused on state of art research in political economy that uses non-traditional data and data-intensive methods.',
-			'The workshop gives a platform for the research on the role of governance in designing and developing better policies. Key features are the political environment, the role of the media, the engagement of stakeholders such as civil society and firms, the market structure and level of competition, and the independence of public regulators, among others. Particular emphasis is placed on research with NLP methods due to the proven usefulness of transforming text into data for further econometric analysis.'
+			'The Political Economy + AI seminar is an online seminar focused on political economy research using AI and computational methods. We welcome work in progress and methods talks on these topics.',
+			"The seminar is co-organized with King's College London."
 		],
-		schedule: 'Mondays from 17h30 to 19h',
+		externalLink: {
+			url: 'https://peai-seminar.org',
+			text: 'Political Economy + AI seminar'
+		},
+		schedule: 'Mondays from 17h30 to 18h30 (Paris time)',
 		registration: {
 			type: 'customWithLinks' as const,
 			contacts: [
-				{ name: 'Vladimir Avetian', email: 'vladimir.avetian@dauphine.psl.eu' },
+				{ name: 'Vladimir Avetian', email: 'vladimir.avetian@kcl.ac.uk' },
 				{ name: 'Edgar Jimenez Bedolla', email: 'edgar.jimenez-bedolla@dauphine.psl.eu' }
 			],
 			registrationPageUrl:

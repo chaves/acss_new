@@ -31,17 +31,15 @@
 
 	<div class="seminar">
 		<h3>
-			<Link href="/seminaires/public-governance">Public Governance workshop</Link>
-			<span>- on Mondays from 17h30 to 19h</span>
+			<Link href="/seminaires/public-governance">Political Economy + AI seminar</Link>
+			<span>- on Mondays from 17h30 to 18h30 (Paris time)</span>
 		</h3>
 
 		<p>
-			The Public Governance workshop focuses on the role of governance in designing and developing
-			better policies. Key features are the political environment, the role of the media, the
-			engagement of stakeholders such as civil society and firms, the market structure and level of
-			competition, and the independence of public regulators, among others. Particular emphasis is
-			placed on research with NLP methods due to the proven usefulness of transforming text into
-			data for further econometric analysis.
+			The Political Economy + AI seminar is an online seminar focused on political economy research
+			using AI and computational methods. We welcome work in progress and methods talks on these
+			topics. The seminar is co-organized with King's College London and has its own website:
+			<a href="https://peai-seminar.org" target="_blank" rel="noopener noreferrer">peai-seminar.org</a>.
 		</p>
 	</div>
 
@@ -128,6 +126,12 @@
 		font-size: 0.9rem;
 		line-height: 1.7;
 		color: var(--color-body);
+	}
+
+	.seminar p a {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: underline;
+		text-underline-offset: 2px;
 	}
 
 	.seminar ul {
