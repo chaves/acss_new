@@ -79,10 +79,13 @@ export interface TeamMember {
 	FirstName: string;
 	LastName: string;
 	Slug: string;
-	ImageFileName: string;
-	fonction: string;
+	ImageFileName?: string;
+	fonction?: string;
 	biography?: string;
 	email?: string;
+	/** Only acss_engineer authors have a team page; others link to homepage. */
+	type?: 'acss_engineer' | 'accs_other' | 'invited' | 'external' | null;
+	homepage?: string | null;
 }
 
 /**

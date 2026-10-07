@@ -11,7 +11,13 @@
 	{m.by()}
 	{#each authors as author, index}
 		<span class="mr-3">
-			<a class="font-normal" href={localizeUrl(`/equipe/${author.Slug}`)}>{author.FirstName} {author.LastName}</a>
+			{#if author.type === 'acss_engineer'}
+				<a class="font-normal" href={localizeUrl(`/equipe/${author.Slug}`)}>{author.FirstName} {author.LastName}</a>
+			{:else if author.homepage}
+				<a class="font-normal" href={author.homepage} target="_blank" rel="noopener">{author.FirstName} {author.LastName}</a>
+			{:else}
+				{author.FirstName} {author.LastName}
+			{/if}
 			{#if index < authors.length - 1}
 				,
 			{/if}

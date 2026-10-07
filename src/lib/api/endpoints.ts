@@ -162,7 +162,7 @@ export const authors = {
 		const normalizedSlug = slug.trim();
 
 		const response = await apiClient.get<StrapiCollectionResponse<TeamMember>>('/authors', {
-			filters: { Slug: normalizedSlug },
+			filters: { Slug: normalizedSlug, type: 'acss_engineer' },
 			populate: '*'
 		});
 
