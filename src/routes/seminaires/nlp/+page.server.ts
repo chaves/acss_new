@@ -4,7 +4,7 @@ import { seminars } from '#lib/api/index.js';
 export const prerender = false;
 
 export const load = (async ({ setHeaders }) => {
-	// Enable ISR with 24-hour revalidation (86400 seconds)
+	// Cache on the Vercel CDN for 24 hours (86400 seconds); a Strapi webhook rebuild clears it sooner
 	// This ensures the page is regenerated at least once per day
 	setHeaders({
 		'cache-control': 'public, max-age=0, s-maxage=86400, stale-while-revalidate=86400'

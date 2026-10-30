@@ -7,7 +7,6 @@
  *
  * Examples:
  *   node scripts/test-webhook.js https://api.vercel.com/v1/integrations/deploy/...
- *   node scripts/test-webhook.js https://acss-dig.psl.eu/api/revalidate YOUR_TOKEN
  */
 
 import https from 'https';
@@ -91,8 +90,6 @@ async function main() {
 		console.log('Examples:');
 		console.log('  # Test Vercel Deploy Hook (no token needed)');
 		console.log('  node scripts/test-webhook.js https://api.vercel.com/v1/integrations/deploy/...\n');
-		console.log('  # Test Revalidation API (token required)');
-		console.log('  node scripts/test-webhook.js https://acss-dig.psl.eu/api/revalidate?path=/en/blog YOUR_TOKEN\n');
 		process.exit(1);
 	}
 

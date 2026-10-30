@@ -54,12 +54,6 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
-	// CORS headers for API endpoints
-	if (event.url.pathname.startsWith('/api/')) {
-		response.headers.set('Access-Control-Allow-Origin', '*');
-		response.headers.set('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-	}
-
 	// Cache control headers for static assets
 	const pathname = event.url.pathname;
 	const isStaticAsset =

@@ -16,7 +16,6 @@ export const reroute: Reroute = ({ url }) => {
 		pathname.startsWith('/_app/') ||
 		pathname.startsWith('/images/') ||
 		pathname.startsWith('/files/') ||
-		pathname.startsWith('/api/') ||
 		pathname.includes('/_app/') ||
 		pathname.startsWith('/favicon') ||
 		pathname.startsWith('/apple-touch-icon') ||

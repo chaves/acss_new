@@ -2,12 +2,12 @@ import type { PageServerLoad } from './$types';
 import { posts, seminars } from '#lib/api/index.js';
 import { getUpcomingSessions } from '#lib/helpers/markdown.js';
 
-// Disable prerendering so the page is SSR'd with ISR on Vercel.
+// Disable prerendering so the page is SSR'd and cached on the Vercel CDN.
 // Prerendering freezes data at build time, causing stale seminar listings.
 export const prerender = false;
 
 export const load = (async ({ setHeaders }) => {
-	// Enable ISR with 1-hour revalidation (3600 seconds)
+	// Cache on the Vercel CDN for 1 hour (3600 seconds); a Strapi webhook rebuild clears it sooner
 	// This ensures the page is regenerated at least once per hour to keep seminar listings current
 	setHeaders({
 		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=3600'

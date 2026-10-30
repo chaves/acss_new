@@ -3,8 +3,8 @@ import { authors } from '#lib/api/index.js';
 import { error } from '@sveltejs/kit';
 
 /**
- * Use ISR (Incremental Static Regeneration) for team member pages
- * Pages are prerendered at build time and revalidated via webhook when content changes
+ * Team member pages are prerendered at build time
+ * Strapi changes reach them through the webhook that triggers a Vercel Deploy Hook rebuild
  */
 
 /**

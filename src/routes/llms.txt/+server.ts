@@ -181,5 +181,5 @@ ${curated}${sessionLinks}${postLinks}
 	});
 };
 
-// SSR with ISR so the listings stay current without a rebuild.
+// SSR with CDN caching so the listings stay current without a rebuild.
 export const prerender = false;
