@@ -6,6 +6,7 @@
 	import { getLocale } from '#lib/paraglide/runtime.js';
 	import content from '#lib/data/cluster.json';
 	import { BASE_URL } from '#lib/constants.js';
+	import { localizeUrl } from '#lib/utils.js';
 
 	const copy = content[getLocale()];
 	const charter = '/files/cluster/charte-acss-4h100-2h100-ab46b87a.pdf';
@@ -59,6 +60,20 @@
 			<p>{copy.allocation}</p>
 		</aside>
 	</section>
+
+	<div class="conditions-contact">
+		<section aria-labelledby="research-context-title">
+			<h2 id="research-context-title">{copy.contextTitle}</h2>
+			<p>{copy.fundingContext}</p>
+		</section>
+		<section class="contact" aria-labelledby="collaboration-title">
+			<h2 id="collaboration-title">{copy.collaborationTitle}</h2>
+			<p><strong>{copy.collaborationLead}</strong> {copy.collaborationText}</p>
+			<p class="contact-name">
+				<a href={localizeUrl('/equipe')} class="contact-email">{copy.collaborationLink}</a>
+			</p>
+		</section>
+	</div>
 
 	<section class="access" aria-labelledby="access-title">
 		<div class="section-intro">
