@@ -19,6 +19,11 @@ const sections = [
 				title: 'Platform',
 				note: 'Data infrastructure and methodological services'
 			},
+			{
+				url: '/fr/cluster',
+				title: 'Computing cluster',
+				note: 'H100 GPU resources, research project access, downloadable charter and contact'
+			},
 			{ url: '/fr/equipe', title: 'Team', note: 'Permanent staff and their roles' },
 			{
 				url: '/fr/membres',

@@ -15,6 +15,7 @@ const staticPages: SitemapPage[] = [
 	{ url: '/formation/hackathon_2022', changefreq: 'yearly', priority: 0.5 },
 	{ url: '/formation/psl_week_2022', changefreq: 'yearly', priority: 0.5 },
 	{ url: '/blog', changefreq: 'daily', priority: 0.9 },
+	{ url: '/cluster', changefreq: 'monthly', priority: 0.8 },
 	{ url: '/membres', changefreq: 'monthly', priority: 0.8 },
 	{ url: '/equipe', changefreq: 'monthly', priority: 0.8 },
 	{ url: '/seminaires', changefreq: 'weekly', priority: 0.9 },

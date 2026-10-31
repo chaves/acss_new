@@ -37,6 +37,7 @@ for (const language of ['fr', 'en']) {
 	const expected = [
 		['', null],
 		['/blog', null],
+		['/cluster', null],
 		['/equipe', null]
 	];
 	for (const row of snapshot.publications) {

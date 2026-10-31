@@ -1,9 +1,5 @@
 [
   {
-    "title": "Accueil",
-    "path": "/"
-  },
-  {
     "title": "Présentation",
     "children": [
       {
@@ -57,6 +53,10 @@
   {
     "title": "Blog",
     "path": "/blog"
+  },
+  {
+    "title": "Cluster",
+    "path": "/cluster"
   },
   {
     "title": "Autres activités",

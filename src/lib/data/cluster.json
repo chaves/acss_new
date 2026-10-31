@@ -1,0 +1,96 @@
+{
+	"fr": {
+		"title": "Le cluster de calcul ACSS",
+		"description": "Le cluster GPU H100 d’ACSS pour la recherche en sciences sociales : ressources, conditions d’accès, charte à télécharger et contact.",
+		"subtitle": "Le calcul GPU au service de la recherche en sciences sociales.",
+		"lead": "L’Institut ACSS met des ressources de calcul à la disposition des chercheurs et des étudiants avancés pour leurs projets en sciences sociales.",
+		"overview": "Les serveurs 4H100 et 2H100, équipés de GPU NVIDIA H100, permettent notamment d’exploiter des modèles de langage ouverts, de traiter des corpus de textes et d’adapter des modèles à une question de recherche.",
+		"resources": "Deux serveurs GPU",
+		"allocation": "ACSS détermine les ressources adaptées à chaque projet à partir des besoins décrits dans la demande.",
+		"download": "Télécharger la charte",
+		"format": "PDF remplissable · en anglais · 3 pages",
+		"contactAction": "Nous contacter",
+		"accessTitle": "Demander un accès",
+		"accessIntro": "L’accès est nominatif, accordé pour un projet de recherche et une période définis, après validation par la direction d’ACSS.",
+		"steps": [
+			{
+				"title": "Présenter le projet",
+				"body": "Précisez la question de recherche, le responsable scientifique, les dates souhaitées et les modèles, données ou logiciels envisagés. Des estimations approximatives suffisent."
+			},
+			{
+				"title": "Compléter la charte",
+				"body": "Téléchargez le PDF, renseignez les champs du formulaire et signez-le. Une nouvelle charte est nécessaire pour chaque nouveau projet."
+			},
+			{
+				"title": "Transmettre la demande",
+				"body": "Envoyez la charte à Bruno Chaves Ferreira. ACSS examine le projet et définit avec vous les modalités et la durée d’accès."
+			}
+		],
+		"conditionsTitle": "Un cadre commun pour les projets",
+		"conditions": [
+			{
+				"title": "Un usage de recherche validé",
+				"body": "Les ressources sont strictement réservées aux projets approuvés par la direction d’ACSS. Tout autre usage est proscrit. Une prolongation des accès nécessite un accord explicite."
+			},
+			{
+				"title": "Des fichiers sous votre responsabilité",
+				"body": "Vous assurez la protection de vos données et vos propres sauvegardes. ACSS ne garantit ni sauvegarde ni récupération. À la fin du projet, signalez sa clôture et supprimez les données, codes et résultats du cluster."
+			},
+			{
+				"title": "Des résultats à partager",
+				"body": "Transmettez à ACSS les références de toute publication, document de travail public ou présentation ayant bénéficié du cluster, y compris après la fin du projet."
+			}
+		],
+		"contactTitle": "Votre contact pour le cluster",
+		"contactText": "Pour discuter de la faisabilité d’un projet, préciser vos besoins ou transmettre votre charte, contactez :",
+		"acknowledgementTitle": "Remerciements dans les publications",
+		"acknowledgementIntro": "Chaque publication ayant bénéficié du cluster doit inclure la formule suivante :"
+	},
+	"en": {
+		"title": "The ACSS computing cluster",
+		"description": "ACSS H100 GPU computing for social science research: resources, access conditions, downloadable project charter and contact details.",
+		"subtitle": "GPU computing for social science research.",
+		"lead": "The ACSS Institute provides computing resources for researchers and advanced students working on social science projects.",
+		"overview": "The 4H100 and 2H100 servers, equipped with NVIDIA H100 GPUs, support work such as running open language models, processing text corpora and adapting models to a research question.",
+		"resources": "Two GPU servers",
+		"allocation": "ACSS selects suitable resources for each project based on the needs described in the application.",
+		"download": "Download the charter",
+		"format": "Fillable PDF · English · 3 pages",
+		"contactAction": "Contact us",
+		"accessTitle": "Request access",
+		"accessIntro": "Access is granted to a named user, for a defined research project and period, following approval by the ACSS management.",
+		"steps": [
+			{
+				"title": "Describe your project",
+				"body": "Outline the research question, scientific lead, requested dates and intended models, data or software. Approximate estimates are sufficient."
+			},
+			{
+				"title": "Complete the charter",
+				"body": "Download the PDF, complete its form fields and sign it. Each new project requires a new charter."
+			},
+			{
+				"title": "Submit your request",
+				"body": "Send the charter to Bruno Chaves Ferreira. ACSS reviews the project and agrees the access arrangements and duration with you."
+			}
+		],
+		"conditionsTitle": "A shared framework for research projects",
+		"conditions": [
+			{
+				"title": "Approved research use",
+				"body": "Resources are strictly reserved for research projects approved by the ACSS management. All other use is prohibited. Access extensions require explicit approval."
+			},
+			{
+				"title": "Responsibility for your files",
+				"body": "You are responsible for data protection and your own backups. ACSS does not guarantee backups or recovery. At the end of the project, notify ACSS and delete the project’s data, code and results from the cluster."
+			},
+			{
+				"title": "Sharing research outputs",
+				"body": "Send ACSS references to every publication, public working paper or presentation that benefited from the cluster, including after the project has ended."
+			}
+		],
+		"contactTitle": "Your cluster contact",
+		"contactText": "To discuss a project’s feasibility, clarify your computing needs or submit your charter, contact:",
+		"acknowledgementTitle": "Acknowledgements in publications",
+		"acknowledgementIntro": "Every publication that benefited from the cluster must include the following acknowledgement:"
+	}
+}
