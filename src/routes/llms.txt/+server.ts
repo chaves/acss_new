@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { posts } from '#lib/api/index.js';
+import { posts } from '#lib/server/content.js';
 import { getAllSessions } from '#lib/helpers/markdown.js';
 
 const BASE_URL = 'https://acss-dig.psl.eu';
@@ -171,7 +171,7 @@ ${curated}${sessionLinks}${postLinks}
 `;
 
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=86400'
+		'cache-control': 'public, max-age=0, must-revalidate'
 	});
 
 	return new Response(body, {
@@ -182,4 +182,4 @@ ${curated}${sessionLinks}${postLinks}
 };
 
 // SSR with CDN caching so the listings stay current without a rebuild.
-export const prerender = false;
+export const prerender = true;

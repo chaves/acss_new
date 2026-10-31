@@ -2,8 +2,8 @@
  * Application-wide constants and configuration
  */
 
-/** Base CMS URL for Strapi */
-export const CMS_URL = 'https://cms.acss-psl.eu';
+/** Public media files served by the ACSS extranet. */
+export const MEDIA_URL = 'https://extranet.acss-psl.eu';
 
 /** Production website URL */
 export const BASE_URL = 'https://acss-dig.psl.eu';
@@ -58,7 +58,6 @@ export const IMAGE_SIZES = {
 	LARGE: 'large'
 } as const;
 
-export type Locale = typeof LOCALES[keyof typeof LOCALES];
-export type ImageSize = typeof IMAGE_SIZES[keyof typeof IMAGE_SIZES];
-export type ImageLoading = typeof IMAGE_LOADING[keyof typeof IMAGE_LOADING];
-
+export type Locale = (typeof LOCALES)[keyof typeof LOCALES];
+export type ImageSize = (typeof IMAGE_SIZES)[keyof typeof IMAGE_SIZES];
+export type ImageLoading = (typeof IMAGE_LOADING)[keyof typeof IMAGE_LOADING];

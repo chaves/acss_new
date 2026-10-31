@@ -1,16 +1,13 @@
 import type { PageServerLoad } from './$types';
-import { posts, seminars } from '#lib/api/index.js';
-import { getUpcomingSessions } from '#lib/helpers/markdown.js';
+import { posts, seminars } from '#lib/server/content.js';
+import { upcomingAcssSessions } from '#lib/server/acss-sessions.js';
+import { todayInParis } from '#lib/server/content-query.js';
 
-// Disable prerendering so the page is SSR'd and cached on the Vercel CDN.
-// Prerendering freezes data at build time, causing stale seminar listings.
-export const prerender = false;
+export const prerender = true;
 
 export const load = (async ({ setHeaders }) => {
-	// Cache on the Vercel CDN for 1 hour (3600 seconds); a Strapi webhook rebuild clears it sooner
-	// This ensures the page is regenerated at least once per hour to keep seminar listings current
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=3600, stale-while-revalidate=3600'
+		'cache-control': 'public, max-age=0, must-revalidate'
 	});
 
 	try {
@@ -18,13 +15,12 @@ export const load = (async ({ setHeaders }) => {
 		const [upcomingSeminars, recentPosts, acssSessions] = await Promise.all([
 			seminars.getUpcoming(5),
 			posts.getRecent(7),
-			Promise.resolve(getUpcomingSessions())
+			upcomingAcssSessions()
 		]);
 
 		// Find the next upcoming seminar across all categories
 		// Use start of today so seminars happening today are still shown
-		const now = new Date();
-		now.setHours(0, 0, 0, 0);
+		const now = new Date(todayInParis() + 'T00:00:00Z');
 
 		// Combine all upcoming seminars with normalized structure
 		const allUpcoming: Array<{

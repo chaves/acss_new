@@ -13,32 +13,21 @@ export default defineConfig({
 			extensions: ['.svelte', '.svx'],
 			adapter: adapter(),
 			paths: {
-				// Only set absolute assets path in production (Vercel will set VERCEL env var)
-				assets: process.env.VERCEL ? 'https://acss-dig.psl.eu' : '',
+				// Each deployment serves its own asset hashes; previews keep their own form origin.
+				assets: '',
 				base: '',
 				relative: false,
-				origin: 'https://acss-dig.psl.eu'
+				origin: process.env.VERCEL_ENV === 'preview' ? undefined : 'https://acss-dig.psl.eu'
 			},
 			prerender: {
 				crawl: true,
 				entries: ['*', '/fr/candidate', '/en/candidate'],
 				// Handle 404s gracefully during prerendering (e.g., deleted team members linked from Strapi content)
-				handleHttpError: ({ path, referrer, message }) => {
-					// Ignore 404s for team member pages - they might be linked from old content
-					if (path.startsWith('/equipe/') || path.startsWith('/membres/')) {
-						console.warn(`Ignoring 404 for ${path} (linked from ${referrer})`);
-
+				handleHttpError: ({ status, path, message }) => {
+					const route = path.replace(/^\/(?:fr|en)(?=\/)/, '');
+					// Older content still links to former team profiles; preserve their 404 response.
+					if (status === 404 && (route.startsWith('/equipe/') || route.startsWith('/membres/')))
 						return;
-					}
-
-					// Ignore 404s for dynamic seminar detail pages (SSR only, not prerendered)
-					if (path.match(/\/seminaires\/(nlp|public-governance)\/[^/]+$/)) {
-						console.warn(`Skipping prerender for dynamic seminar page ${path}`);
-
-						return;
-					}
-
-					// Throw error for other 404s
 					throw new Error(message);
 				}
 			},
@@ -46,7 +35,7 @@ export default defineConfig({
 				mode: 'auto',
 				directives: {
 					'script-src': ['self', 'unsafe-inline'],
-					'img-src': ['self', 'data:', 'https://cms.acss-psl.eu']
+					'img-src': ['self', 'data:', 'https://extranet.acss-psl.eu']
 				}
 			}
 		}),

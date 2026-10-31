@@ -10,7 +10,7 @@
 	 * - SEO-friendly alt text
 	 */
 
-	import { getImageUrl, buildSrcSet, buildWebPSrcSet, getImageDimensions } from '#lib/services/strapi.js';
+	import { getImageUrl, buildSrcSet, buildWebPSrcSet, getImageDimensions } from '#lib/services/media.js';
 	import type { StrapiImage } from '#lib/types/index.js';
 	import type { ImageSize, ImageLoading } from '#lib/constants.js';
 

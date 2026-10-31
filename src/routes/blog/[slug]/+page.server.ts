@@ -1,13 +1,12 @@
 import type { PageServerLoad } from './$types';
-import { posts } from '#lib/api/index.js';
+import { posts, contentEntries } from '#lib/server/content.js';
 import { error } from '@sveltejs/kit';
 
-// Keep the request locale available to Paraglide when rendering CMS pages.
-export const prerender = false;
+export const prerender = true;
 
 export const load = (async ({ params, setHeaders }) => {
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=300, stale-while-revalidate=3600'
+		'cache-control': 'public, max-age=0, must-revalidate'
 	});
 
 	try {
@@ -26,3 +25,7 @@ export const load = (async ({ params, setHeaders }) => {
 		throw err;
 	}
 }) satisfies PageServerLoad;
+
+export function entries() {
+	return contentEntries('POST');
+}

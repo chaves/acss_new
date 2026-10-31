@@ -5,16 +5,18 @@
 	"type": "module",
 	"packageManager": "pnpm@10.30.1",
 	"scripts": {
-		"dev": "vite dev",
-		"build": "vite build",
-		"preview": "vite preview",
+		"dev": "pnpm content:snapshot && node --env-file-if-exists=.env.local node_modules/vite/bin/vite.js dev",
+		"build": "pnpm content:snapshot && vite build && pnpm test:static",
+		"preview": "node --env-file-if-exists=.env.local node_modules/vite/bin/vite.js preview",
 		"prepare": "svelte-kit sync || echo ''",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
 		"format": "prettier --write .",
 		"lint": "prettier --check . && eslint .",
 		"test:e2e": "playwright test",
-		"test": "npm run test:e2e"
+		"test": "npm run test:e2e",
+		"content:snapshot": "node --env-file-if-exists=.env.local scripts/snapshot-content.mjs",
+		"test:static": "node tests/static-artifacts.mjs"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.4.1",
@@ -54,7 +56,9 @@
 		"@fontsource/montserrat": "^5.3.0",
 		"@fontsource/quicksand": "^5.3.0",
 		"@inlang/paraglide-js": "^2.22.0",
-		"gray-matter": "^4.0.3"
+		"@vercel/functions": "3.10.5",
+		"gray-matter": "^4.0.3",
+		"mysql2": "3.24.6"
 	},
 	"imports": {
 		"#lib": "./src/lib/index.js",

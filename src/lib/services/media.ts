@@ -1,8 +1,8 @@
 /**
- * Strapi CMS service for API interactions
+ * Public media URL and responsive image helpers
  */
 
-import { CMS_URL } from '#lib/constants.js';
+import { MEDIA_URL } from '#lib/constants.js';
 
 /**
  * Build full Strapi URL for an image
@@ -11,7 +11,7 @@ import { CMS_URL } from '#lib/constants.js';
  */
 export function buildImageUrl(path: string): string {
 	if (!path) return '';
-	return path.startsWith('http') ? path : `${CMS_URL}${path}`;
+	return path.startsWith('http') ? path : `${MEDIA_URL}${path}`;
 }
 
 /**
@@ -96,4 +96,14 @@ export function getImageDimensions(
 	}
 
 	return undefined;
+}
+
+/** Move the former CMS media URLs to their preserved copies on AlwaysData. */
+export function rewriteMediaReferences(value: string): string {
+	return value
+		.replaceAll('https://cms.acss-psl.eu/uploads/', MEDIA_URL + '/uploads/')
+		.replace(
+			/(^|[\s("'=])\/uploads\/([a-zA-Z0-9_.-]+)/g,
+			(_, prefix, name) => `${prefix}${MEDIA_URL}/uploads/${name}`
+		);
 }

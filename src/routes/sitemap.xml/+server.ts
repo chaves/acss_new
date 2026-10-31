@@ -1,5 +1,5 @@
 import type { RequestHandler } from './$types';
-import { posts, seminars, authors } from '#lib/api/index.js';
+import { posts, seminars, authors } from '#lib/server/content.js';
 
 const BASE_URL = 'https://acss-dig.psl.eu';
 
@@ -39,6 +39,7 @@ const sessionSlugs = Object.keys(sessionFiles).map((file) =>
 
 // Strapi seminar type → route segment (mirrors the type checks in each [slug] loader)
 const seminarRoutes: Record<string, string> = {
+	acss: 'acss',
 	nlp: 'nlp',
 	pub: 'public-governance',
 	digitalReg: 'digital-regulation',
@@ -161,13 +162,17 @@ ${urlEntries}
 
 export const GET: RequestHandler = async () => {
 	const dynamicPages = await fetchDynamicPages();
-	const allPages = [...staticPages, ...dynamicPages];
+	const allPages = [
+		...new Map([...staticPages, ...dynamicPages].map((page) => [page.url, page])).values()
+	];
 	const sitemap = generateSitemap(allPages);
 
 	return new Response(sitemap, {
 		headers: {
 			'Content-Type': 'application/xml',
-			'Cache-Control': 'public, max-age=3600' // Cache for 1 hour
+			'Cache-Control': 'public, max-age=0, must-revalidate' // Cache for 1 hour
 		}
 	});
 };
+
+export const prerender = true;

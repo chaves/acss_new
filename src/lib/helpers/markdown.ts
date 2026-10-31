@@ -1,5 +1,3 @@
-import fs from 'fs';
-import path from 'path';
 import matter from 'gray-matter';
 import { marked } from 'marked';
 
@@ -26,61 +24,37 @@ export interface Session {
 	html: string;
 }
 
-const SESSIONS_DIR = path.join(process.cwd(), 'src/routes/seminaires/acss/sessions');
+const sessionFiles = import.meta.glob('/src/routes/seminaires/acss/sessions/*.md', {
+	query: '?raw',
+	import: 'default',
+	eager: true
+}) as Record<string, string>;
+const filesBySlug = new Map(
+	Object.entries(sessionFiles).map(([file, content]) => [
+		file.slice(file.lastIndexOf('/') + 1, -3),
+		content
+	])
+);
 
-/**
- * Get all session markdown files
- */
 export function getAllSessions(): Session[] {
-	try {
-		const files = fs.readdirSync(SESSIONS_DIR);
-		const sessions = files
-			.filter((file: string) => file.endsWith('.md'))
-			.map((file: string) => {
-				const slug = file.replace('.md', '');
-				const session = getSessionBySlug(slug);
-				return session;
-			})
-			.filter((session: Session | null): session is Session => session !== null)
-			.sort((a: Session, b: Session) => {
-				// Sort by date descending (newest first)
-				return new Date(b.frontmatter.date).getTime() - new Date(a.frontmatter.date).getTime();
-			});
-
-		return sessions;
-	} catch (error) {
-		console.error('Error reading sessions directory:', error);
-		return [];
-	}
+	return [...filesBySlug.keys()]
+		.map(getSessionBySlug)
+		.filter((session): session is Session => session !== null)
+		.sort((a, b) => b.frontmatter.date.localeCompare(a.frontmatter.date));
 }
-
-/**
- * Get a specific session by slug
- */
 export function getSessionBySlug(slug: string): Session | null {
-	try {
-		const filePath = path.join(SESSIONS_DIR, `${slug}.md`);
-
-		if (!fs.existsSync(filePath)) {
-			return null;
-		}
-
-		const fileContent = fs.readFileSync(filePath, 'utf-8');
-		const { data, content } = matter(fileContent);
-
-		// Parse markdown to HTML (marked.parse is synchronous)
-		const html = marked.parse(content) as string;
-
-		return {
-			slug,
-			frontmatter: data as SessionFrontmatter,
-			content,
-			html
-		};
-	} catch (error) {
-		console.error(`Error reading session ${slug}:`, error);
-		return null;
-	}
+	const source = filesBySlug.get(slug);
+	if (source === undefined) return null;
+	const { data, content } = matter(source);
+	return {
+		slug,
+		frontmatter: {
+			...data,
+			date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date)
+		} as SessionFrontmatter,
+		content,
+		html: marked.parse(content) as string
+	};
 }
 
 /**

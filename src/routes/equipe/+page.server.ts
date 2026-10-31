@@ -1,5 +1,7 @@
 import type { PageServerLoad } from './$types';
-import { authors } from '#lib/api/index.js';
+import { authors } from '#lib/server/content.js';
+
+export const prerender = true;
 
 export const load = (async () => {
 	try {

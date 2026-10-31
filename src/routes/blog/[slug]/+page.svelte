@@ -8,7 +8,7 @@
 	import { generateArticleSchema, generateBreadcrumbSchema } from '#lib/seo/schema-utils.js';
 	import { formatDate, getOGLocale } from '#lib/helpers/locale.js';
 	import { generateDescription } from '#lib/helpers/ui.js';
-	import { getImageUrl } from '#lib/services/strapi.js';
+	import { getImageUrl } from '#lib/services/media.js';
 	import { marked } from 'marked';
 	import PostAuthors from '#lib/components/layout/PostAuthors.svelte';
 	import OptimizedImage from '#lib/components/OptimizedImage.svelte';

@@ -1,36 +1,8 @@
 import type { PageServerLoad } from './$types';
-import { authors } from '#lib/api/index.js';
+import { authors, contentEntries } from '#lib/server/content.js';
 import { error } from '@sveltejs/kit';
 
-/**
- * Team member pages are prerendered at build time
- * Strapi changes reach them through the webhook that triggers a Vercel Deploy Hook rebuild
- */
-
-/**
- * Generate entries for prerendering at build time
- * Only includes existing members from the API
- */
-export async function entries() {
-	try {
-		const team = await authors.getTeam();
-		const entries: Array<{ slug: string }> = [];
-
-		for (const member of team) {
-			const slug = (member as any).Slug || (member as any).slug;
-			if (slug && typeof slug === 'string') {
-				entries.push({ slug: slug.trim() });
-			}
-		}
-
-		console.log(`[equipe/[slug]] Generated ${entries.length} team member entries`);
-		return entries;
-	} catch (err) {
-		console.error('[equipe/[slug]] Error generating entries:', err);
-		// Return empty array if API fails during build
-		return [];
-	}
-}
+export const prerender = true;
 
 export const load = (async ({ params }) => {
 	try {
@@ -51,3 +23,7 @@ export const load = (async ({ params }) => {
 		return { membre: [] };
 	}
 }) satisfies PageServerLoad;
+
+export function entries() {
+	return contentEntries('AUTHOR', 'acss_engineer');
+}

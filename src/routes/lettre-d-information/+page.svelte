@@ -1,19 +1,28 @@
 <script lang="ts">
 	import SEO from '#lib/seo/SEO.svelte';
-	import { mailingList, ApiError } from '#lib/api/index.js';
+	import { enhance } from '$app/forms';
+	import { untrack } from 'svelte';
+	import type { PageProps } from './$types';
+	let { form }: PageProps = $props();
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import * as m from '#lib/paraglide/messages.js';
 
 	type FormState = 'idle' | 'submitting' | 'success' | 'error';
 
-	let firstName = $state('');
-	let lastName = $state('');
-	let institution = $state('');
-	let email = $state('');
+	let firstName = $state(untrack(() => form?.values?.firstName || ''));
+	let lastName = $state(untrack(() => form?.values?.lastName || ''));
+	let institution = $state(untrack(() => form?.values?.institution || ''));
+	let email = $state(untrack(() => form?.values?.email || ''));
 
-	let formState: FormState = $state('idle');
-	let errors = $state<Record<string, string>>({});
-	let errorMessage = $state('');
+	let formState: FormState = $state(
+		untrack(() => (form?.success ? 'success' : form?.code ? 'error' : 'idle')),
+	);
+	let errors = $state<Record<string, string>>(
+		untrack(() => (form as { errors?: Record<string, string> } | null)?.errors || {}),
+	);
+	let errorMessage = $state(
+		untrack(() => (form?.code === 'duplicate' ? m.email_already_registered() : '')),
+	);
 
 	/**
 	 * Validate email format
@@ -50,67 +59,34 @@
 		return Object.keys(errors).length === 0;
 	}
 
-	/**
-	 * Handle form submission
-	 */
-	async function handleSubmit(event: SubmitEvent) {
-		event.preventDefault();
-
+	function beginSubmit({ cancel }: { cancel: () => void }) {
 		if (!validateForm()) {
+			cancel();
 			return;
 		}
-
 		formState = 'submitting';
 		errorMessage = '';
-
-		try {
-			await mailingList.subscribe({
-				firstName: firstName.trim(),
-				lastName: lastName.trim(),
-				institution: institution.trim(),
-				email: email.trim().toLowerCase()
-			});
-
-			formState = 'success';
-			// Reset form
-			firstName = '';
-			lastName = '';
-			institution = '';
-			email = '';
-		} catch (error) {
-			formState = 'error';
-			console.error('Subscription error:', error);
-
-			// Check if it's a duplicate email error
-			if (error instanceof ApiError) {
-				const errorMsg = error.message.toLowerCase();
-				const isDuplicateError =
-					errorMsg.includes('unique') ||
-					errorMsg.includes('duplicate') ||
-					errorMsg.includes('already exists') ||
-					(error.status === 400 && errorMsg.includes('email'));
-
-				if (isDuplicateError) {
-					errorMessage = m.email_already_registered();
-				} else {
-					errorMessage = error.message || m.subscription_error();
-				}
-			} else if (error instanceof Error) {
-				// Check for duplicate in generic error messages
-				const errorMsg = error.message.toLowerCase();
-				if (
-					errorMsg.includes('unique') ||
-					errorMsg.includes('duplicate') ||
-					errorMsg.includes('already exists')
-				) {
-					errorMessage = m.email_already_registered();
-				} else {
-					errorMessage = error.message || m.subscription_error();
-				}
+		return async ({
+			result,
+			update,
+		}: {
+			result: any;
+			update: (options: { reset: boolean }) => Promise<void>;
+		}) => {
+			await update({ reset: false });
+			if (result.type === 'success' && result.data?.success) {
+				formState = 'success';
+				firstName = '';
+				lastName = '';
+				institution = '';
+				email = '';
 			} else {
-				errorMessage = m.subscription_error();
+				formState = 'error';
+				errors = result.data?.errors || {};
+				errorMessage =
+					result.data?.code === 'duplicate' ? m.email_already_registered() : m.subscription_error();
 			}
-		}
+		};
 	}
 
 	// Get localized page title
@@ -144,7 +120,8 @@
 				</div>
 			</div>
 		{:else}
-			<form onsubmit={handleSubmit} class="space-y-6">
+			<form method="POST" use:enhance={beginSubmit} class="space-y-6">
+                <div class="sr-only" aria-hidden="true"><label for="website">Website</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
 				{#if formState === 'error'}
 					<div class="p-4 bg-red-50 border border-red-200 rounded-lg">
 						<div class="flex items-start">
@@ -173,6 +150,8 @@
 					<input
 						type="text"
 						id="firstName"
+                        name="firstName"
+                        maxlength="150"
 						bind:value={firstName}
 						class="form-input"
 						class:border-red-500={errors.firstName}
@@ -193,6 +172,8 @@
 					<input
 						type="text"
 						id="lastName"
+                        name="lastName"
+                        maxlength="150"
 						bind:value={lastName}
 						class="form-input"
 						class:border-red-500={errors.lastName}
@@ -213,6 +194,8 @@
 					<input
 						type="text"
 						id="institution"
+                        name="institution"
+                        maxlength="300"
 						bind:value={institution}
 						class="form-input"
 						class:border-red-500={errors.institution}
@@ -233,6 +216,8 @@
 					<input
 						type="email"
 						id="email"
+                        name="email"
+                        maxlength="254"
 						bind:value={email}
 						class="form-input"
 						class:border-red-500={errors.email}

@@ -1,20 +1,17 @@
 import type { PageServerLoad } from './$types';
-import { seminars } from '#lib/api/index.js';
+import { seminars } from '#lib/server/content.js';
+import { todayInParis } from '#lib/server/content-query.js';
 
-export const prerender = false;
+export const prerender = true;
 
 export const load = (async ({ setHeaders }) => {
-	// Cache on the Vercel CDN for 24 hours (86400 seconds); a Strapi webhook rebuild clears it sooner
-	// This ensures the page is regenerated at least once per day
 	setHeaders({
-		'cache-control': 'public, max-age=0, s-maxage=86400, stale-while-revalidate=86400'
+		'cache-control': 'public, max-age=0, must-revalidate'
 	});
 
 	try {
 		// Use start of today so seminars remain "upcoming" for the entire day
-		const todayDate = new Date();
-		todayDate.setHours(0, 0, 0, 0);
-		const today = todayDate.toISOString();
+		const today = todayInParis();
 
 		// Run both requests concurrently
 		const [seminars_upcoming, seminars_past] = await Promise.all([

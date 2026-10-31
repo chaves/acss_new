@@ -54,6 +54,11 @@ const handleHeaders: Handle = async ({ event, resolve }) => {
 	response.headers.set('Referrer-Policy', 'strict-origin-when-cross-origin');
 	response.headers.set('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
 
+	if (event.request.method !== 'GET' && event.request.method !== 'HEAD') {
+		response.headers.set('Cache-Control', 'private, no-store');
+		return response;
+	}
+
 	// Cache control headers for static assets
 	const pathname = event.url.pathname;
 	const isStaticAsset =
