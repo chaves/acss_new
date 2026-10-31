@@ -22,7 +22,7 @@
 	url: pageUrl('/cluster'),
 	inLanguage: getLocale(),
 	isPartOf: { '@type': 'WebSite', name: 'Institut ACSS-PSL', url: BASE_URL },
-	associatedMedia: {
+	hasPart: {
 		'@type': 'DigitalDocument',
 		name: 'ACSS 4H100 and 2H100 Research Project Access Charter',
 		url: BASE_URL + charter,
