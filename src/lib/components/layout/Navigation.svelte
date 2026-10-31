@@ -4,6 +4,7 @@
 	import { locales } from '#lib/paraglide/runtime.js';
 	import * as m from '#lib/paraglide/messages.js';
 	import LanguageSwitch from './LanguageSwitch.svelte';
+	import { EXTRANET_URL } from '#lib/constants.js';
 	import MenuFR from '#lib/data/menu_fr.json';
 	import MenuEN from '#lib/data/menu_en.json';
 
@@ -146,6 +147,9 @@
 						</li>
 					{/if}
 				{/each}
+				<li class="nav-item">
+					<a href={EXTRANET_URL} class="nav-link">Extranet</a>
+				</li>
 			</ul>
 
 			<!-- Newsletter Icon Button -->
@@ -270,6 +274,9 @@
 						</li>
 					{/if}
 				{/each}
+				<li class="mobile-nav-item">
+					<a href={EXTRANET_URL} class="mobile-nav-link" onclick={closeMobileMenu}>Extranet</a>
+				</li>
 			</ul>
 
 			<!-- Newsletter Button for Mobile -->
@@ -854,7 +861,9 @@
 		.logo {
 			height: 3.75rem;
 		}
+	}
 
+	@media (min-width: 1280px) {
 		.desktop-nav {
 			display: flex;
 			align-items: center;

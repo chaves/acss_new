@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from '#lib/paraglide/messages.js';
 	import { localizeUrl } from '#lib/utils.js';
+	import { EXTRANET_URL } from '#lib/constants.js';
 	import { LinkedinSolid } from 'flowbite-svelte-icons';
 </script>
 
@@ -71,6 +72,8 @@
 					{m.site_made_by()}
 				</p>
 				<div class="footer-links">
+					<a href={EXTRANET_URL} class="footer-link">Extranet</a>
+					<span class="divider">•</span>
 					<a
 						href="https://www.linkedin.com/company/acss-psl"
 						class="footer-link social-link"

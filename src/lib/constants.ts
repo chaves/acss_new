@@ -2,8 +2,9 @@
  * Application-wide constants and configuration
  */
 
-/** Public media files served by the ACSS extranet. */
-export const MEDIA_URL = 'https://extranet.acss-psl.eu';
+/** Private workspace and public media files served by the ACSS extranet. */
+export const EXTRANET_URL = 'https://extranet.acss-psl.eu';
+export const MEDIA_URL = EXTRANET_URL;
 
 /** Production website URL */
 export const BASE_URL = 'https://acss-dig.psl.eu';
