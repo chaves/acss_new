@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronDownOutline, CloseOutline, BarsOutline, EnvelopeOutline } from 'flowbite-svelte-icons';
+	import { ChevronDownOutline, CloseOutline, BarsOutline, EnvelopeOutline, UserOutline } from 'flowbite-svelte-icons';
 	import { page } from '$app/state';
 	import { locales } from '#lib/paraglide/runtime.js';
 	import * as m from '#lib/paraglide/messages.js';
@@ -147,19 +147,26 @@
 						</li>
 					{/if}
 				{/each}
-				<li class="nav-item">
-					<a href={EXTRANET_URL} class="nav-link">Extranet</a>
-				</li>
 			</ul>
 
-			<!-- Newsletter Icon Button -->
-			<a
-				href={localizeUrl('/lettre-d-information')}
-				class="newsletter-button"
-				aria-label={m.subscribe_letter()}
-			>
-				<EnvelopeOutline class="newsletter-icon" />
-			</a>
+			<div class="desktop-actions">
+				<a
+					href={localizeUrl('/lettre-d-information')}
+					class="newsletter-button"
+					aria-label={m.subscribe_letter()}
+					title={m.subscribe_letter()}
+				>
+					<EnvelopeOutline class="newsletter-icon" />
+				</a>
+				<a
+					href={EXTRANET_URL}
+					class="extranet-button"
+					aria-label={lang === 'en' ? 'Access the extranet' : 'Accéder à l’extranet'}
+					title="Extranet"
+				>
+					<UserOutline class="extranet-icon" />
+				</a>
+			</div>
 
 			<!-- Language Switcher for Desktop -->
 			<div class="desktop-lang-switch">
@@ -517,19 +524,33 @@
 		font-weight: 600;
 	}
 
-	/* ==================== Newsletter Button (Desktop) ==================== */
-	.newsletter-button {
+	/* ==================== Icon Buttons (Desktop) ==================== */
+	.desktop-actions {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+	}
+
+	.newsletter-button,
+	.extranet-button {
 		display: flex;
 		align-items: center;
 		justify-content: center;
 		width: 2.75rem;
 		height: 2.75rem;
-		background: var(--acss-red, #b6467c);
+		flex-shrink: 0;
 		color: white;
 		border-radius: 0.75rem;
-		margin-left: 1rem;
 		transition: all 0.3s ease-in-out;
 		text-decoration: none;
+	}
+
+	.newsletter-button {
+		background: var(--acss-red, #b6467c);
+	}
+
+	.extranet-button {
+		background: var(--acss-blue-dark, #1d4796);
 	}
 
 	.newsletter-button:hover {
@@ -537,17 +558,30 @@
 		background: var(--acss-red-dark, #9a3d65);
 	}
 
-	.newsletter-button:active {
+	.extranet-button:hover {
+		transform: translateY(-2px);
+		background: #15366f;
+	}
+
+	.newsletter-button:focus-visible,
+	.extranet-button:focus-visible {
+		outline: 3px solid var(--acss-blue, #4a6caa);
+		outline-offset: 3px;
+	}
+
+	.newsletter-button:active,
+	.extranet-button:active {
 		transform: translateY(0);
 	}
 
-	:global(.newsletter-icon) {
+	:global(.newsletter-icon),
+	:global(.extranet-icon) {
 		width: 1.5rem;
 		height: 1.5rem;
 	}
 
 	.desktop-lang-switch {
-		margin-left: 1rem;
+		margin-left: 0;
 		padding-left: 1rem;
 		border-left: 1px solid #e2e8f0;
 	}
