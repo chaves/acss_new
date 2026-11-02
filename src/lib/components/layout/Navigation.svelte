@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ChevronDownOutline, CloseOutline, BarsOutline, EnvelopeOutline, UserOutline } from 'flowbite-svelte-icons';
+	import { ChevronDownOutline, CloseOutline, BarsOutline } from 'flowbite-svelte-icons';
 	import { page } from '$app/state';
 	import { locales } from '#lib/paraglide/runtime.js';
 	import * as m from '#lib/paraglide/messages.js';
@@ -75,8 +75,49 @@
 	}}
 />
 
+{#snippet accessLinks()}
+	<a
+		href={localizeUrl('/lettre-d-information')}
+		class="utility-link"
+		title={m.subscribe_letter()}
+		onclick={closeMobileMenu}
+	>
+		<svg
+			class="utility-icon"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.6"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<rect x="3" y="5" width="18" height="14" rx="2" />
+			<path d="m3 7 9 6 9-6" />
+		</svg>
+		<span>{lang === 'en' ? 'Newsletter' : 'Lettre d’information'}</span>
+	</a>
+	<a href={EXTRANET_URL} class="utility-link" onclick={closeMobileMenu}>
+		<svg
+			class="utility-icon"
+			viewBox="0 0 24 24"
+			fill="none"
+			stroke="currentColor"
+			stroke-width="1.6"
+			stroke-linecap="round"
+			stroke-linejoin="round"
+			aria-hidden="true"
+		>
+			<circle cx="12" cy="12" r="9" />
+			<circle cx="12" cy="9" r="3" />
+			<path d="M5.6 18.3a7 7 0 0 1 12.8 0" />
+		</svg>
+		<span>Extranet</span>
+	</a>
+{/snippet}
+
 <header class="header">
-	<nav class="nav-container">
+	<nav class="nav-container" aria-label={lang === 'en' ? 'Main navigation' : 'Navigation principale'}>
 		<!-- Logo -->
 		<a href={localizeUrl('/')} class="logo-link">
 			<img
@@ -85,12 +126,20 @@
 				alt="ACSS-PSL Institute Logo"
 				loading="eager"
 				decoding="async"
-				fetchpriority="high" width="386" height="75"
+				fetchpriority="high"
+				width="386"
+				height="75"
 			/>
 		</a>
 
 		<!-- Desktop Navigation -->
 		<div class="desktop-nav">
+			<div class="desktop-utilities">
+				{@render accessLinks()}
+				<div class="desktop-lang-switch">
+					<LanguageSwitch reduced />
+				</div>
+			</div>
 			<ul class="nav-list">
 				{#each menu as item}
 					{#if item.children}
@@ -141,6 +190,7 @@
 								href={localizeUrl(item.path)}
 								class="nav-link"
 								class:active={isActive(item.path)}
+								aria-current={isActive(item.path) ? 'page' : undefined}
 							>
 								{item.title}
 							</a>
@@ -148,34 +198,16 @@
 					{/if}
 				{/each}
 			</ul>
-
-			<div class="desktop-actions">
-				<a
-					href={localizeUrl('/lettre-d-information')}
-					class="newsletter-button"
-					aria-label={m.subscribe_letter()}
-					title={m.subscribe_letter()}
-				>
-					<EnvelopeOutline class="newsletter-icon" />
-				</a>
-				<a
-					href={EXTRANET_URL}
-					class="extranet-button"
-					aria-label={lang === 'en' ? 'Access the extranet' : 'Accéder à l’extranet'}
-					title="Extranet"
-				>
-					<UserOutline class="extranet-icon" />
-				</a>
-			</div>
-
-			<!-- Language Switcher for Desktop -->
-			<div class="desktop-lang-switch">
-				<LanguageSwitch />
-			</div>
 		</div>
 
 		<!-- Mobile Menu Button -->
-		<button class="mobile-menu-button" onclick={toggleMobileMenu} aria-label="Toggle menu">
+		<button
+			class="mobile-menu-button"
+			onclick={toggleMobileMenu}
+			aria-label={lang === 'en' ? 'Open menu' : 'Ouvrir le menu'}
+			aria-expanded={mobileMenuOpen}
+			aria-controls="mobile-navigation"
+		>
 			<BarsOutline class="h-7 w-7" />
 		</button>
 	</nav>
@@ -187,15 +219,31 @@
 		class="mobile-overlay"
 		role="button"
 		tabindex="0"
-		aria-label="Close menu"
+		aria-label={lang === 'en' ? 'Close menu' : 'Fermer le menu'}
 		onclick={closeMobileMenu}
 		onkeydown={(e) => e.key === 'Enter' || e.key === ' ' ? closeMobileMenu() : null}
 	></div>
-	<div class="mobile-menu" role="dialog" aria-modal="true">
+	<div
+		class="mobile-menu"
+		id="mobile-navigation"
+		role="dialog"
+		aria-modal="true"
+		aria-label={lang === 'en' ? 'Navigation menu' : 'Menu de navigation'}
+	>
 		<!-- Mobile Menu Header -->
 		<div class="mobile-menu-header">
-			<img src="/images/logos/acss_logo.svg" class="mobile-logo" alt="ACSS-PSL" width="386" height="75" />
-			<button class="mobile-close-button" onclick={closeMobileMenu} aria-label="Close menu">
+			<img
+				src="/images/logos/acss_logo.svg"
+				class="mobile-logo"
+				alt="ACSS-PSL"
+				width="386"
+				height="75"
+			/>
+			<button
+				class="mobile-close-button"
+				onclick={closeMobileMenu}
+				aria-label={lang === 'en' ? 'Close menu' : 'Fermer le menu'}
+			>
 				<CloseOutline class="h-7 w-7" />
 			</button>
 		</div>
@@ -274,6 +322,7 @@
 								href={localizeUrl(item.path)}
 								class="mobile-nav-link"
 								class:active={isActive(item.path)}
+								aria-current={isActive(item.path) ? 'page' : undefined}
 								onclick={closeMobileMenu}
 							>
 								{item.title}
@@ -281,25 +330,13 @@
 						</li>
 					{/if}
 				{/each}
-				<li class="mobile-nav-item">
-					<a href={EXTRANET_URL} class="mobile-nav-link" onclick={closeMobileMenu}>Extranet</a>
-				</li>
 			</ul>
 
-			<!-- Newsletter Button for Mobile -->
-			<a
-				href={localizeUrl('/lettre-d-information')}
-				class="mobile-newsletter-button"
-				onclick={closeMobileMenu}
-				aria-label={m.subscribe_letter()}
-			>
-				<EnvelopeOutline class="mobile-newsletter-icon" />
-				<span>{m.subscribe_letter()}</span>
-			</a>
-
-			<!-- Language Switcher for Mobile -->
+			<div class="mobile-utilities">
+				{@render accessLinks()}
+			</div>
 			<div class="mobile-lang-switch">
-				<LanguageSwitch />
+				<LanguageSwitch reduced />
 			</div>
 		</nav>
 	</div>
@@ -322,12 +359,16 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
+		gap: 1rem;
 	}
 
 	/* ==================== Logo ==================== */
 	.logo-link {
 		display: flex;
 		align-items: center;
+		width: 16.75rem;
+		max-width: calc(100% - 3.75rem);
+		flex-shrink: 0;
 		transition: opacity 0.2s;
 	}
 
@@ -336,8 +377,9 @@
 	}
 
 	.logo {
-		height: 3.25rem;
-		width: auto;
+		display: block;
+		width: 100%;
+		height: auto;
 	}
 
 	/* ==================== Desktop Navigation ==================== */
@@ -381,12 +423,10 @@
 	}
 
 	.nav-link.active {
-		background: var(--acss-blue-dark, #1d4796);
-		color: white;
-	}
-
-	.nav-link.active:hover {
-		background: var(--acss-blue-dark, #1d4796);
+		color: var(--acss-blue-dark, #1d4796);
+		font-weight: 600;
+		border-radius: 0;
+		box-shadow: inset 0 -2px var(--acss-red, #b6467c);
 	}
 
 	/* ==================== Dropdown (Desktop) ==================== */
@@ -428,6 +468,11 @@
 		transform: translateY(-10px);
 		transition: all 0.3s ease-in-out;
 		border: 1px solid #e2e8f0;
+	}
+
+	.nav-item:last-child .dropdown-menu {
+		left: auto;
+		right: 0;
 	}
 
 	.dropdown-item {
@@ -524,64 +569,45 @@
 		font-weight: 600;
 	}
 
-	/* ==================== Icon Buttons (Desktop) ==================== */
-	.desktop-actions {
+	/* ==================== Utility Navigation ==================== */
+	.desktop-utilities {
 		display: flex;
 		align-items: center;
-		gap: 0.5rem;
+		gap: 1.25rem;
 	}
 
-	.newsletter-button,
-	.extranet-button {
-		display: flex;
+	.utility-link {
+		display: inline-flex;
 		align-items: center;
-		justify-content: center;
-		width: 2.75rem;
-		height: 2.75rem;
-		flex-shrink: 0;
-		color: white;
-		border-radius: 0.75rem;
-		transition: all 0.3s ease-in-out;
+		gap: 0.4rem;
+		min-height: 2rem;
+		color: var(--color-muted, #64748b);
+		font-size: 0.75rem;
+		font-weight: 500;
 		text-decoration: none;
+		white-space: nowrap;
+		transition: color 0.2s;
 	}
 
-	.newsletter-button {
-		background: var(--acss-red, #b6467c);
+	.utility-link:hover {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
 	}
 
-	.extranet-button {
-		background: var(--acss-blue-dark, #1d4796);
+	.utility-link:focus-visible {
+		outline: 2px solid var(--acss-blue, #4a6caa);
+		outline-offset: 4px;
+		border-radius: 0.125rem;
 	}
 
-	.newsletter-button:hover {
-		transform: translateY(-2px);
-		background: var(--acss-red-dark, #9a3d65);
-	}
-
-	.extranet-button:hover {
-		transform: translateY(-2px);
-		background: #15366f;
-	}
-
-	.newsletter-button:focus-visible,
-	.extranet-button:focus-visible {
-		outline: 3px solid var(--acss-blue, #4a6caa);
-		outline-offset: 3px;
-	}
-
-	.newsletter-button:active,
-	.extranet-button:active {
-		transform: translateY(0);
-	}
-
-	:global(.newsletter-icon),
-	:global(.extranet-icon) {
-		width: 1.5rem;
-		height: 1.5rem;
+	.utility-icon {
+		width: 1rem;
+		height: 1rem;
+		flex-shrink: 0;
 	}
 
 	.desktop-lang-switch {
-		margin-left: 0;
 		padding-left: 1rem;
 		border-left: 1px solid #e2e8f0;
 	}
@@ -660,8 +686,9 @@
 	}
 
 	.mobile-logo {
-		height: 2.5rem;
-		width: auto;
+		width: 12.875rem;
+		max-width: calc(100% - 3.5rem);
+		height: auto;
 	}
 
 	.mobile-close-button {
@@ -850,62 +877,32 @@
 		border-left-color: #1d4796;
 	}
 
-	/* ==================== Newsletter Button (Mobile) ==================== */
-	.mobile-newsletter-button {
+	/* ==================== Utility Navigation (Mobile) ==================== */
+	.mobile-utilities {
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		gap: 0.75rem;
-		width: 100%;
-		padding: 1rem 1.5rem;
+		flex-wrap: wrap;
+		gap: 0.25rem 1.25rem;
 		margin-top: 1rem;
-		background: var(--acss-red, #b6467c);
-		color: white;
-		border-radius: 0.75rem;
-		font-weight: 600;
-		font-size: 1rem;
-		text-decoration: none;
-		transition: all 0.3s ease-in-out;
+		padding: 1rem 1rem 0;
+		border-top: 1px solid #e2e8f0;
 	}
 
-	.mobile-newsletter-button:hover {
-		transform: translateY(-2px);
-		background: var(--acss-red-dark, #9a3d65);
-	}
-
-	.mobile-newsletter-button:active {
-		transform: translateY(0);
-	}
-
-	:global(.mobile-newsletter-icon) {
-		width: 1.5rem;
-		height: 1.5rem;
+	.mobile-utilities .utility-link {
+		min-height: 2.75rem;
+		font-size: 0.8125rem;
 	}
 
 	.mobile-lang-switch {
-		margin-top: 2rem;
-		padding-top: 2rem;
-		border-top: 1px solid #e2e8f0;
 		display: flex;
-		justify-content: center;
+		margin: 0.75rem 1rem 0;
+		padding-top: 0.75rem;
+		border-top: 1px solid #e2e8f0;
 	}
 
 	/* ==================== Responsive ==================== */
 	@media (min-width: 768px) {
-		.logo {
-			height: 3.75rem;
-		}
-	}
-
-	@media (min-width: 1280px) {
-		.desktop-nav {
-			display: flex;
-			align-items: center;
-			gap: 1rem;
-		}
-
-		.mobile-menu-button {
-			display: none;
+		.logo-link {
+			width: 19.3rem;
 		}
 	}
 
@@ -914,13 +911,9 @@
 			padding: 1.25rem 2rem;
 		}
 
-		.nav-list {
-			gap: 0.5rem;
-		}
-
 		.nav-link {
 			font-size: 0.9375rem;
-			padding: 0.5rem 0.875rem;
+			padding: 0.5rem 0.75rem;
 		}
 
 		.dropdown-menu {
@@ -929,6 +922,30 @@
 
 		.dropdown-item {
 			font-size: 0.9375rem;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.nav-container {
+			gap: 2rem;
+			padding-block: 0.625rem;
+		}
+
+		.desktop-nav {
+			display: flex;
+			flex: 1;
+			flex-direction: column;
+			align-items: flex-end;
+			gap: 0.25rem;
+			min-width: 0;
+		}
+
+		.nav-list {
+			gap: 0.25rem;
+		}
+
+		.mobile-menu-button {
+			display: none;
 		}
 	}
 </style>

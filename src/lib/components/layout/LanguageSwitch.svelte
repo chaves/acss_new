@@ -45,7 +45,7 @@
 	};
 </script>
 
-<div class="languageSwitcher">
+<div class="languageSwitcher" class:reduced>
 	<!-- Language buttons -->
 	<div class="language-buttons">
 		{#each locales as langTag}
@@ -125,6 +125,40 @@
 
 		.language-buttons {
 			padding: 0.375rem;
+		}
+	}
+	/* A text treatment for the header's utility row. */
+	.reduced .language-buttons {
+		gap: 0.125rem;
+		padding: 0;
+		background: transparent;
+	}
+
+	.reduced .lang-button {
+		min-width: 2rem;
+		min-height: 2rem;
+		padding: 0.25rem 0.375rem;
+		border-bottom: 2px solid transparent;
+		border-radius: 0;
+		background: transparent;
+		box-shadow: none;
+		font-size: 0.75rem;
+	}
+
+	.reduced .lang-button.active {
+		color: var(--acss-blue-dark, #1d4796);
+		border-bottom-color: currentColor;
+	}
+
+	.reduced .lang-button.inactive:hover {
+		color: var(--acss-blue-dark, #1d4796);
+		background: #f8fafc;
+	}
+
+	@media (max-width: 1279px) {
+		.reduced .lang-button {
+			min-width: 2.75rem;
+			min-height: 2.75rem;
 		}
 	}
 </style>
