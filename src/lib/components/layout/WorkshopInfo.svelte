@@ -72,11 +72,23 @@
 	}
 
 	.workshop-info.card {
-		@apply mb-6 rounded-xl border-2 border-blue-100 bg-white px-6 py-3 text-sm;
+		margin-bottom: 2rem;
+		padding: 1rem clamp(1rem, 2vw, 1.5rem);
+		border: 0;
+		border-left: 2px solid var(--acss-blue, #4a6caa);
+		border-radius: 0;
+		background: var(--bg-secondary, #f8fafc);
+		box-shadow: none;
+		font-size: 0.9rem;
+		line-height: 1.7;
 	}
 
 	.workshop-info.section {
-		@apply mt-6 rounded-2xl bg-gradient-to-br from-blue-50 to-purple-50 p-8;
+		margin-top: 2rem;
+		padding: clamp(1.25rem, 3vw, 2rem);
+		border-top: 1px solid rgba(74, 108, 170, 0.16);
+		background: var(--bg-secondary, #f8fafc);
+		line-height: 1.7;
 	}
 
 	.workshop-info.section h3 {

@@ -33,9 +33,6 @@
 {/if}
 
 <section class="breadcrumb-section">
-	<!-- Left accent border -->
-	<div class="breadcrumb-accent"></div>
-
 	<div class="breadcrumb-content">
 		<div class="breadcrumb-inner">
 			<!-- Breadcrumb navigation appears first to establish context before the page title. -->
@@ -100,42 +97,26 @@
 
 <style>
 	.breadcrumb-section {
-		position: relative;
-		margin-bottom: clamp(1.75rem, 4vw, 3rem);
-		border-radius: 1rem;
-		overflow: hidden;
-		background:
-			linear-gradient(115deg, rgba(74, 108, 170, 0.035), transparent 48%),
-			var(--bg-secondary, #f8fafc);
-		border: 1px solid rgba(74, 108, 170, 0.1);
+		margin-bottom: clamp(1.75rem, 3vw, 2.5rem);
+		padding-bottom: clamp(1.25rem, 2vw, 1.75rem);
+		border-bottom: 1px solid rgba(74, 108, 170, 0.16);
+		overflow-wrap: anywhere;
 	}
 
-	.breadcrumb-accent {
-		position: absolute;
-		left: 0;
-		top: 0;
-		bottom: 0;
-		width: 4px;
-		background: linear-gradient(
-			180deg,
-			var(--acss-red, #b6467c),
-			var(--acss-blue, #4a6caa)
-		);
-	}
 
 	.breadcrumb-content {
-		padding: clamp(1.4rem, 3.5vw, 2.75rem);
+		padding: 0;
 	}
 
 	/* Title */
 	.breadcrumb-title {
 		font-family: var(--font-heading, 'Quicksand', sans-serif);
-		font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+		font-size: clamp(1.85rem, 3.2vw, 2.65rem);
 		font-weight: 700;
 		color: var(--color-heading, #1e293b);
-		max-width: 48ch;
+		max-width: 38ch;
 		margin: 0;
-		line-height: 1.1;
+		line-height: 1.17;
 		letter-spacing: -0.025em;
 		text-wrap: balance;
 	}
@@ -155,7 +136,8 @@
 		display: flex;
 		align-items: center;
 		justify-content: flex-start;
-		gap: 0.5rem;
+		gap: 0.35rem 0.75rem;
+		flex-wrap: wrap;
 	}
 
 	.date-label {
@@ -185,7 +167,7 @@
 
 	/* Breadcrumb navigation */
 	.breadcrumb-nav {
-		margin-bottom: clamp(0.75rem, 1.8vw, 1.15rem);
+		margin-bottom: 0.75rem;
 	}
 
 	.breadcrumb-list {
@@ -242,13 +224,9 @@
 	}
 
 	@media (max-width: 480px) {
-		.breadcrumb-content {
-			padding-left: 2rem;
-		}
-
 		.breadcrumb-title {
 			font-size: 1.75rem;
-			line-height: 1.12;
+			line-height: 1.2;
 		}
 	}
 </style>

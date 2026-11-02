@@ -9,7 +9,7 @@
 <SEO title="Credit procyclicality database" description={m.seo_credit_series_description()} />
 
 <div class="reading-page">
-<div class="float-right ml-6 px-3 border-l-4 border-slate-300">
+<div class="download-links">
 	<a data-no-translate href="https://acss-dig.psl.eu/data/database_web_03_2022.csv"
 		><img
 			src="/images/icons/format-de-fichier-csv.png"
@@ -20,7 +20,6 @@
 		/>
 		CSV (semi colon separator)
 	</a>
-	<br />
 	<a data-no-translate href="https://acss-dig.psl.eu/data/database_web_03_2022.dta"
 		><img
 			src="/images/icons/file_type_stata_icon_130148.svg"
@@ -114,6 +113,29 @@
 </div>
 
 <style lang="postcss">
+	.download-links {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		margin-bottom: 1.75rem;
+		padding-block: 0.75rem;
+		border-block: 1px solid rgba(74, 108, 170, 0.16);
+	}
+
+	.download-links a {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		font-size: 0.875rem;
+	}
+
+	.download-links img {
+		width: 1.5rem;
+		height: 1.5rem;
+		object-fit: contain;
+	}
+
 	ol {
 		@apply mt-6 mb-2 text-lg;
 	}

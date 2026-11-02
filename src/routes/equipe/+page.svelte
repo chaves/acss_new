@@ -94,12 +94,12 @@
 		border: 1px solid rgba(74, 108, 170, 0.12);
 		border-radius: var(--radius-md);
 		background: white;
-		transition: border-color var(--transition-fast), transform var(--transition-fast);
+		transition: border-color var(--transition-fast);
 	}
 
 	.person-card:hover {
 		border-color: rgba(74, 108, 170, 0.3);
-		transform: translateY(-2px);
+
 	}
 
 	.person-layout {
@@ -121,6 +121,11 @@
 		font-family: var(--font-heading);
 		font-size: 1.2rem;
 		color: var(--color-heading);
+	}
+
+	.person-layout > div {
+		min-width: 0;
+		overflow-wrap: anywhere;
 	}
 
 	.person-description {

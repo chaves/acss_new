@@ -20,7 +20,7 @@
 	})}
 />
 
-<Breadcrumb title="Blog" title_path="blog" />
+<Breadcrumb title="Blog" title_path="Blog" />
 
 {#if data.posts.length > 0}
 	<div class="featured-publication">
@@ -45,7 +45,7 @@
 	}
 
 	.featured-publication :global(.post-item) {
-		box-shadow: 0 14px 36px rgba(29, 71, 150, 0.11);
+		box-shadow: none;
 	}
 
 	.publication-grid {

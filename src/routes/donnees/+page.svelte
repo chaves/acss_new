@@ -9,14 +9,29 @@
 
 <Breadcrumb title="Databases" title_path="Databases" />
 
-<ul>
+<ul class="data-links">
 	<li>
-		<Link href="/donnees/credit_series">Measuring credit procyclicality</Link>
+		<Link href="/donnees/credit_series">Measuring credit procyclicality <span aria-hidden="true">→</span></Link>
 	</li>
 </ul>
 
-<style lang="postcss">
-	ul li {
-		@apply my-3 ml-9 list-disc;
+<style>
+	.data-links {
+		max-width: var(--reading-max);
+	}
+
+	.data-links li {
+		border-bottom: 1px solid rgba(74, 108, 170, 0.16);
+	}
+
+	.data-links :global(a) {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+		min-height: 4rem;
+		font-family: var(--font-heading);
+		font-size: 1.125rem;
+		font-weight: 600;
 	}
 </style>

@@ -5,23 +5,13 @@
 	import { generateCollectionPageSchema } from '#lib/seo/schema-utils.js';
 	import * as m from '#lib/paraglide/messages.js';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
-	import { isEnglish } from '#lib/helpers/locale.js';
+	import { formatDate, isEnglish } from '#lib/helpers/locale.js';
 	import type { PageData } from './$types';
 
 	const { data }: { data: PageData } = $props();
 	const upcomingSessions = $derived(data.upcomingSessions);
 	const pastSessions = $derived(data.pastSessions);
 	const isEn = $derived(isEnglish());
-
-	// Format date
-	const formatDate = (dateStr: string) => {
-		const date = new Date(dateStr);
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	};
 
 	// Extract excerpt from content
 	const getExcerpt = (content: string, maxLength: number = 200) => {
@@ -159,7 +149,7 @@
 								{getExcerpt(session.content)}
 							</p>
 
-							<span class="read-more">Read more →</span>
+							<span class="read-more">{isEn ? 'Read more' : 'En savoir plus'} →</span>
 						</div>
 					</a>
 				</article>
@@ -203,12 +193,16 @@
 
 <style lang="postcss">
 	.description {
-		@apply mb-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-4 text-sm;
+		margin-bottom: 2rem;
+		padding: 1rem clamp(1rem, 2vw, 1.5rem);
+		border-left: 2px solid var(--acss-blue);
+		background: var(--bg-secondary);
+		font-size: 0.9rem;
+		line-height: 1.7;
 	}
 
 	.description-copy {
 		max-width: var(--reading-max, 72ch);
-		margin-inline: auto;
 	}
 
 	.description p {
@@ -239,11 +233,16 @@
 	}
 
 	.section-title {
-		@apply mb-6 text-2xl font-bold text-blueGray-700;
+		margin-bottom: 1rem;
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--color-heading);
 	}
 
 	.section-title.past {
-		@apply border-b-2 border-gray-200 pb-3;
+		padding-bottom: 0.75rem;
+		border-bottom: 1px solid rgba(74, 108, 170, 0.16);
 	}
 
 	/* Upcoming Sessions Grid */
@@ -252,17 +251,18 @@
 	}
 
 	.session-card {
-		@apply overflow-hidden rounded-xl border-2 border-gray-200 bg-white shadow-sm transition hover:shadow-lg;
+		overflow: hidden;
+		border: 1px solid rgba(74, 108, 170, 0.16);
+		border-radius: var(--radius-md);
+		background: white;
 	}
 
 	.session-card.upcoming {
 		border-color: rgba(182, 70, 124, 0.3);
-		box-shadow: 0 4px 6px -1px rgba(182, 70, 124, 0.1), 0 2px 4px -1px rgba(182, 70, 124, 0.06);
 	}
 
 	.session-card.upcoming:hover {
-		box-shadow: 0 10px 15px -3px rgba(182, 70, 124, 0.15), 0 4px 6px -2px rgba(182, 70, 124, 0.1);
-		border-color: rgba(182, 70, 124, 0.5);
+		border-color: var(--acss-red);
 	}
 
 	.session-link {
@@ -274,7 +274,7 @@
 	}
 
 	.session-image img {
-		@apply h-full w-full object-cover transition hover:scale-105;
+		@apply h-full w-full object-cover;
 	}
 
 	.session-body {
@@ -331,11 +331,12 @@
 	}
 
 	.session-item {
-		@apply rounded-lg border-l-4 border-gray-300 bg-white transition hover:shadow-md;
+		padding: 1.25rem 0;
+		border-bottom: 1px solid rgba(74, 108, 170, 0.16);
 	}
 
 	.session-item:hover {
-		border-left-color: #b6467c;
+		border-bottom-color: var(--acss-blue);
 	}
 
 	.session-item-link {
@@ -347,11 +348,12 @@
 	}
 
 	.session-item-thumbnail img {
-		@apply h-full w-full object-cover transition hover:scale-105;
+		@apply h-full w-full object-cover;
 	}
 
 	.session-item-content {
-		@apply flex-1 p-4;
+		flex: 1;
+		min-width: 0;
 	}
 
 	.session-item-header {

@@ -85,7 +85,7 @@
 		</div>
 	{/if}
 	<div class="blogPost article-content">
-		<div class="prose max-w-none text-justify">{@html contentHtml}</div>
+		<div class="prose max-w-none">{@html contentHtml}</div>
 		<p class="article-meta">
 			{m.published_at()}
 			{localizedPublishedAt}

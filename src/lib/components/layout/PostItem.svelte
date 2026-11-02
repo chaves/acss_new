@@ -79,7 +79,7 @@
 	}
 
 	.post-item:hover {
-		transform: translateX(3px);
+
 		border-color: rgba(74, 108, 170, 0.28);
 	}
 
@@ -97,7 +97,7 @@
 
 	.post-item.card-variant:hover,
 	.post-item.featured-variant:hover {
-		transform: translateY(-3px);
+
 		border-color: rgba(74, 108, 170, 0.28);
 	}
 
@@ -169,7 +169,18 @@
 		margin-top: auto;
 	}
 
+	.post-title :global(a) {
+		color: var(--color-heading, #1e293b);
+	}
+
+	.post-title :global(a:hover) {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: underline;
+		text-underline-offset: 0.15em;
+	}
+
 	.post-meta {
+		flex-wrap: wrap;
 		font-size: 0.8125rem;
 		display: flex;
 		align-items: center;

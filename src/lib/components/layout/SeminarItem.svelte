@@ -3,6 +3,7 @@
 	import Link from '#lib/components/Link.svelte';
 	import type { Seminar } from '#lib/types/index.js';
 	import { formatTime, localizeUrl } from '#lib/utils.js';
+	import { formatDate, isEnglish } from '#lib/helpers/locale.js';
 
 	interface Props {
 		seminar: Seminar;
@@ -36,9 +37,11 @@
 					<svg class="datetime-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 					</svg>
-					<span class="date">{seminar.date}</span>
-					<span class="time-separator">•</span>
-					<span class="time">{formatTime(seminar.time)}</span>
+					<span class="date">{seminar.date ? formatDate(seminar.date) : ''}</span>
+					{#if seminar.time}
+						<span class="time-separator" aria-hidden="true">·</span>
+						<span class="time">{formatTime(seminar.time)}</span>
+					{/if}
 				</div>
 			</div>
 		</div>
@@ -49,7 +52,7 @@
 		</div>
 
 		<span class="view-details-hint">
-			View details
+			{isEnglish() ? 'View details' : 'Voir les détails'}
 			<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
 				<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
 			</svg>
@@ -64,9 +67,11 @@
 					<svg class="datetime-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
 						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
 					</svg>
-					<span class="date">{seminar.date}</span>
-					<span class="time-separator">•</span>
-					<span class="time">{formatTime(seminar.time)}</span>
+					<span class="date">{seminar.date ? formatDate(seminar.date) : ''}</span>
+					{#if seminar.time}
+						<span class="time-separator" aria-hidden="true">·</span>
+						<span class="time">{formatTime(seminar.time)}</span>
+					{/if}
 				</div>
 			</div>
 
@@ -84,7 +89,7 @@
 
 		{#if abstract && seminar.abstract}
 			<div class="seminar-abstract">
-				<span class="abstract-label">Abstract</span>
+				<span class="abstract-label">{isEnglish() ? 'Abstract' : 'Résumé'}</span>
 				<p class="abstract-text">{seminar.abstract}</p>
 			</div>
 		{/if}
@@ -94,19 +99,17 @@
 <style>
 	.seminar-item {
 		display: block;
-		background: white;
-		border-radius: 0.75rem;
-		padding: 1.25rem;
-		border: 1px solid rgba(74, 108, 170, 0.08);
-		transition: all 0.3s ease;
+		padding: 1.25rem 0;
+		border-bottom: 1px solid rgba(74, 108, 170, 0.16);
 		text-align: left;
 		text-decoration: none;
 		color: inherit;
+		overflow-wrap: anywhere;
+		transition: border-color 150ms ease;
 	}
 
 	.seminar-item:hover {
-		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.1);
-		border-color: rgba(74, 108, 170, 0.15);
+		border-color: rgba(74, 108, 170, 0.35);
 	}
 
 	.seminar-item.clickable {
@@ -115,9 +118,7 @@
 	}
 
 	.seminar-item.clickable:hover {
-		box-shadow: 0 6px 20px rgba(74, 108, 170, 0.15);
-		border-color: rgba(74, 108, 170, 0.25);
-		transform: translateY(-2px);
+		border-color: var(--acss-blue, #4a6caa);
 	}
 
 	.seminar-header {
@@ -130,14 +131,12 @@
 
 	.datetime-badge {
 		display: inline-flex;
+		flex-wrap: wrap;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.375rem 0.75rem;
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.1) 0%, rgba(182, 70, 124, 0.1) 100%);
-		border-radius: 2rem;
-		font-size: 0.875rem;
-		font-weight: 600;
-		color: var(--acss-blue-dark, #1D4796);
+		gap: 0.4rem;
+		font-size: 0.8125rem;
+		font-weight: 500;
+		color: var(--color-muted, #64748b);
 	}
 
 	.datetime-icon {
@@ -152,7 +151,7 @@
 
 	.seminar-type {
 		font-size: 0.8125rem;
-		font-style: italic;
+		font-style: normal;
 		color: var(--acss-red, #b6467c);
 	}
 
@@ -162,14 +161,14 @@
 
 	.seminar-presenter {
 		font-family: 'Quicksand', sans-serif;
-		font-size: 1rem;
+		font-size: 1.125rem;
 		font-weight: 600;
 		color: var(--color-heading, #1e293b);
 		margin-bottom: 0.25rem;
 	}
 
 	.seminar-title {
-		font-style: italic;
+		font-style: normal;
 		color: var(--color-body, #475569);
 		font-size: 0.9375rem;
 		line-height: 1.5;
@@ -195,9 +194,9 @@
 		font-size: 0.875rem;
 		color: var(--color-body, #475569);
 		line-height: 1.6;
-		text-align: justify;
+		text-align: start;
 		border-left: 3px solid;
-		border-image: linear-gradient(180deg, var(--acss-blue, #4a6caa), var(--acss-red, #b6467c)) 1;
+		border-left-color: var(--acss-red, #b6467c);
 		padding-left: 1rem;
 	}
 
@@ -207,9 +206,9 @@
 		gap: 0.25rem;
 		font-size: 0.8125rem;
 		font-weight: 500;
-		color: var(--acss-blue, #4a6caa);
+		color: var(--acss-blue-dark, #1d4796);
 		margin-top: 0.5rem;
-		opacity: 0.7;
+		opacity: 1;
 		transition: opacity 0.2s ease;
 	}
 
@@ -220,5 +219,29 @@
 	.view-details-hint svg {
 		width: 1rem;
 		height: 1rem;
+	}
+	@media (min-width: 768px) {
+		.seminar-item.clickable {
+			display: grid;
+			grid-template-columns: minmax(0, 1fr) auto;
+			column-gap: 1.5rem;
+		}
+
+		.clickable .seminar-header,
+		.clickable .seminar-body {
+			grid-column: 1;
+		}
+
+		.clickable .seminar-body {
+			margin-bottom: 0;
+		}
+
+		.clickable .view-details-hint {
+			grid-column: 2;
+			grid-row: 1 / 3;
+			align-self: center;
+			margin-top: 0;
+			white-space: nowrap;
+		}
 	}
 </style>

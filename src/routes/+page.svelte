@@ -5,7 +5,7 @@
 	import SEO from '#lib/seo/SEO.svelte';
 	import StructuredData from '#lib/seo/StructuredData.svelte';
 	import { generateOrganizationSchema, generateWebSiteSchema } from '#lib/seo/schema-utils.js';
-	import { getOGLocale, isEnglish } from '#lib/helpers/locale.js';
+	import { formatDate, getOGLocale, isEnglish } from '#lib/helpers/locale.js';
 	import { formatTime } from '#lib/utils.js';
 	import { LinkedinSolid } from 'flowbite-svelte-icons';
 	import type { PageData } from './$types';
@@ -17,24 +17,6 @@
 
 	const organizationSchema = generateOrganizationSchema();
 	const websiteSchema = generateWebSiteSchema();
-
-	// Format date for display (always in English, not translated)
-	const formatDate = (dateStr: string) => {
-		const date = new Date(dateStr);
-		const day = date.getDate();
-		const suffix =
-			day === 1 || day === 21 || day === 31
-				? 'st'
-				: day === 2 || day === 22
-					? 'nd'
-					: day === 3 || day === 23
-						? 'rd'
-						: 'th';
-		return `${date.toLocaleDateString('en-US', {
-			weekday: 'long',
-			month: 'long'
-		})} ${day}${suffix} ${date.getFullYear()}`;
-	};
 </script>
 
 <SEO
@@ -91,7 +73,7 @@
 	<div class="announcement-card">
 		<div class="announcement-text">
 			<p class="announcement-badge">{isEn ? badgeEn : badgeFr}</p>
-			<h2 class="announcement-title">
+			<h2 class="announcement-title" title={title}>
 				<Link href={detailUrl} class="announcement-title-link">{title}</Link>
 			</h2>
 			{#if presenter}
@@ -387,6 +369,11 @@
 	}
 
 	.announcement-title {
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
 		margin: 0;
 		font-family: var(--font-heading, 'Quicksand', sans-serif);
 		font-size: 1.125rem;
@@ -480,27 +467,21 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.5rem 1rem;
-		background: white;
-		color: var(--acss-blue, #4a6caa);
+		min-height: 2.75rem;
+		color: var(--acss-blue-dark, #1d4796);
 		font-size: 0.875rem;
 		font-weight: 600;
 		text-decoration: none;
-		border-radius: 0.5rem;
-		border: 2px solid rgba(74, 108, 170, 0.15);
-		transition: all 0.3s ease;
 	}
 
 	:global(.view-all-link:hover) {
-		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		color: white !important;
-		border-color: transparent;
-		transform: translateX(4px);
-		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.3);
+		color: var(--acss-red-dark, #9a3d65);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 
 	:global(.view-all-link:hover *) {
-		color: white !important;
+		color: currentColor;
 	}
 
 	:global(.view-all-link::after) {
@@ -516,7 +497,7 @@
 
 	:global(.view-all-link:hover .arrow-icon) {
 		transform: translateX(4px);
-		color: white;
+		color: currentColor;
 	}
 
 
@@ -547,9 +528,7 @@
 	/* ==================== Mission Card ==================== */
 	.mission-card {
 		background: white;
-		border-radius: var(--radius-lg, 1.25rem);
-		padding: clamp(1.5rem, 3vw, 2.5rem);
-		border: 1px solid rgba(74, 108, 170, 0.08);
+		padding: clamp(0.25rem, 1vw, 1rem) 0;
 	}
 
 	.mission-title {
@@ -634,22 +613,17 @@
 		display: inline-flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.5rem 0.875rem;
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.06) 0%, rgba(182, 70, 124, 0.06) 100%);
-		border-radius: 2rem;
+		min-height: 2.75rem;
+		padding-right: 0.75rem;
+		color: var(--acss-blue-dark, #1d4796);
 		font-size: 0.875rem;
 		font-weight: 500;
-		color: var(--acss-blue-dark, #1D4796);
 		text-decoration: none;
-		transition: all 0.3s ease;
-		border: 1px solid transparent;
 	}
 
 	:global(.presentation-link:hover) {
-		background: white;
-		border-color: rgba(74, 108, 170, 0.15);
-		box-shadow: 0 2px 8px rgba(74, 108, 170, 0.15);
-		transform: translateY(-2px);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 
 	:global(.presentation-link::after) {
@@ -668,13 +642,9 @@
 
 	/* ==================== Blog Card ==================== */
 	.blog-card {
-		position: relative;
-		overflow: hidden;
-		background:
-			linear-gradient(120deg, rgba(74, 108, 170, 0.035), transparent 45%),
-			#fbfcfe;
-		border-radius: var(--radius-lg, 1.25rem);
-		padding: clamp(1.25rem, 3vw, 2.25rem);
+		background: var(--bg-secondary, #f8fafc);
+		border-radius: var(--radius-lg);
+		padding: clamp(1.25rem, 3vw, 2rem);
 		border: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
@@ -702,32 +672,22 @@
 	}
 
 	.linkedin-card {
-		display: grid;
+		display: inline-grid;
 		grid-template-columns: auto auto auto;
 		align-items: center;
-		gap: 0.75rem;
-		padding: 0.75rem 0.9rem;
-		border: 1px solid rgba(10, 102, 194, 0.18);
-		border-radius: 0.9rem;
-		background: white;
-		color: #0a66c2;
+		gap: 0.5rem;
+		min-height: 2.75rem;
+		color: var(--acss-blue-dark, #1d4796);
 		text-decoration: none;
-		box-shadow: 0 8px 24px rgba(10, 102, 194, 0.08);
-		transition:
-			transform 180ms ease,
-			box-shadow 180ms ease,
-			border-color 180ms ease;
 	}
 
 	.linkedin-card:hover {
-		transform: translateY(-2px);
-		border-color: rgba(10, 102, 194, 0.34);
-		box-shadow: 0 12px 30px rgba(10, 102, 194, 0.14);
+		color: var(--acss-red-dark, #9a3d65);
 	}
 
 	.linkedin-card :global(.linkedin-icon) {
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 1.25rem;
+		height: 1.25rem;
 	}
 
 	.linkedin-card span {
@@ -788,7 +748,7 @@
 
 	.production-wall .home-featured-publication :global(.post-item.featured-variant) {
 		height: 100%;
-		box-shadow: 0 14px 34px rgba(29, 71, 150, 0.11);
+		box-shadow: none;
 	}
 
 	.home-publication-grid {

@@ -10,6 +10,7 @@
 		buildEventName
 	} from '#lib/seo/schema-utils.js';
 	import type { PageData } from './$types';
+	import { formatDate } from '#lib/helpers/locale.js';
 
 	const { data }: { data: PageData } = $props();
 	const session = $derived(data.session);
@@ -55,15 +56,6 @@
 		])
 	);
 
-	// Format date
-	const formatDate = (dateStr: string) => {
-		const date = new Date(dateStr);
-		return date.toLocaleDateString('en-US', {
-			year: 'numeric',
-			month: 'long',
-			day: 'numeric'
-		});
-	};
 </script>
 
 <SEO
@@ -228,7 +220,11 @@
 	}
 
 	.session-header {
-		@apply mb-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
+		margin-bottom: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
+		border: 1px solid rgba(74, 108, 170, 0.16);
+		border-radius: var(--radius-lg);
+		background: white;
 	}
 
 	.session-meta {
@@ -268,7 +264,7 @@
 	}
 
 	.organizers {
-		@apply my-4 border-l-4 border-blue-400 pl-3;
+		@apply my-4 border-l-2 border-blue-400 pl-3;
 	}
 
 	.organizers-label {
@@ -304,12 +300,16 @@
 	}
 
 	.session-content {
-		@apply max-w-none rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
+		margin-top: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
+		border: 1px solid rgba(74, 108, 170, 0.16);
+		border-radius: var(--radius-lg);
+		background: white;
 	}
 
 	/* Style the rendered markdown content */
 	.session-content :global(h2) {
-		@apply mb-4 mt-8 border-b-2 border-gray-200 pb-2 text-xl font-semibold;
+		@apply mb-4 mt-8 border-b border-gray-200 pb-2 text-xl font-semibold;
 	}
 
 	.session-content :global(h3) {
@@ -341,12 +341,16 @@
 	}
 
 	.session-content :global(hr) {
-		@apply my-8 border-t-2 border-gray-200;
+		@apply my-8 border-t border-gray-200;
 	}
 
 	/* Presentations Section */
 	.presentations-section {
-		@apply mt-8 rounded-xl border-2 border-blue-100 bg-white px-6 py-6;
+		margin-top: 2rem;
+		padding: clamp(1rem, 3vw, 2rem);
+		border: 1px solid rgba(74, 108, 170, 0.16);
+		border-radius: var(--radius-lg);
+		background: white;
 	}
 
 	.presentations-title {
@@ -362,13 +366,18 @@
 	}
 
 	.presentation-card {
-		@apply flex items-center gap-4 rounded-lg border border-gray-200 bg-gradient-to-r from-gray-50 to-white px-5 py-4 no-underline transition-all;
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		padding: 1rem 1.25rem;
+		border: 1px solid rgba(74, 108, 170, 0.16);
+		border-radius: var(--radius-md);
+		background: var(--bg-secondary);
+		text-decoration: none;
 	}
 
 	.presentation-card:hover {
-		@apply border-blue-300 shadow-md;
-		background: linear-gradient(135deg, rgba(59, 130, 246, 0.04) 0%, rgba(59, 130, 246, 0.02) 100%);
-		transform: translateY(-1px);
+		border-color: var(--acss-blue);
 	}
 
 	.presentation-file-icon {

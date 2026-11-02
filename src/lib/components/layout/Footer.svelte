@@ -6,11 +6,8 @@
 </script>
 
 <footer class="footer">
-	<!-- Top gradient accent line -->
-	<div class="footer-accent"></div>
-
 	<div class="footer-content">
-		<div class="container px-4 mx-auto">
+		<div class="footer-container">
 			<!-- Partners Section -->
 			<div class="partners-section">
 				<h3 class="partners-title">{m.partners()}</h3>
@@ -73,7 +70,6 @@
 				</p>
 				<div class="footer-links">
 					<a href={EXTRANET_URL} class="footer-link">Extranet</a>
-					<span class="divider">•</span>
 					<a
 						href="https://www.linkedin.com/company/acss-psl"
 						class="footer-link social-link"
@@ -83,11 +79,9 @@
 						<LinkedinSolid class="footer-social-icon" />
 						<span>LinkedIn</span>
 					</a>
-					<span class="divider">•</span>
 					<a href={localizeUrl('/lettre-d-information')} class="footer-link">
 						{m.subscribe_letter()}
 					</a>
-					<span class="divider">•</span>
 					<a href="mailto:bruno.chavesferreira@dauphine.psl.eu" class="footer-link contact">
 						Contact
 					</a>
@@ -99,167 +93,127 @@
 
 <style>
 	.footer {
-		position: relative;
+		margin-top: clamp(2rem, 4vw, 3rem);
 		background: var(--bg-secondary, #f8fafc);
-		margin-top: clamp(2rem, 5vw, 4rem);
-		border-top: 1px solid rgba(74, 108, 170, 0.1);
-	}
-
-	.footer-accent {
-		height: 3px;
-		background: var(--acss-red, #b6467c);
+		border-top: 1px solid rgba(74, 108, 170, 0.14);
 	}
 
 	.footer-content {
-		padding: clamp(1.5rem, 3vw, 2.5rem) 0 1.5rem;
+		padding: 1.75rem 0 1rem;
 	}
 
-	/* Partners Section */
+	.footer-container {
+		max-width: var(--content-max, 1280px);
+		margin-inline: auto;
+		padding-inline: clamp(1rem, 3vw, 2rem);
+	}
+
 	.partners-section {
-		text-align: center;
-		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+		padding-bottom: 1.5rem;
 	}
 
 	.partners-title {
-		font-family: var(--font-heading, 'Quicksand', sans-serif);
-		font-size: 1.25rem;
+		font-size: 0.75rem;
 		font-weight: 600;
-		color: var(--acss-blue-dark, #1D4796);
-		margin-bottom: 1.5rem;
-		position: relative;
-		display: inline-block;
-	}
-
-	.partners-title::after {
-		content: '';
-		position: absolute;
-		bottom: -0.5rem;
-		left: 50%;
-		transform: translateX(-50%);
-		width: 40px;
-		height: 3px;
-		background: linear-gradient(90deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		border-radius: 2px;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+		color: var(--color-muted, #64748b);
 	}
 
 	.partners-grid {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: center;
-		gap: clamp(1rem, 3vw, 2rem);
+		gap: 0.75rem clamp(1rem, 3vw, 2.5rem);
 	}
 
 	.partner-link {
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		padding: 0.75rem;
-		border-radius: 0.75rem;
-		transition: all 0.3s ease;
+		min-height: 3.25rem;
+		padding: 0.25rem;
+		opacity: 0.85;
+		transition: opacity 150ms ease;
 	}
 
 	.partner-link:hover {
-		background: white;
-		box-shadow: 0 4px 12px rgba(74, 108, 170, 0.1);
-	}
-
-	.partner-logo {
-		height: 3.25rem;
-		width: auto;
-		max-width: 140px;
-		object-fit: contain;
-		filter: grayscale(100%);
-		opacity: 0.6;
-		transition: all 0.3s ease;
-	}
-
-	.partner-link:hover .partner-logo {
-		filter: grayscale(0%);
 		opacity: 1;
 	}
 
-	/* Footer Bottom */
+	.partner-logo {
+		width: auto;
+		height: 2.75rem;
+		max-width: 10rem;
+		object-fit: contain;
+		filter: none;
+		opacity: 1;
+	}
+
 	.footer-bottom {
 		display: flex;
-		flex-direction: column;
+		flex-wrap: wrap;
 		align-items: center;
-		gap: 1rem;
-		padding-top: 1.5rem;
-		border-top: 1px solid rgba(74, 108, 170, 0.1);
+		justify-content: space-between;
+		gap: 1rem 2rem;
+		padding-top: 1rem;
+		border-top: 1px solid rgba(74, 108, 170, 0.12);
 	}
 
 	.copyright {
-		font-size: 0.875rem;
-		color: #94a3b8;
+		color: var(--color-muted, #64748b);
+		font-size: 0.75rem;
+		line-height: 1.8;
 	}
-
 
 	.footer-links {
 		display: flex;
 		flex-wrap: wrap;
 		align-items: center;
-		justify-content: center;
-		gap: 1rem;
+		gap: 0.25rem 1.25rem;
 	}
 
 	.footer-link {
-		font-size: 0.875rem;
-		color: var(--acss-blue-dark, #1D4796);
-		text-decoration: none;
-		font-weight: 500;
-		transition: color 0.2s ease;
-	}
-
-	.footer-link:hover {
-		color: var(--acss-red, #b6467c);
-	}
-
-	.footer-link.social-link {
 		display: inline-flex;
 		align-items: center;
 		gap: 0.4rem;
-		color: #0a66c2;
+		min-height: 2rem;
+		color: var(--color-muted, #64748b);
+		font-size: 0.75rem;
+		font-weight: 500;
+		text-decoration: none;
 	}
 
-	.footer-link.social-link :global(.footer-social-icon) {
-		width: 1rem;
-		height: 1rem;
+	.footer-link:hover {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
 	}
 
-	.footer-link.contact {
-		color: var(--acss-red, #b6467c);
+	.footer-link :global(.footer-social-icon) {
+		width: 0.875rem;
+		height: 0.875rem;
 	}
 
-	.footer-link.contact:hover {
-		color: var(--acss-red-dark, #9a3d65);
-	}
-
-	.divider {
-		color: #cbd5e1;
-	}
-
-	/* Responsive */
 	@media (min-width: 768px) {
-		.partner-logo {
-			height: 4rem;
-			max-width: 150px;
+		.partners-section {
+			flex-direction: row;
+			align-items: center;
+			gap: 2.5rem;
 		}
 
-		.footer-bottom {
-			flex-direction: row;
+		.partners-grid {
+			flex: 1;
 			justify-content: space-between;
 		}
 	}
 
-	@media (min-width: 1024px) {
-		.partners-grid {
-			gap: 2.5rem;
-		}
-
-		.partner-logo {
-			height: 4.5rem;
-			max-width: 165px;
+	@media (max-width: 767px) {
+		.footer-link {
+			min-height: 2.75rem;
 		}
 	}
 </style>

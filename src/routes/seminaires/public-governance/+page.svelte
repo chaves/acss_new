@@ -7,6 +7,7 @@
 	import SeminarItem from '#lib/components/layout/SeminarItem.svelte';
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import WorkshopInfo from '#lib/components/layout/WorkshopInfo.svelte';
+	import { isEnglish } from '#lib/helpers/locale.js';
 
 	let { data }: PageProps = $props();
 </script>
@@ -33,7 +34,7 @@
 <WorkshopInfo type="pub" variant="card" />
 
 {#if data.seminars_upcoming.length > 0}
-	<h2>Upcoming sessions</h2>
+	<h2>{isEnglish() ? 'Upcoming sessions' : 'Sessions à venir'}</h2>
 
 	<div class="sessions-grid">
 		{#each data.seminars_upcoming as seminar, index}
@@ -43,7 +44,7 @@
 {/if}
 
 {#if data.seminars_past.length > 0}
-	<h2 class="past-title">Past sessions</h2>
+	<h2 class="past-title">{isEnglish() ? 'Past sessions' : 'Sessions passées'}</h2>
 
 	<div class="sessions-grid">
 		{#each data.seminars_past as seminar, index}
@@ -54,7 +55,11 @@
 
 <style lang="postcss">
 	h2 {
-		@apply text-lg font-semibold;
+		margin-bottom: 0.25rem;
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: 600;
+		color: var(--color-heading);
 	}
 
 	h2.past-title {
@@ -62,6 +67,6 @@
 	}
 
 	.sessions-grid {
-		@apply grid gap-3;
+		@apply grid;
 	}
 </style>
