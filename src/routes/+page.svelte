@@ -60,7 +60,6 @@
 	{@const time = isAcss ? seminar.data.frontmatter.time : seminar.data.time}
 	{@const location = isAcss ? seminar.data.frontmatter.location : seminar.data.location}
 	{@const presenter = isAcss ? seminar.data.frontmatter.presenter : seminar.data.presenter}
-	{@const image = isAcss ? seminar.data.frontmatter.image : null}
 	{@const registration = isAcss ? seminar.data.frontmatter.registration : null}
 	{@const detailUrl = isAcss
 		? `/seminaires/acss/${seminar.data.slug}`
@@ -74,7 +73,7 @@
 	{@const badgeEn = isAcss
 		? 'Upcoming ACSS Research Seminar'
 		: isNlp
-			? 'Upcoming AI & NLP (Natural Language Processing) Workshop'
+			? 'Upcoming AI & NLP Workshop'
 			: isPub
 				? 'Upcoming Political Economy + AI Seminar'
 				: isDigitalReg
@@ -83,136 +82,84 @@
 	{@const badgeFr = isAcss
 		? 'Prochain séminaire de recherche ACSS'
 		: isNlp
-			? 'Prochain atelier IA & NLP (Natural Language Processing)'
+			? 'Prochain atelier IA & NLP'
 			: isPub
 				? 'Prochain séminaire Political Economy + AI'
 				: isDigitalReg
 					? 'Prochain atelier Digital Regulation'
 					: 'Prochain atelier TrEnCE'}
 	<div class="announcement-card">
-		<div class="announcement-accent"></div>
-		<div class="announcement-content">
-			<div class="announcement-header">
-				<div class="announcement-badge">
-					<span>{isEn ? badgeEn : badgeFr}</span>
-				</div>
-			</div>
-
-			<div class="announcement-body">
-				{#if image}
-					<div class="announcement-image-wrapper">
-						<img
-							src={image}
-							alt={title}
-							class="announcement-image"
+		<div class="announcement-text">
+			<p class="announcement-badge">{isEn ? badgeEn : badgeFr}</p>
+			<h2 class="announcement-title">
+				<Link href={detailUrl} class="announcement-title-link">{title}</Link>
+			</h2>
+			{#if presenter}
+				<p class="announcement-presenter">{presenter}</p>
+			{/if}
+			<div class="announcement-details">
+				<div class="detail-item">
+					<svg class="detail-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							stroke-width="2"
+							d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
 						/>
-						<div class="image-overlay"></div>
+					</svg>
+					<span>{formatDate(date)}</span>
+				</div>
+				{#if time}
+					<div class="detail-item">
+						<svg class="detail-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+							/>
+						</svg>
+						<span>{formatTime(time)}</span>
 					</div>
 				{/if}
-
-				<div class="announcement-text">
-					<a href={detailUrl} class="announcement-title-link">
-						<h3 class="announcement-title">
-							{title}
-						</h3>
-					</a>
-
-					{#if !isAcss && presenter}
-						<div class="announcement-presenter">
-							<svg class="presenter-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-								/>
-							</svg>
-							<span class="presenter-name">{presenter}</span>
-						</div>
-					{/if}
-
-					<div class="announcement-details">
-						<div class="detail-item highlight">
-							<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-								/>
-							</svg>
-							<span class="detail-text">{formatDate(date)}</span>
-						</div>
-
-						{#if time}
-							<div class="detail-item">
-								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-									/>
-								</svg>
-								<span class="detail-text">{formatTime(time)}</span>
-							</div>
-						{/if}
-
-						{#if location}
-							<div class="detail-item">
-								<svg class="detail-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-									/>
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-									/>
-								</svg>
-								<span class="detail-text">{location}</span>
-							</div>
-						{/if}
+				{#if location}
+					<div class="detail-item">
+						<svg class="detail-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+							/>
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+							/>
+						</svg>
+						<span>{location}</span>
 					</div>
-
-					<div class="announcement-buttons">
-						<Link href={detailUrl} class="view-all-link">
-							{isEn ? 'View details' : 'Voir les détails'}
-							<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-								<path
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="2"
-									d="M17 8l4 4m0 0l-4 4m4-4H3"
-								/>
-							</svg>
-						</Link>
-
-						{#if registration}
-							<a
-								href={registration}
-								class="view-all-link"
-								target="_blank"
-								rel="noopener noreferrer"
-							>
-								<svg class="arrow-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-									<path
-										stroke-linecap="round"
-										stroke-linejoin="round"
-										stroke-width="2"
-										d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"
-									/>
-								</svg>
-								{isEn ? 'Register Now' : "S'inscrire maintenant"}
-							</a>
-						{/if}
-					</div>
-				</div>
+				{/if}
 			</div>
+		</div>
+		<div class="announcement-buttons">
+			<Link href={detailUrl} class="announcement-link">
+				{isEn ? 'View details' : 'Voir les détails'}
+				<svg class="detail-icon" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						stroke-width="2"
+						d="M17 8l4 4m0 0l-4 4m4-4H3"
+					/>
+				</svg>
+			</Link>
+			{#if registration}
+				<a href={registration} class="announcement-link" target="_blank" rel="noopener noreferrer">
+					{isEn ? 'Register' : "S’inscrire"}
+				</a>
+			{/if}
 		</div>
 	</div>
 {/if}
@@ -416,74 +363,117 @@
 <style>
 	/* ==================== Announcement Card ==================== */
 	.announcement-card {
-		position: relative;
-		margin-bottom: clamp(1.5rem, 4vw, 3rem);
-		border-radius: var(--radius-lg, 1.25rem);
-		overflow: hidden;
-		background: var(--bg-secondary, #f8fafc);
-		border: 1px solid rgba(74, 108, 170, 0.12);
-	}
-
-	@keyframes cardPulse {
-		0%,
-		100% {
-			box-shadow:
-				0 20px 25px -5px rgba(74, 108, 170, 0.15),
-				0 10px 10px -5px rgba(74, 108, 170, 0.08);
-		}
-		50% {
-			box-shadow:
-				0 25px 30px -5px rgba(74, 108, 170, 0.2),
-				0 15px 15px -5px rgba(74, 108, 170, 0.12);
-		}
-	}
-
-	.announcement-accent {
-		height: 5px;
-		background: var(--acss-red, #b6467c);
-		position: relative;
-		overflow: hidden;
-	}
-
-	.announcement-accent::after {
-		content: none;
-	}
-
-	@keyframes shimmer {
-		0% {
-			left: -100%;
-		}
-		100% {
-			left: 200%;
-		}
-	}
-
-	.announcement-content {
-		padding: 2rem;
-	}
-
-	.announcement-header {
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		display: grid;
+		gap: 0.75rem 1.5rem;
 		margin-bottom: 1.5rem;
-		flex-wrap: wrap;
-		gap: 1rem;
+		padding: 1rem 1.25rem;
+		border: 1px solid rgba(74, 108, 170, 0.15);
+		border-left: 3px solid var(--acss-red, #b6467c);
+		border-radius: 0.625rem;
+		background: var(--bg-secondary, #f8fafc);
+	}
+
+	.announcement-text {
+		min-width: 0;
+		overflow-wrap: anywhere;
 	}
 
 	.announcement-badge {
+		margin: 0 0 0.375rem;
+		color: var(--acss-red, #b6467c);
+		font-size: 0.75rem;
+		font-weight: 600;
+		line-height: 1.5;
+	}
+
+	.announcement-title {
+		margin: 0;
+		font-family: var(--font-heading, 'Quicksand', sans-serif);
+		font-size: 1.125rem;
+		font-weight: 700;
+		line-height: 1.35;
+	}
+
+	.announcement-title :global(.announcement-title-link) {
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: none;
+	}
+
+	.announcement-title :global(.announcement-title-link:hover) {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.announcement-presenter {
+		margin: 0.25rem 0 0;
+		color: var(--color-heading, #1e293b);
+		font-size: 0.875rem;
+		line-height: 1.5;
+	}
+
+	.announcement-details {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.375rem 1rem;
+		margin-top: 0.5rem;
+		color: var(--color-body, #475569);
+		font-size: 0.8125rem;
+		line-height: 1.5;
+	}
+
+	.detail-item {
+		display: flex;
+		align-items: baseline;
+		gap: 0.375rem;
+		min-width: 0;
+	}
+
+	.detail-icon {
+		width: 1rem;
+		height: 1rem;
+		flex-shrink: 0;
+		align-self: center;
+	}
+
+	.announcement-buttons {
+		display: flex;
+		align-items: center;
+		flex-wrap: wrap;
+		gap: 0.25rem 1rem;
+	}
+
+	.announcement-buttons :global(.announcement-link) {
 		display: inline-flex;
 		align-items: center;
-		gap: 0.5rem;
-		padding: 0.5rem 1.25rem;
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.12) 0%, rgba(182, 70, 124, 0.12) 100%);
+		gap: 0.375rem;
+		min-height: 2.75rem;
 		color: var(--acss-blue-dark, #1d4796);
-		font-size: 0.875rem;
-		font-weight: 700;
-		text-transform: uppercase;
-		letter-spacing: 0.05em;
-		border-radius: 2rem;
-		border: 2px solid rgba(74, 108, 170, 0.2);
+		font-size: 0.8125rem;
+		font-weight: 600;
+		text-decoration: underline;
+		text-underline-offset: 0.25em;
+	}
+
+	.announcement-buttons :global(.announcement-link:hover) {
+		color: var(--acss-red, #b6467c);
+	}
+
+	.announcement-card :global(a:focus-visible) {
+		outline: 2px solid var(--acss-blue-dark, #1d4796);
+		outline-offset: 4px;
+		border-radius: 0.125rem;
+	}
+
+	@media (min-width: 768px) {
+		.announcement-card {
+			grid-template-columns: minmax(0, 1fr) auto;
+			align-items: center;
+		}
+
+		.announcement-buttons {
+			flex-direction: column;
+			align-items: flex-start;
+		}
 	}
 
 	:global(.view-all-link) {
@@ -529,169 +519,6 @@
 		color: white;
 	}
 
-	.announcement-body {
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-	}
-
-	.announcement-image-wrapper {
-		position: relative;
-		overflow: hidden;
-		border-radius: 1rem;
-		box-shadow: 0 10px 20px rgba(74, 108, 170, 0.15);
-	}
-
-	.announcement-image {
-		width: 100%;
-		height: auto;
-		display: block;
-		transition: transform 0.3s ease;
-	}
-
-	.announcement-image-wrapper:hover .announcement-image {
-		transform: scale(1.05);
-	}
-
-	.image-overlay {
-		position: absolute;
-		inset: 0;
-		background: linear-gradient(
-			135deg,
-			rgba(74, 108, 170, 0.05) 0%,
-			rgba(182, 70, 124, 0.05) 100%
-		);
-		pointer-events: none;
-	}
-
-	.announcement-text {
-		flex: 1;
-	}
-
-	.announcement-title-link {
-		text-decoration: none;
-		display: block;
-		transition: transform 0.3s ease;
-		cursor: pointer;
-	}
-
-	.announcement-title-link:hover {
-		transform: translateX(4px);
-	}
-
-	.announcement-title-link:hover .announcement-title {
-		background: linear-gradient(135deg, var(--acss-red, #b6467c) 0%, var(--acss-blue, #4a6caa) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-	}
-
-	.announcement-title {
-		font-family: 'Quicksand', sans-serif;
-		font-size: 1.75rem;
-		font-weight: 700;
-		margin-bottom: 1rem;
-		color: var(--color-heading, #1e293b);
-		line-height: 1.3;
-		background: linear-gradient(135deg, var(--acss-blue, #4a6caa) 0%, var(--acss-red, #b6467c) 100%);
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
-		background-clip: text;
-		transition: all 0.3s ease;
-	}
-
-	.announcement-presenter {
-		display: flex;
-		align-items: center;
-		gap: 0.75rem;
-		margin-bottom: 1.5rem;
-		padding: 0.75rem 1rem;
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.08) 0%, rgba(182, 70, 124, 0.08) 100%);
-		border-left: 3px solid var(--acss-blue, #4a6caa);
-		border-radius: 0.5rem;
-	}
-
-	.presenter-icon {
-		width: 1.25rem;
-		height: 1.25rem;
-		color: var(--acss-blue, #4a6caa);
-		flex-shrink: 0;
-	}
-
-	.presenter-name {
-		font-size: 1.0625rem;
-		font-weight: 600;
-		color: var(--color-heading, #1e293b);
-	}
-
-	.announcement-details {
-		display: flex;
-		flex-direction: column;
-		gap: 1rem;
-		margin-bottom: 1.5rem;
-	}
-
-	.detail-item {
-		display: flex;
-		align-items: flex-start;
-		gap: 0.875rem;
-		padding: 0.75rem;
-		background: rgba(74, 108, 170, 0.04);
-		border-radius: 0.75rem;
-		font-size: 0.9375rem;
-		color: var(--color-body, #475569);
-		transition: all 0.3s ease;
-	}
-
-	.detail-item:hover {
-		background: rgba(74, 108, 170, 0.08);
-		transform: translateX(4px);
-	}
-
-	.detail-item.highlight {
-		background: linear-gradient(135deg, rgba(74, 108, 170, 0.1) 0%, rgba(182, 70, 124, 0.1) 100%);
-		border: 2px solid rgba(74, 108, 170, 0.15);
-		font-weight: 600;
-	}
-
-	.detail-icon {
-		width: 1.25rem;
-		height: 1.25rem;
-		color: var(--acss-blue, #4a6caa);
-		flex-shrink: 0;
-		margin-top: 0.125rem;
-	}
-
-	.detail-item.highlight .detail-icon {
-		color: var(--acss-red, #b6467c);
-	}
-
-	.detail-text {
-		flex: 1;
-	}
-
-	.announcement-buttons {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 1rem;
-		margin-top: 1.5rem;
-	}
-
-	@media (min-width: 768px) {
-		.announcement-body {
-			flex-direction: row;
-			align-items: flex-start;
-		}
-
-		.announcement-image-wrapper {
-			width: 20rem;
-			flex-shrink: 0;
-		}
-
-		.announcement-title {
-			font-size: 2rem;
-		}
-	}
 
 	/* ==================== Content Grid ==================== */
 	.content-grid {
