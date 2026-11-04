@@ -87,10 +87,10 @@
 			<p class="seminar-title">{seminar.title}</p>
 		</div>
 
-		{#if abstract && seminar.abstract}
+		{#if abstract && seminar.abstractHtml}
 			<div class="seminar-abstract">
 				<span class="abstract-label">{isEnglish() ? 'Abstract' : 'Résumé'}</span>
-				<p class="abstract-text">{seminar.abstract}</p>
+				<div class="abstract-text">{@html seminar.abstractHtml}</div>
 			</div>
 		{/if}
 	</article>

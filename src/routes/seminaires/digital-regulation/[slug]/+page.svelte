@@ -32,7 +32,7 @@
 
 	// Abstract makes the better description; fall back to speaker + title.
 	const seoDescription = $derived(
-		seminar.abstract?.trim() || `${seminar.presenter} - ${seminar.title}`
+		seminar.abstractText || `${seminar.presenter} - ${seminar.title}`
 	);
 
 	const eventSchema = $derived(
@@ -131,7 +131,7 @@
 	</div>
 
 	<!-- Abstract Section -->
-	{#if seminar.abstract}
+	{#if seminar.abstractHtml}
 		<div class="abstract-card">
 			<div class="abstract-header">
 				<svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -139,7 +139,7 @@
 				</svg>
 				<h2>Abstract</h2>
 			</div>
-			<p class="abstract-content">{seminar.abstract}</p>
+			<div class="abstract-content">{@html seminar.abstractHtml}</div>
 		</div>
 	{/if}
 

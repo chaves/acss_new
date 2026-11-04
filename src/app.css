@@ -667,6 +667,18 @@ nav li.has-child::after {
 	line-height: 1.75;
 }
 
+/* Abstracts are rendered from Markdown/HTML: keep paragraph rhythm and readable links. */
+.abstract-content > * + *,
+.abstract-text > * + * {
+	margin-top: 0.75em;
+}
+
+.abstract-content a,
+.abstract-text a {
+	color: var(--acss-blue-dark);
+	text-decoration: underline;
+}
+
 .main .seminar-detail .presentation-card {
 	border-color: rgba(74, 108, 170, 0.12);
 	background: var(--bg-secondary);

@@ -6,6 +6,7 @@ import {
 	type PublicRecord
 } from './content-query.js';
 import { rewriteMediaReferences } from '#lib/services/media.js';
+import { marked } from 'marked';
 import type { BlogPost, Seminar, TeamMember } from '#lib/types/index.js';
 const snapshots = import.meta.glob('/.generated/public-content.json', {
 	eager: true,
@@ -47,9 +48,31 @@ export const posts = {
 	},
 	getRecent: (limit = 5) => posts.getAll({ pagination: { pageSize: limit } })
 };
+const ENTITIES: Record<string, string> = {
+	amp: '&',
+	lt: '<',
+	gt: '>',
+	quot: '"',
+	'#39': "'",
+	nbsp: ' '
+};
+/** Abstracts arrive as Markdown or HTML: render once, and derive plain text for meta tags. */
+function withAbstract(seminar: Seminar): Seminar {
+	const source = seminar.abstract?.trim();
+	if (!source) return seminar;
+	const abstractHtml = marked.parse(source, { async: false });
+	const abstractText = abstractHtml
+		.replace(/<[^>]*>/g, ' ')
+		.replace(/&(amp|lt|gt|quot|#39|nbsp);/g, (_, entity: string) => ENTITIES[entity])
+		.replace(/\s+/g, ' ')
+		.trim();
+	return { ...seminar, abstractHtml, abstractText };
+}
 export const seminars = {
-	getAll: (params: ContentQuery = {}) =>
-		publishedContent<Seminar>('SEMINAR', { sort: 'date:asc', ...params }),
+	getAll: async (params: ContentQuery = {}) =>
+		(await publishedContent<Seminar>('SEMINAR', { sort: 'date:asc', ...params })).map(
+			withAbstract
+		),
 	async getBySlug(slug: string) {
 		return (await seminars.getAll({ filters: { slug } }))[0] || null;
 	},

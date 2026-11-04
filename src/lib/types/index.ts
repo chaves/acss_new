@@ -67,6 +67,10 @@ export interface Seminar {
 	presenter: string;
 	title: string;
 	abstract?: string;
+	/** Rendered abstract, derived server-side from `abstract` (Markdown or HTML). */
+	abstractHtml?: string;
+	/** Plain-text abstract for meta descriptions. */
+	abstractText?: string;
 	homepage?: string;
 	location?: string;
 	presentations?: Array<{ title: string; speaker: string; file: string | { url: string } }>;
