@@ -1,5 +1,6 @@
 import type { RequestHandler } from './$types';
 import { posts, seminars, authors } from '#lib/server/content.js';
+import { practices, PRACTICES_PATH } from '#lib/server/practices.js';
 
 const BASE_URL = 'https://acss-dig.psl.eu';
 
@@ -16,6 +17,7 @@ const staticPages: SitemapPage[] = [
 	{ url: '/formation/psl_week_2022', changefreq: 'yearly', priority: 0.5 },
 	{ url: '/blog', changefreq: 'daily', priority: 0.9 },
 	{ url: '/cluster', changefreq: 'monthly', priority: 0.8 },
+	{ url: '/cluster/bonnes-pratiques', changefreq: 'monthly', priority: 0.7 },
 	{ url: '/membres', changefreq: 'monthly', priority: 0.8 },
 	{ url: '/equipe', changefreq: 'monthly', priority: 0.8 },
 	{ url: '/seminaires', changefreq: 'weekly', priority: 0.9 },
@@ -111,6 +113,14 @@ async function fetchDynamicPages(): Promise<SitemapPage[]> {
 			})
 	]);
 
+	const { revision, pages } = practices();
+	const practicePages = pages.map((page) => ({
+		url: `${PRACTICES_PATH}/${page.slug}`,
+		changefreq: 'monthly',
+		priority: 0.6,
+		lastmod: revision.date
+	}));
+
 	const sessionPages = sessionSlugs.map((slug) => ({
 		url: `/seminaires/acss/${slug}`,
 		changefreq: 'yearly',
@@ -118,7 +128,7 @@ async function fetchDynamicPages(): Promise<SitemapPage[]> {
 	}));
 
 	// Individual member pages (/membres/[slug]) are intentionally not linked anymore, so they are left out
-	return [...postPages, ...seminarPages, ...teamPages, ...sessionPages];
+	return [...postPages, ...seminarPages, ...teamPages, ...sessionPages, ...practicePages];
 }
 
 // Matches the canonical URLs: the home page is /fr, not /fr/ (which redirects)

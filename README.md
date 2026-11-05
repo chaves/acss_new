@@ -31,6 +31,12 @@ L’extranet déclenche le deploy hook de la branche `main` après une publicati
 
 Une reconstruction demandée n’est pas encore une mise en ligne : vérifier son état READY dans Vercel. Un échec de compilation conserve le dernier déploiement publié.
 
+## Bonnes pratiques du cluster
+
+`/cluster/bonnes-pratiques` présente les pages publiques de la documentation du cluster (dépôt privé `ACSS-PSL/cluster_documentation`, pages marquées `public: true`). Pendant la compilation, `scripts/snapshot-practices.mjs` lit `https://extranet.acss-psl.eu/api/bonnes-pratiques`, qui renvoie ces seules pages déjà rendues et nettoyées, et écrit `.generated/good-practices.json`. Une erreur de lecture interrompt la compilation : le dernier déploiement reste en ligne. Le contenu est en anglais ; l’encadré « Information générale » rappelle que les informations d’accès sont communiquées individuellement.
+
+Un commit sur une page publique est détecté par la tâche minute de l’extranet, qui déclenche le deploy hook. `ACSS_PRACTICES_FILE=<fichier.json>` remplace la lecture distante en développement ; `ACSS_PRACTICES_URL` change l’adresse lue.
+
 ## Formulaire
 
 La lettre d’information utilise une action serveur SvelteKit. Elle fonctionne avec et sans JavaScript, contrôle l’origine et les données, protège contre les soumissions répétées et conserve l’unicité des emails. Aucun email n’est envoyé par ce formulaire.

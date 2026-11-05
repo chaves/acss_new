@@ -91,6 +91,14 @@
 		</ol>
 	</section>
 
+	<section class="practices-link" aria-labelledby="practices-title">
+		<div>
+			<h2 id="practices-title">{copy.practicesTitle}</h2>
+			<p>{copy.practicesText}</p>
+		</div>
+		<a class="download" href={localizeUrl('/cluster/bonnes-pratiques')}>{copy.practicesLink} <span aria-hidden="true">→</span></a>
+	</section>
+
 	<div class="conditions-contact">
 		<section class="conditions" aria-labelledby="conditions-title">
 			<h2 id="conditions-title">{copy.conditionsTitle}</h2>
@@ -319,6 +327,22 @@
 		overflow-wrap: anywhere;
 		text-decoration: underline;
 		text-underline-offset: 0.25em;
+	}
+	.practices-link {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1.25rem 2rem;
+		padding: clamp(1.4rem, 3vw, 2rem);
+		border: 1px solid #d5deec;
+		border-radius: 1rem;
+	}
+	.practices-link > div {
+		max-width: 62ch;
+	}
+	.practices-link p {
+		font-size: 0.92rem;
 	}
 	.acknowledgement {
 		padding-top: 2rem;

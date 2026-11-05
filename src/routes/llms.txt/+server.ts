@@ -24,6 +24,11 @@ const sections = [
 				title: 'Computing cluster',
 				note: 'H100 GPU resources, research project access, downloadable charter and contact'
 			},
+			{
+				url: '/en/cluster/bonnes-pratiques',
+				title: 'Good practices on the GPU servers',
+				note: 'General guidance in English: sharing GPUs, vLLM model servers, VRAM sizing, multi-GPU training, project guidelines'
+			},
 			{ url: '/fr/equipe', title: 'Team', note: 'Permanent staff and their roles' },
 			{
 				url: '/fr/membres',

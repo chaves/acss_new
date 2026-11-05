@@ -15,7 +15,7 @@
 		"lint": "prettier --check . && eslint .",
 		"test:e2e": "playwright test",
 		"test": "npm run test:e2e",
-		"content:snapshot": "node --env-file-if-exists=.env.local scripts/snapshot-content.mjs",
+		"content:snapshot": "node --env-file-if-exists=.env.local scripts/snapshot-content.mjs && node --env-file-if-exists=.env.local scripts/snapshot-practices.mjs",
 		"test:static": "node tests/static-artifacts.mjs"
 	},
 	"devDependencies": {

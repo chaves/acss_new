@@ -3,6 +3,7 @@ import { readFile, readdir } from 'node:fs/promises';
 import { join } from 'node:path';
 const root = '.svelte-kit/output/prerendered/pages';
 const snapshot = JSON.parse(await readFile('.generated/public-content.json', 'utf8'));
+const practices = JSON.parse(await readFile('.generated/good-practices.json', 'utf8'));
 const routes = {
 	nlp: 'nlp',
 	pub: 'public-governance',
@@ -38,7 +39,9 @@ for (const language of ['fr', 'en']) {
 		['', null],
 		['/blog', null],
 		['/cluster', null],
-		['/equipe', null]
+		['/equipe', null],
+		['/cluster/bonnes-pratiques', null],
+		...practices.pages.map((page) => ['/cluster/bonnes-pratiques/' + page.slug, page.title])
 	];
 	for (const row of snapshot.publications) {
 		if (row.kind === 'POST') expected.push(['/blog/' + row.slug, row.payload.Title]);
