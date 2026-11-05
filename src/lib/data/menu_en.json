@@ -60,7 +60,17 @@
   },
   {
     "title": "Cluster",
-    "path": "/cluster"
+    "path": "/cluster",
+    "children": [
+      {
+        "title": "Overview and access",
+        "path": "/cluster"
+      },
+      {
+        "title": "Good practices on the servers",
+        "path": "/cluster/bonnes-pratiques"
+      }
+    ]
   },
   {
     "title": "Other activities",

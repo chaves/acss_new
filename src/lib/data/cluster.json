@@ -51,9 +51,11 @@
 		"contactText": "Pour discuter de la faisabilité d’un projet, préciser vos besoins ou transmettre votre charte, contactez :",
 		"acknowledgementTitle": "Remerciements dans les publications",
 		"acknowledgementIntro": "Chaque publication ayant bénéficié du cluster doit inclure la formule suivante :",
-		"practicesTitle": "Bonnes pratiques sur les serveurs",
-		"practicesText": "Partager les GPU, servir des modèles de langage, estimer la mémoire nécessaire, répartir un calcul sur plusieurs GPU : un recueil de fiches pratiques, en anglais.",
-		"practicesLink": "Consulter les bonnes pratiques"
+		"practicesTitle": "Bonnes pratiques sur les serveurs GPU",
+		"practicesText": "Un recueil de fiches pratiques rédigé par l’équipe d’ACSS à partir de l’expérience du cluster : partager les GPU, servir un modèle de langage avec vLLM, estimer la mémoire nécessaire, adapter un modèle, répartir un calcul sur plusieurs GPU et organiser ses projets. En accès libre, en anglais.",
+		"practicesLink": "Consulter les bonnes pratiques",
+		"practicesKicker": "Ressource ouverte",
+		"practicesShort": "Bonnes pratiques"
 	},
 	"en": {
 		"title": "The ACSS computing cluster",
@@ -107,8 +109,10 @@
 		"contactText": "To discuss a project’s feasibility, clarify your computing needs or submit your charter, contact:",
 		"acknowledgementTitle": "Acknowledgements in publications",
 		"acknowledgementIntro": "Every publication that benefited from the cluster must include the following acknowledgement:",
-		"practicesTitle": "Good practices on the servers",
-		"practicesText": "Sharing GPUs, serving language models, estimating memory needs, spreading a computation over several GPUs: a collection of practical sheets.",
-		"practicesLink": "Read the good practices"
+		"practicesTitle": "Good practices on the GPU servers",
+		"practicesText": "A collection of practical sheets written by the ACSS team from its experience of the cluster: sharing GPUs, serving a language model with vLLM, estimating memory needs, adapting a model, spreading a computation over several GPUs and organising projects. Freely available.",
+		"practicesLink": "Read the good practices",
+		"practicesKicker": "Open resource",
+		"practicesShort": "Good practices"
 	}
 }

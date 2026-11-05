@@ -61,9 +61,24 @@
 		openNestedDropdown = openNestedDropdown === itemTitle ? null : itemTitle;
 	}
 
+	const matches = (path: string) =>
+		activeUrl === path || (path !== '/' && activeUrl.startsWith(path));
+	// Sibling entries can share a prefix (/cluster and /cluster/bonnes-pratiques): only the most
+	// specific matching sibling is active. A parent entry stays active on its own sub-pages.
+	const siblingGroups = (items: MenuItem[]): string[][] => [
+		items.flatMap((item) => (item.path ? [item.path] : [])),
+		...items.flatMap((item) => siblingGroups(item.children ?? []))
+	];
+	let shadowed = $derived(
+		new Set(
+			siblingGroups(menu).flatMap((group) =>
+				group.filter((path) => group.some((other) => other !== path && other.startsWith(path + '/') && matches(other)))
+			)
+		)
+	);
+
 	function isActive(path: string | undefined): boolean {
-		if (!path) return false;
-		return activeUrl === path || (path !== '/' && activeUrl.startsWith(path));
+		return !!path && matches(path) && !shadowed.has(path);
 	}
 </script>
 

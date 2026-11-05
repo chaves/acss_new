@@ -7,6 +7,9 @@
 	import content from '#lib/data/cluster.json';
 	import { BASE_URL } from '#lib/constants.js';
 	import { localizeUrl } from '#lib/utils.js';
+	import type { PageData } from './$types';
+
+	let { data }: { data: PageData } = $props();
 
 	const copy = content[getLocale()];
 	const charter = '/files/cluster/charte-acss-4h100-2h100-ab46b87a.pdf';
@@ -23,13 +26,21 @@
 	url: pageUrl('/cluster'),
 	inLanguage: getLocale(),
 	isPartOf: { '@type': 'WebSite', name: 'Institut ACSS-PSL', url: BASE_URL },
-	hasPart: {
-		'@type': 'DigitalDocument',
-		name: 'ACSS 4H100 and 2H100 Research Project Access Charter',
-		url: BASE_URL + charter,
-		encodingFormat: 'application/pdf',
-		inLanguage: 'en'
-	}
+	hasPart: [
+		{
+			'@type': 'DigitalDocument',
+			name: 'ACSS 4H100 and 2H100 Research Project Access Charter',
+			url: BASE_URL + charter,
+			encodingFormat: 'application/pdf',
+			inLanguage: 'en'
+		},
+		{
+			'@type': 'CollectionPage',
+			name: copy.practicesTitle,
+			url: pageUrl('/cluster/bonnes-pratiques'),
+			inLanguage: 'en'
+		}
+	]
 }} />
 <Breadcrumb title={copy.title} title_path="Cluster" fonction={copy.subtitle} />
 
@@ -45,6 +56,7 @@
 					</svg>
 					{copy.download}
 				</a>
+				<a class="practices-action" href={localizeUrl('/cluster/bonnes-pratiques')}>{copy.practicesShort} <span aria-hidden="true">→</span></a>
 				<a class="contact-action" href="#contact">{copy.contactAction} <span aria-hidden="true">↗</span></a>
 			</div>
 			<p class="format">{copy.format}</p>
@@ -59,6 +71,26 @@
 			{/each}
 			<p>{copy.allocation}</p>
 		</aside>
+	</section>
+
+	<section class="practices" aria-labelledby="practices-title">
+		<div class="practices-head">
+			<p class="kicker">{copy.practicesKicker}</p>
+			<h2 id="practices-title">{copy.practicesTitle}</h2>
+			<p>{copy.practicesText}</p>
+		</div>
+		<ol class="sheets">
+			{#each data.practices as sheet, index (sheet.slug)}
+				<li>
+					<a href={localizeUrl(`/cluster/bonnes-pratiques/${sheet.slug}`)}>
+						<span class="sheet-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
+						<strong lang="en">{sheet.title}</strong>
+						{#if sheet.description}<span lang="en">{sheet.description}</span>{/if}
+					</a>
+				</li>
+			{/each}
+		</ol>
+		<a class="practices-all" href={localizeUrl('/cluster/bonnes-pratiques')}>{copy.practicesLink} <span aria-hidden="true">→</span></a>
 	</section>
 
 	<div class="conditions-contact">
@@ -89,14 +121,6 @@
 				</li>
 			{/each}
 		</ol>
-	</section>
-
-	<section class="practices-link" aria-labelledby="practices-title">
-		<div>
-			<h2 id="practices-title">{copy.practicesTitle}</h2>
-			<p>{copy.practicesText}</p>
-		</div>
-		<a class="download" href={localizeUrl('/cluster/bonnes-pratiques')}>{copy.practicesLink} <span aria-hidden="true">→</span></a>
 	</section>
 
 	<div class="conditions-contact">
@@ -328,21 +352,107 @@
 		text-decoration: underline;
 		text-underline-offset: 0.25em;
 	}
-	.practices-link {
-		display: flex;
-		flex-wrap: wrap;
+	.practices-action {
+		display: inline-flex;
 		align-items: center;
-		justify-content: space-between;
-		gap: 1.25rem 2rem;
-		padding: clamp(1.4rem, 3vw, 2rem);
+		gap: 0.5rem;
+		padding: 0.9rem 1.15rem;
+		border-radius: 0.65rem;
+		border: 1.5px solid var(--acss-blue-dark);
+		color: var(--acss-blue-dark);
+		font-size: 0.95rem;
+		font-weight: 600;
+		text-decoration: none;
+		transition: background 150ms;
+	}
+	.practices-action:hover {
+		background: #eef3fb;
+	}
+	.practices {
+		padding: clamp(1.75rem, 4vw, 2.75rem);
+		border-radius: 1.25rem;
+		background: linear-gradient(135deg, #f4f7fd 0%, #fbf3f7 100%);
+		border: 1px solid #dfe6f2;
+	}
+	.practices-head {
+		max-width: 70ch;
+		margin-bottom: 1.75rem;
+	}
+	.kicker {
+		margin-bottom: 0.5rem;
+		font-size: 0.75rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--acss-red-dark);
+	}
+	.practices-head p:not(.kicker) {
+		font-size: 0.95rem;
+	}
+	.sheets {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	.sheets a {
+		display: flex;
+		flex-direction: column;
+		gap: 0.45rem;
+		height: 100%;
+		padding: 1.2rem 1.2rem 1.35rem;
+		border-radius: 0.9rem;
+		background: #fff;
 		border: 1px solid #d5deec;
-		border-radius: 1rem;
+		color: inherit;
+		text-decoration: none;
+		transition:
+			border-color 150ms,
+			box-shadow 150ms,
+			transform 150ms;
 	}
-	.practices-link > div {
-		max-width: 62ch;
+	.sheets a:hover {
+		border-color: var(--acss-blue);
+		box-shadow: 0 12px 26px -20px rgba(29, 71, 150, 0.6);
+		transform: translateY(-2px);
 	}
-	.practices-link p {
-		font-size: 0.92rem;
+	.sheet-number {
+		font-family: var(--font-heading);
+		font-weight: 700;
+		font-size: 1.35rem;
+		color: var(--acss-red-dark);
+	}
+	.sheets strong {
+		font-family: var(--font-heading);
+		font-size: 1.05rem;
+		line-height: 1.35;
+		color: var(--color-heading);
+	}
+	.sheets span:not(.sheet-number) {
+		font-size: 0.84rem;
+		line-height: 1.6;
+	}
+	.practices-all {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-top: 1.5rem;
+		padding: 0.9rem 1.2rem;
+		border-radius: 0.65rem;
+		background: var(--acss-blue-dark);
+		color: #fff;
+		font-size: 0.95rem;
+		font-weight: 600;
+		text-decoration: none;
+	}
+	.practices-all:hover {
+		background: #15366f;
+	}
+	.practices a:focus-visible {
+		outline: 3px solid var(--acss-red);
+		outline-offset: 3px;
 	}
 	.acknowledgement {
 		padding-top: 2rem;
@@ -360,6 +470,16 @@
 		font-size: 0.95rem;
 		font-weight: 500;
 		line-height: 1.9;
+	}
+	@media (max-width: 1100px) {
+		.sheets {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	@media (max-width: 560px) {
+		.sheets {
+			grid-template-columns: minmax(0, 1fr);
+		}
 	}
 	@media (max-width: 820px) {
 		.overview,
