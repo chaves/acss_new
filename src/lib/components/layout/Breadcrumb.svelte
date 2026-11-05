@@ -10,6 +10,8 @@
 		title_path,
 		link = undefined,
 		link_text = undefined,
+		// Several intermediate levels, e.g. [{ link: 'cluster', link_text: 'Cluster' }, …]; replaces link/link_text.
+		trail = undefined as { link: string; link_text: string }[] | undefined,
 		email = undefined,
 		fonction = undefined,
 		publishedAt = undefined,
@@ -19,10 +21,11 @@
 		schema = true
 	} = $props();
 
+	const levels = $derived(trail ?? (link !== undefined ? [{ link, link_text }] : []));
 	const breadcrumbSchema = $derived(
 		generateBreadcrumbSchema([
 			{ name: m.home(), url: '/' },
-			...(link !== undefined ? [{ name: link_text, url: `/${link}` }] : []),
+			...levels.map((level) => ({ name: level.link_text, url: `/${level.link}` })),
 			{ name: title_path, url: page.url.pathname }
 		])
 	);
@@ -49,10 +52,21 @@
 						</svg>
 					</li>
 
-					{#if link !== undefined}
-						<li class="breadcrumb-item">
-							<a href={localizeUrl(`/${link}`)} class="breadcrumb-link">{link_text}</a>
-						</li>
+					{#if levels.length}
+						{#each levels as level, index}
+							<li class="breadcrumb-item">
+								<a href={localizeUrl(`/${level.link}`)} class="breadcrumb-link">{level.link_text}</a>
+								{#if index < levels.length - 1}
+									<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+										<path
+											fill-rule="evenodd"
+											d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+											clip-rule="evenodd"
+										/>
+									</svg>
+								{/if}
+							</li>
+						{/each}
 						<!-- The h1 immediately below supplies the current page name visually. -->
 						<li class="sr-only" aria-current="page">{title_path}</li>
 					{:else}

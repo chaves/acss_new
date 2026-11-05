@@ -59,7 +59,7 @@
 		publisher: { '@type': 'Organization', name: 'Institut ACSS-PSL' }
 	}}
 />
-<Breadcrumb title={page.title} title_path={page.title} link="cluster/bonnes-pratiques" link_text={copy.short} fonction={page.description || undefined} />
+<Breadcrumb title={page.title} title_path={page.title} trail={[{ link: 'cluster', link_text: 'Cluster' }, { link: 'cluster/bonnes-pratiques', link_text: copy.short }]} fonction={page.description || undefined} />
 
 <div class="practice">
 	<aside class="notice" aria-label={copy.noticeTitle}>
