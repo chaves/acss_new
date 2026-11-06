@@ -50,7 +50,9 @@
 			"outreach": "Valorisation grand public",
 			"teaching": "Enseignement",
 			"other": "Autre réalisation"
-		}
+		},
+		"constructionTitle": "Page en construction",
+		"constructionText": "D’autres projets utilisent déjà le cluster : ils apparaîtront ici au fur et à mesure de leur enregistrement dans l’extranet d’ACSS, avec leurs réalisations."
 	},
 	"en": {
 		"title": "Projects and outputs",
@@ -103,6 +105,8 @@
 			"outreach": "Public outreach",
 			"teaching": "Teaching",
 			"other": "Other output"
-		}
+		},
+		"constructionTitle": "Page under construction",
+		"constructionText": "More projects already use the cluster: they will appear here as they are registered in the ACSS extranet, together with their outputs."
 	}
 }

@@ -53,27 +53,23 @@
 					</li>
 
 					{#if levels.length}
-						{#each levels as level, index}
+						{#each levels as level (level.link)}
 							<li class="breadcrumb-item">
 								<a href={localizeUrl(`/${level.link}`)} class="breadcrumb-link">{level.link_text}</a>
-								{#if index < levels.length - 1}
-									<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
-										<path
-											fill-rule="evenodd"
-											d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
-											clip-rule="evenodd"
-										/>
-									</svg>
-								{/if}
+								<svg class="breadcrumb-separator" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+									<path
+										fill-rule="evenodd"
+										d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+										clip-rule="evenodd"
+									/>
+								</svg>
 							</li>
 						{/each}
-						<!-- The h1 immediately below supplies the current page name visually. -->
-						<li class="sr-only" aria-current="page">{title_path}</li>
-					{:else}
-						<li class="breadcrumb-item current" aria-current="page">
-							<span>{title_path}</span>
-						</li>
 					{/if}
+					<!-- The current page always closes the trail; long titles are shortened, the full one stays in title. -->
+					<li class="breadcrumb-item current" aria-current="page">
+						<span title={title_path}>{title_path}</span>
+					</li>
 				</ol>
 			</nav>
 
@@ -220,22 +216,20 @@
 		flex-shrink: 0;
 	}
 
+	.breadcrumb-item.current {
+		min-width: 0;
+	}
+
 	.breadcrumb-item.current span {
+		display: block;
+		max-width: min(36ch, 60vw);
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
 		font-size: 0.78rem;
 		color: var(--color-muted, #94a3b8);
 	}
 
-	.sr-only {
-		position: absolute;
-		width: 1px;
-		height: 1px;
-		padding: 0;
-		margin: -1px;
-		overflow: hidden;
-		clip: rect(0, 0, 0, 0);
-		white-space: nowrap;
-		border: 0;
-	}
 
 	@media (max-width: 480px) {
 		.breadcrumb-title {

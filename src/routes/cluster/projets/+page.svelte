@@ -49,6 +49,10 @@
 <div class="projects-page">
 	<section class="intro">
 		<p class="lead">{copy.lead}</p>
+		<aside class="construction" aria-label={copy.constructionTitle}>
+			<strong>{copy.constructionTitle}</strong>
+			<p>{copy.constructionText}</p>
+		</aside>
 	</section>
 
 	<section aria-labelledby="ongoing-title">
@@ -140,6 +144,23 @@
 		line-height: 1.65;
 		font-weight: 500;
 		color: var(--color-heading);
+	}
+	.construction {
+		max-width: 72ch;
+		margin-top: 1.4rem;
+		padding: 1rem 1.2rem;
+		border-left: 3px solid var(--acss-red);
+		background: var(--bg-secondary);
+		border-radius: 0 0.7rem 0.7rem 0;
+		font-size: 0.9rem;
+	}
+	.construction strong {
+		display: block;
+		margin-bottom: 0.25rem;
+		color: var(--color-heading);
+		font-size: 0.78rem;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
 	}
 	.section-intro {
 		max-width: 72ch;
