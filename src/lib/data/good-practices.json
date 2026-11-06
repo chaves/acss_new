@@ -2,9 +2,9 @@
 	"fr": {
 		"title": "Bonnes pratiques sur les serveurs GPU",
 		"short": "Bonnes pratiques",
-		"description": "Recueil de bonnes pratiques pour utiliser les serveurs GPU H100 d’ACSS : partage des GPU, serveurs de modèles, besoins en mémoire, calcul multi-GPU et organisation des projets.",
+		"description": "Recueil de bonnes pratiques pour utiliser les serveurs GPU 4H100 et 2H100 d’ACSS : partage des GPU, serveurs de modèles, besoins en mémoire, calcul multi-GPU et organisation des projets.",
 		"subtitle": "Partager les GPU, servir et adapter des modèles, organiser ses projets.",
-		"lead": "Les serveurs GPU d’ACSS sont partagés par de nombreux chercheurs. Ce recueil rassemble les pratiques qui permettent à chacun d’en tirer le meilleur parti, sans gêner les autres.",
+		"lead": "Les serveurs GPU 4H100 et 2H100 d’ACSS sont partagés par de nombreux chercheurs. Ce recueil rassemble les pratiques qui permettent à chacun d’en tirer le meilleur parti, sans gêner les autres.",
 		"language": "Les fiches sont rédigées en anglais, langue de travail des utilisateurs du cluster.",
 		"sheets": "Les fiches",
 		"read": "Lire la fiche",
@@ -26,9 +26,9 @@
 	"en": {
 		"title": "Good practices on the GPU servers",
 		"short": "Good practices",
-		"description": "Good practices for using the ACSS H100 GPU servers: sharing GPUs, model servers, memory sizing, multi-GPU computing and project organisation.",
+		"description": "Good practices for using the ACSS 4H100 and 2H100 GPU servers: sharing GPUs, model servers, memory sizing, multi-GPU computing and project organisation.",
 		"subtitle": "Sharing GPUs, serving and adapting models, organising your projects.",
-		"lead": "The ACSS GPU servers are shared by many researchers. This collection brings together the practices that help everyone get the most out of them without getting in each other’s way.",
+		"lead": "The ACSS 4H100 and 2H100 GPU servers are shared by many researchers. This collection brings together the practices that help everyone get the most out of them without getting in each other’s way.",
 		"language": "",
 		"sheets": "Practice sheets",
 		"read": "Read",
