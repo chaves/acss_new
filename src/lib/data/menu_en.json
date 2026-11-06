@@ -67,6 +67,10 @@
         "path": "/cluster"
       },
       {
+        "title": "Projects and outputs",
+        "path": "/cluster/projets"
+      },
+      {
         "title": "Good practices on the servers",
         "path": "/cluster/bonnes-pratiques"
       }

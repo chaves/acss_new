@@ -29,6 +29,11 @@ const sections = [
 				title: 'Good practices on the GPU servers',
 				note: 'General guidance in English: sharing GPUs, vLLM model servers, VRAM sizing, multi-GPU training, project guidelines'
 			},
+			{
+				url: '/fr/cluster/projets',
+				title: 'Cluster projects and outputs',
+				note: 'Approved research projects running on the GPU servers and their outputs (publications, working papers, talks, code), funded by the Île-de-France Region (SESAME 2023)'
+			},
 			{ url: '/fr/equipe', title: 'Team', note: 'Permanent staff and their roles' },
 			{
 				url: '/fr/membres',

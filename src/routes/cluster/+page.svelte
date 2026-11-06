@@ -5,6 +5,9 @@
 	import Breadcrumb from '#lib/components/layout/Breadcrumb.svelte';
 	import { getLocale } from '#lib/paraglide/runtime.js';
 	import content from '#lib/data/cluster.json';
+	import projectsContent from '#lib/data/cluster-projects.json';
+	import RegionFunding from '#lib/components/cluster/RegionFunding.svelte';
+	import { formatDate } from '#lib/helpers/locale.js';
 	import { BASE_URL } from '#lib/constants.js';
 	import { localizeUrl } from '#lib/utils.js';
 	import type { PageData } from './$types';
@@ -12,7 +15,9 @@
 	let { data }: { data: PageData } = $props();
 
 	const copy = content[getLocale()];
-	const charter = '/files/cluster/charte-acss-4h100-2h100-ab46b87a.pdf';
+	const projectsCopy = projectsContent[getLocale()];
+	const types = projectsCopy.types as Record<string, string>;
+	const charter = '/files/cluster/charte-acss-4h100-2h100-44c42d21.pdf';
 	const email = 'bruno.chavesferreira@dauphine.psl.eu';
 	const acknowledgement =
 		'This work used the computing resources of the PSL-ACSS Institute, acquired with support from the Île-de-France Region through the SESAME 2023 programme (project reference EX079187).';
@@ -33,6 +38,12 @@
 			url: BASE_URL + charter,
 			encodingFormat: 'application/pdf',
 			inLanguage: 'en'
+		},
+		{
+			'@type': 'CollectionPage',
+			name: projectsCopy.title,
+			url: pageUrl('/cluster/projets'),
+			inLanguage: getLocale()
 		},
 		{
 			'@type': 'CollectionPage',
@@ -93,10 +104,31 @@
 		<a class="practices-all" href={localizeUrl('/cluster/bonnes-pratiques')}>{copy.practicesLink} <span aria-hidden="true">→</span></a>
 	</section>
 
+	<section class="in-action" aria-labelledby="in-action-title">
+		<div class="in-action-head">
+			<p class="kicker">{projectsCopy.teaserKicker}</p>
+			<h2 id="in-action-title">{projectsCopy.teaserTitle}</h2>
+			<p>{projectsCopy.teaserText}</p>
+		</div>
+		{#if data.latestOutputs.length}
+			<ol class="latest">
+				{#each data.latestOutputs as output (output.id)}
+					<li>
+						<p class="latest-meta"><span>{types[output.type] || types.other}</span><time datetime={output.date}>{formatDate(output.date, { year: 'numeric', month: 'long' })}</time></p>
+						<div class="latest-body">{@html output.html}</div>
+						{#if output.projectTitle}<p class="latest-project">{output.projectTitle}</p>{/if}
+					</li>
+				{/each}
+			</ol>
+		{:else}<p class="latest-empty">{projectsCopy.teaserEmpty}</p>{/if}
+		<a class="practices-all" href={localizeUrl('/cluster/projets')}>{projectsCopy.teaserLink} <span aria-hidden="true">→</span></a>
+	</section>
+
 	<div class="conditions-contact">
 		<section aria-labelledby="research-context-title">
 			<h2 id="research-context-title">{copy.contextTitle}</h2>
 			<p>{copy.fundingContext}</p>
+			<div class="region"><RegionFunding compact /></div>
 		</section>
 		<section class="contact" aria-labelledby="collaboration-title">
 			<h2 id="collaboration-title">{copy.collaborationTitle}</h2>
@@ -454,6 +486,74 @@
 		outline: 3px solid var(--acss-red);
 		outline-offset: 3px;
 	}
+	.in-action {
+		display: grid;
+		gap: 1.5rem;
+	}
+	.in-action-head p:not(.kicker) {
+		max-width: 64ch;
+		font-size: 0.95rem;
+	}
+	.latest {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		display: grid;
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		gap: 1rem;
+	}
+	.latest li {
+		padding: 1.2rem 1.25rem;
+		border: 1px solid #d5deec;
+		border-radius: 0.9rem;
+		background: #fff;
+	}
+	.latest-meta {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.3rem 0.8rem;
+		font-size: 0.76rem;
+	}
+	.latest-meta span {
+		font-weight: 700;
+		color: var(--acss-red-dark);
+	}
+	.latest-meta time,
+	.latest-project {
+		color: var(--color-muted);
+	}
+	.latest-body {
+		margin-top: 0.45rem;
+		font-size: 0.88rem;
+		line-height: 1.65;
+		overflow-wrap: anywhere;
+		display: -webkit-box;
+		-webkit-line-clamp: 5;
+		line-clamp: 5;
+		-webkit-box-orient: vertical;
+		overflow: hidden;
+	}
+	.latest-body :global(p) {
+		margin: 0;
+	}
+	.latest-project {
+		margin-top: 0.5rem;
+		font-size: 0.78rem;
+		line-height: 1.5;
+	}
+	.latest-empty {
+		padding: 1.1rem 1.3rem;
+		border-radius: 0.9rem;
+		background: var(--bg-secondary);
+		font-size: 0.9rem;
+	}
+	.in-action .practices-all {
+		justify-self: start;
+		margin-top: 0;
+	}
+	.region {
+		margin-top: 1.25rem;
+	}
 	.acknowledgement {
 		padding-top: 2rem;
 		border-top: 1px solid #d5deec;
@@ -474,6 +574,9 @@
 	@media (max-width: 1100px) {
 		.sheets {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+		.latest {
+			grid-template-columns: minmax(0, 1fr);
 		}
 	}
 	@media (max-width: 560px) {

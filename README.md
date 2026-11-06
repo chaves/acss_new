@@ -37,6 +37,16 @@ Une reconstruction demandée n’est pas encore une mise en ligne : vérifier so
 
 Un commit sur une page publique est détecté par la tâche minute de l’extranet, qui déclenche le deploy hook. `ACSS_PRACTICES_FILE=<fichier.json>` remplace la lecture distante en développement ; `ACSS_PRACTICES_URL` change l’adresse lue.
 
+## Projets et réalisations du cluster
+
+`/cluster/projets` présente les projets validés en cours et les réalisations (articles, documents de travail, présentations, code…) que leurs porteurs publient depuis l’extranet (ACSS est informé par email et peut en retirer une). `scripts/snapshot-projects.mjs` lit `https://extranet.acss-psl.eu/api/cluster/projets` (ou `ACSS_PROJECTS_FILE` / `ACSS_PROJECTS_URL`) et écrit `.generated/cluster-projects.json`. L’API n’expose que le titre du projet, le porteur, son établissement et son laboratoire, le responsable scientifique s’il diffère, et le texte nettoyé des réalisations publiées : jamais d’email, de description, de note ni de PDF. Une erreur de lecture interrompt la compilation. La page `/cluster` en montre les chiffres et les trois dernières réalisations.
+
+Le logo officiel de la Région Île-de-France (`static/images/logos_autres/region-ile-de-france.svg`, version standard de la valise 2019) figure, avec la mention obligatoire « Action financée par la Région Île-de-France », sur `/cluster` et `/cluster/projets` (`src/lib/components/cluster/RegionFunding.svelte`). Le pied de page de toutes les pages porte aussi un bandeau « Cluster de calcul financé par la Région Île-de-France » avec ce logo (`src/lib/components/layout/Footer.svelte`), comme le demande la charte de visibilité pour la page d’accueil. Charte régionale : logo toujours sur fond blanc, au moins 85 px de large à l’écran, cliquable vers www.iledefrance.fr, proportions et couleurs inchangées.
+
+## Charte du cluster
+
+`static/files/cluster/charte-acss-4h100-2h100-<8 premiers caractères du sha256>.pdf` est généré par `~/_ACSS/MARCELLE/Chartre/sources/build_charter.py` (vérification : `verify_charter.py`). Après une nouvelle version, renommer le fichier avec son nouveau sha256, mettre à jour `src/routes/cluster/+page.svelte` et copier le même PDF dans `resources/charte-acss-modele.pdf` de l’extranet (modèle des tests d’extraction). La version de novembre 2026 informe le demandeur de la publication du projet et de ses réalisations (bloc 06).
+
 ## Formulaire
 
 La lettre d’information utilise une action serveur SvelteKit. Elle fonctionne avec et sans JavaScript, contrôle l’origine et les données, protège contre les soumissions répétées et conserve l’unicité des emails. Aucun email n’est envoyé par ce formulaire.

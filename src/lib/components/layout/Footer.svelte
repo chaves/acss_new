@@ -3,11 +3,27 @@
 	import { localizeUrl } from '#lib/utils.js';
 	import { EXTRANET_URL } from '#lib/constants.js';
 	import { LinkedinSolid } from 'flowbite-svelte-icons';
+	import { getLocale } from '#lib/paraglide/runtime.js';
+
+	// Région Île-de-France visibility (charte de visibilité des bénéficiaires): logo on white,
+	// at least 85 px wide, linked to iledefrance.fr, with the funding mention, on every page.
+	const region = {
+		fr: { text: 'Cluster de calcul financé par la Région Île-de-France', detail: 'Programme SESAME 2023', link: 'Découvrir le cluster', label: 'Région Île-de-France (nouvel onglet)' },
+		en: { text: 'Computing cluster funded by the Île-de-France Region', detail: 'SESAME 2023 programme', link: 'Discover the cluster', label: 'Île-de-France Region (new tab)' }
+	}[getLocale()];
 </script>
 
 <footer class="footer">
 	<div class="footer-content">
 		<div class="footer-container">
+			<section class="region-band" aria-label={region.text}>
+				<a class="region-logo" href="https://www.iledefrance.fr" target="_blank" rel="noopener" aria-label={region.label}>
+					<img src="/images/logos_autres/region-ile-de-france.svg" alt="Région Île-de-France" width="150" height="55" loading="lazy" decoding="async" />
+				</a>
+				<p class="region-text"><strong>{region.text}</strong><span>{region.detail}</span></p>
+				<a class="region-link" href={localizeUrl('/cluster')}>{region.link} <span aria-hidden="true">→</span></a>
+			</section>
+
 			<!-- Partners Section -->
 			<div class="partners-section">
 				<h3 class="partners-title">{m.partners()}</h3>
@@ -106,6 +122,65 @@
 		max-width: var(--content-max, 1280px);
 		margin-inline: auto;
 		padding-inline: clamp(1rem, 3vw, 2rem);
+	}
+
+	.region-band {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 0.75rem 1.5rem;
+		margin-bottom: 1.5rem;
+		padding: 0.75rem 1.25rem;
+		border: 1px solid rgba(74, 108, 170, 0.14);
+		border-radius: 0.9rem;
+		background: #fff;
+	}
+
+	.region-logo {
+		display: block;
+		line-height: 0;
+	}
+
+	.region-logo img {
+		width: 150px;
+		height: auto;
+	}
+
+	.region-text {
+		flex: 1;
+		min-width: 14rem;
+		margin: 0;
+		display: flex;
+		flex-direction: column;
+		gap: 0.1rem;
+		line-height: 1.5;
+	}
+
+	.region-text strong {
+		font-size: 0.92rem;
+		color: var(--color-heading, #1e293b);
+	}
+
+	.region-text span {
+		font-size: 0.75rem;
+		color: var(--color-muted, #64748b);
+	}
+
+	.region-link {
+		font-size: 0.82rem;
+		font-weight: 600;
+		color: var(--acss-blue-dark, #1d4796);
+		text-decoration: none;
+	}
+
+	.region-link:hover {
+		text-decoration: underline;
+		text-underline-offset: 0.2em;
+	}
+
+	.region-band a:focus-visible {
+		outline: 3px solid var(--acss-red, #b6467c);
+		outline-offset: 3px;
 	}
 
 	.partners-section {
