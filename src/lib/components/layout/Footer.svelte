@@ -16,14 +16,6 @@
 <footer class="footer">
 	<div class="footer-content">
 		<div class="footer-container">
-			<section class="region-band" aria-label={region.text}>
-				<a class="region-logo" href="https://www.iledefrance.fr" target="_blank" rel="noopener" aria-label={region.label}>
-					<img src="/images/logos_autres/region-ile-de-france.svg" alt="Région Île-de-France" width="150" height="55" loading="lazy" decoding="async" />
-				</a>
-				<p class="region-text"><strong>{region.text}</strong><span>{region.detail}</span></p>
-				<a class="region-link" href={localizeUrl('/cluster')}>{region.link} <span aria-hidden="true">→</span></a>
-			</section>
-
 			<!-- Partners Section -->
 			<div class="partners-section">
 				<h3 class="partners-title">{m.partners()}</h3>
@@ -76,6 +68,14 @@
 					</a>
 				</div>
 			</div>
+
+			<section class="region-band" aria-label={region.text}>
+				<a class="region-logo" href="https://www.iledefrance.fr" target="_blank" rel="noopener" aria-label={region.label}>
+					<img src="/images/logos_autres/region-ile-de-france.svg" alt="Région Île-de-France" width="150" height="55" loading="lazy" decoding="async" />
+				</a>
+				<p class="region-text"><strong>{region.text}</strong><span>{region.detail}</span></p>
+				<a class="region-link" href={localizeUrl('/cluster')}>{region.link} <span aria-hidden="true">→</span></a>
+			</section>
 
 			<!-- Bottom Bar -->
 			<div class="footer-bottom">
