@@ -33,8 +33,9 @@ function validate(value) {
 		}));
 	const known = new Set(projects.map((project) => project.id));
 	const outputs = value.outputs
-		.filter((output) => id.test(output?.id) && known.has(output.project) && /^\d{4}-\d{2}-\d{2}$/.test(output.date) && typeof output.html === 'string')
-		.map((output) => ({ id: output.id, project: output.project, type: text(output.type, 40) || 'other', date: output.date, url: webUrl(output.url), html: output.html }));
+		// An output belongs to a listed project, or has no project and is shown under its author's name.
+		.filter((output) => id.test(output?.id) && (known.has(output.project) || (output.project == null && text(output.author, 200))) && /^\d{4}-\d{2}-\d{2}$/.test(output.date) && typeof output.html === 'string')
+		.map((output) => ({ id: output.id, project: output.project ?? null, author: text(output.author, 200), type: text(output.type, 40) || 'other', date: output.date, url: webUrl(output.url), html: output.html }));
 	return { projects, outputs };
 }
 

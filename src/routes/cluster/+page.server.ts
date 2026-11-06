@@ -7,6 +7,6 @@ export const load: PageServerLoad = () => {
 	const titles = new Map(projects.map((project) => [project.id, project.title]));
 	return {
 		practices: practices().pages.map(({ slug, title, description }) => ({ slug, title, description })),
-		latestOutputs: outputs.slice(0, 3).map((output) => ({ ...output, projectTitle: titles.get(output.project) || '' }))
+		latestOutputs: outputs.slice(0, 3).map((output) => ({ ...output, projectTitle: (output.project && titles.get(output.project)) || output.author }))
 	};
 };

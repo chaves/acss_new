@@ -9,7 +9,7 @@ export type ClusterProject = {
 	lead: { name: string; affiliation: string } | null;
 	ongoing: boolean;
 };
-export type ClusterOutput = { id: string; project: string; type: string; date: string; url: string; html: string };
+export type ClusterOutput = { id: string; project: string | null; author: string; type: string; date: string; url: string; html: string };
 type Collection = { projects: ClusterProject[]; outputs: ClusterOutput[] };
 
 export const PROJECTS_PATH = '/cluster/projets';

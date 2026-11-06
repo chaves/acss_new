@@ -17,7 +17,8 @@
 	let filter = $state('');
 
 	const byId = $derived(new Map(data.projects.map((project) => [project.id, project])));
-	const counts = $derived(data.outputs.reduce((map, output) => map.set(output.project, (map.get(output.project) || 0) + 1), new Map<string, number>()));
+	const projectOf = (id: string | null) => (id ? byId.get(id) : undefined);
+	const counts = $derived(data.outputs.reduce((map, output) => (output.project ? map.set(output.project, (map.get(output.project) || 0) + 1) : map), new Map<string, number>()));
 	const ongoing = $derived(data.projects.filter((project) => project.ongoing));
 	const past = $derived(data.projects.filter((project) => !project.ongoing));
 	const presentTypes = $derived([...new Set(data.outputs.map((output) => output.type))].sort((a, b) => (types[a] || a).localeCompare(types[b] || b)));
@@ -85,12 +86,12 @@
 			{/if}
 			<ol class="outputs">
 				{#each shown as output (output.id)}
-					{@const project = byId.get(output.project)}
+					{@const project = projectOf(output.project)}
 					<li>
 						<p class="meta"><span class="type">{types[output.type] || types.other}</span><time datetime={output.date}>{month(output.date)}</time></p>
 						<div class="body">{@html output.html}</div>
 						{#if output.url}<p class="link"><a href={output.url} target="_blank" rel="noopener noreferrer">{output.url.replace(/^https?:\/\//, '').replace(/\/$/, '')} ↗</a></p>{/if}
-						{#if project}<p class="project-ref">{copy.project}{getLocale() === 'fr' ? ' :' : ':'} {#if project.ongoing}<a href={`#${project.id}`}>{project.title}</a>{:else}<span>{project.title}</span>{/if}{' · ' + [project.applicant, project.institution].filter(Boolean).join(', ')}</p>{/if}
+						{#if project}<p class="project-ref">{copy.project}{getLocale() === 'fr' ? ' :' : ':'} {#if project.ongoing}<a href={`#${project.id}`}>{project.title}</a>{:else}<span>{project.title}</span>{/if}{' · ' + [project.applicant, project.institution].filter(Boolean).join(', ')}</p>{:else if output.author}<p class="project-ref">{output.author}</p>{/if}
 					</li>
 				{/each}
 			</ol>
