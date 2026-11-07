@@ -92,6 +92,22 @@ for (const [language, mention] of [['fr', 'Action financée par la Région Île-
 	const text = decode(html.replace(/<[^>]*>/g, ' '));
 	for (const project of clusterProjects.projects) assert.ok(text.includes(project.title), language + ' project ' + project.id);
 }
+// No page links to a team page that does not exist (former members are shown without a link).
+const teamPages = new Set(
+	snapshot.publications
+		.filter((row) => row.kind === 'AUTHOR' && row.category === 'acss_engineer')
+		.map((row) => row.slug.trim())
+);
+let teamLinks = 0;
+for (const file of await allFiles(root)) {
+	if (!file.endsWith('.html')) continue;
+	const html = await readFile(file, 'utf8');
+	for (const [, slug] of html.matchAll(/href="(?:https:\/\/acss-dig\.psl\.eu)?(?:\/(?:fr|en))?\/equipe\/([^"/?#]+)/g)) {
+		assert.ok(teamPages.has(decodeURIComponent(slug)), `${file} links to a missing team page: ${slug}`);
+		teamLinks++;
+	}
+}
+assert.ok(teamLinks > 0, 'team links are still rendered for current members');
 const secrets = [];
 for (const key of ['ACSS_CONTENT_DATABASE_URL','ACSS_NEWSLETTER_DATABASE_URL']) {
  if (process.env[key]) { const url=new URL(process.env[key]); secrets.push(decodeURIComponent(url.password),url.href); }

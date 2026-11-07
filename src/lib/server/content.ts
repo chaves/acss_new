@@ -18,8 +18,39 @@ function records(): PublicRecord[] {
 		throw new Error('Build-time public content snapshot is missing. Run pnpm content:snapshot.');
 	return snapshot.publications;
 }
+// Older content (seminar presenters, posts, biographies) still links to the team pages of people who
+// have left ACSS. Those pages no longer exist: keep the text and drop the link, so that readers and the
+// prerender crawler never land on a 404.
+const TEAM_LINK =
+	/^(?:https?:\/\/(?:www\.)?acss-dig\.psl\.eu)?(?:\/(?:fr|en))?\/equipe\/([^/?#"'\s)]+)\/?(?:[?#][^"'\s)]*)?$/i;
+let team: Set<string> | null = null;
+function isDeadTeamLink(url: string): boolean {
+	const match = TEAM_LINK.exec(url.trim());
+	if (!match) return false;
+	team ??= new Set(contentEntries('AUTHOR', 'acss_engineer').map((entry) => entry.slug));
+	let slug = match[1];
+	try {
+		slug = decodeURIComponent(slug);
+	} catch {
+		/* keep the raw slug */
+	}
+	return !team.has(slug);
+}
+export function withoutDeadTeamLinks(value: string): string {
+	if (isDeadTeamLink(value)) return '';
+	if (!value.includes('/equipe/')) return value;
+	return value
+		.replace(
+			/<a\b[^>]*?\bhref=(["'])(.*?)\1[^>]*>([\s\S]*?)<\/a>/gi,
+			(link, _quote, href: string, text: string) => (isDeadTeamLink(href) ? text : link)
+		)
+		.replace(
+			/\[([^\]]*)\]\(\s*<?([^)\s>]+)>?(?:\s+"[^"]*")?\s*\)/g,
+			(link, text: string, href: string) => (isDeadTeamLink(href) ? text : link)
+		);
+}
 function mediaUrls(value: unknown): unknown {
-	if (typeof value === 'string') return rewriteMediaReferences(value);
+	if (typeof value === 'string') return withoutDeadTeamLinks(rewriteMediaReferences(value));
 	if (Array.isArray(value)) return value.map(mediaUrls);
 	if (value && typeof value === 'object')
 		return Object.fromEntries(Object.entries(value).map(([key, item]) => [key, mediaUrls(item)]));
@@ -70,9 +101,7 @@ function withAbstract(seminar: Seminar): Seminar {
 }
 export const seminars = {
 	getAll: async (params: ContentQuery = {}) =>
-		(await publishedContent<Seminar>('SEMINAR', { sort: 'date:asc', ...params })).map(
-			withAbstract
-		),
+		(await publishedContent<Seminar>('SEMINAR', { sort: 'date:asc', ...params })).map(withAbstract),
 	async getBySlug(slug: string) {
 		return (await seminars.getAll({ filters: { slug } }))[0] || null;
 	},
