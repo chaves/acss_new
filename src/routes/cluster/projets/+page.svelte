@@ -271,6 +271,14 @@
 	.body :global(p) {
 		margin: 0.25rem 0;
 	}
+	.body :global(:is(h1, h2, h3, h4)) {
+		margin: 0 0 0.35rem;
+		font-family: var(--font-heading);
+		font-size: 1.05rem;
+		font-weight: 700;
+		line-height: 1.45;
+		color: var(--color-heading);
+	}
 	.body :global(a),
 	.link a,
 	.project-ref a,
