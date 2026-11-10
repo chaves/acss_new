@@ -536,6 +536,14 @@
 	.latest-body :global(p) {
 		margin: 0;
 	}
+	.latest-body :global(:is(h1, h2, h3, h4)) {
+		margin: 0 0 0.25rem;
+		font-family: var(--font-heading);
+		font-size: 0.98rem;
+		font-weight: 700;
+		line-height: 1.45;
+		color: var(--color-heading);
+	}
 	.latest-project {
 		margin-top: 0.5rem;
 		font-size: 0.78rem;
