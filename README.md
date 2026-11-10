@@ -47,6 +47,19 @@ Le logo officiel de la Région Île-de-France (`static/images/logos_autres/regio
 
 `static/files/cluster/charte-acss-4h100-2h100-<8 premiers caractères du sha256>.pdf` est généré par `~/_ACSS/MARCELLE/Chartre/sources/build_charter.py` (vérification : `verify_charter.py`). Après une nouvelle version, renommer le fichier avec son nouveau sha256, mettre à jour `src/routes/cluster/+page.svelte` et copier le même PDF dans `resources/charte-acss-modele.pdf` de l’extranet (modèle des tests d’extraction). La version de novembre 2026 informe le demandeur de la publication du projet et de ses réalisations (bloc 06).
 
+## Redirection temporaire vers un sondage
+
+`/r/<code>` redirige vers le sondage Outlook configuré côté serveur. Définir dans Vercel
+`ACSS_POLL_REDIRECT_CODE` (code aléatoire d’au moins 32 caractères) et
+`ACSS_POLL_REDIRECT_URL` (adresse Outlook complète, avec son jeton), comme variables
+sensibles de production. Ne jamais enregistrer leurs valeurs dans le dépôt.
+
+Seul le code configuré est accepté. La destination reste inchangée et ne peut pas être
+choisie par le visiteur. La réponse n’est pas mise en cache, demande aux moteurs de ne
+pas l’indexer et n’est liée depuis aucune page ni ajoutée au sitemap. Toute personne
+qui reçoit le lien peut néanmoins l’utiliser : ne le transmettre qu’aux destinataires
+du sondage. Retirer ces deux variables puis redéployer après la clôture du sondage.
+
 ## Formulaire
 
 La lettre d’information utilise une action serveur SvelteKit. Elle fonctionne avec et sans JavaScript, contrôle l’origine et les données, protège contre les soumissions répétées et conserve l’unicité des emails. Aucun email n’est envoyé par ce formulaire.
